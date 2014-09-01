@@ -38,6 +38,8 @@
             this.cbxPlan = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbxEspecialidades = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -52,7 +54,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 77);
+            this.label2.Location = new System.Drawing.Point(43, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 1;
@@ -61,16 +63,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(75, 121);
+            this.label3.Location = new System.Drawing.Point(73, 113);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Años";
+            this.label3.Text = "Año";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(78, 169);
+            this.label4.Location = new System.Drawing.Point(73, 193);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 3;
@@ -86,14 +88,14 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(144, 74);
+            this.txtDescripcion.Location = new System.Drawing.Point(144, 70);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(150, 20);
             this.txtDescripcion.TabIndex = 5;
             // 
             // txtAniosEspecialidad
             // 
-            this.txtAniosEspecialidad.Location = new System.Drawing.Point(144, 118);
+            this.txtAniosEspecialidad.Location = new System.Drawing.Point(144, 110);
             this.txtAniosEspecialidad.Name = "txtAniosEspecialidad";
             this.txtAniosEspecialidad.Size = new System.Drawing.Size(80, 20);
             this.txtAniosEspecialidad.TabIndex = 6;
@@ -101,7 +103,7 @@
             // cbxPlan
             // 
             this.cbxPlan.FormattingEnabled = true;
-            this.cbxPlan.Location = new System.Drawing.Point(144, 166);
+            this.cbxPlan.Location = new System.Drawing.Point(144, 190);
             this.cbxPlan.Name = "cbxPlan";
             this.cbxPlan.Size = new System.Drawing.Size(100, 21);
             this.cbxPlan.TabIndex = 7;
@@ -126,11 +128,31 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 151);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Especialidad";
+            // 
+            // cbxEspecialidades
+            // 
+            this.cbxEspecialidades.FormattingEnabled = true;
+            this.cbxEspecialidades.Location = new System.Drawing.Point(144, 151);
+            this.cbxEspecialidades.Name = "cbxEspecialidades";
+            this.cbxEspecialidades.Size = new System.Drawing.Size(121, 21);
+            this.cbxEspecialidades.TabIndex = 11;
+            this.cbxEspecialidades.SelectionChangeCommitted += new System.EventHandler(this.cbxEspecialidades_SelectionChangeCommitted);
+            // 
             // ComisionDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 262);
+            this.Controls.Add(this.cbxEspecialidades);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.cbxPlan);
@@ -161,5 +183,7 @@
         private System.Windows.Forms.ComboBox cbxPlan;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbxEspecialidades;
     }
 }

@@ -20,10 +20,10 @@ namespace UI.Desktop
 
         private void ComisionDesktop_Load(object sender, EventArgs e)
         {
-            PlanLogic PlanNegocio = new PlanLogic();
-            cbxPlan.DataSource = PlanNegocio.GetAll();
-            cbxPlan.DisplayMember = "Descripcion";
-            cbxPlan.ValueMember = "ID";
+            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
+            cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
+            cbxEspecialidades.DisplayMember = "Descripcion";
+            cbxEspecialidades.ValueMember = "ID";
         }
 
         Comision _ComisionActual;
@@ -135,6 +135,22 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbxEspecialidades_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = new List<Plan>();
+            foreach (Plan p in pl.GetAll())
+            {
+                if (p.IDEspecialidad == Convert.ToInt32(cbxEspecialidades.SelectedValue))
+                {
+                    planes.Add(p);
+                }
+            }
+            cbxPlan.DataSource = planes;
+            cbxPlan.DisplayMember = "Descripcion";
+            cbxPlan.ValueMember = "ID";
         }
     }
 }

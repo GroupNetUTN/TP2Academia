@@ -20,10 +20,10 @@ namespace UI.Desktop
 
         private void MateriaDesktop_Load(object sender, EventArgs e)
         {
-            PlanLogic matlog = new PlanLogic();
-            cbxPlanes.DataSource = matlog.GetAll();
-            cbxPlanes.DisplayMember = "Descripcion";
-            cbxPlanes.ValueMember = "ID";
+            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
+            cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
+            cbxEspecialidades.DisplayMember = "Descripcion";
+            cbxEspecialidades.ValueMember = "ID";
         }
 
         Materia _MateriaActual;
@@ -140,6 +140,22 @@ namespace UI.Desktop
                 this.GuardarCambios();
                 this.Close();
             }
+        }
+
+        private void cbxEspecialidades_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = new List<Plan>();
+            foreach (Plan p in pl.GetAll())
+            {
+                if (p.IDEspecialidad == Convert.ToInt32(cbxEspecialidades.SelectedValue))
+                {
+                    planes.Add(p);
+                }
+            }
+            cbxPlanes.DataSource = planes;
+            cbxPlanes.DisplayMember = "Descripcion";
+            cbxPlanes.ValueMember = "ID";
         }
     }
 }
