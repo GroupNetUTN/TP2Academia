@@ -22,7 +22,13 @@ namespace UI.Desktop
         public void Listar()
         {
             MateriaLogic ml = new MateriaLogic();
-            this.dgvMaterias.DataSource = ml.GetAll();
+            List<Materia> materias = ml.GetAll();
+            foreach (Materia m in materias)
+            {
+                PlanLogic pl = new PlanLogic();
+                m.Relation = pl.GetOne(m.IDPlan).Descripcion;
+            }
+            this.dgvMaterias.DataSource = materias;
         }
 
         private void Materias_Load(object sender, EventArgs e)
