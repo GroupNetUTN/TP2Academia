@@ -1,0 +1,8 @@
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\Business.Entities\bin\Debug\Business.Entities.dll
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\Business.Entities\bin\Debug\Business.Entities.pdb
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\Business.Entities\obj\Debug\Business.Entities.dll
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\Business.Entities\obj\Debug\Business.Entities.pdb
+C:\Users\Matias\Desktop\TP2 ultimo\Business.Entities\bin\Debug\Business.Entities.dll
+C:\Users\Matias\Desktop\TP2 ultimo\Business.Entities\bin\Debug\Business.Entities.pdb
+C:\Users\Matias\Desktop\TP2 ultimo\Business.Entities\obj\Debug\Business.Entities.dll
+C:\Users\Matias\Desktop\TP2 ultimo\Business.Entities\obj\Debug\Business.Entities.pdb

@@ -1,0 +1,21 @@
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\bin\Debug\UI.Consola.exe
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\bin\Debug\UI.Consola.pdb
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\bin\Debug\Business.Entities.dll
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\bin\Debug\Business.Logic.dll
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\bin\Debug\Data.Database.dll
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\bin\Debug\Business.Entities.pdb
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\bin\Debug\Business.Logic.pdb
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\bin\Debug\Data.Database.pdb
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\obj\x86\Debug\UI.Consola.exe
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\UI.Consola\obj\x86\Debug\UI.Consola.pdb
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\bin\Debug\UI.Consola.exe
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\bin\Debug\UI.Consola.pdb
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\bin\Debug\Business.Entities.dll
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\bin\Debug\Business.Logic.dll
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\bin\Debug\Data.Database.dll
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\bin\Debug\Business.Entities.pdb
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\bin\Debug\Business.Logic.pdb
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\bin\Debug\Data.Database.pdb
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\obj\x86\Debug\UI.Consola.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\obj\x86\Debug\UI.Consola.exe
+C:\Users\Matias\Desktop\TP2 ultimo\UI.Consola\obj\x86\Debug\UI.Consola.pdb
