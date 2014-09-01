@@ -184,7 +184,8 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Name = "MateriaDesktop";
-            this.Text = "MateriaDesktop";
+            this.ShowIcon = false;
+            this.Text = "Materias";
             this.Load += new System.EventHandler(this.MateriaDesktop_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

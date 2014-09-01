@@ -134,15 +134,16 @@ namespace UI.Desktop
         public override bool Validar()
         {
             Boolean EsValido = true;
-            //foreach (Control oControls in this.Controls)
-            //{
-            //    if (oControls is TextBox) /*& oControls.Text == String.Empty*/
-            //    {
-            //        MessageBox.Show("ERROR");
-            //        EsValido = false;
-            //        this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
+            foreach (Control oControls in this.Controls)
+            {
+                if (oControls is TextBox && oControls.Text == String.Empty)
+                {
+                    EsValido = false;
+                    break;
+                }
+            }
+            if (EsValido == false)
+                this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
             if (this.txtClave.Text != this.txtConfirmarClave.Text)
             {
                 EsValido = false;
