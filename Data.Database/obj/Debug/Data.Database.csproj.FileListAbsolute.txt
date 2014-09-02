@@ -12,3 +12,10 @@ C:\Users\Matias\Desktop\TP2 ultimo\Data.Database\bin\Debug\Business.Entities.pdb
 C:\Users\Matias\Desktop\TP2 ultimo\Data.Database\obj\Debug\Data.Database.csprojResolveAssemblyReference.cache
 C:\Users\Matias\Desktop\TP2 ultimo\Data.Database\obj\Debug\Data.Database.dll
 C:\Users\Matias\Desktop\TP2 ultimo\Data.Database\obj\Debug\Data.Database.pdb
+C:\Users\Matias\Desktop\TP2Academia\Data.Database\bin\Debug\Data.Database.dll
+C:\Users\Matias\Desktop\TP2Academia\Data.Database\bin\Debug\Data.Database.pdb
+C:\Users\Matias\Desktop\TP2Academia\Data.Database\bin\Debug\Business.Entities.dll
+C:\Users\Matias\Desktop\TP2Academia\Data.Database\bin\Debug\Business.Entities.pdb
+C:\Users\Matias\Desktop\TP2Academia\Data.Database\obj\Debug\Data.Database.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Desktop\TP2Academia\Data.Database\obj\Debug\Data.Database.dll
+C:\Users\Matias\Desktop\TP2Academia\Data.Database\obj\Debug\Data.Database.pdb

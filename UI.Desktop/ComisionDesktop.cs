@@ -20,10 +20,7 @@ namespace UI.Desktop
 
         private void ComisionDesktop_Load(object sender, EventArgs e)
         {
-            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
-            cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
-            cbxEspecialidades.DisplayMember = "Descripcion";
-            cbxEspecialidades.ValueMember = "ID";
+
         }
 
         Comision _ComisionActual;
@@ -37,6 +34,7 @@ namespace UI.Desktop
         public ComisionDesktop(ModoForm modo) : this()    
         {
             this._Modo = modo;
+            this.llenarCombo();
         }
 
         public ComisionDesktop(int ID, ModoForm modo) : this()
@@ -44,7 +42,16 @@ namespace UI.Desktop
             this._Modo = modo;
             ComisionLogic ComisionNegocio = new ComisionLogic();
             _ComisionActual = ComisionNegocio.GetOne(ID);
+            this.llenarCombo();
             this.MapearDeDatos();
+        }
+
+        private void llenarCombo()
+        {
+            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
+            cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
+            cbxEspecialidades.DisplayMember = "Descripcion";
+            cbxEspecialidades.ValueMember = "ID";
         }
 
         public override void MapearDeDatos()
@@ -107,7 +114,7 @@ namespace UI.Desktop
             Boolean EsValido = true;
             foreach (Control oControls in this.Controls)
             {
-                if (oControls is TextBox && oControls.Text == String.Empty)
+                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
                 {
                     EsValido = false;
                     break;

@@ -20,10 +20,7 @@ namespace UI.Desktop
 
         private void MateriaDesktop_Load(object sender, EventArgs e)
         {
-            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
-            cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
-            cbxEspecialidades.DisplayMember = "Descripcion";
-            cbxEspecialidades.ValueMember = "ID";
+
         }
 
         Materia _MateriaActual;
@@ -38,6 +35,7 @@ namespace UI.Desktop
             : this()
         {
             this._Modo = modo;
+            this.llenarCombo();
         }
 
         public MateriaDesktop(int ID, ModoForm modo)
@@ -46,7 +44,16 @@ namespace UI.Desktop
             this._Modo = modo;
             MateriaLogic MateriaNegocio = new MateriaLogic();
             _MateriaActual = MateriaNegocio.GetOne(ID);
+            this.llenarCombo();
             this.MapearDeDatos();
+        }
+
+        private void llenarCombo()
+        {
+            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
+            cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
+            cbxEspecialidades.DisplayMember = "Descripcion";
+            cbxEspecialidades.ValueMember = "ID";
         }
 
         public override void MapearDeDatos()
@@ -111,7 +118,7 @@ namespace UI.Desktop
             Boolean EsValido = true;
             foreach (Control oControls in this.Controls)
             {
-                if (oControls is TextBox && oControls.Text == String.Empty)
+                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
                 {
                     EsValido = false;
                     break;

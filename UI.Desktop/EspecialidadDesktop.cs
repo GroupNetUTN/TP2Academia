@@ -101,8 +101,8 @@ namespace UI.Desktop
         {
             Boolean EsValido = true;
             foreach (Control oControls in this.Controls)
-            {
-                if (oControls is TextBox && oControls.Text == String.Empty)
+            { 
+                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
                 {
                     EsValido = false;
                     break;

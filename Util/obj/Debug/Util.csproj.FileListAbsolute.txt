@@ -2,3 +2,7 @@ C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\Util\bin\Debug\Util.dll
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\Util\bin\Debug\Util.pdb
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\Util\obj\Debug\Util.dll
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2 last\Util\obj\Debug\Util.pdb
+C:\Users\Matias\Desktop\TP2Academia\Util\bin\Debug\Util.dll
+C:\Users\Matias\Desktop\TP2Academia\Util\bin\Debug\Util.pdb
+C:\Users\Matias\Desktop\TP2Academia\Util\obj\Debug\Util.dll
+C:\Users\Matias\Desktop\TP2Academia\Util\obj\Debug\Util.pdb

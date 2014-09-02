@@ -20,10 +20,7 @@ namespace UI.Desktop
 
         private void PlanDesktop_Load(object sender, EventArgs e)
         {
-            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
-            cbxEspecialidad.DataSource = EspecialidadNegocio.GetAll();
-            cbxEspecialidad.DisplayMember = "Descripcion";
-            cbxEspecialidad.ValueMember = "ID";              
+          
         }
 
         Plan _PlanActual;
@@ -37,6 +34,7 @@ namespace UI.Desktop
         public PlanDesktop(ModoForm modo) : this()    
         {
             this._Modo = modo;
+            this.llenarCombo();
         }
 
         public PlanDesktop(int ID, ModoForm modo) : this()
@@ -44,14 +42,23 @@ namespace UI.Desktop
             this._Modo = modo;
             PlanLogic PlanNegocio = new PlanLogic();
             _PlanActual = PlanNegocio.GetOne(ID);
+            this.llenarCombo();
             this.MapearDeDatos();
+        }
+
+        private void llenarCombo()
+        {
+            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
+            cbxEspecialidad.DataSource = EspecialidadNegocio.GetAll();
+            cbxEspecialidad.DisplayMember = "Descripcion";
+            cbxEspecialidad.ValueMember = "ID";
         }
 
         public override void MapearDeDatos()
         {
             this.txtID.Text = PlanActual.ID.ToString();
             this.txtDescripcion.Text = PlanActual.Descripcion;
-            this.cbxEspecialidad.SelectedValue = Convert.ToString(_PlanActual.IDEspecialidad);
+            this.cbxEspecialidad.SelectedValue = _PlanActual.IDEspecialidad;
 
             switch (this._Modo)
             {
@@ -106,7 +113,7 @@ namespace UI.Desktop
             Boolean EsValido = true;
             foreach (Control oControls in this.Controls)
             {
-                if (oControls is TextBox && oControls.Text == String.Empty)
+                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
                 {
                     EsValido = false;
                     break;
