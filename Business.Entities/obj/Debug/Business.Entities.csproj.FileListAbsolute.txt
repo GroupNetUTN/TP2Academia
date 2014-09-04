@@ -10,3 +10,7 @@ C:\Users\Matias\Desktop\TP2Academia\Business.Entities\bin\Debug\Business.Entitie
 C:\Users\Matias\Desktop\TP2Academia\Business.Entities\bin\Debug\Business.Entities.pdb
 C:\Users\Matias\Desktop\TP2Academia\Business.Entities\obj\Debug\Business.Entities.dll
 C:\Users\Matias\Desktop\TP2Academia\Business.Entities\obj\Debug\Business.Entities.pdb
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\Business.Entities\bin\Debug\Business.Entities.dll
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\Business.Entities\bin\Debug\Business.Entities.pdb
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\Business.Entities\obj\Debug\Business.Entities.dll
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\Business.Entities\obj\Debug\Business.Entities.pdb

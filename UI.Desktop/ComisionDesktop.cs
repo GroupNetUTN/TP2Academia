@@ -59,6 +59,7 @@ namespace UI.Desktop
             this.txtID.Text = ComisionActual.ID.ToString();
             this.txtDescripcion.Text = ComisionActual.Descripcion;
             this.txtAniosEspecialidad.Text = ComisionActual.AnioEspecialidad.ToString();
+            this.cbxPlan.SelectedValue = ComisionActual.IDPlan;
 
             switch (this._Modo)
             {

@@ -32,6 +32,12 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvPersonas = new System.Windows.Forms.DataGridView();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,12 +48,6 @@
             this.legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo_pers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -118,86 +118,6 @@
             this.dgvPersonas.Size = new System.Drawing.Size(978, 502);
             this.dgvPersonas.TabIndex = 0;
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "ID";
-            this.id.FillWeight = 50.76143F;
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // apellido
-            // 
-            this.apellido.DataPropertyName = "apellido";
-            this.apellido.FillWeight = 126.8291F;
-            this.apellido.HeaderText = "Apellido";
-            this.apellido.Name = "apellido";
-            this.apellido.ReadOnly = true;
-            // 
-            // nombre
-            // 
-            this.nombre.DataPropertyName = "nombre";
-            this.nombre.FillWeight = 126.8291F;
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // direc
-            // 
-            this.direc.DataPropertyName = "direccion";
-            this.direc.FillWeight = 126.8291F;
-            this.direc.HeaderText = "Dirección";
-            this.direc.Name = "direc";
-            this.direc.ReadOnly = true;
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "email";
-            this.email.FillWeight = 126.8291F;
-            this.email.HeaderText = "E-Mail";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            // 
-            // telefono
-            // 
-            this.telefono.DataPropertyName = "telefono";
-            this.telefono.FillWeight = 126.8291F;
-            this.telefono.HeaderText = "Teléfono";
-            this.telefono.Name = "telefono";
-            this.telefono.ReadOnly = true;
-            // 
-            // fecha_nac
-            // 
-            this.fecha_nac.DataPropertyName = "fecha_nac";
-            this.fecha_nac.FillWeight = 126.8291F;
-            this.fecha_nac.HeaderText = "Fecha de Nacimiento";
-            this.fecha_nac.Name = "fecha_nac";
-            this.fecha_nac.ReadOnly = true;
-            // 
-            // legajo
-            // 
-            this.legajo.DataPropertyName = "legajo";
-            this.legajo.FillWeight = 76.92483F;
-            this.legajo.HeaderText = "Legajo";
-            this.legajo.Name = "legajo";
-            this.legajo.ReadOnly = true;
-            // 
-            // tipo_pers
-            // 
-            this.tipo_pers.DataPropertyName = "tipo_persona";
-            this.tipo_pers.FillWeight = 53.81643F;
-            this.tipo_pers.HeaderText = "Tipo";
-            this.tipo_pers.Name = "tipo_pers";
-            this.tipo_pers.ReadOnly = true;
-            // 
-            // id_plan
-            // 
-            this.id_plan.DataPropertyName = "id_plan";
-            this.id_plan.FillWeight = 57.52265F;
-            this.id_plan.HeaderText = "ID Plan";
-            this.id_plan.Name = "id_plan";
-            this.id_plan.ReadOnly = true;
-            // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -264,6 +184,86 @@
             this.tsbEliminar.ToolTipText = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "ID";
+            this.id.FillWeight = 50.76143F;
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // apellido
+            // 
+            this.apellido.DataPropertyName = "apellido";
+            this.apellido.FillWeight = 126.8291F;
+            this.apellido.HeaderText = "Apellido";
+            this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.FillWeight = 126.8291F;
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // direc
+            // 
+            this.direc.DataPropertyName = "direccion";
+            this.direc.FillWeight = 126.8291F;
+            this.direc.HeaderText = "Dirección";
+            this.direc.Name = "direc";
+            this.direc.ReadOnly = true;
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email";
+            this.email.FillWeight = 126.8291F;
+            this.email.HeaderText = "E-Mail";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            // 
+            // telefono
+            // 
+            this.telefono.DataPropertyName = "telefono";
+            this.telefono.FillWeight = 126.8291F;
+            this.telefono.HeaderText = "Teléfono";
+            this.telefono.Name = "telefono";
+            this.telefono.ReadOnly = true;
+            // 
+            // fecha_nac
+            // 
+            this.fecha_nac.DataPropertyName = "fecha_nac";
+            this.fecha_nac.FillWeight = 126.8291F;
+            this.fecha_nac.HeaderText = "Fecha de Nacimiento";
+            this.fecha_nac.Name = "fecha_nac";
+            this.fecha_nac.ReadOnly = true;
+            // 
+            // legajo
+            // 
+            this.legajo.DataPropertyName = "legajo";
+            this.legajo.FillWeight = 76.92483F;
+            this.legajo.HeaderText = "Legajo";
+            this.legajo.Name = "legajo";
+            this.legajo.ReadOnly = true;
+            // 
+            // tipo_pers
+            // 
+            this.tipo_pers.DataPropertyName = "TipoPersona";
+            this.tipo_pers.FillWeight = 53.81643F;
+            this.tipo_pers.HeaderText = "Tipo";
+            this.tipo_pers.Name = "tipo_pers";
+            this.tipo_pers.ReadOnly = true;
+            // 
+            // id_plan
+            // 
+            this.id_plan.DataPropertyName = "id_plan";
+            this.id_plan.FillWeight = 57.52265F;
+            this.id_plan.HeaderText = "ID Plan";
+            this.id_plan.Name = "id_plan";
+            this.id_plan.ReadOnly = true;
+            // 
             // Personas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,6 +291,12 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dgvPersonas;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsbNuevo;
+        private System.Windows.Forms.ToolStripButton tsbEditar;
+        private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
@@ -301,11 +307,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn legajo;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_pers;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_plan;
-        private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbNuevo;
-        private System.Windows.Forms.ToolStripButton tsbEditar;
-        private System.Windows.Forms.ToolStripButton tsbEliminar;
     }
 }

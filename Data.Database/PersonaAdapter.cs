@@ -30,7 +30,7 @@ namespace Data.Database
                     pers.Telefono = (string)drPersonas["telefono"];
                     pers.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
                     pers.Legajo = (int)drPersonas["legajo"];
-                    pers.TipoPersona = (int)drPersonas["tipo_persona"];
+                    pers.TipoPersona = (Persona.TipoPers)drPersonas["tipo_persona"];
                     pers.IDPlan = (int)drPersonas["id_plan"];
 
                     personas.Add(pers);
@@ -68,7 +68,7 @@ namespace Data.Database
                     pers.Telefono = (string)drPersonas["telefono"];
                     pers.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
                     pers.Legajo = (int)drPersonas["legajo"];
-                    pers.TipoPersona = (int)drPersonas["tipo_persona"];
+                    pers.TipoPersona = (Persona.TipoPers)drPersonas["tipo_persona"];
                     pers.IDPlan = (int)drPersonas["id_plan"];
                 }
 
