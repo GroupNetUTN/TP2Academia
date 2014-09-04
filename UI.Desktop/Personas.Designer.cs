@@ -194,7 +194,7 @@
             // 
             // apellido
             // 
-            this.apellido.DataPropertyName = "apellido";
+            this.apellido.DataPropertyName = "Apellido";
             this.apellido.FillWeight = 126.8291F;
             this.apellido.HeaderText = "Apellido";
             this.apellido.Name = "apellido";
@@ -202,7 +202,7 @@
             // 
             // nombre
             // 
-            this.nombre.DataPropertyName = "nombre";
+            this.nombre.DataPropertyName = "Nombre";
             this.nombre.FillWeight = 126.8291F;
             this.nombre.HeaderText = "Nombre";
             this.nombre.Name = "nombre";
@@ -210,7 +210,7 @@
             // 
             // direc
             // 
-            this.direc.DataPropertyName = "direccion";
+            this.direc.DataPropertyName = "Direccion";
             this.direc.FillWeight = 126.8291F;
             this.direc.HeaderText = "Dirección";
             this.direc.Name = "direc";
@@ -218,7 +218,7 @@
             // 
             // email
             // 
-            this.email.DataPropertyName = "email";
+            this.email.DataPropertyName = "Email";
             this.email.FillWeight = 126.8291F;
             this.email.HeaderText = "E-Mail";
             this.email.Name = "email";
@@ -226,7 +226,7 @@
             // 
             // telefono
             // 
-            this.telefono.DataPropertyName = "telefono";
+            this.telefono.DataPropertyName = "Telefono";
             this.telefono.FillWeight = 126.8291F;
             this.telefono.HeaderText = "Teléfono";
             this.telefono.Name = "telefono";
@@ -234,7 +234,7 @@
             // 
             // fecha_nac
             // 
-            this.fecha_nac.DataPropertyName = "fecha_nac";
+            this.fecha_nac.DataPropertyName = "FechaNacimiento";
             this.fecha_nac.FillWeight = 126.8291F;
             this.fecha_nac.HeaderText = "Fecha de Nacimiento";
             this.fecha_nac.Name = "fecha_nac";
@@ -242,7 +242,7 @@
             // 
             // legajo
             // 
-            this.legajo.DataPropertyName = "legajo";
+            this.legajo.DataPropertyName = "Legajo";
             this.legajo.FillWeight = 76.92483F;
             this.legajo.HeaderText = "Legajo";
             this.legajo.Name = "legajo";
@@ -258,7 +258,7 @@
             // 
             // id_plan
             // 
-            this.id_plan.DataPropertyName = "id_plan";
+            this.id_plan.DataPropertyName = "IDPlan";
             this.id_plan.FillWeight = 57.52265F;
             this.id_plan.HeaderText = "ID Plan";
             this.id_plan.Name = "id_plan";

@@ -15,14 +15,7 @@ namespace Business.Entities
         private int _Legajo;
         private string _Nombre;
         private string _Telefono;
-        private TipoPers _TipoPersona;   
-
-        public enum TipoPers
-        {
-            Administrador,
-            Alumno,
-            Docente
-        }
+        private string _TipoPersona;
 
         public string Apellido
         {
@@ -72,7 +65,7 @@ namespace Business.Entities
             set { _Telefono = value; }
         }
 
-        public TipoPers TipoPersona
+        public string TipoPersona
         {
             get { return _TipoPersona; }
             set { _TipoPersona = value; }

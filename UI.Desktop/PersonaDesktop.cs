@@ -18,6 +18,13 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
+        //public enum TipoPers
+        //{
+        //    Administrador,
+        //    Alumno,
+        //    Docente
+        //}
+
         private void PersonaDesktop_Load(object sender, EventArgs e)
         {
 
@@ -52,8 +59,6 @@ namespace UI.Desktop
             cbxPlan.DataSource = PlanNegocio.GetAll();
             cbxPlan.DisplayMember = "Descripcion";
             cbxPlan.ValueMember = "ID";
-
-            cbxTipoPersona.DataSource = Enum.GetValues(typeof(Persona.TipoPers));
         }
 
         public override void MapearDeDatos()
@@ -67,8 +72,9 @@ namespace UI.Desktop
             this.txtAnio.Text = PersonaActual.FechaNacimiento.Year.ToString();
             this.txtDireccion.Text = PersonaActual.Direccion;
             this.txtTelefono.Text = PersonaActual.Telefono;
+            this.txtEmail.Text = PersonaActual.Email;
             this.cbxPlan.SelectedValue = PersonaActual.IDPlan;
-            this.cbxTipoPersona.SelectedValue = PersonaActual.TipoPersona;
+            this.cbxTipoPersona.SelectedText = PersonaActual.TipoPersona;
 
             switch (this._Modo)
             {
@@ -112,9 +118,9 @@ namespace UI.Desktop
                 PersonaActual.FechaNacimiento = new DateTime(Convert.ToInt32(txtAnio.Text), Convert.ToInt32(txtMes.Text), Convert.ToInt32(txtDia.Text));
                 PersonaActual.Direccion = this.txtDireccion.Text;
                 PersonaActual.Telefono = this.txtTelefono.Text;
+                PersonaActual.Email = this.txtEmail.Text;
                 PersonaActual.IDPlan = Convert.ToInt32(this.cbxPlan.SelectedValue);
-                //PersonaActual.TipoPersona = Convert.ToString(this.cbxTipoPersona.SelectedValue);
-
+                PersonaActual.TipoPersona = this.cbxTipoPersona.SelectedText;
             }
         }
 
