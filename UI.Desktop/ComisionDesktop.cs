@@ -34,7 +34,7 @@ namespace UI.Desktop
         public ComisionDesktop(ModoForm modo) : this()    
         {
             this._Modo = modo;
-            this.llenarCombo();
+            this.LlenarComboEspecialidades();
         }
 
         public ComisionDesktop(int ID, ModoForm modo) : this()
@@ -42,11 +42,11 @@ namespace UI.Desktop
             this._Modo = modo;
             ComisionLogic ComisionNegocio = new ComisionLogic();
             _ComisionActual = ComisionNegocio.GetOne(ID);
-            this.llenarCombo();
+            this.LlenarComboEspecialidades();
             this.MapearDeDatos();
         }
 
-        private void llenarCombo()
+        private void LlenarComboEspecialidades()
         {
             EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
             cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
@@ -54,11 +54,30 @@ namespace UI.Desktop
             cbxEspecialidades.ValueMember = "ID";
         }
 
+        private void LlenarComboPlanes()
+        {
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = new List<Plan>();
+            foreach (Plan p in pl.GetAll())
+            {
+                if (p.IDEspecialidad == Convert.ToInt32(cbxEspecialidades.SelectedValue))
+                {
+                    planes.Add(p);
+                }
+            }
+            cbxPlan.DataSource = planes;
+            cbxPlan.DisplayMember = "Descripcion";
+            cbxPlan.ValueMember = "ID";
+        }
+
         public override void MapearDeDatos()
         {
             this.txtID.Text = ComisionActual.ID.ToString();
             this.txtDescripcion.Text = ComisionActual.Descripcion;
             this.txtAniosEspecialidad.Text = ComisionActual.AnioEspecialidad.ToString();
+            PlanLogic plan = new PlanLogic();
+            this.cbxEspecialidades.SelectedValue = plan.GetOne(ComisionActual.IDPlan).IDEspecialidad;
+            this.LlenarComboPlanes();
             this.cbxPlan.SelectedValue = ComisionActual.IDPlan;
 
             switch (this._Modo)
@@ -143,18 +162,7 @@ namespace UI.Desktop
 
         private void cbxEspecialidades_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            PlanLogic pl = new PlanLogic();
-            List<Plan> planes = new List<Plan>();
-            foreach (Plan p in pl.GetAll())
-            {
-                if (p.IDEspecialidad == Convert.ToInt32(cbxEspecialidades.SelectedValue))
-                {
-                    planes.Add(p);
-                }
-            }
-            cbxPlan.DataSource = planes;
-            cbxPlan.DisplayMember = "Descripcion";
-            cbxPlan.ValueMember = "ID";
+            this.LlenarComboPlanes();
         }
     }
 }
