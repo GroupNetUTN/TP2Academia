@@ -41,7 +41,7 @@ namespace UI.Desktop
         public PersonaDesktop(ModoForm modo) : this()    
         {
             this._Modo = modo;
-            this.llenarCombo();
+            this.LlenarComboEspecialidades();
         }
 
         public PersonaDesktop(int ID, ModoForm modo) : this()
@@ -49,16 +49,32 @@ namespace UI.Desktop
             this._Modo = modo;
             PersonaLogic PersonaNegocio = new PersonaLogic();
             _PersonaActual = PersonaNegocio.GetOne(ID);
-            this.llenarCombo();
+            this.LlenarComboEspecialidades();
             this.MapearDeDatos();
         }
 
-        private void llenarCombo()
+        private void LlenarComboEspecialidades()
         {
-            PlanLogic PlanNegocio = new PlanLogic();
-            cbxPlan.DataSource = PlanNegocio.GetAll();
-            cbxPlan.DisplayMember = "Descripcion";
-            cbxPlan.ValueMember = "ID";
+            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
+            cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
+            cbxEspecialidades.DisplayMember = "Descripcion";
+            cbxEspecialidades.ValueMember = "ID";
+        }
+
+        private void LlenarComboPlanes()
+        {
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = new List<Plan>();
+            foreach (Plan p in pl.GetAll())
+            {
+                if (p.IDEspecialidad == Convert.ToInt32(cbxEspecialidades.SelectedValue))
+                {
+                    planes.Add(p);
+                }
+            }
+            cbxPlanes.DataSource = planes;
+            cbxPlanes.DisplayMember = "Descripcion";
+            cbxPlanes.ValueMember = "ID";
         }
 
         public override void MapearDeDatos()
@@ -73,8 +89,11 @@ namespace UI.Desktop
             this.txtDireccion.Text = PersonaActual.Direccion;
             this.txtTelefono.Text = PersonaActual.Telefono;
             this.txtEmail.Text = PersonaActual.Email;
-            this.cbxPlan.SelectedValue = PersonaActual.IDPlan;
             this.cbxTipoPersona.SelectedItem = PersonaActual.TipoPersona;
+            PlanLogic plan = new PlanLogic();
+            this.cbxEspecialidades.SelectedValue = plan.GetOne(PersonaActual.IDPlan).IDEspecialidad;
+            this.LlenarComboPlanes();
+            this.cbxPlanes.SelectedValue = PersonaActual.IDPlan;
 
             switch (this._Modo)
             {
@@ -119,8 +138,9 @@ namespace UI.Desktop
                 PersonaActual.Direccion = this.txtDireccion.Text;
                 PersonaActual.Telefono = this.txtTelefono.Text;
                 PersonaActual.Email = this.txtEmail.Text;
-                PersonaActual.IDPlan = Convert.ToInt32(this.cbxPlan.SelectedValue);
+                PersonaActual.IDPlan = Convert.ToInt32(this.cbxPlanes.SelectedValue);
                 PersonaActual.TipoPersona = this.cbxTipoPersona.SelectedItem.ToString();
+                PersonaActual.IDPlan = Convert.ToInt32(this.cbxPlanes.SelectedValue);
             }
         }
 
@@ -162,9 +182,11 @@ namespace UI.Desktop
             this.Close();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void cbxEspecialidades_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
+            this.LlenarComboPlanes();
         }
+
+
     }
 }

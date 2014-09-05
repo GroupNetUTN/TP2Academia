@@ -80,6 +80,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(144, 30);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
@@ -91,14 +92,14 @@
             this.txtDescripcion.Location = new System.Drawing.Point(144, 70);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(150, 20);
-            this.txtDescripcion.TabIndex = 5;
+            this.txtDescripcion.TabIndex = 1;
             // 
             // txtAniosEspecialidad
             // 
             this.txtAniosEspecialidad.Location = new System.Drawing.Point(144, 110);
             this.txtAniosEspecialidad.Name = "txtAniosEspecialidad";
             this.txtAniosEspecialidad.Size = new System.Drawing.Size(80, 20);
-            this.txtAniosEspecialidad.TabIndex = 6;
+            this.txtAniosEspecialidad.TabIndex = 2;
             // 
             // cbxPlan
             // 
@@ -106,14 +107,14 @@
             this.cbxPlan.Location = new System.Drawing.Point(144, 190);
             this.cbxPlan.Name = "cbxPlan";
             this.cbxPlan.Size = new System.Drawing.Size(100, 21);
-            this.cbxPlan.TabIndex = 7;
+            this.cbxPlan.TabIndex = 4;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Location = new System.Drawing.Point(213, 227);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 8;
+            this.btnAceptar.TabIndex = 5;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -123,7 +124,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(295, 226);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -143,7 +144,7 @@
             this.cbxEspecialidades.Location = new System.Drawing.Point(144, 151);
             this.cbxEspecialidades.Name = "cbxEspecialidades";
             this.cbxEspecialidades.Size = new System.Drawing.Size(121, 21);
-            this.cbxEspecialidades.TabIndex = 11;
+            this.cbxEspecialidades.TabIndex = 3;
             this.cbxEspecialidades.SelectionChangeCommitted += new System.EventHandler(this.cbxEspecialidades_SelectionChangeCommitted);
             // 
             // ComisionDesktop

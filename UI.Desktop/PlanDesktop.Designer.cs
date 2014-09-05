@@ -67,6 +67,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(120, 19);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
@@ -79,21 +80,21 @@
             this.cbxEspecialidad.Location = new System.Drawing.Point(120, 67);
             this.cbxEspecialidad.Name = "cbxEspecialidad";
             this.cbxEspecialidad.Size = new System.Drawing.Size(190, 21);
-            this.cbxEspecialidad.TabIndex = 6;
+            this.cbxEspecialidad.TabIndex = 1;
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(120, 116);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(190, 20);
-            this.txtDescripcion.TabIndex = 7;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Location = new System.Drawing.Point(196, 177);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 8;
+            this.btnAceptar.TabIndex = 3;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -103,7 +104,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(297, 177);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
