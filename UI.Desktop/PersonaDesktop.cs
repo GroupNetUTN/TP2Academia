@@ -74,7 +74,7 @@ namespace UI.Desktop
             this.txtTelefono.Text = PersonaActual.Telefono;
             this.txtEmail.Text = PersonaActual.Email;
             this.cbxPlan.SelectedValue = PersonaActual.IDPlan;
-            this.cbxTipoPersona.SelectedText = PersonaActual.TipoPersona;
+            this.cbxTipoPersona.SelectedItem = PersonaActual.TipoPersona;
 
             switch (this._Modo)
             {
@@ -120,7 +120,7 @@ namespace UI.Desktop
                 PersonaActual.Telefono = this.txtTelefono.Text;
                 PersonaActual.Email = this.txtEmail.Text;
                 PersonaActual.IDPlan = Convert.ToInt32(this.cbxPlan.SelectedValue);
-                PersonaActual.TipoPersona = this.cbxTipoPersona.SelectedText;
+                PersonaActual.TipoPersona = this.cbxTipoPersona.SelectedItem.ToString();
             }
         }
 
