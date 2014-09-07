@@ -18,13 +18,6 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
-        //public enum TipoPers
-        //{
-        //    Administrador,
-        //    Alumno,
-        //    Docente
-        //}
-
         private void PersonaDesktop_Load(object sender, EventArgs e)
         {
 
