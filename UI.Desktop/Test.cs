@@ -51,5 +51,11 @@ namespace UI.Desktop
             Materias mat = new Materias();
             mat.ShowDialog();
         }
+
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
+            Cursos cur = new Cursos();
+            cur.ShowDialog();
+        }
     }
 }

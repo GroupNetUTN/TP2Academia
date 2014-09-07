@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnMaterias = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnCursos = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -120,7 +122,7 @@
             // 
             // btnComisiones
             // 
-            this.btnComisiones.Location = new System.Drawing.Point(49, 213);
+            this.btnComisiones.Location = new System.Drawing.Point(45, 213);
             this.btnComisiones.Name = "btnComisiones";
             this.btnComisiones.Size = new System.Drawing.Size(75, 23);
             this.btnComisiones.TabIndex = 8;
@@ -156,11 +158,32 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "ABM Materias";
             // 
+            // btnCursos
+            // 
+            this.btnCursos.Location = new System.Drawing.Point(46, 281);
+            this.btnCursos.Name = "btnCursos";
+            this.btnCursos.Size = new System.Drawing.Size(75, 23);
+            this.btnCursos.TabIndex = 12;
+            this.btnCursos.Text = "Ingresar";
+            this.btnCursos.UseVisualStyleBackColor = true;
+            this.btnCursos.Click += new System.EventHandler(this.btnCursos_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 262);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "AMB Cursos";
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 262);
+            this.ClientSize = new System.Drawing.Size(478, 344);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnCursos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnMaterias);
             this.Controls.Add(this.label1);
@@ -194,5 +217,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMaterias;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnCursos;
+        private System.Windows.Forms.Label label3;
     }
 }

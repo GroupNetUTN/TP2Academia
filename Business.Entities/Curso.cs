@@ -17,10 +17,11 @@ namespace Business.Entities
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _AnioCalendario;
             }
             set
             {
+                _AnioCalendario = value;
             }
         }
 
@@ -28,10 +29,11 @@ namespace Business.Entities
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _Cupo;
             }
             set
             {
+                _Cupo = value;
             }
         }
 
@@ -39,10 +41,11 @@ namespace Business.Entities
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _Descripcion;
             }
             set
             {
+                _Descripcion = value;
             }
         }
 
@@ -50,10 +53,11 @@ namespace Business.Entities
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _IDComision;
             }
             set
             {
+                _IDComision = value;
             }
         }
 
@@ -61,10 +65,11 @@ namespace Business.Entities
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _IDMateria;
             }
             set
             {
+                _IDMateria = value;
             }
         }
     }
