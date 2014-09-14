@@ -1,0 +1,11 @@
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\UI.Web.dll
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\UI.Web.pdb
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\obj\Debug\UI.Web.dll
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\obj\Debug\UI.Web.pdb
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Business.Entities.dll
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Business.Logic.dll
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Data.Database.dll
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Business.Entities.pdb
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Business.Logic.pdb
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Data.Database.pdb
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\obj\Debug\UI.Web.csprojResolveAssemblyReference.cache
