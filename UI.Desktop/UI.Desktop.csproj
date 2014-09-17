@@ -64,6 +64,12 @@
     <Compile Include="Comisiones.Designer.cs">
       <DependentUpon>Comisiones.cs</DependentUpon>
     </Compile>
+    <Compile Include="CursoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CursoDesktop.Designer.cs">
+      <DependentUpon>CursoDesktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cursos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     <EmbeddedResource Include="Comisiones.resx">
       <DependentUpon>Comisiones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CursoDesktop.resx">
+      <DependentUpon>CursoDesktop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +220,10 @@
     <ProjectReference Include="..\Business.Logic\Business.Logic.csproj">
       <Project>{A331ACC0-FF64-4B2E-B505-FA0FBD8C8400}</Project>
       <Name>Business.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{E4DFB566-D9DF-403F-923E-C39594989668}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

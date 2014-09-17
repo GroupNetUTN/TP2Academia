@@ -40,5 +40,32 @@ namespace UI.Desktop
             this.Close();
         }
 
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            CursoDesktop curDesktop = new CursoDesktop(ApplicationForm.ModoForm.Alta);
+            curDesktop.ShowDialog();
+            this.Listar();
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            int ID = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
+            CursoDesktop CursoDesktop = new CursoDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+            CursoDesktop.ShowDialog();
+            this.Listar();
+        }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            var rta = MessageBox.Show("¿Esta seguro que desea eliminar el Plan seleccionado?", "Atencion", MessageBoxButtons.YesNo);
+            if (rta == DialogResult.Yes)
+            {
+                int ID = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
+                CursoLogic curso = new CursoLogic();
+                curso.Delete(ID);
+                this.Listar();
+            }
+        }
+
     }
 }

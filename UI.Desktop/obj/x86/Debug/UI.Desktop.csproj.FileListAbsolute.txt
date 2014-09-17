@@ -140,3 +140,6 @@ C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\D
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Properties.Resources.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.csproj.GenerateResource.Cache
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Cursos.resources
+C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.dll
+C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.pdb
+C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.CursoDesktop.resources

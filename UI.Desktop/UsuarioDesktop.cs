@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Business.Logic;
 using Business.Entities;
-using System.Text.RegularExpressions; /* para validar email */
+using Util;
 
 namespace UI.Desktop
 {
@@ -108,29 +108,7 @@ namespace UI.Desktop
             UsuarioLogic userlogic = new UsuarioLogic();
             userlogic.Save(_UsuarioActual);
         }
-
-        private Boolean EsMailValido (String email)
-        {
-            String expresion;
-            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(email, expresion))
-            {
-                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        
+ 
         public override bool Validar()
         {
             Boolean EsValido = true;
@@ -154,7 +132,7 @@ namespace UI.Desktop
                 EsValido = false;
                 this.Notificar("La clave debe tener al menos 8 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (EsMailValido(this.txtEmail.Text) == false)
+            if (Validaciones.EsMailValido(this.txtEmail.Text) == false)
             {
                 EsValido = false;
                 this.Notificar("Email no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);

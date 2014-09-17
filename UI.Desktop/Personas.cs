@@ -19,20 +19,25 @@ namespace UI.Desktop
             dgvPersonas.AutoGenerateColumns = false;
         }
 
-        public void Listar()
+        public void Listar(string tipo)
         {
             PersonaLogic pl = new PersonaLogic();
-            this.dgvPersonas.DataSource = pl.GetAll();
+            if (tipo == "Todos")
+                this.dgvPersonas.DataSource = pl.GetAll();
+            else if (tipo == "Alumnos")
+                this.dgvPersonas.DataSource = pl.GetAlumnos();
+            else if (tipo == "Docentes")
+                this.dgvPersonas.DataSource = pl.GetDocentes();
         }
 
         private void Personas_Load(object sender, EventArgs e)
         {
-            this.Listar();
+
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            this.Listar();
+            this.Listar(cbxTipoPersona.SelectedItem.ToString());
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -44,7 +49,7 @@ namespace UI.Desktop
         {
             PersonaDesktop PersDesktop = new PersonaDesktop(ApplicationForm.ModoForm.Alta);
             PersDesktop.ShowDialog();
-            this.Listar();
+            this.Listar(cbxTipoPersona.SelectedItem.ToString());
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
@@ -52,7 +57,7 @@ namespace UI.Desktop
             int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
             PersonaDesktop PersDesktop = new PersonaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             PersDesktop.ShowDialog();
-            this.Listar();
+            this.Listar(cbxTipoPersona.SelectedItem.ToString());
 
         }
 
@@ -64,8 +69,13 @@ namespace UI.Desktop
                 int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
                 PersonaLogic per = new PersonaLogic();
                 per.Delete(ID);
-                this.Listar();
+                this.Listar(cbxTipoPersona.SelectedItem.ToString());
             }
+        }
+
+        private void cbxTipoPersona_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             this.Listar(cbxTipoPersona.SelectedItem.ToString());
         }
     }
 }
