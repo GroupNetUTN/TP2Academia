@@ -58,9 +58,9 @@
     <Content Include="Default.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Styles\Scripts\jquery-1.4.1.js" />
+    <Content Include="Styles\Scripts\jquery-1.4.1.min.js" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
