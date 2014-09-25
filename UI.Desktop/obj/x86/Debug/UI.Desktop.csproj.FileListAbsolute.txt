@@ -143,3 +143,4 @@ C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Cursos.r
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.dll
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.pdb
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.CursoDesktop.resources
+C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.SeleccionarPersona.resources

@@ -81,18 +81,12 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
-            this.txtNombre.Text = this.Entity.Nombre;
-            this.txtApellido.Text = this.Entity.Apellido;
-            this.txtEmail.Text = this.Entity.Email;
             this.chxHabilitado.Checked = this.Entity.Habilitado;
             this.txtNombreUsuario.Text = this.Entity.NombreUsuario;
         }
 
         private void LoadEntity(Usuario usuario)
         {
-            usuario.Nombre = this.txtNombre.Text;
-            usuario.Apellido = this.txtApellido.Text;
-            usuario.Email = this.txtEmail.Text;
             usuario.NombreUsuario = this.txtNombreUsuario.Text;
             usuario.Clave = this.txtClave.Text;
             usuario.Habilitado = this.chxHabilitado.Checked;

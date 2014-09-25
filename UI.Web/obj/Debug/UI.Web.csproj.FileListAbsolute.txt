@@ -9,3 +9,5 @@ C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Business.Entities.pdb
 C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Business.Logic.pdb
 C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Data.Database.pdb
 C:\Users\Matias\Desktop\TP2Academia\UI.Web\obj\Debug\UI.Web.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Util.dll
+C:\Users\Matias\Desktop\TP2Academia\UI.Web\bin\Util.pdb

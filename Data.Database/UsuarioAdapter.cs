@@ -9,57 +9,6 @@ namespace Data.Database
 {
     public class UsuarioAdapter : Adapter
     {
-        #region DatosEnMemoria
-        // Esta región solo se usa en esta etapa donde los datos se mantienen en memoria.
-        // Al modificar este proyecto para que acceda a la base de datos esta será eliminada
-        private static List<Usuario> _Usuarios;
-
-        private static List<Usuario> Usuarios
-        {
-            get
-            {
-                if (_Usuarios == null)
-                {
-                    _Usuarios = new List<Business.Entities.Usuario>();
-                    Business.Entities.Usuario usr;
-                    usr = new Business.Entities.Usuario();
-                    usr.ID = 1;
-                    usr.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    usr.Nombre = "Casimiro";
-                    usr.Apellido = "Cegado";
-                    usr.NombreUsuario = "casicegado";
-                    usr.Clave = "miro";
-                    usr.Email = "casimirocegado@gmail.com";
-                    usr.Habilitado = true;
-                    _Usuarios.Add(usr);
-
-                    usr = new Business.Entities.Usuario();
-                    usr.ID = 2;
-                    usr.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    usr.Nombre = "Armando Esteban";
-                    usr.Apellido = "Quito";
-                    usr.NombreUsuario = "aequito";
-                    usr.Clave = "carpintero";
-                    usr.Email = "armandoquito@gmail.com";
-                    usr.Habilitado = true;
-                    _Usuarios.Add(usr);
-
-                    usr = new Business.Entities.Usuario();
-                    usr.ID = 3;
-                    usr.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    usr.Nombre = "Alan";
-                    usr.Apellido = "Brado";
-                    usr.NombreUsuario = "alanbrado";
-                    usr.Clave = "abrete sesamo";
-                    usr.Email = "alanbrado@gmail.com";
-                    usr.Habilitado = true;
-                    _Usuarios.Add(usr);
-
-                }
-                return _Usuarios;   
-            }
-        }
-        #endregion
 
         public List<Usuario> GetAll()
         {
@@ -77,9 +26,7 @@ namespace Data.Database
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    usr.Nombre = (string)drUsuarios["nombre"];
-                    usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.Email = (string)drUsuarios["email"];
+                    usr.IDPersona = (int)drUsuarios["id_persona"];
 
                     usuarios.Add(usr);
                 }
@@ -112,9 +59,7 @@ namespace Data.Database
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    usr.Nombre = (string)drUsuarios["nombre"];
-                    usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.Email = (string)drUsuarios["email"];
+                    usr.IDPersona = (int)drUsuarios["id_persona"];
                 }
 
                 drUsuarios.Close();
@@ -157,16 +102,14 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdUpdate = new SqlCommand("UPDATE usuarios SET nombre_usuario=@nombre_usuario, clave=@clave, " +
-                    "habilitado=@habilitado, nombre=@nombre, apellido=@apellido, email=@email " +
+                    "habilitado=@habilitado, id_persona=@id_persona " +
                     "WHERE id_usuario=@id", SqlConn);
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdUpdate.Parameters.Add("@nombre_usuario", SqlDbType.VarChar).Value = usuario.NombreUsuario;
                 cmdUpdate.Parameters.Add("@clave", SqlDbType.VarChar).Value = usuario.Clave;
                 cmdUpdate.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
-                cmdUpdate.Parameters.Add("@nombre", SqlDbType.VarChar).Value = usuario.Nombre;
-                cmdUpdate.Parameters.Add("@apellido", SqlDbType.VarChar).Value = usuario.Apellido;
-                cmdUpdate.Parameters.Add("@email", SqlDbType.VarChar).Value = usuario.Email;
+                cmdUpdate.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IDPersona;
                 cmdUpdate.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -185,16 +128,14 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into usuarios(nombre_usuario,clave,habilitado,nombre,apellido,email)" +
-                    "values(@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email) " +
+                SqlCommand cmdInsert = new SqlCommand("insert into usuarios(nombre_usuario,clave,habilitado,id_persona)" +
+                    "values(@nombre_usuario,@clave,@habilitado,@id_persona) " +
                     "select @@identity", SqlConn);
 
                 cmdInsert.Parameters.Add("@nombre_usuario", SqlDbType.VarChar).Value = usuario.NombreUsuario;
                 cmdInsert.Parameters.Add("@clave", SqlDbType.VarChar).Value = usuario.Clave;
                 cmdInsert.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
-                cmdInsert.Parameters.Add("@nombre", SqlDbType.VarChar).Value = usuario.Nombre;
-                cmdInsert.Parameters.Add("@apellido", SqlDbType.VarChar).Value = usuario.Apellido;
-                cmdInsert.Parameters.Add("@email", SqlDbType.VarChar).Value = usuario.Email;
+                cmdInsert.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IDPersona;
                 usuario.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
             }
             catch (Exception e)

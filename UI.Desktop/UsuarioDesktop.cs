@@ -29,6 +29,7 @@ namespace UI.Desktop
         public UsuarioDesktop(ModoForm modo) : this()    
         {
             this._Modo = modo;
+            _UsuarioActual = new Usuario();
         }
 
         public UsuarioDesktop(int ID, ModoForm modo) : this()
@@ -48,9 +49,6 @@ namespace UI.Desktop
         public override void MapearDeDatos() 
         {
             this.txtID.Text = _UsuarioActual.ID.ToString();
-            this.txtNombre.Text = _UsuarioActual.Nombre;
-            this.txtApellido.Text = _UsuarioActual.Apellido;
-            this.txtEmail.Text = _UsuarioActual.Email;
             this.txtUsuario.Text = _UsuarioActual.NombreUsuario;
             this.txtClave.Text = _UsuarioActual.Clave;
             this.txtConfirmarClave.Text = _UsuarioActual.Clave;
@@ -81,7 +79,6 @@ namespace UI.Desktop
                     _UsuarioActual.State = Usuario.States.Unmodified;
                     break;
                 case ModoForm.Alta:
-                    _UsuarioActual = new Usuario();
                     _UsuarioActual.State = Usuario.States.New;
                     break;
                 case ModoForm.Modificacion:
@@ -92,9 +89,6 @@ namespace UI.Desktop
             {
                 if (_Modo == ModoForm.Modificacion)
                     _UsuarioActual.ID = Convert.ToInt32(this.txtID.Text);
-                _UsuarioActual.Nombre = this.txtNombre.Text;
-                _UsuarioActual.Apellido = this.txtApellido.Text;
-                _UsuarioActual.Email = this.txtEmail.Text;
                 _UsuarioActual.NombreUsuario = this.txtUsuario.Text;
                 _UsuarioActual.Clave = this.txtClave.Text;
                 _UsuarioActual.Habilitado = this.chkHabilitado.Checked;
@@ -132,10 +126,10 @@ namespace UI.Desktop
                 EsValido = false;
                 this.Notificar("La clave debe tener al menos 8 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (Validaciones.EsMailValido(this.txtEmail.Text) == false)
+            if (this._UsuarioActual.IDPersona == 0)
             {
                 EsValido = false;
-                this.Notificar("Email no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Notificar("No se le asignó una Persona al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return EsValido;
         }
@@ -152,6 +146,13 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSeleccionarPersona_Click(object sender, EventArgs e)
+        {
+            SeleccionarPersona select = new SeleccionarPersona(_UsuarioActual);
+            select.ShowDialog();
+            this._UsuarioActual = select.UsuarioActual;
         }
     }
 }
