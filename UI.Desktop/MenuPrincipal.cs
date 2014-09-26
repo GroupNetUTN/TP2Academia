@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    public partial class Test : Form
+    public partial class formMenuPrincipal : Form
     {
-        public Test()
+        public formMenuPrincipal()
         {
             InitializeComponent();
         }

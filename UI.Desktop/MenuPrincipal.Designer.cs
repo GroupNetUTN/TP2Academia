@@ -1,6 +1,6 @@
 ﻿namespace UI.Desktop
 {
-    partial class Test
+    partial class formMenuPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -177,7 +177,7 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "AMB Cursos";
             // 
-            // Test
+            // formMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -196,8 +196,8 @@
             this.Controls.Add(this.btnPlanes);
             this.Controls.Add(this.btnEspecialidades);
             this.Controls.Add(this.btnUsuarios);
-            this.Name = "Test";
-            this.Text = "Test";
+            this.Name = "formMenuPrincipal";
+            this.Text = "Menu Principal";
             this.ResumeLayout(false);
             this.PerformLayout();
 
