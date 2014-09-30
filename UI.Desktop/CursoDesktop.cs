@@ -86,7 +86,7 @@ namespace UI.Desktop
             List<Comision> comisiones = new List<Comision>();
             foreach (Comision c in cl.GetAll())
             {
-                if (c.IDPlan == Convert.ToInt32(cbxPlanes.SelectedValue))
+                if (c.Plan.ID == Convert.ToInt32(cbxPlanes.SelectedValue))
                     comisiones.Add(c);
             }
             cbxComisiones.DataSource = comisiones;

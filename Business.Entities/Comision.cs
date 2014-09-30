@@ -9,7 +9,7 @@ namespace Business.Entities
     {
         private int _AnioEspecialidad;
         private string _Descripcion;
-        private int _IDPlan;
+        private Plan _Plan;
 
         public int AnioEspecialidad
         {
@@ -23,10 +23,15 @@ namespace Business.Entities
             set { _Descripcion = value; }
         }
 
-        public int IDPlan
+        public Plan Plan
         {
-            get { return _IDPlan; }
-            set { _IDPlan = value; }
+            get { return _Plan; }
+            set { _Plan = value; }
+        }
+
+        public string DescPlan
+        {
+            get { return this.Plan.Descripcion; }
         }
     }
 }

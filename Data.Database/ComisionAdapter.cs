@@ -16,7 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("select * from comisiones", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.planes.*, dbo.comisiones.* " +
+                "FROM  dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan", SqlConn);
                 SqlDataReader drComisiones = cmdGetAll.ExecuteReader();
 
                 while (drComisiones.Read())
@@ -25,8 +26,10 @@ namespace Data.Database
                     comi.ID = (int)drComisiones["id_comision"];
                     comi.Descripcion = (string)drComisiones["desc_comision"];
                     comi.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
-                    comi.IDPlan = (int)drComisiones["id_plan"];
-                  
+                    Plan plan = new Plan();
+                    plan.ID = (int)drComisiones["id_plan"];
+                    plan.Descripcion = (string)drComisiones["desc_plan"];
+                    comi.Plan = plan;
                     comisiones.Add(comi);
                 }
                 drComisiones.Close();
@@ -49,7 +52,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select * from comisiones where id_comision=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.planes.*, dbo.comisiones.* " +
+                "FROM  dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan " +
+                "where id_comision=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drComisiones = cmdGetOne.ExecuteReader();
                 if (drComisiones.Read())
@@ -57,7 +62,10 @@ namespace Data.Database
                     comi.ID = (int)drComisiones["id_comision"];
                     comi.Descripcion = (string)drComisiones["desc_comision"];
                     comi.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
-                    comi.IDPlan = (int)drComisiones["id_plan"];
+                    Plan plan = new Plan();
+                    plan.ID = (int)drComisiones["id_plan"];
+                    plan.Descripcion = (string)drComisiones["desc_plan"];
+                    comi.Plan = plan;
                 }
 
                 drComisiones.Close();
@@ -105,7 +113,7 @@ namespace Data.Database
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = comision.ID;
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar).Value = comision.Descripcion;
                 cmdUpdate.Parameters.Add("@anios", SqlDbType.Int).Value = comision.AnioEspecialidad;
-                cmdUpdate.Parameters.Add("@plan", SqlDbType.Int).Value = comision.IDPlan;
+                cmdUpdate.Parameters.Add("@plan", SqlDbType.Int).Value = comision.Plan.ID;
                 
                 cmdUpdate.ExecuteNonQuery();
             }
@@ -129,7 +137,7 @@ namespace Data.Database
 
                 cmdInsert.Parameters.Add("@desc", SqlDbType.VarChar).Value = comision.Descripcion;
                 cmdInsert.Parameters.Add("@anios", SqlDbType.Int).Value = comision.AnioEspecialidad;
-                cmdInsert.Parameters.Add("@plan", SqlDbType.Int).Value = comision.IDPlan;
+                cmdInsert.Parameters.Add("@plan", SqlDbType.Int).Value = comision.Plan.ID;
                 
                 comision.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
             }

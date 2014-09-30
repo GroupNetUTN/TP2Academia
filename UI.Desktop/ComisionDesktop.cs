@@ -76,9 +76,9 @@ namespace UI.Desktop
             this.txtDescripcion.Text = ComisionActual.Descripcion;
             this.txtAniosEspecialidad.Text = ComisionActual.AnioEspecialidad.ToString();
             PlanLogic plan = new PlanLogic();
-            this.cbxEspecialidades.SelectedValue = plan.GetOne(ComisionActual.IDPlan).Especialidad.ID;
+            this.cbxEspecialidades.SelectedValue = plan.GetOne(ComisionActual.Plan.ID).Especialidad.ID;
             this.LlenarComboPlanes();
-            this.cbxPlan.SelectedValue = ComisionActual.IDPlan;
+            this.cbxPlan.SelectedValue = ComisionActual.Plan.ID;
 
             switch (this._Modo)
             {
@@ -118,7 +118,7 @@ namespace UI.Desktop
                     ComisionActual.ID = Convert.ToInt32(this.txtID.Text);
                 ComisionActual.Descripcion = this.txtDescripcion.Text;
                 ComisionActual.AnioEspecialidad = Convert.ToInt32(this.txtAniosEspecialidad.Text);
-                ComisionActual.IDPlan = Convert.ToInt32(this.cbxPlan.SelectedValue);
+                ComisionActual.Plan.ID = Convert.ToInt32(this.cbxPlan.SelectedValue);
             }
         }
 

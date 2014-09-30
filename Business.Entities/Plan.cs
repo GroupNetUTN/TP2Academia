@@ -9,7 +9,6 @@ namespace Business.Entities
     {
         private string _Descripcion;
         private Especialidad _Especialidad;
-        private string _DescEspecialidad;
 
         public string Descripcion
         {
