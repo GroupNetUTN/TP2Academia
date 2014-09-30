@@ -16,7 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("select * from planes", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.planes.*, dbo.especialidades.* FROM dbo.planes INNER JOIN "+
+                "dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad", SqlConn);
                 SqlDataReader drPlanes = cmdGetAll.ExecuteReader();
 
                 while (drPlanes.Read())
@@ -24,8 +25,10 @@ namespace Data.Database
                     Plan p = new Plan();
                     p.ID = (int)drPlanes["id_plan"];
                     p.Descripcion = (string)drPlanes["desc_plan"];
-                    p.IDEspecialidad = (int)drPlanes["id_especialidad"];
-
+                    Especialidad esp = new Especialidad();
+                    esp.ID = (int)drPlanes["id_especialidad"];
+                    esp.Descripcion = (string)drPlanes["desc_especialidad"];
+                    p.Especialidad = esp;
                     planes.Add(p);
                 }
                 drPlanes.Close();
@@ -48,14 +51,19 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select * from planes where id_plan=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.planes.*, dbo.especialidades.* FROM dbo.planes INNER JOIN " +
+                "dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad " +
+                "WHERE dbo.planes.id_especialidad=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drPlanes = cmdGetOne.ExecuteReader();
                 if (drPlanes.Read())
                 {
                     p.ID = (int)drPlanes["id_plan"];
                     p.Descripcion = (string)drPlanes["desc_plan"];
-                    p.IDEspecialidad = (int)drPlanes["id_especialidad"];
+                    Especialidad esp = new Especialidad();
+                    esp.ID = (int)drPlanes["id_especialidad"];
+                    esp.Descripcion = (string)drPlanes["desc_especialidad"];
+                    p.Especialidad = esp;
                 }
 
                 drPlanes.Close();
@@ -102,7 +110,7 @@ namespace Data.Database
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar).Value = plan.Descripcion;
-                cmdUpdate.Parameters.Add("@id_esp", SqlDbType.Int).Value = plan.IDEspecialidad;
+                cmdUpdate.Parameters.Add("@id_esp", SqlDbType.Int).Value = plan.Especialidad.ID;
                 cmdUpdate.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -124,7 +132,7 @@ namespace Data.Database
                 SqlCommand cmdInsert = new SqlCommand("insert into planes(desc_plan,id_especialidad) values(@desc,@esp) select @@identity", SqlConn);
 
                 cmdInsert.Parameters.Add("@desc", SqlDbType.VarChar).Value = plan.Descripcion;
-                cmdInsert.Parameters.Add("@esp", SqlDbType.Int).Value = plan.IDEspecialidad;
+                cmdInsert.Parameters.Add("@esp", SqlDbType.Int).Value = plan.Especialidad.ID;
                 plan.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
             }
             catch (Exception e)

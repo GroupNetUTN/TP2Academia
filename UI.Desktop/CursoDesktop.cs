@@ -56,7 +56,7 @@ namespace UI.Desktop
             List<Plan> planes = new List<Plan>();
             foreach (Plan p in pl.GetAll())
             {
-                if (p.IDEspecialidad == Convert.ToInt32(cbxEspecialidades.SelectedValue))
+                if (p.Especialidad.ID == Convert.ToInt32(cbxEspecialidades.SelectedValue))
                 {
                     planes.Add(p);
                 }

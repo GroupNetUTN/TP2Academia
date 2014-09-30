@@ -22,13 +22,7 @@ namespace UI.Desktop
         public void Listar()
         {
             PlanLogic pl = new PlanLogic();
-            List<Plan> planes = pl.GetAll();
-            foreach (Plan p in planes)
-            {
-                EspecialidadLogic el = new EspecialidadLogic();
-                p.Relation = el.GetOne(p.IDEspecialidad).Descripcion;
-            }
-            this.dgvPlanes.DataSource = planes;
+            this.dgvPlanes.DataSource = pl.GetAll();
         }
 
         private void Planes_Load(object sender, EventArgs e)

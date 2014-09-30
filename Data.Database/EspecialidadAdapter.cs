@@ -10,40 +10,6 @@ namespace Data.Database
 {
     public class EspecialidadAdapter : Adapter
     {
-          #region DatosEnMemoria
-        // Esta región solo se usa en esta etapa donde los datos se mantienen en memoria.
-        // Al modificar este proyecto para que acceda a la base de datos esta será eliminada
-        private static List<Especialidad> _Especialidades;
-
-        private static List<Especialidad> Especialidades
-        {
-            get
-            {
-                if (_Especialidades == null)
-                {
-                    _Especialidades = new List<Especialidad>();
-                    Especialidad esp = new Especialidad();;
-                    esp.Descripcion = "Matematicas";
-                    _Especialidades.Add(esp);
-
-                    esp = new Especialidad();;
-                    esp.Descripcion = "Historia";
-                    _Especialidades.Add(esp);
-
-                    esp = new Especialidad();;
-                    esp.Descripcion = "Geografia";
-                    _Especialidades.Add(esp);
-
-                    esp = new Especialidad();;
-                    esp.Descripcion = "Biologia";
-                     _Especialidades.Add(esp);
-
-                }
-                return _Especialidades;   
-            }
-        }
-        #endregion
-
         public List<Especialidad> GetAll()
         {
             List<Especialidad> especialidades = new List<Especialidad>();

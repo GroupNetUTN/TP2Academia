@@ -14,7 +14,6 @@ namespace Business.Entities
         
         private int _ID;
         private States _State;
-        private string _Relation;
 
         public int ID
         {
@@ -27,13 +26,6 @@ namespace Business.Entities
             get { return _State; }
             set { _State = value; }
         }
-
-        public string Relation
-        {
-            get { return _Relation; }
-            set { _Relation = value; }
-        }
-
 
         public enum States
         {

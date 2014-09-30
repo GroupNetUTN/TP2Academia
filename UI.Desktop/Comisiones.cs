@@ -22,13 +22,7 @@ namespace UI.Desktop
         public void Listar()
         {
             ComisionLogic cl = new ComisionLogic();
-            List<Comision> comisiones = cl.GetAll();
-            foreach (Comision c in comisiones)
-            {
-                PlanLogic pl = new PlanLogic();
-                c.Relation = pl.GetOne(c.IDPlan).Descripcion;
-            }
-            this.dgvComisiones.DataSource = comisiones;
+            dgvComisiones.DataSource = cl.GetAll();
         }
 
         private void Comisiones_Load(object sender, EventArgs e)

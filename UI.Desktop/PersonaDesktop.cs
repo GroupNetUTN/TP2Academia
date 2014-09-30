@@ -60,7 +60,7 @@ namespace UI.Desktop
             List<Plan> planes = new List<Plan>();
             foreach (Plan p in pl.GetAll())
             {
-                if (p.IDEspecialidad == Convert.ToInt32(cbxEspecialidades.SelectedValue))
+                if (p.Especialidad.ID == Convert.ToInt32(cbxEspecialidades.SelectedValue))
                 {
                     planes.Add(p);
                 }
@@ -84,7 +84,7 @@ namespace UI.Desktop
             this.txtEmail.Text = PersonaActual.Email;
             this.cbxTipoPersona.SelectedItem = PersonaActual.TipoPersona;
             PlanLogic plan = new PlanLogic();
-            this.cbxEspecialidades.SelectedValue = plan.GetOne(PersonaActual.IDPlan).IDEspecialidad;
+            this.cbxEspecialidades.SelectedValue = plan.GetOne(PersonaActual.IDPlan).Especialidad.ID;
             this.LlenarComboPlanes();
             this.cbxPlanes.SelectedValue = PersonaActual.IDPlan;
 

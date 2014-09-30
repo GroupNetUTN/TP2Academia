@@ -58,7 +58,7 @@ namespace UI.Desktop
         {
             this.txtID.Text = PlanActual.ID.ToString();
             this.txtDescripcion.Text = PlanActual.Descripcion;
-            this.cbxEspecialidad.SelectedValue = _PlanActual.IDEspecialidad;
+            this.cbxEspecialidad.SelectedValue = _PlanActual.Especialidad.ID;
 
             switch (this._Modo)
             {
@@ -97,7 +97,7 @@ namespace UI.Desktop
                 if (_Modo == ModoForm.Modificacion)
                     _PlanActual.ID = Convert.ToInt32(this.txtID.Text);
                 _PlanActual.Descripcion = this.txtDescripcion.Text;
-                _PlanActual.IDEspecialidad = Convert.ToInt32(this.cbxEspecialidad.SelectedValue);
+                _PlanActual.Especialidad.ID = Convert.ToInt32(this.cbxEspecialidad.SelectedValue);
             }
         }
 
