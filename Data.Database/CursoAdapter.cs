@@ -26,7 +26,10 @@ namespace Data.Database
                     cur.IDMateria = (int)drCursos["id_materia"];
                     cur.AnioCalendario = (int)drCursos["anio_calendario"];
                     cur.Cupo = (int)drCursos["cupo"];
-                    
+                    //Materia mat = new Materia();
+                    ////mat.Descripcion = 
+                    //cur.IDMateria = mat;
+
                     cursos.Add(cur);
                 }
                 drCursos.Close();

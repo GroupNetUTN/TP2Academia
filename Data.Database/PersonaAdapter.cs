@@ -9,66 +9,24 @@ using System.Data.SqlClient;
 namespace Data.Database
 {
     public class PersonaAdapter : Adapter
-    {
-        public List<Persona> GetDocentes()
+    {                
+        public List<Persona> GetAll(int tipo)
         {
             List<Persona> personas = new List<Persona>();
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetDocentes = new SqlCommand("select * from personas where tipo_persona=@tipo", SqlConn);
-                cmdGetDocentes.Parameters.Add("@tipo", SqlDbType.Int).Value = 3;
-                SqlDataReader drPersonas = cmdGetDocentes.ExecuteReader();
-
-                while (drPersonas.Read())
+                SqlCommand cmdGetAlumnos = new SqlCommand();
+                cmdGetAlumnos.Connection = SqlConn;
+                if (tipo != 0)
                 {
-                    Persona pers = new Persona();
-                    pers.ID = (int)drPersonas["id_persona"];
-                    pers.Nombre = (string)drPersonas["nombre"];
-                    pers.Apellido = (string)drPersonas["apellido"];
-                    pers.Email = (string)drPersonas["email"];
-                    pers.Direccion = (string)drPersonas["direccion"];
-                    pers.Telefono = (string)drPersonas["telefono"];
-                    pers.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
-                    pers.Legajo = (int)drPersonas["legajo"];
-                    switch ((int)drPersonas["tipo_persona"])
-                    {
-                        case 1:
-                            pers.TipoPersona = "Administrador";
-                            break;
-                        case 2:
-                            pers.TipoPersona = "Alumno";
-                            break;
-                        case 3:
-                            pers.TipoPersona = "Docente";
-                            break;
-                    }
-                    pers.IDPlan = (int)drPersonas["id_plan"];
-
-                    personas.Add(pers);
+                    cmdGetAlumnos.CommandText = "select * from personas where tipo_persona=@tipo";
+                    cmdGetAlumnos.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
                 }
-                drPersonas.Close();
-            }
-            catch (Exception e)
-            {
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos de Personas.", e);
-                throw ExcepcionManejada;
-            }
-            finally
-            {
-                this.CloseConnection();
-            }
-            return personas;
-        }
-        
-        public List<Persona> GetAlumnos()
-        {
-            List<Persona> personas = new List<Persona>();
-            try
-            {
-                this.OpenConnection();
-                SqlCommand cmdGetAlumnos = new SqlCommand("select * from personas where tipo_persona=@tipo", SqlConn);
-                cmdGetAlumnos.Parameters.Add("@tipo", SqlDbType.Int).Value = 2;
+                else
+                {
+                    cmdGetAlumnos.CommandText = "select * from personas ";
+                }
                 SqlDataReader drPersonas = cmdGetAlumnos.ExecuteReader();
 
                 while (drPersonas.Read())
@@ -82,60 +40,10 @@ namespace Data.Database
                     pers.Telefono = (string)drPersonas["telefono"];
                     pers.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
                     pers.Legajo = (int)drPersonas["legajo"];
-                    switch ((int)drPersonas["tipo_persona"])
+                    switch ((int)drPersonas["tipo_persona"]) 
                     {
                         case 1:
-                            pers.TipoPersona = "Administrador";
-                            break;
-                        case 2:
-                            pers.TipoPersona = "Alumno";
-                            break;
-                        case 3:
-                            pers.TipoPersona = "Docente";
-                            break;
-                    }
-                    pers.IDPlan = (int)drPersonas["id_plan"];
-
-                    personas.Add(pers);
-                }
-                drPersonas.Close();
-            }
-            catch (Exception e)
-            {
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos de Personas.", e);
-                throw ExcepcionManejada;
-            }
-            finally
-            {
-                this.CloseConnection();
-            }
-            return personas;
-        }
-        
-        public List<Persona> GetAll()
-        {
-            List<Persona> personas = new List<Persona>();
-            try
-            {
-                this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("select * from personas", SqlConn);
-                SqlDataReader drPersonas = cmdGetAll.ExecuteReader();
-
-                while (drPersonas.Read())
-                {
-                    Persona pers = new Persona();
-                    pers.ID = (int)drPersonas["id_persona"];
-                    pers.Nombre = (string)drPersonas["nombre"];
-                    pers.Apellido = (string)drPersonas["apellido"];
-                    pers.Email = (string)drPersonas["email"];
-                    pers.Direccion = (string)drPersonas["direccion"];
-                    pers.Telefono = (string)drPersonas["telefono"];
-                    pers.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
-                    pers.Legajo = (int)drPersonas["legajo"];
-                    switch ((int)drPersonas["tipo_persona"])
-                    {
-                        case 1:
-                            pers.TipoPersona = "Administrador";
+                            pers.TipoPersona = "No docente";
                             break;
                         case 2:
                             pers.TipoPersona = "Alumno";
@@ -184,7 +92,7 @@ namespace Data.Database
                     switch ((int)drPersonas["tipo_persona"])
                     {
                         case 1:
-                            pers.TipoPersona = "Administrador";
+                            pers.TipoPersona = "No docente";
                             break;
                         case 2:
                             pers.TipoPersona = "Alumno";
@@ -247,7 +155,7 @@ namespace Data.Database
                 cmdUpdate.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 switch (persona.TipoPersona)
                 {
-                    case "Administrador":
+                    case "No docente":
                         cmdUpdate.Parameters.Add("@tipo_p", SqlDbType.Int).Value = 1;
                         break;
                     case "Alumno":
@@ -288,7 +196,7 @@ namespace Data.Database
                 cmdInsert.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 switch (persona.TipoPersona)
                 {
-                    case "Administrador":
+                    case "No docente":
                         cmdInsert.Parameters.Add("@tipo_p", SqlDbType.Int).Value = 1;
                         break;
                     case "Alumno":

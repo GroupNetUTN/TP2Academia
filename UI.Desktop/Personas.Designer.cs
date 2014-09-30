@@ -271,7 +271,8 @@
             this.cbxTipoPersona.Items.AddRange(new object[] {
             "Todos",
             "Alumnos",
-            "Docentes"});
+            "Docentes",
+            "No docentes"});
             this.cbxTipoPersona.Name = "cbxTipoPersona";
             this.cbxTipoPersona.Size = new System.Drawing.Size(121, 25);
             this.cbxTipoPersona.Text = "Mostrar:";

@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnCursos = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -177,11 +178,22 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "AMB Cursos";
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(376, 309);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 14;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // formMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 344);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCursos);
             this.Controls.Add(this.label2);
@@ -219,5 +231,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCursos;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

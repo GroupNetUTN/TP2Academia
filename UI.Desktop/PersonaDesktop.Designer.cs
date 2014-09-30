@@ -116,9 +116,9 @@
             // 
             this.cbxTipoPersona.FormattingEnabled = true;
             this.cbxTipoPersona.Items.AddRange(new object[] {
-            "Administrador",
             "Alumno",
-            "Docente"});
+            "Docente",
+            "No docente"});
             this.cbxTipoPersona.Location = new System.Drawing.Point(432, 94);
             this.cbxTipoPersona.Name = "cbxTipoPersona";
             this.cbxTipoPersona.Size = new System.Drawing.Size(121, 21);

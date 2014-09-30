@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.dgvSeleccionarPersona = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblSeleccionarPersona = new System.Windows.Forms.TableLayoutPanel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cbxTipoPersona = new System.Windows.Forms.ComboBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSeleccionarPersona)).BeginInit();
             this.tblSeleccionarPersona.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,27 @@
             this.dgvSeleccionarPersona.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSeleccionarPersona.Size = new System.Drawing.Size(354, 263);
             this.dgvSeleccionarPersona.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.DataPropertyName = "Apellido";
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // tblSeleccionarPersona
             // 
@@ -108,34 +129,14 @@
             this.cbxTipoPersona.Items.AddRange(new object[] {
             "Todos",
             "Alumnos",
-            "Docentes"});
+            "Docentes",
+            "No docentes"});
             this.cbxTipoPersona.Location = new System.Drawing.Point(3, 3);
             this.cbxTipoPersona.Name = "cbxTipoPersona";
             this.cbxTipoPersona.Size = new System.Drawing.Size(121, 21);
             this.cbxTipoPersona.TabIndex = 3;
             this.cbxTipoPersona.Text = "Mostrar:";
             this.cbxTipoPersona.SelectedIndexChanged += new System.EventHandler(this.cbxTipoPersona_SelectedIndexChanged);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.DataPropertyName = "Apellido";
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
             // 
             // SeleccionarPersona
             // 

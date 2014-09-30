@@ -30,7 +30,7 @@ namespace UI.Desktop
 
         private void SeleccionarPersona_Load(object sender, EventArgs e)
         {
-            
+            this.Listar("Todos");
         }
 
         public void Listar(string tipo)
@@ -42,6 +42,8 @@ namespace UI.Desktop
                 this.dgvSeleccionarPersona.DataSource = pl.GetAlumnos();
             else if (tipo == "Docentes")
                 this.dgvSeleccionarPersona.DataSource = pl.GetDocentes();
+            else if (tipo == "No docentes")
+                this.dgvSeleccionarPersona.DataSource = pl.GetNoDocentes();
         }
 
         private void cbxTipoPersona_SelectedIndexChanged(object sender, EventArgs e)

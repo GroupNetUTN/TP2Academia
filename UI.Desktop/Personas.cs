@@ -28,11 +28,13 @@ namespace UI.Desktop
                 this.dgvPersonas.DataSource = pl.GetAlumnos();
             else if (tipo == "Docentes")
                 this.dgvPersonas.DataSource = pl.GetDocentes();
+            else if (tipo == "No docentes")
+                this.dgvPersonas.DataSource = pl.GetNoDocentes();
         }
 
         private void Personas_Load(object sender, EventArgs e)
         {
-
+            this.Listar("Todos");
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)

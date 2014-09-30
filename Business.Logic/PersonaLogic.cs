@@ -31,17 +31,22 @@ namespace Business.Logic
 
         public List<Persona> GetAll()
         {
-            return PersonaData.GetAll();
+            return PersonaData.GetAll(0);
         }
 
+        public List<Persona> GetNoDocentes()
+        {
+            return PersonaData.GetAll(1);
+        }
+        
         public List<Persona> GetAlumnos()
         {
-            return PersonaData.GetAlumnos();
+            return PersonaData.GetAll(2);
         }
 
         public List<Persona> GetDocentes()
         {
-            return PersonaData.GetDocentes();
+            return PersonaData.GetAll(3);
         }
 
         public void Save(Persona per)

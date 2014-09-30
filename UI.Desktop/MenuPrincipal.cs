@@ -57,5 +57,10 @@ namespace UI.Desktop
             Cursos cur = new Cursos();
             cur.ShowDialog();
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
