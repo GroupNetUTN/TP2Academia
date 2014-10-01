@@ -16,7 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("select * from materias", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.planes.*, dbo.materias.* " +
+                                                      "FROM  dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan", SqlConn);
                 SqlDataReader drMaterias = cmdGetAll.ExecuteReader();
 
                 while (drMaterias.Read())
@@ -26,7 +27,10 @@ namespace Data.Database
                     mat.Descripcion = (string)drMaterias["desc_materia"];
                     mat.HSSemanales = (int)drMaterias["hs_semanales"];
                     mat.HSTotales = (int)drMaterias["hs_totales"];
-                    mat.IDPlan = (int)drMaterias["id_plan"];
+                    Plan plan = new Plan();
+                    plan.ID = (int)drMaterias["id_plan"];
+                    plan.Descripcion = (string)drMaterias["desc_plan"];
+                    mat.Plan = plan;
                     materias.Add(mat);
                 }
                 drMaterias.Close();
@@ -49,7 +53,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select * from materias where id_materia=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.planes.*, dbo.materias.* " +
+                                                      "FROM  dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan" + 
+                                                      "where id_materia=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drMaterias = cmdGetOne.ExecuteReader();
                 if (drMaterias.Read())
@@ -58,7 +64,10 @@ namespace Data.Database
                     mat.Descripcion = (string)drMaterias["desc_materia"];
                     mat.HSSemanales = (int)drMaterias["hs_semanales"];
                     mat.HSTotales = (int)drMaterias["hs_totales"];
-                    mat.IDPlan = (int)drMaterias["id_plan"];
+                    Plan plan = new Plan();
+                    plan.ID = (int)drMaterias["id_plan"];
+                    plan.Descripcion = (string)drMaterias["desc_plan"];
+                    mat.Plan = plan;
                 }
 
                 drMaterias.Close();
@@ -107,7 +116,7 @@ namespace Data.Database
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar).Value = mat.Descripcion;
                 cmdUpdate.Parameters.Add("@hs_sem", SqlDbType.Int).Value = mat.HSSemanales;
                 cmdUpdate.Parameters.Add("@hs_tot", SqlDbType.Int).Value = mat.HSTotales;
-                cmdUpdate.Parameters.Add("@id_plan", SqlDbType.Int).Value = mat.IDPlan;
+                cmdUpdate.Parameters.Add("@id_plan", SqlDbType.Int).Value = mat.Plan.ID;
                 cmdUpdate.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -131,7 +140,7 @@ namespace Data.Database
                 cmdInsert.Parameters.Add("@desc", SqlDbType.VarChar).Value = mat.Descripcion;
                 cmdInsert.Parameters.Add("@hs_sem", SqlDbType.Int).Value = mat.HSSemanales;
                 cmdInsert.Parameters.Add("@hs_tot", SqlDbType.Int).Value = mat.HSTotales;
-                cmdInsert.Parameters.Add("@id_plan", SqlDbType.Int).Value = mat.IDPlan;
+                cmdInsert.Parameters.Add("@id_plan", SqlDbType.Int).Value = mat.Plan.ID;
                 mat.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
             }
             catch (Exception e)

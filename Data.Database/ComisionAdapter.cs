@@ -17,7 +17,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.planes.*, dbo.comisiones.* " +
-                "FROM  dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan", SqlConn);
+                                                      "FROM  dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan", SqlConn);
                 SqlDataReader drComisiones = cmdGetAll.ExecuteReader();
 
                 while (drComisiones.Read())

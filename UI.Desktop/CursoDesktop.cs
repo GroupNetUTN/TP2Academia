@@ -72,7 +72,7 @@ namespace UI.Desktop
             List<Materia> materias = new List<Materia>();
             foreach (Materia m in ml.GetAll())
             {
-                if (m.IDPlan == Convert.ToInt32(cbxPlanes.SelectedValue))
+                if (m.Plan.ID == Convert.ToInt32(cbxPlanes.SelectedValue))
                     materias.Add(m);
             }
             cbxMaterias.DataSource = materias;

@@ -79,9 +79,9 @@ namespace UI.Desktop
             this.txtHsSemanales.Text = MateriaActual.HSSemanales.ToString();
             this.txtHsTotales.Text = MateriaActual.HSTotales.ToString();
             PlanLogic plan = new PlanLogic();
-            this.cbxEspecialidades.SelectedValue = plan.GetOne(MateriaActual.IDPlan).Especialidad.ID;
+            this.cbxEspecialidades.SelectedValue = plan.GetOne(MateriaActual.Plan.ID).Especialidad.ID;
             this.LlenarComboPlanes();
-            this.cbxPlanes.SelectedValue = MateriaActual.IDPlan;
+            this.cbxPlanes.SelectedValue = MateriaActual.Plan.ID;
 
             switch (this._Modo)
             {
@@ -122,7 +122,7 @@ namespace UI.Desktop
                 _MateriaActual.Descripcion = this.txtDescripcion.Text;
                 _MateriaActual.HSSemanales = Convert.ToInt32(this.txtHsSemanales.Text);
                 _MateriaActual.HSTotales = Convert.ToInt32(this.txtHsTotales.Text);
-                _MateriaActual.IDPlan = Convert.ToInt32(this.cbxPlanes.SelectedValue);
+                _MateriaActual.Plan.ID = Convert.ToInt32(this.cbxPlanes.SelectedValue);
             }
         }
 

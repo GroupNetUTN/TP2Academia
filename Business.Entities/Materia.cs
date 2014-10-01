@@ -10,7 +10,12 @@ namespace Business.Entities
         private string _Descripcion;
         private int _HSSemanales;
         private int _HSTotales;
-        private int _IDPlan;
+        private Plan _Plan;
+
+        public Materia()
+        {
+            this._Plan = new Plan();
+        }
 
         public string Descripcion
         {
@@ -48,16 +53,15 @@ namespace Business.Entities
             }
         }
 
-        public int IDPlan
+        public Plan Plan
         {
-            get
-            {
-                return _IDPlan;
-            }
-            set
-            {
-                _IDPlan = value;
-            }
+            get { return _Plan; }
+            set { _Plan = value; }
+        }
+
+        public string DescPlan
+        {
+            get { return this.Plan.Descripcion; }
         }
     }
 }

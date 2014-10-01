@@ -15,3 +15,4 @@ C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\Business.Entities\bi
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\Business.Entities\obj\Debug\Business.Entities.dll
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\Business.Entities\obj\Debug\Business.Entities.pdb
 C:\Users\Matias\Desktop\TP2Academia\Business.Entities\obj\Debug\Business.Entities.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\Business.Entities\obj\Debug\Business.Entities.csprojResolveAssemblyReference.cache

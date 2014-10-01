@@ -32,17 +32,17 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvMaterias = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hs_Semanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hs_Totales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hs_Semanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hs_Totales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -109,41 +109,6 @@
             this.dgvMaterias.Size = new System.Drawing.Size(677, 470);
             this.dgvMaterias.TabIndex = 0;
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // Hs_Semanales
-            // 
-            this.Hs_Semanales.DataPropertyName = "HSSemanales";
-            this.Hs_Semanales.HeaderText = "Horas Semanales";
-            this.Hs_Semanales.Name = "Hs_Semanales";
-            this.Hs_Semanales.ReadOnly = true;
-            // 
-            // Hs_Totales
-            // 
-            this.Hs_Totales.DataPropertyName = "HSTotales";
-            this.Hs_Totales.HeaderText = "Horas Totales";
-            this.Hs_Totales.Name = "Hs_Totales";
-            this.Hs_Totales.ReadOnly = true;
-            // 
-            // Plan
-            // 
-            this.Plan.DataPropertyName = "Relation";
-            this.Plan.HeaderText = "Plan";
-            this.Plan.Name = "Plan";
-            this.Plan.ReadOnly = true;
-            // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -208,6 +173,41 @@
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // Hs_Semanales
+            // 
+            this.Hs_Semanales.DataPropertyName = "HSSemanales";
+            this.Hs_Semanales.HeaderText = "Horas Semanales";
+            this.Hs_Semanales.Name = "Hs_Semanales";
+            this.Hs_Semanales.ReadOnly = true;
+            // 
+            // Hs_Totales
+            // 
+            this.Hs_Totales.DataPropertyName = "HSTotales";
+            this.Hs_Totales.HeaderText = "Horas Totales";
+            this.Hs_Totales.Name = "Hs_Totales";
+            this.Hs_Totales.ReadOnly = true;
+            // 
+            // Plan
+            // 
+            this.Plan.DataPropertyName = "DescPlan";
+            this.Plan.HeaderText = "Plan";
+            this.Plan.Name = "Plan";
+            this.Plan.ReadOnly = true;
+            // 
             // Materias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,16 +235,16 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dgvMaterias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Hs_Semanales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Hs_Totales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Plan;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hs_Semanales;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hs_Totales;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Plan;
     }
 }

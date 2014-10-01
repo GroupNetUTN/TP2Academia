@@ -133,7 +133,6 @@ C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\D
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Personas.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.PlanDesktop.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Planes.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Test.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.UsuarioDesktop.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Usuarios.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Properties.Resources.resources
@@ -145,3 +144,10 @@ C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.CursoDes
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.SeleccionarPersona.resources
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.formLogin.resources
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.formMenuPrincipal.resources
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.CursoDesktop.resources
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Cursos.resources
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.formLogin.resources
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.SeleccionarPersona.resources
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.formMenuPrincipal.resources
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\bin\Debug\Util.dll
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\bin\Debug\Util.pdb
