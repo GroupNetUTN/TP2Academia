@@ -53,7 +53,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.planes.*, dbo.comisiones.* " +
-                "FROM  dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan " +
+                "FROM dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan " +
                 "where id_comision=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drComisiones = cmdGetOne.ExecuteReader();
@@ -62,10 +62,8 @@ namespace Data.Database
                     comi.ID = (int)drComisiones["id_comision"];
                     comi.Descripcion = (string)drComisiones["desc_comision"];
                     comi.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
-                    Plan plan = new Plan();
-                    plan.ID = (int)drComisiones["id_plan"];
-                    plan.Descripcion = (string)drComisiones["desc_plan"];
-                    comi.Plan = plan;
+                    comi.Plan.ID = (int)drComisiones["id_plan"];
+                    comi.Plan.Descripcion = (string)drComisiones["desc_plan"];
                 }
 
                 drComisiones.Close();
@@ -108,13 +106,12 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE comisiones SET desc_comision=@desc, anio_especialidad=@anios, id_plan=@plan WHERE id_usuario=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("UPDATE comisiones SET desc_comision=@desc, anio_especialidad=@anios, id_plan=@plan WHERE id_comision=@id", SqlConn);
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = comision.ID;
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar).Value = comision.Descripcion;
                 cmdUpdate.Parameters.Add("@anios", SqlDbType.Int).Value = comision.AnioEspecialidad;
                 cmdUpdate.Parameters.Add("@plan", SqlDbType.Int).Value = comision.Plan.ID;
-                
                 cmdUpdate.ExecuteNonQuery();
             }
             catch (Exception e)

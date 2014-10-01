@@ -53,19 +53,16 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.planes.*, dbo.especialidades.* FROM dbo.planes INNER JOIN " +
                 "dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad " +
-                "WHERE dbo.planes.id_especialidad=@id", SqlConn);
+                "WHERE dbo.planes.id_plan=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drPlanes = cmdGetOne.ExecuteReader();
                 if (drPlanes.Read())
                 {
                     p.ID = (int)drPlanes["id_plan"];
                     p.Descripcion = (string)drPlanes["desc_plan"];
-                    Especialidad esp = new Especialidad();
-                    esp.ID = (int)drPlanes["id_especialidad"];
-                    esp.Descripcion = (string)drPlanes["desc_especialidad"];
-                    p.Especialidad = esp;
+                    p.Especialidad.ID = (int)drPlanes["id_especialidad"];
+                    p.Especialidad.Descripcion = (string)drPlanes["desc_especialidad"];
                 }
-
                 drPlanes.Close();
             }
             catch (Exception e)

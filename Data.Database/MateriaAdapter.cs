@@ -53,21 +53,19 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.planes.*, dbo.materias.* " +
-                                                      "FROM  dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan" + 
+                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.materias.*, dbo.planes.* " +
+                                                      "FROM  dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan " + 
                                                       "where id_materia=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drMaterias = cmdGetOne.ExecuteReader();
                 if (drMaterias.Read())
                 {
-                    mat.ID = (int)drMaterias["id_plan"];
+                    mat.ID = (int)drMaterias["id_materia"];
                     mat.Descripcion = (string)drMaterias["desc_materia"];
                     mat.HSSemanales = (int)drMaterias["hs_semanales"];
                     mat.HSTotales = (int)drMaterias["hs_totales"];
-                    Plan plan = new Plan();
-                    plan.ID = (int)drMaterias["id_plan"];
-                    plan.Descripcion = (string)drMaterias["desc_plan"];
-                    mat.Plan = plan;
+                    mat.Plan.ID = (int)drMaterias["id_plan"];
+                    mat.Plan.Descripcion = (string)drMaterias["desc_plan"];
                 }
 
                 drMaterias.Close();
@@ -110,7 +108,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdUpdate = new SqlCommand("UPDATE materias SET desc_materia=@desc, hs_semanales=@hs_sem, hs_totales=@hs_tot, id_plan=@id_plan " +
-                    "WHERE id_plan=@id", SqlConn);
+                    "WHERE id_materia=@id", SqlConn);
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = mat.ID;
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar).Value = mat.Descripcion;
