@@ -51,7 +51,7 @@ namespace UI.Desktop
         {
             PersonaDesktop PersDesktop = new PersonaDesktop(ApplicationForm.ModoForm.Alta);
             PersDesktop.ShowDialog();
-            this.Listar(cbxTipoPersona.SelectedItem.ToString());
+            this.Listar("Todos");
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)

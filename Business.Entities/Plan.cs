@@ -10,6 +10,11 @@ namespace Business.Entities
         private string _Descripcion;
         private Especialidad _Especialidad;
 
+        public Plan()
+        {
+            this.Especialidad = new Especialidad();
+        }
+
         public string Descripcion
         {
             get { return _Descripcion; }

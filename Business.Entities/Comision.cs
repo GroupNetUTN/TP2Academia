@@ -11,6 +11,10 @@ namespace Business.Entities
         private string _Descripcion;
         private Plan _Plan;
 
+        public Comision()
+        {
+            this._Plan = new Plan();
+        }
         public int AnioEspecialidad
         {
             get { return _AnioEspecialidad; }
