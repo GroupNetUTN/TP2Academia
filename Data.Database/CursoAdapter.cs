@@ -16,20 +16,25 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("select * from cursos", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.cursos.*, dbo.materias.*, dbo.comisiones.* FROM dbo.cursos " + 
+                "INNER JOIN dbo.materias ON dbo.cursos.id_materia = dbo.materias.id_materia INNER JOIN dbo.comisiones " + 
+                "ON dbo.cursos.id_comision = dbo.comisiones.id_comision", SqlConn);
                 SqlDataReader drCursos = cmdGetAll.ExecuteReader();
                 while(drCursos.Read())
                 {
                     Curso cur = new Curso();
                     cur.ID = (int)drCursos["id_curso"];
-                    cur.IDComision = (int)drCursos["id_comision"];
-                    cur.IDMateria = (int)drCursos["id_materia"];
                     cur.AnioCalendario = (int)drCursos["anio_calendario"];
                     cur.Cupo = (int)drCursos["cupo"];
-                    //Materia mat = new Materia();
-                    ////mat.Descripcion = 
-                    //cur.IDMateria = mat;
-
+                    cur.Materia.ID = (int)drCursos["id_materia"];
+                    cur.Materia.Descripcion = (string)drCursos["desc_materia"];
+                    cur.Materia.HSSemanales = (int)drCursos["hs_semanales"];
+                    cur.Materia.HSTotales = (int)drCursos["hs_totales"];
+                    cur.Materia.Plan.ID = (int)drCursos["id_plan"];
+                    cur.Comision.ID = (int)drCursos["id_comision"];
+                    cur.Comision.Descripcion = (string)drCursos["desc_comision"];
+                    cur.Comision.AnioEspecialidad = (int)drCursos["anio_especialidad"];
+                    cur.Comision.Plan.ID = (int)drCursos["id_plan"];
                     cursos.Add(cur);
                 }
                 drCursos.Close();
@@ -53,16 +58,25 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select * from cursos where id_curso=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.cursos.*, dbo.materias.*, dbo.comisiones.* FROM dbo.cursos " +
+                "INNER JOIN dbo.materias ON dbo.cursos.id_materia = dbo.materias.id_materia INNER JOIN dbo.comisiones " +
+                "ON dbo.cursos.id_comision = dbo.comisiones.id_comision WHERE id_curso=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drCursos = cmdGetOne.ExecuteReader();
                 if (drCursos.Read())
                 {
                     cur.ID = (int)drCursos["id_curso"];
-                    cur.IDComision = (int)drCursos["id_comision"];
-                    cur.IDMateria = (int)drCursos["id_materia"];
                     cur.AnioCalendario = (int)drCursos["anio_calendario"];
                     cur.Cupo = (int)drCursos["cupo"];
+                    cur.Materia.ID = (int)drCursos["id_materia"];
+                    cur.Materia.Descripcion = (string)drCursos["desc_materia"];
+                    cur.Materia.HSSemanales = (int)drCursos["hs_semanales"];
+                    cur.Materia.HSTotales = (int)drCursos["hs_totales"];
+                    cur.Materia.Plan.ID = (int)drCursos["id_plan"];
+                    cur.Comision.ID = (int)drCursos["id_comision"];
+                    cur.Comision.Descripcion = (string)drCursos["desc_comision"];
+                    cur.Comision.AnioEspecialidad = (int)drCursos["anio_especialidad"];
+                    cur.Comision.Plan.ID = (int)drCursos["id_plan"];
                 }
                 drCursos.Close();
             }
@@ -106,8 +120,8 @@ namespace Data.Database
                 SqlCommand cmdUpdate = new SqlCommand("UPDATE cursos SET id_comision=@id_com, id_materia=@id_mat, anio_calendario=@anio, " +
                     "cupo=@cupo WHERE id_curso=@id", SqlConn);
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = curso.ID;
-                cmdUpdate.Parameters.Add("@id_com", SqlDbType.Int).Value = curso.IDComision;
-                cmdUpdate.Parameters.Add("@id_mat", SqlDbType.Int).Value = curso.IDMateria;
+                cmdUpdate.Parameters.Add("@id_com", SqlDbType.Int).Value = curso.Comision.ID;
+                cmdUpdate.Parameters.Add("@id_mat", SqlDbType.Int).Value = curso.Materia.ID;
                 cmdUpdate.Parameters.Add("@anio", SqlDbType.Int).Value = curso.AnioCalendario;
                 cmdUpdate.Parameters.Add("@cupo", SqlDbType.Int).Value = curso.Cupo;
                 cmdUpdate.ExecuteNonQuery();
@@ -129,8 +143,8 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdInsert = new SqlCommand("INSERT into cursos(id_materia,id_comision,anio_calendario,cupo) values(@id_mat,@id_com,@anio,@cupo) select @@identity", SqlConn);
-                cmdInsert.Parameters.Add("@id_mat", SqlDbType.Int).Value = curso.IDMateria;
-                cmdInsert.Parameters.Add("@id_com", SqlDbType.Int).Value = curso.IDComision;
+                cmdInsert.Parameters.Add("@id_mat", SqlDbType.Int).Value = curso.Materia.ID;
+                cmdInsert.Parameters.Add("@id_com", SqlDbType.Int).Value = curso.Comision.ID;
                 cmdInsert.Parameters.Add("@anio", SqlDbType.Int).Value = curso.AnioCalendario;
                 cmdInsert.Parameters.Add("@cupo", SqlDbType.Int).Value = curso.Cupo;
                 cmdInsert.ExecuteNonQuery();

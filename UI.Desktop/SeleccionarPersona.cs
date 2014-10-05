@@ -53,7 +53,7 @@ namespace UI.Desktop
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-           _UsuarioActual.IDPersona = ((Business.Entities.Persona)this.dgvSeleccionarPersona.SelectedRows[0].DataBoundItem).ID;
+           _UsuarioActual.Persona.ID = ((Business.Entities.Persona)this.dgvSeleccionarPersona.SelectedRows[0].DataBoundItem).ID;
            this.Close();
         }
 

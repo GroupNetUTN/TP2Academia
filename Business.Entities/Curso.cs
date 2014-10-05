@@ -10,9 +10,15 @@ namespace Business.Entities
         private int _AnioCalendario;
         private int _Cupo;
         private string _Descripcion;
-        private int _IDComision;
-        private int _IDMateria;
-    
+        private Materia _Materia;
+        private Comision _Comision;
+
+        public Curso()
+        {
+            this._Materia = new Materia();
+            this._Comision = new Comision();
+        }
+
         public int AnioCalendario
         {
             get
@@ -49,28 +55,39 @@ namespace Business.Entities
             }
         }
 
-        public int IDComision
+        public Comision Comision
         {
             get
             {
-                return _IDComision;
+                return _Comision;
             }
             set
             {
-                _IDComision = value;
+                _Comision = value;
             }
         }
 
-        public int IDMateria
+        public Materia Materia
         {
             get
             {
-                return _IDMateria;
+                return _Materia;
             }
             set
             {
-                _IDMateria = value;
+                _Materia = value;
             }
         }
+
+        public string DescMateria
+        {
+            get { return _Materia.Descripcion; }
+        }
+
+        public string DescComision
+        {
+            get { return _Comision.Descripcion; }
+        }
+
     }
 }

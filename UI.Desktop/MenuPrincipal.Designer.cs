@@ -1,6 +1,6 @@
 ﻿namespace UI.Desktop
 {
-    partial class formMenuPrincipal
+    partial class MenuPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,8 @@
             this.btnCursos = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnInscripcion = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -188,11 +190,32 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // formMenuPrincipal
+            // btnInscripcion
+            // 
+            this.btnInscripcion.Location = new System.Drawing.Point(318, 281);
+            this.btnInscripcion.Name = "btnInscripcion";
+            this.btnInscripcion.Size = new System.Drawing.Size(75, 23);
+            this.btnInscripcion.TabIndex = 15;
+            this.btnInscripcion.Text = "Ingresar";
+            this.btnInscripcion.UseVisualStyleBackColor = true;
+            this.btnInscripcion.Click += new System.EventHandler(this.btnInscripcion_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(318, 262);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Inscripcion a Curso";
+            // 
+            // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 344);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnInscripcion);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCursos);
@@ -208,7 +231,7 @@
             this.Controls.Add(this.btnPlanes);
             this.Controls.Add(this.btnEspecialidades);
             this.Controls.Add(this.btnUsuarios);
-            this.Name = "formMenuPrincipal";
+            this.Name = "MenuPrincipal";
             this.Text = "Menu Principal";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -232,5 +255,7 @@
         private System.Windows.Forms.Button btnCursos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnInscripcion;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -15,10 +15,10 @@ namespace UI.Desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            formLogin login = new formLogin();
+            Login login = new Login();
             if (login.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new formMenuPrincipal());
+                Application.Run(new MenuPrincipal(login.UsuarioActual));
             }
             else
             { 

@@ -57,7 +57,7 @@ namespace UI.Desktop
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            var rta = MessageBox.Show("¿Esta seguro que desea eliminar el Plan seleccionado?", "Atencion", MessageBoxButtons.YesNo);
+            var rta = MessageBox.Show("¿Esta seguro que desea eliminar la Comision seleccionada?", "Atencion", MessageBoxButtons.YesNo);
             if (rta == DialogResult.Yes)
             {
                 int ID = ((Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).ID;

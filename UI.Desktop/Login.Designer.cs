@@ -1,6 +1,6 @@
 ﻿namespace UI.Desktop
 {
-    partial class formLogin
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.

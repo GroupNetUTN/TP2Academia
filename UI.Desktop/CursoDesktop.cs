@@ -138,8 +138,8 @@ namespace UI.Desktop
                     CursoActual.ID = Convert.ToInt32(this.txtID.Text);
                 CursoActual.AnioCalendario = Convert.ToInt32(this.txtAnioCalendario.Text);
                 CursoActual.Cupo = Convert.ToInt32(this.txtCupo.Text);
-                CursoActual.IDComision = Convert.ToInt32(this.cbxComisiones.SelectedValue);
-                CursoActual.IDMateria = Convert.ToInt32(this.cbxMaterias.SelectedValue);
+                CursoActual.Comision.ID = Convert.ToInt32(this.cbxComisiones.SelectedValue);
+                CursoActual.Materia.ID = Convert.ToInt32(this.cbxMaterias.SelectedValue);
             }
         }
 

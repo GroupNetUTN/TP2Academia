@@ -6,14 +6,24 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Business.Entities;
+using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class formMenuPrincipal : Form
+    public partial class MenuPrincipal : Form
     {
-        public formMenuPrincipal()
+        public MenuPrincipal(Usuario u)
         {
             InitializeComponent();
+            this._UsuarioActual = u;
+        }
+
+        private Usuario _UsuarioActual;
+
+        public Usuario UsuarioActual
+        {
+            get { return _UsuarioActual; }
         }
 
         private void btnEspecialidades_Click(object sender, EventArgs e)
@@ -61,6 +71,12 @@ namespace UI.Desktop
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnInscripcion_Click(object sender, EventArgs e)
+        {
+            InscripcionCurso ins = new InscripcionCurso(_UsuarioActual);
+            ins.ShowDialog();
         }
     }
 }

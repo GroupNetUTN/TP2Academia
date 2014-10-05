@@ -57,11 +57,11 @@
             // tcCursos.ContentPanel
             // 
             this.tcCursos.ContentPanel.Controls.Add(this.tlCursos);
-            this.tcCursos.ContentPanel.Size = new System.Drawing.Size(484, 436);
+            this.tcCursos.ContentPanel.Size = new System.Drawing.Size(575, 435);
             this.tcCursos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcCursos.Location = new System.Drawing.Point(0, 0);
             this.tcCursos.Name = "tcCursos";
-            this.tcCursos.Size = new System.Drawing.Size(484, 461);
+            this.tcCursos.Size = new System.Drawing.Size(575, 460);
             this.tcCursos.TabIndex = 0;
             this.tcCursos.Text = "toolStripContainer1";
             // 
@@ -83,13 +83,14 @@
             this.tlCursos.RowCount = 2;
             this.tlCursos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlCursos.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlCursos.Size = new System.Drawing.Size(484, 436);
+            this.tlCursos.Size = new System.Drawing.Size(575, 435);
             this.tlCursos.TabIndex = 0;
             // 
             // dgvCursos
             // 
             this.dgvCursos.AllowUserToAddRows = false;
             this.dgvCursos.AllowUserToDeleteRows = false;
+            this.dgvCursos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCursos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -103,7 +104,7 @@
             this.dgvCursos.Name = "dgvCursos";
             this.dgvCursos.ReadOnly = true;
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCursos.Size = new System.Drawing.Size(478, 401);
+            this.dgvCursos.Size = new System.Drawing.Size(569, 400);
             this.dgvCursos.TabIndex = 0;
             // 
             // id
@@ -115,14 +116,14 @@
             // 
             // idMateria
             // 
-            this.idMateria.DataPropertyName = "IDMateria";
+            this.idMateria.DataPropertyName = "DescMateria";
             this.idMateria.HeaderText = "Materia";
             this.idMateria.Name = "idMateria";
             this.idMateria.ReadOnly = true;
             // 
             // idComision
             // 
-            this.idComision.DataPropertyName = "IDComision";
+            this.idComision.DataPropertyName = "DescComision";
             this.idComision.HeaderText = "Comision";
             this.idComision.Name = "idComision";
             this.idComision.ReadOnly = true;
@@ -144,7 +145,7 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(325, 410);
+            this.btnActualizar.Location = new System.Drawing.Point(416, 409);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -154,7 +155,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(406, 410);
+            this.btnSalir.Location = new System.Drawing.Point(497, 409);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -171,7 +172,7 @@
             this.tsbEliminar});
             this.tsCursos.Location = new System.Drawing.Point(3, 0);
             this.tsCursos.Name = "tsCursos";
-            this.tsCursos.Size = new System.Drawing.Size(112, 25);
+            this.tsCursos.Size = new System.Drawing.Size(81, 25);
             this.tsCursos.TabIndex = 0;
             // 
             // tsbNuevo
@@ -208,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.ClientSize = new System.Drawing.Size(575, 460);
             this.Controls.Add(this.tcCursos);
             this.Name = "Cursos";
             this.Text = "Cursos";
@@ -234,13 +235,13 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ToolStrip tsCursos;
+        private System.Windows.Forms.ToolStripButton tsbNuevo;
+        private System.Windows.Forms.ToolStripButton tsbEditar;
+        private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn idMateria;
         private System.Windows.Forms.DataGridViewTextBoxColumn idComision;
         private System.Windows.Forms.DataGridViewTextBoxColumn anioCalendario;
         private System.Windows.Forms.DataGridViewTextBoxColumn cupo;
-        private System.Windows.Forms.ToolStripButton tsbNuevo;
-        private System.Windows.Forms.ToolStripButton tsbEditar;
-        private System.Windows.Forms.ToolStripButton tsbEliminar;
     }
 }

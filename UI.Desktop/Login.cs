@@ -11,9 +11,9 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class formLogin : ApplicationForm
+    public partial class Login : ApplicationForm
     {
-        public formLogin()
+        public Login()
         {
             InitializeComponent();
         }
@@ -21,6 +21,13 @@ namespace UI.Desktop
         private void Login_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private Usuario _UsuarioActual;
+
+        public Usuario UsuarioActual
+        {
+            get { return _UsuarioActual; }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -33,6 +40,7 @@ namespace UI.Desktop
                 {
                     Existe = true;
                     Habilitado = u.Habilitado;
+                    _UsuarioActual = u;
                 }
             if (Existe)
             {

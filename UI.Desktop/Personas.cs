@@ -59,13 +59,13 @@ namespace UI.Desktop
             int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
             PersonaDesktop PersDesktop = new PersonaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             PersDesktop.ShowDialog();
-            this.Listar(cbxTipoPersona.SelectedItem.ToString());
+            this.Listar("Todos");
 
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            var rta = MessageBox.Show("¿Esta seguro que desea eliminar el usuario?", "Atencion", MessageBoxButtons.YesNo);
+            var rta = MessageBox.Show("¿Esta seguro que desea eliminar la Persona seleccionada?", "Atencion", MessageBoxButtons.YesNo);
             if (rta == DialogResult.Yes)
             {
                 int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;

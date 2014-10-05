@@ -126,7 +126,7 @@ namespace UI.Desktop
                 EsValido = false;
                 this.Notificar("La clave debe tener al menos 8 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (this._UsuarioActual.IDPersona == 0)
+            if (this._UsuarioActual.Persona.ID == 0)
             {
                 EsValido = false;
                 this.Notificar("No se le asignó una Persona al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);

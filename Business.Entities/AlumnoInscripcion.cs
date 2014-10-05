@@ -8,40 +8,43 @@ namespace Business.Entities
     public class AlumnoInscripcion : BusinessEntity
     {
         private string _Condicion;
-        private int _IDAlumno;
-        private int _IDCurso;
         private int _Nota;
+        private Persona _Alumno;
+        private Curso _Curso;
     
         public string Condicion
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _Condicion;
             }
             set
             {
+                _Condicion = value;
             }
         }
 
-        public int IDAlumno
+        public Persona Alumno
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _Alumno;
             }
             set
             {
+                _Alumno = value;
             }
         }
 
-        public int IDCurso
+        public Curso Curso
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _Curso;
             }
             set
             {
+                _Curso = value;
             }
         }
 
@@ -49,10 +52,11 @@ namespace Business.Entities
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _Nota;
             }
             set
             {
+                _Nota = value;
             }
         }
     }

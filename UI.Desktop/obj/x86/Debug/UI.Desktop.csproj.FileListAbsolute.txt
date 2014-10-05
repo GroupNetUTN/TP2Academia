@@ -142,8 +142,6 @@ C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.dll
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.pdb
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.CursoDesktop.resources
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.SeleccionarPersona.resources
-C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.formLogin.resources
-C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.formMenuPrincipal.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.CursoDesktop.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Cursos.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.formLogin.resources
@@ -151,3 +149,6 @@ C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\D
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.formMenuPrincipal.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\bin\Debug\Util.dll
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\bin\Debug\Util.pdb
+C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.InscripcionCurso.resources
+C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Login.resources
+C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.MenuPrincipal.resources

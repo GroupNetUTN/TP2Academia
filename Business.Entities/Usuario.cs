@@ -10,8 +10,13 @@ namespace Business.Entities
         private string _NombreUsuario;
         private string _Clave;
         private bool _Habilitado;
-        private int _IDPersona;
+        private Persona _Persona;
 
+        public Usuario()
+        {
+            this._Persona = new Persona();
+        }
+        
         public string NombreUsuario
         {
             get { return _NombreUsuario; }
@@ -29,10 +34,10 @@ namespace Business.Entities
             set { _Habilitado = value; }
         }
 
-        public int IDPersona
+        public Persona Persona
         {
-            get { return _IDPersona; }
-            set { _IDPersona = value; }
+            get { return _Persona; }
+            set { _Persona = value; }
         }
     }
 }
