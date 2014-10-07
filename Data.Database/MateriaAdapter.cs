@@ -16,8 +16,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.planes.*, dbo.materias.* " +
-                                                      "FROM  dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.materias.*, dbo.planes.*, dbo.especialidades.* " +
+                                                      "FROM dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan " + 
+                                                      "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad", SqlConn);
                 SqlDataReader drMaterias = cmdGetAll.ExecuteReader();
 
                 while (drMaterias.Read())
@@ -27,10 +28,10 @@ namespace Data.Database
                     mat.Descripcion = (string)drMaterias["desc_materia"];
                     mat.HSSemanales = (int)drMaterias["hs_semanales"];
                     mat.HSTotales = (int)drMaterias["hs_totales"];
-                    Plan plan = new Plan();
-                    plan.ID = (int)drMaterias["id_plan"];
-                    plan.Descripcion = (string)drMaterias["desc_plan"];
-                    mat.Plan = plan;
+                    mat.Plan.ID = (int)drMaterias["id_plan"];
+                    mat.Plan.Descripcion = (string)drMaterias["desc_plan"];
+                    mat.Plan.Especialidad.ID = (int)drMaterias["id_especialidad"];
+                    mat.Plan.Especialidad.Descripcion = (string)drMaterias["desc_especialidad"];
                     materias.Add(mat);
                 }
                 drMaterias.Close();
@@ -53,8 +54,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.materias.*, dbo.planes.* " +
-                                                      "FROM  dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan " + 
+                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.materias.*, dbo.planes.*, dbo.especialidades.* " +
+                                                      "FROM dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan " +
+                                                                        "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad " + 
                                                       "where id_materia=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drMaterias = cmdGetOne.ExecuteReader();
@@ -66,6 +68,8 @@ namespace Data.Database
                     mat.HSTotales = (int)drMaterias["hs_totales"];
                     mat.Plan.ID = (int)drMaterias["id_plan"];
                     mat.Plan.Descripcion = (string)drMaterias["desc_plan"];
+                    mat.Plan.Especialidad.ID = (int)drMaterias["id_especialidad"];
+                    mat.Plan.Especialidad.Descripcion = (string)drMaterias["desc_especialidad"]; ;
                 }
 
                 drMaterias.Close();

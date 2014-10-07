@@ -39,7 +39,7 @@ namespace UI.Desktop
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            this.Listar(cbxTipoPersona.SelectedItem.ToString());
+            this.Listar("Todos");
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

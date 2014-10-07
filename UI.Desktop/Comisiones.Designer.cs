@@ -42,6 +42,7 @@
             this.desc_comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anios_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tscComisiones.ContentPanel.SuspendLayout();
             this.tscComisiones.TopToolStripPanel.SuspendLayout();
             this.tscComisiones.SuspendLayout();
@@ -56,11 +57,11 @@
             // tscComisiones.ContentPanel
             // 
             this.tscComisiones.ContentPanel.Controls.Add(this.tlpComisiones);
-            this.tscComisiones.ContentPanel.Size = new System.Drawing.Size(484, 337);
+            this.tscComisiones.ContentPanel.Size = new System.Drawing.Size(534, 337);
             this.tscComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tscComisiones.Location = new System.Drawing.Point(0, 0);
             this.tscComisiones.Name = "tscComisiones";
-            this.tscComisiones.Size = new System.Drawing.Size(484, 362);
+            this.tscComisiones.Size = new System.Drawing.Size(534, 362);
             this.tscComisiones.TabIndex = 0;
             this.tscComisiones.Text = "toolStripContainer1";
             // 
@@ -82,7 +83,7 @@
             this.tlpComisiones.RowCount = 2;
             this.tlpComisiones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpComisiones.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpComisiones.Size = new System.Drawing.Size(484, 337);
+            this.tlpComisiones.Size = new System.Drawing.Size(534, 337);
             this.tlpComisiones.TabIndex = 0;
             // 
             // dgvComisiones
@@ -95,7 +96,8 @@
             this.id,
             this.desc_comision,
             this.anios_especialidad,
-            this.plan});
+            this.plan,
+            this.especialidad});
             this.tlpComisiones.SetColumnSpan(this.dgvComisiones, 2);
             this.dgvComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvComisiones.Location = new System.Drawing.Point(3, 3);
@@ -104,13 +106,13 @@
             this.dgvComisiones.ReadOnly = true;
             this.dgvComisiones.RowHeadersVisible = false;
             this.dgvComisiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvComisiones.Size = new System.Drawing.Size(478, 302);
+            this.dgvComisiones.Size = new System.Drawing.Size(528, 302);
             this.dgvComisiones.TabIndex = 0;
             // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnActualizar.Location = new System.Drawing.Point(325, 311);
+            this.btnActualizar.Location = new System.Drawing.Point(375, 311);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -120,7 +122,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(406, 311);
+            this.btnSalir.Location = new System.Drawing.Point(456, 311);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -205,11 +207,18 @@
             this.plan.Name = "plan";
             this.plan.ReadOnly = true;
             // 
+            // especialidad
+            // 
+            this.especialidad.DataPropertyName = "DescEspecialidad";
+            this.especialidad.HeaderText = "Especialidad";
+            this.especialidad.Name = "especialidad";
+            this.especialidad.ReadOnly = true;
+            // 
             // Comisiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 362);
+            this.ClientSize = new System.Drawing.Size(534, 362);
             this.Controls.Add(this.tscComisiones);
             this.Name = "Comisiones";
             this.Text = "Comisiones";
@@ -242,5 +251,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn desc_comision;
         private System.Windows.Forms.DataGridViewTextBoxColumn anios_especialidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn plan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn especialidad;
     }
 }

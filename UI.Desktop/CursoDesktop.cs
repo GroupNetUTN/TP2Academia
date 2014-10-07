@@ -99,6 +99,13 @@ namespace UI.Desktop
             this.txtID.Text = CursoActual.ID.ToString();
             this.txtCupo.Text = CursoActual.Cupo.ToString();
             this.txtAnioCalendario.Text = CursoActual.AnioCalendario.ToString();
+            this.cbxEspecialidades.SelectedValue = _CursoActual.Comision.Plan.Especialidad.ID;
+            this.LlenarComboPlanes();
+            this.cbxPlanes.SelectedValue = _CursoActual.Comision.Plan.ID;
+            this.LlenarComboComisiones();
+            this.cbxComisiones.SelectedValue = _CursoActual.Comision.ID;
+            this.LlenarComboMaterias();
+            this.cbxMaterias.SelectedValue = _CursoActual.Materia.ID;
 
             switch (this._Modo)
             {

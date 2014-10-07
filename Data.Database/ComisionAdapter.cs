@@ -16,8 +16,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.planes.*, dbo.comisiones.* " +
-                                                      "FROM  dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.comisiones.*, dbo.planes.*, dbo.especialidades.* " +
+                                                      "FROM dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan " + 
+                                                                          "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad", SqlConn);
                 SqlDataReader drComisiones = cmdGetAll.ExecuteReader();
 
                 while (drComisiones.Read())
@@ -26,10 +27,10 @@ namespace Data.Database
                     comi.ID = (int)drComisiones["id_comision"];
                     comi.Descripcion = (string)drComisiones["desc_comision"];
                     comi.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
-                    Plan plan = new Plan();
-                    plan.ID = (int)drComisiones["id_plan"];
-                    plan.Descripcion = (string)drComisiones["desc_plan"];
-                    comi.Plan = plan;
+                    comi.Plan.ID = (int)drComisiones["id_plan"];
+                    comi.Plan.Descripcion = (string)drComisiones["desc_plan"];
+                    comi.Plan.Especialidad.ID = (int)drComisiones["id_especialidad"];
+                    comi.Plan.Especialidad.Descripcion = (string)drComisiones["desc_especialidad"];
                     comisiones.Add(comi);
                 }
                 drComisiones.Close();
@@ -52,9 +53,10 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.planes.*, dbo.comisiones.* " +
-                "FROM dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan " +
-                "where id_comision=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.comisiones.*, dbo.planes.*, dbo.especialidades.* " +
+                                                      "FROM dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan " + 
+                                                                          "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad " +
+                                                                          "where id_comision=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drComisiones = cmdGetOne.ExecuteReader();
                 if (drComisiones.Read())
@@ -64,6 +66,8 @@ namespace Data.Database
                     comi.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
                     comi.Plan.ID = (int)drComisiones["id_plan"];
                     comi.Plan.Descripcion = (string)drComisiones["desc_plan"];
+                    comi.Plan.Especialidad.ID = (int)drComisiones["id_especialidad"];
+                    comi.Plan.Especialidad.Descripcion = (string)drComisiones["desc_especialidad"];
                 }
 
                 drComisiones.Close();

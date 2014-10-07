@@ -78,8 +78,7 @@ namespace UI.Desktop
             this.txtDescripcion.Text = MateriaActual.Descripcion;
             this.txtHsSemanales.Text = MateriaActual.HSSemanales.ToString();
             this.txtHsTotales.Text = MateriaActual.HSTotales.ToString();
-            PlanLogic plan = new PlanLogic();
-            this.cbxEspecialidades.SelectedValue = plan.GetOne(MateriaActual.Plan.ID).Especialidad.ID;
+            this.cbxEspecialidades.SelectedValue = MateriaActual.Plan.Especialidad.ID;
             this.LlenarComboPlanes();
             this.cbxPlanes.SelectedValue = MateriaActual.Plan.ID;
 

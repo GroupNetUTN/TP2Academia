@@ -9,16 +9,22 @@ namespace Business.Entities
     {
         private string _Cargo;
         private int _IDCurso;
-        private int _IDDocente;
+        private Persona _Docente;
+
+        public DocenteCurso()
+        {
+            this.Docente = new Persona();
+        }
 
         public string Cargo
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _Cargo;
             }
             set
             {
+                _Cargo = value;
             }
         }
 
@@ -26,22 +32,34 @@ namespace Business.Entities
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _IDCurso;
             }
             set
             {
+                _IDCurso = value;
             }
         }
 
-        public int IDDocente
+        public Persona Docente
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _Docente;
             }
             set
             {
+                _Docente = value;
             }
+        }
+
+        public string ApellidoDocente
+        {
+            get { return this.Docente.Apellido; }
+        }
+
+        public string NombreDocente
+        {
+            get { return this.Docente.Nombre; }
         }
     }
 }

@@ -58,9 +58,12 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.cursos.*, dbo.materias.*, dbo.comisiones.* FROM dbo.cursos " +
-                "INNER JOIN dbo.materias ON dbo.cursos.id_materia = dbo.materias.id_materia INNER JOIN dbo.comisiones " +
-                "ON dbo.cursos.id_comision = dbo.comisiones.id_comision WHERE id_curso=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.cursos.*, dbo.materias.*, dbo.comisiones.*, dbo.planes.*, dbo.especialidades.* " +
+                                                      "FROM dbo.cursos INNER JOIN dbo.comisiones ON dbo.cursos.id_comision = dbo.comisiones.id_comision " + 
+                                                                      "INNER JOIN dbo.materias ON dbo.cursos.id_materia = dbo.materias.id_materia " + 
+                                                                      "INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan AND dbo.materias.id_plan = dbo.planes.id_plan " + 
+                                                                      "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad " + 
+                                                      "WHERE id_curso=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drCursos = cmdGetOne.ExecuteReader();
                 if (drCursos.Read())
@@ -72,11 +75,13 @@ namespace Data.Database
                     cur.Materia.Descripcion = (string)drCursos["desc_materia"];
                     cur.Materia.HSSemanales = (int)drCursos["hs_semanales"];
                     cur.Materia.HSTotales = (int)drCursos["hs_totales"];
-                    cur.Materia.Plan.ID = (int)drCursos["id_plan"];
                     cur.Comision.ID = (int)drCursos["id_comision"];
                     cur.Comision.Descripcion = (string)drCursos["desc_comision"];
                     cur.Comision.AnioEspecialidad = (int)drCursos["anio_especialidad"];
                     cur.Comision.Plan.ID = (int)drCursos["id_plan"];
+                    cur.Comision.Plan.Descripcion = (string)drCursos["desc_plan"];
+                    cur.Comision.Plan.Especialidad.ID = (int)drCursos["id_especialidad"];
+                    cur.Comision.Plan.Especialidad.Descripcion = (string)drCursos["desc_especialidad"];   //cargue solo el plan desde el lado de la comision !!!
                 }
                 drCursos.Close();
             }

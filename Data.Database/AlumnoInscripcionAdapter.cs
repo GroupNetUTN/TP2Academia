@@ -16,10 +16,11 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.alumnos_inscripciones.*, dbo.personas.*, dbo.cursos.* " +
-                    "FROM dbo.alumnos_inscripciones INNER JOIN dbo.personas ON " +
-                    "dbo.alumnos_inscripciones.id_alumno = dbo.personas.id_persona " +
-                    "INNER JOIN dbo.cursos ON dbo.alumnos_inscripciones.id_curso = dbo.cursos.id_curso", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.alumnos_inscripciones.*, dbo.personas.*, dbo.materias.*, dbo.comisiones.*, dbo.cursos.* "+
+                                                      "FROM dbo.alumnos_inscripciones INNER JOIN dbo.personas ON dbo.alumnos_inscripciones.id_alumno = dbo.personas.id_persona "+ 
+                                                                                     "INNER JOIN dbo.cursos ON dbo.alumnos_inscripciones.id_curso = dbo.cursos.id_curso "+ 
+                                                                                     "INNER JOIN dbo.materias ON dbo.cursos.id_materia = dbo.materias.id_materia "+ 
+                                                                                     "INNER JOIN dbo.comisiones ON dbo.cursos.id_comision = dbo.comisiones.id_comision", SqlConn);
                 SqlDataReader drInscripciones = cmdGetAll.ExecuteReader();
                 while (drInscripciones.Read())
                 {
@@ -47,6 +48,9 @@ namespace Data.Database
                             break;
                     }
                     ins.Alumno.IDPlan = (int)drInscripciones["id_plan"];
+                    ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
+                    ins.Curso.Comision.Descripcion = (string)drInscripciones["desc_comision"];
+                    ins.Curso.Materia.Descripcion = (string)drInscripciones["desc_materia"];
                     inscripciones.Add(ins);
                 }
                 drInscripciones.Close();

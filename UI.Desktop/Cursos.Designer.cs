@@ -43,6 +43,8 @@
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.tsbDocentes = new System.Windows.Forms.ToolStripButton();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tcCursos.ContentPanel.SuspendLayout();
             this.tcCursos.TopToolStripPanel.SuspendLayout();
             this.tcCursos.SuspendLayout();
@@ -103,6 +105,7 @@
             this.dgvCursos.Location = new System.Drawing.Point(3, 3);
             this.dgvCursos.Name = "dgvCursos";
             this.dgvCursos.ReadOnly = true;
+            this.dgvCursos.RowHeadersVisible = false;
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCursos.Size = new System.Drawing.Size(569, 400);
             this.dgvCursos.TabIndex = 0;
@@ -169,10 +172,11 @@
             this.tsCursos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNuevo,
             this.tsbEditar,
-            this.tsbEliminar});
+            this.tsbEliminar,
+            this.tsbDocentes});
             this.tsCursos.Location = new System.Drawing.Point(3, 0);
             this.tsCursos.Name = "tsCursos";
-            this.tsCursos.Size = new System.Drawing.Size(81, 25);
+            this.tsCursos.Size = new System.Drawing.Size(104, 25);
             this.tsCursos.TabIndex = 0;
             // 
             // tsbNuevo
@@ -204,6 +208,17 @@
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // tsbDocentes
+            // 
+            this.tsbDocentes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDocentes.Image = ((System.Drawing.Image)(resources.GetObject("tsbDocentes.Image")));
+            this.tsbDocentes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDocentes.Name = "tsbDocentes";
+            this.tsbDocentes.Size = new System.Drawing.Size(23, 22);
+            this.tsbDocentes.Text = "toolStripButton1";
+            this.tsbDocentes.ToolTipText = "Gestion de Docentes";
+            this.tsbDocentes.Click += new System.EventHandler(this.tsbDocentes_Click);
             // 
             // Cursos
             // 
@@ -243,5 +258,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idComision;
         private System.Windows.Forms.DataGridViewTextBoxColumn anioCalendario;
         private System.Windows.Forms.DataGridViewTextBoxColumn cupo;
+        private System.Windows.Forms.ToolStripButton tsbDocentes;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

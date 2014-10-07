@@ -43,6 +43,7 @@
             this.Hs_Semanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hs_Totales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -97,7 +98,8 @@
             this.Descripcion,
             this.Hs_Semanales,
             this.Hs_Totales,
-            this.Plan});
+            this.Plan,
+            this.especialidad});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvMaterias, 2);
             this.dgvMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMaterias.Location = new System.Drawing.Point(3, 3);
@@ -176,6 +178,7 @@
             // ID
             // 
             this.ID.DataPropertyName = "ID";
+            this.ID.FillWeight = 45.68528F;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
@@ -183,6 +186,7 @@
             // Descripcion
             // 
             this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.FillWeight = 110.8629F;
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
@@ -190,6 +194,7 @@
             // Hs_Semanales
             // 
             this.Hs_Semanales.DataPropertyName = "HSSemanales";
+            this.Hs_Semanales.FillWeight = 110.8629F;
             this.Hs_Semanales.HeaderText = "Horas Semanales";
             this.Hs_Semanales.Name = "Hs_Semanales";
             this.Hs_Semanales.ReadOnly = true;
@@ -197,6 +202,7 @@
             // Hs_Totales
             // 
             this.Hs_Totales.DataPropertyName = "HSTotales";
+            this.Hs_Totales.FillWeight = 110.8629F;
             this.Hs_Totales.HeaderText = "Horas Totales";
             this.Hs_Totales.Name = "Hs_Totales";
             this.Hs_Totales.ReadOnly = true;
@@ -204,9 +210,18 @@
             // Plan
             // 
             this.Plan.DataPropertyName = "DescPlan";
+            this.Plan.FillWeight = 110.8629F;
             this.Plan.HeaderText = "Plan";
             this.Plan.Name = "Plan";
             this.Plan.ReadOnly = true;
+            // 
+            // especialidad
+            // 
+            this.especialidad.DataPropertyName = "DescEspecialidad";
+            this.especialidad.FillWeight = 110.8629F;
+            this.especialidad.HeaderText = "Especialidad";
+            this.especialidad.Name = "especialidad";
+            this.especialidad.ReadOnly = true;
             // 
             // Materias
             // 
@@ -246,5 +261,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Hs_Semanales;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hs_Totales;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn especialidad;
     }
 }

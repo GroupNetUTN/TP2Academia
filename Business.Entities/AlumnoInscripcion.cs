@@ -65,5 +65,20 @@ namespace Business.Entities
                 _Nota = value;
             }
         }
+
+        public string DescComision
+        {
+            get { return Curso.Comision.Descripcion; }
+        }
+
+        public string DescMateria
+        {
+            get { return Curso.Materia.Descripcion; }
+        }
+
+        public int AnioCurso
+        {
+            get { return Curso.AnioCalendario; }
+        }
     }
 }

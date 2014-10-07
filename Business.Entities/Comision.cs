@@ -37,5 +37,10 @@ namespace Business.Entities
         {
             get { return this.Plan.Descripcion; }
         }
+
+        public string DescEspecialidad
+        {
+            get { return this.Plan.Especialidad.Descripcion; }
+        }
     }
 }

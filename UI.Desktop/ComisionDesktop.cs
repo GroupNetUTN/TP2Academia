@@ -75,8 +75,7 @@ namespace UI.Desktop
             this.txtID.Text = ComisionActual.ID.ToString();
             this.txtDescripcion.Text = ComisionActual.Descripcion;
             this.txtAniosEspecialidad.Text = ComisionActual.AnioEspecialidad.ToString();
-            PlanLogic plan = new PlanLogic();
-            this.cbxEspecialidades.SelectedValue = plan.GetOne(ComisionActual.Plan.ID).Especialidad.ID;
+            this.cbxEspecialidades.SelectedValue = ComisionActual.Plan.Especialidad.ID;
             this.LlenarComboPlanes();
             this.cbxPlan.SelectedValue = ComisionActual.Plan.ID;
 
