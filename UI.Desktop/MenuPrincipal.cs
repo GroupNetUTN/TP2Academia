@@ -75,7 +75,7 @@ namespace UI.Desktop
 
         private void btnInscripcion_Click(object sender, EventArgs e)
         {
-            InscripcionCurso ins = new InscripcionCurso(_UsuarioActual);
+            Inscripciones ins = new Inscripciones(_UsuarioActual);
             ins.ShowDialog();
         }
     }

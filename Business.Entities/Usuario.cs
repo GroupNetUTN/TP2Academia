@@ -22,6 +22,7 @@ namespace Business.Entities
             get { return _NombreUsuario; }
             set { _NombreUsuario = value; }
         }
+
         public string Clave
         {
             get { return _Clave; }

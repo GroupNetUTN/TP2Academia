@@ -11,6 +11,12 @@ namespace Business.Entities
         private int _Nota;
         private Persona _Alumno;
         private Curso _Curso;
+
+        public AlumnoInscripcion()
+        {
+            this._Alumno = new Persona();
+            this._Curso = new Curso();
+        }
     
         public string Condicion
         {
