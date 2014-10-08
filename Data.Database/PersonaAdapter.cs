@@ -20,7 +20,7 @@ namespace Data.Database
                 cmdGetAlumnos.Connection = SqlConn;
                 if (tipo != 0)
                 {
-                    cmdGetAlumnos.CommandText = "select * from personas where tipo_persona=@tipo";
+                    cmdGetAlumnos.CommandText = "SELECT * FROM dbo.personas";
                     cmdGetAlumnos.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
                 }
                 else
@@ -53,7 +53,6 @@ namespace Data.Database
                             break;
                     }
                     pers.IDPlan = (int)drPersonas["id_plan"];
-
                     personas.Add(pers);
                 }
                 drPersonas.Close();

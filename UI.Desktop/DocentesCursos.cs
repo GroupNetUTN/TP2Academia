@@ -11,7 +11,7 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class DocentesCursos : Form
+    public partial class DocentesCursos : ApplicationForm
     {
         public DocentesCursos(Curso c)
         {
@@ -47,6 +47,13 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            DocenteCursoDesktop dcd = new DocenteCursoDesktop(ApplicationForm.ModoForm.Alta, _CursoActual);
+            dcd.ShowDialog();
+            this.Listar();
         }
 
     }

@@ -133,7 +133,6 @@ namespace UI.Desktop
                 PersonaActual.Email = this.txtEmail.Text;
                 PersonaActual.IDPlan = Convert.ToInt32(this.cbxPlanes.SelectedValue);
                 PersonaActual.TipoPersona = this.cbxTipoPersona.SelectedItem.ToString();
-                PersonaActual.IDPlan = Convert.ToInt32(this.cbxPlanes.SelectedValue);
             }
         }
 
