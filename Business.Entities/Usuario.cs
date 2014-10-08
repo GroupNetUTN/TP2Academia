@@ -40,5 +40,15 @@ namespace Business.Entities
             get { return _Persona; }
             set { _Persona = value; }
         }
+
+        public string NombrePersona
+        {
+            get { return this.Persona.Nombre; }
+        }
+
+        public string ApellidoPersona
+        {
+            get { return this.Persona.Apellido; }
+        }
     }
 }

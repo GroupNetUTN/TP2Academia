@@ -168,7 +168,18 @@ namespace Data.Database
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = dc.ID;
                 cmdUpdate.Parameters.Add("@id_docente", SqlDbType.Int).Value = dc.Docente.ID;
                 cmdUpdate.Parameters.Add("@id_curso", SqlDbType.Int).Value = dc.IDCurso;
-                cmdUpdate.Parameters.Add("@cargo", SqlDbType.VarChar).Value = dc.Cargo;
+                switch (dc.Cargo)
+                {
+                    case "Titular":
+                        cmdUpdate.Parameters.Add("@cargo", SqlDbType.Int).Value = 1;
+                        break;
+                    case "Auxiliar":
+                        cmdUpdate.Parameters.Add("@cargo", SqlDbType.Int).Value = 2;
+                        break;
+                    case "Ayudante":
+                        cmdUpdate.Parameters.Add("@cargo", SqlDbType.Int).Value = 3;
+                        break;
+                }
                 cmdUpdate.ExecuteNonQuery();
             }
             catch (Exception e)

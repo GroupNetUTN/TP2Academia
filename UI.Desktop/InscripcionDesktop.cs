@@ -56,7 +56,9 @@ namespace UI.Desktop
             {
                 if(c.Comision.ID == IDComision && c.Materia.ID == IDMateria)
                 {
+                    c.Cupo--;
                     _InscripcionActual.Curso = c;
+                    _InscripcionActual.Curso.State = BusinessEntity.States.Modified;
                 }
             }
         }
@@ -68,7 +70,7 @@ namespace UI.Desktop
             CursoLogic curlog = new CursoLogic();
             foreach (Curso c in curlog.GetAll())
             {
-                if (c.Materia.ID == ID)
+                if (c.Materia.ID == ID && c.Cupo>0)
                 {
                     comisiones.Add(c.Comision);
                 }
@@ -81,6 +83,8 @@ namespace UI.Desktop
             this.MapearADatos();
             AlumnoInscripcionLogic inslogic = new AlumnoInscripcionLogic();
             inslogic.Save(_InscripcionActual);
+            CursoLogic curlog = new CursoLogic();
+            curlog.Save(_InscripcionActual.Curso);     
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

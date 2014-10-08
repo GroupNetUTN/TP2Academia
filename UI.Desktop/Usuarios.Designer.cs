@@ -40,7 +40,8 @@
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombrePersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tcUsuarios.ContentPanel.SuspendLayout();
             this.tcUsuarios.TopToolStripPanel.SuspendLayout();
@@ -94,7 +95,8 @@
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.usuario,
-            this.IDPersona,
+            this.apellidoPersona,
+            this.nombrePersona,
             this.habilitado});
             this.tlUsuarios.SetColumnSpan(this.dgvUsuarios, 2);
             this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -186,12 +188,19 @@
             this.usuario.Name = "usuario";
             this.usuario.ReadOnly = true;
             // 
-            // IDPersona
+            // apellidoPersona
             // 
-            this.IDPersona.DataPropertyName = "IDPersona";
-            this.IDPersona.HeaderText = "ID Persona";
-            this.IDPersona.Name = "IDPersona";
-            this.IDPersona.ReadOnly = true;
+            this.apellidoPersona.DataPropertyName = "ApellidoPersona";
+            this.apellidoPersona.HeaderText = "Apellido";
+            this.apellidoPersona.Name = "apellidoPersona";
+            this.apellidoPersona.ReadOnly = true;
+            // 
+            // nombrePersona
+            // 
+            this.nombrePersona.DataPropertyName = "NombrePersona";
+            this.nombrePersona.HeaderText = "Nombre";
+            this.nombrePersona.Name = "nombrePersona";
+            this.nombrePersona.ReadOnly = true;
             // 
             // habilitado
             // 
@@ -236,7 +245,8 @@
         private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDPersona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPersona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombrePersona;
         private System.Windows.Forms.DataGridViewCheckBoxColumn habilitado;
     }
 }

@@ -24,14 +24,13 @@ namespace UI.Desktop
         public DocenteCursoDesktop(ModoForm modo, Curso c) : this()    
         {
             this._Modo = modo;
-            _CursoActual = c;
-            if (modo == ModoForm.Alta)
-                _DocenteCursoActual = new DocenteCurso();
+            _CursoActual = c;       
         }
 
         public DocenteCursoDesktop(int ID, ModoForm modo, Curso c) : this()
         {
             this._Modo = modo;
+            _CursoActual = c; 
             DocenteCursoLogic DocCursNegocio = new DocenteCursoLogic();
             _DocenteCursoActual = DocCursNegocio.GetOne(ID);
             this.MapearDeDatos();
@@ -67,6 +66,7 @@ namespace UI.Desktop
                     _DocenteCursoActual.State = DocenteCurso.States.Unmodified;
                     break;
                 case ModoForm.Alta:
+                    _DocenteCursoActual = new DocenteCurso();
                     _DocenteCursoActual.State = Plan.States.New;
                     break;
                 case ModoForm.Modificacion:
@@ -102,6 +102,12 @@ namespace UI.Desktop
             }
             if (EsValido == false)
                 this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if(this._DocenteCursoActual.Docente.ID == 0)
+            {
+                this.Notificar("No se seleccionó un Docente para el Curso",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                EsValido = false;
+            }
+                
 
             return EsValido;
         }
@@ -122,12 +128,8 @@ namespace UI.Desktop
         {
             if (this.Validar())
             {
-                var rta = MessageBox.Show("¿Esta seguro que desea asignar este nuevo docente?", "Atencion", MessageBoxButtons.YesNo);
-                if (rta == DialogResult.Yes)
-                {
-                    this.GuardarCambios();
-                    this.Close();
-                }
+                this.GuardarCambios();
+                this.Close();                
             }
         }
     }

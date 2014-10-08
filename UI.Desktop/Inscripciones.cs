@@ -64,6 +64,11 @@ namespace UI.Desktop
                 int ID = ((Business.Entities.AlumnoInscripcion)this.dgvInscripciones.SelectedRows[0].DataBoundItem).ID;
                 AlumnoInscripcionLogic insc = new AlumnoInscripcionLogic();
                 insc.Delete(ID);
+                CursoLogic curlog = new CursoLogic();
+                Curso cur = curlog.GetOne(((Business.Entities.AlumnoInscripcion)this.dgvInscripciones.SelectedRows[0].DataBoundItem).Curso.ID);
+                cur.State = BusinessEntity.States.Modified;
+                cur.Cupo++;
+                curlog.Save(cur);
                 this.Listar();
             }
         }

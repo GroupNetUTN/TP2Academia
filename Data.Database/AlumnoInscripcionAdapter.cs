@@ -48,6 +48,7 @@ namespace Data.Database
                             break;
                     }
                     ins.Alumno.IDPlan = (int)drInscripciones["id_plan"];
+                    ins.Curso.ID = (int)drInscripciones["id_curso"];
                     ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
                     ins.Curso.Comision.Descripcion = (string)drInscripciones["desc_comision"];
                     ins.Curso.Materia.Descripcion = (string)drInscripciones["desc_materia"];
@@ -104,6 +105,10 @@ namespace Data.Database
                             break;
                     }
                     ins.Alumno.IDPlan = (int)drInscripciones["id_plan"];
+                    ins.Curso.ID = (int)drInscripciones["id_curso"];
+                    ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
+                    ins.Curso.Comision.Descripcion = (string)drInscripciones["desc_comision"];
+                    ins.Curso.Materia.Descripcion = (string)drInscripciones["desc_materia"];
                 }
 
                 drInscripciones.Close();

@@ -56,5 +56,25 @@ namespace UI.Desktop
             this.Listar();
         }
 
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            var rta = MessageBox.Show("¿Esta seguro que desea eliminar el Docente seleccionado?", "Atencion", MessageBoxButtons.YesNo);
+            if (rta == DialogResult.Yes)
+            {
+                int ID = ((Business.Entities.DocenteCurso)this.dgvDocentesCursos.SelectedRows[0].DataBoundItem).ID;
+                DocenteCursoLogic dcl = new DocenteCursoLogic();
+                dcl.Delete(ID);
+                this.Listar();
+            }
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            int ID = ((Business.Entities.DocenteCurso)this.dgvDocentesCursos.SelectedRows[0].DataBoundItem).ID;
+            DocenteCursoDesktop dcd = new DocenteCursoDesktop(ID, ApplicationForm.ModoForm.Modificacion,_CursoActual);
+            dcd.ShowDialog();
+            this.Listar();
+        }
+
     }
 }

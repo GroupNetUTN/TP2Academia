@@ -56,6 +56,7 @@ namespace UI.Desktop
             else
             {
                 this.Notificar("Usuario o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtContraseña.Clear();
             }
         }
 
