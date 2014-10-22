@@ -16,8 +16,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.docentes_cursos.*, dbo.personas.* " +
-                                                      "FROM dbo.docentes_cursos INNER JOIN dbo.personas ON dbo.docentes_cursos.id_docente = dbo.personas.id_persona", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.docentes_cursos.*, dbo.personas.*, dbo.cursos.* " +
+                                                      "FROM dbo.docentes_cursos INNER JOIN dbo.personas ON dbo.docentes_cursos.id_docente = dbo.personas.id_persona " + 
+                                                      "INNER JOIN dbo.cursos ON dbo.docentes_cursos.id_curso = dbo.cursos.id_curso", SqlConn);
                 SqlDataReader drDocentes = cmdGetAll.ExecuteReader();
                 while (drDocentes.Read())
                 {
@@ -35,7 +36,9 @@ namespace Data.Database
                             dc.Cargo = "Ayudante";
                             break;
                     }
-                    dc.IDCurso = (int)drDocentes["id_curso"];
+                    dc.Curso.ID = (int)drDocentes["id_curso"];
+                    dc.Curso.AnioCalendario = (int)drDocentes["anio_calendario"];
+                    dc.Curso.Cupo = (int)drDocentes["cupo"];
                     dc.Docente.ID = (int)drDocentes["id_persona"];
                     dc.Docente.Nombre = (string)drDocentes["nombre"];
                     dc.Docente.Apellido = (string)drDocentes["apellido"];
@@ -99,7 +102,7 @@ namespace Data.Database
                             dc.Cargo = "Ayudante";
                             break;
                     }
-                    dc.IDCurso = (int)drDocentes["id_curso"];
+                    dc.Curso.ID = (int)drDocentes["id_curso"];
                     dc.Docente.ID = (int)drDocentes["id_persona"];
                     dc.Docente.Nombre = (string)drDocentes["nombre"];
                     dc.Docente.Apellido = (string)drDocentes["apellido"];
@@ -167,7 +170,7 @@ namespace Data.Database
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = dc.ID;
                 cmdUpdate.Parameters.Add("@id_docente", SqlDbType.Int).Value = dc.Docente.ID;
-                cmdUpdate.Parameters.Add("@id_curso", SqlDbType.Int).Value = dc.IDCurso;
+                cmdUpdate.Parameters.Add("@id_curso", SqlDbType.Int).Value = dc.Curso.ID;
                 switch (dc.Cargo)
                 {
                     case "Titular":
@@ -202,7 +205,7 @@ namespace Data.Database
                                                       "values(@id_docente, @id_curso, @cargo) select @@identity", SqlConn);
 
                 cmdInsert.Parameters.Add("@id_docente", SqlDbType.Int).Value = dc.Docente.ID;
-                cmdInsert.Parameters.Add("@id_curso", SqlDbType.Int).Value = dc.IDCurso;
+                cmdInsert.Parameters.Add("@id_curso", SqlDbType.Int).Value = dc.Curso.ID;
                 switch (dc.Cargo)
                 {
                     case "Titular":

@@ -45,6 +45,8 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnInscripcion = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnRegistroNotas = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -182,7 +184,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(376, 309);
+            this.btnSalir.Location = new System.Drawing.Point(377, 347);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 14;
@@ -209,11 +211,32 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Inscripcion a Curso";
             // 
+            // btnRegistroNotas
+            // 
+            this.btnRegistroNotas.Location = new System.Drawing.Point(45, 347);
+            this.btnRegistroNotas.Name = "btnRegistroNotas";
+            this.btnRegistroNotas.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistroNotas.TabIndex = 17;
+            this.btnRegistroNotas.Text = "Ingresar";
+            this.btnRegistroNotas.UseVisualStyleBackColor = true;
+            this.btnRegistroNotas.Click += new System.EventHandler(this.btnRegistroNotas_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(45, 328);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Registro Notas";
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 344);
+            this.ClientSize = new System.Drawing.Size(478, 391);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnRegistroNotas);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnInscripcion);
             this.Controls.Add(this.btnSalir);
@@ -257,5 +280,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnInscripcion;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnRegistroNotas;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -10,7 +10,7 @@ using Util;
 
 namespace UI.Web
 {
-    public partial class Usuarios : System.Web.UI.Page
+    public partial class Usuarios : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,20 +34,8 @@ namespace UI.Web
             this.gridView.DataSource = this.Logic.GetAll();
             this.gridView.DataBind();
         }
-            
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
-        }
-
-        public FormModes FormMode
-        {
-            get { return (FormModes)this.ViewState["FormMode"]; }
-            set { this.ViewState["FormMode"] = value; }
-        }
-
+                     
+        
         private Usuario Entity
         {
             get;
@@ -99,9 +87,6 @@ namespace UI.Web
 
         private void EnableForm(bool enable)
         {
-            this.txtNombre.Enabled = enable;
-            this.txtApellido.Enabled = enable;
-            this.txtEmail.Enabled = enable;
             this.txtNombreUsuario.Enabled = enable;
             this.txtClave.Visible = enable;
             this.lblClave.Visible = enable;
@@ -116,9 +101,6 @@ namespace UI.Web
 
         private void ClearForm()
         {
-            this.txtNombre.Text = string.Empty;
-            this.txtApellido.Text = string.Empty;
-            this.txtEmail.Text = string.Empty;
             this.txtNombreUsuario.Text = string.Empty;
             this.chxHabilitado.Checked = false;
         }

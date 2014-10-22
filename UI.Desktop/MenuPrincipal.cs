@@ -78,5 +78,11 @@ namespace UI.Desktop
             Inscripciones ins = new Inscripciones(_UsuarioActual);
             ins.ShowDialog();
         }
+
+        private void btnRegistroNotas_Click(object sender, EventArgs e)
+        {
+            RegistroNotas reg = new RegistroNotas(_UsuarioActual);
+            reg.ShowDialog();
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace UI.Desktop
             List<DocenteCurso> docentes = new List<DocenteCurso>();
             foreach (DocenteCurso dc in dcl.GetAll())
             {
-                if (dc.IDCurso == _CursoActual.ID)
+                if (dc.Curso.ID == _CursoActual.ID)
                     docentes.Add(dc);
             }
             dgvDocentesCursos.DataSource = docentes;
@@ -53,6 +53,7 @@ namespace UI.Desktop
         {
             DocenteCursoDesktop dcd = new DocenteCursoDesktop(ApplicationForm.ModoForm.Alta, _CursoActual);
             dcd.ShowDialog();
+            
             this.Listar();
         }
 

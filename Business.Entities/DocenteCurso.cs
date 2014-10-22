@@ -8,12 +8,13 @@ namespace Business.Entities
     public class DocenteCurso : BusinessEntity
     {
         private string _Cargo;
-        private int _IDCurso;
         private Persona _Docente;
+        private Curso _Curso;
 
         public DocenteCurso()
         {
-            this.Docente = new Persona();
+            this._Docente = new Persona();
+            this._Curso = new Curso();
         }
 
         public string Cargo
@@ -28,18 +29,6 @@ namespace Business.Entities
             }
         }
 
-        public int IDCurso
-        {
-            get
-            {
-                return _IDCurso;
-            }
-            set
-            {
-                _IDCurso = value;
-            }
-        }
-
         public Persona Docente
         {
             get
@@ -49,6 +38,18 @@ namespace Business.Entities
             set
             {
                 _Docente = value;
+            }
+        }
+
+        public Curso Curso
+        {
+            get
+            {
+                return _Curso;
+            }
+            set
+            {
+                _Curso = value;
             }
         }
 

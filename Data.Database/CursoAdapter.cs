@@ -182,5 +182,37 @@ namespace Data.Database
             curso.State = BusinessEntity.States.Unmodified;
         }
 
+        public List<Curso> GetCursosDocente(int IDDocente)
+        {
+            List<Curso> cursosDocente = new List<Curso>();
+            this.OpenConnection();
+            SqlCommand cmdCursosDocente = new SqlCommand("SELECT dbo.docentes_cursos.*, dbo.cursos.*, " +
+            "dbo.materias.*, dbo.comisiones.* FROM  dbo.cursos INNER JOIN dbo.docentes_cursos " +
+            "ON dbo.cursos.id_curso = dbo.docentes_cursos.id_curso INNER JOIN dbo.materias " +
+            "ON dbo.cursos.id_materia = dbo.materias.id_materia INNER JOIN dbo.comisiones " +
+            "ON dbo.cursos.id_comision = dbo.comisiones.id_comision WHERE dbo.docentes_cursos.id_docente=@id", SqlConn);
+            cmdCursosDocente.Parameters.Add("@id", SqlDbType.Int).Value = IDDocente;
+            SqlDataReader drCursosDocente = cmdCursosDocente.ExecuteReader();
+
+            while (drCursosDocente.Read())
+            {
+                Curso cur = new Curso();
+                cur.ID = (int)drCursosDocente["id_curso"];
+                cur.AnioCalendario = (int)drCursosDocente["anio_calendario"];
+                cur.Cupo = (int)drCursosDocente["cupo"];
+                cur.Materia.ID = (int)drCursosDocente["id_materia"];
+                cur.Materia.Descripcion = (string)drCursosDocente["desc_materia"];
+                cur.Materia.HSSemanales = (int)drCursosDocente["hs_semanales"];
+                cur.Materia.HSTotales = (int)drCursosDocente["hs_totales"];
+                cur.Materia.Plan.ID = (int)drCursosDocente["id_plan"];
+                cur.Comision.ID = (int)drCursosDocente["id_comision"];
+                cur.Comision.Descripcion = (string)drCursosDocente["desc_comision"];
+                cur.Comision.AnioEspecialidad = (int)drCursosDocente["anio_especialidad"];
+                cur.Comision.Plan.ID = (int)drCursosDocente["id_plan"];
+                cursosDocente.Add(cur);
+            }
+
+            return cursosDocente;
+        }
     }
 }

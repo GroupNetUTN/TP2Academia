@@ -24,7 +24,8 @@ namespace UI.Desktop
         public DocenteCursoDesktop(ModoForm modo, Curso c) : this()    
         {
             this._Modo = modo;
-            _CursoActual = c;       
+            _CursoActual = c;
+            _DocenteCursoActual = new DocenteCurso();
         }
 
         public DocenteCursoDesktop(int ID, ModoForm modo, Curso c) : this()
@@ -43,14 +44,12 @@ namespace UI.Desktop
 
             switch (this._Modo)
             {
-                case ModoForm.Baja:
-                    this.btnAceptar.Text = "Eliminar";
+                case ModoForm.Modificacion:
+                    this.btnAceptar.Text = "Guardar";
+                    this.btnSelecDocente.Visible = false;
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
-                    break;
-                default:
-                    this.btnAceptar.Text = "Guardar";
                     break;
             }
         }
@@ -66,7 +65,6 @@ namespace UI.Desktop
                     _DocenteCursoActual.State = DocenteCurso.States.Unmodified;
                     break;
                 case ModoForm.Alta:
-                    _DocenteCursoActual = new DocenteCurso();
                     _DocenteCursoActual.State = Plan.States.New;
                     break;
                 case ModoForm.Modificacion:
@@ -77,7 +75,7 @@ namespace UI.Desktop
             {
                 if (_Modo == ModoForm.Modificacion)
                     _DocenteCursoActual.ID = Convert.ToInt32(this.txtID.Text);
-                _DocenteCursoActual.IDCurso = _CursoActual.ID;
+                _DocenteCursoActual.Curso.ID = _CursoActual.ID;
                 _DocenteCursoActual.Cargo = cbxCargo.SelectedItem.ToString();
             }
         }
@@ -114,9 +112,9 @@ namespace UI.Desktop
 
         private void btnSelecDocente_Click(object sender, EventArgs e)
         {
-            SeleccionarDocentes doc = new SeleccionarDocentes(_CursoActual, _DocenteCursoActual.Docente);
+            SeleccionarDocentes doc = new SeleccionarDocentes(_CursoActual);
             doc.ShowDialog();
-
+            _DocenteCursoActual.Docente = doc.Docente;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

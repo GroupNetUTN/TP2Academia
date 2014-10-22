@@ -2,18 +2,19 @@
 <asp:Content ID="Usuarios" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 
 <asp:Panel ID="gridPanel" runat="server">
-        <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" 
+        <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="ID" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White" 
             onselectedindexchanged="gridView_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
-                <asp:BoundField DataField="EMail" HeaderText="EMail" />
                 <asp:BoundField DataField="NombreUsuario" HeaderText="Usuario" />
+                <asp:BoundField DataField="Email" HeaderText="Email" />
+                <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
+                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Habilitado" HeaderText="Habilitado" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
+            <SelectedRowStyle BackColor="Black" ForeColor="White" />
         </asp:GridView>
     </asp:Panel>
 
@@ -27,14 +28,6 @@
 </asp:Panel>
 
 <asp:Panel ID="formPanel" Visible="false" runat="server">
-    <asp:Label ID="lblNombre" runat="server" Text="Nombre: "></asp:Label>
-    <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-    <br />
-    <asp:Label ID="lblApellido" runat="server" Text="Apellido: " ></asp:Label>
-    <asp:TextBox ID="txtApellido" runat="server" ></asp:TextBox>
-    <br />
-    <asp:Label ID="lblEmail" runat="server" Text="EMail: "></asp:Label>
-    <asp:TextBox ID="txtEmail" runat="server" ></asp:TextBox>
     <br />
     <asp:Label ID="lblHabilitado" runat="server" Text="Habilitado: "></asp:Label>
     <asp:CheckBox ID="chxHabilitado" runat="server"></asp:CheckBox>

@@ -16,11 +16,10 @@ namespace UI.Desktop
         private Curso _CursoActual;
         private Persona _Docente;
 
-        public SeleccionarDocentes(Curso c, Persona p)
+        public SeleccionarDocentes(Curso c)
         {
             InitializeComponent();
             _CursoActual = c;
-            _Docente = p;
             dgvDocentes.AutoGenerateColumns = false;
         }
 
@@ -39,6 +38,7 @@ namespace UI.Desktop
                     docentes.Add(p);
             }
             dgvDocentes.DataSource = docentes;
+            dgvDocentes.ClearSelection();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -48,6 +48,7 @@ namespace UI.Desktop
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
+            _Docente = new Persona();
             _Docente.ID = ((Business.Entities.Persona)this.dgvDocentes.SelectedRows[0].DataBoundItem).ID;
             this.Close();
         }

@@ -80,5 +80,15 @@ namespace Business.Entities
         {
             get { return Curso.AnioCalendario; }
         }
+
+        public string Apellido
+        {
+            get { return this.Alumno.Apellido; }
+        }
+
+        public string Nombre
+        {
+            get { return this.Alumno.Nombre; }
+        }
     }
 }

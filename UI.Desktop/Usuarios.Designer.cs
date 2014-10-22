@@ -190,14 +190,14 @@
             // 
             // apellidoPersona
             // 
-            this.apellidoPersona.DataPropertyName = "ApellidoPersona";
+            this.apellidoPersona.DataPropertyName = "Apellido";
             this.apellidoPersona.HeaderText = "Apellido";
             this.apellidoPersona.Name = "apellidoPersona";
             this.apellidoPersona.ReadOnly = true;
             // 
             // nombrePersona
             // 
-            this.nombrePersona.DataPropertyName = "NombrePersona";
+            this.nombrePersona.DataPropertyName = "Nombre";
             this.nombrePersona.HeaderText = "Nombre";
             this.nombrePersona.Name = "nombrePersona";
             this.nombrePersona.ReadOnly = true;
