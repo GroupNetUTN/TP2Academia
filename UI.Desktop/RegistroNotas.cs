@@ -52,8 +52,8 @@ namespace UI.Desktop
 
         public override void MapearADatos()
         {
-            _InscripcionActual.State = AlumnoInscripcion.States.Modified;
             _InscripcionActual = ((Business.Entities.AlumnoInscripcion)this.dgvAlumnos.SelectedRows[0].DataBoundItem);
+            _InscripcionActual.State = AlumnoInscripcion.States.Modified;
             _InscripcionActual.Nota = Convert.ToInt32(this.txtNota.Text);
             _InscripcionActual.Condicion = this.cbxCondicion.SelectedItem.ToString();
         }
@@ -81,11 +81,6 @@ namespace UI.Desktop
             this.Close();
         }
 
-        private void dgvCursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.ListarAlumnos();
-        }
-
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             if (Validar())
@@ -97,10 +92,18 @@ namespace UI.Desktop
 
         private void btnBorrarNota_Click(object sender, EventArgs e)
         {
-            _InscripcionActual.State = AlumnoInscripcion.States.Modified;
             _InscripcionActual = ((Business.Entities.AlumnoInscripcion)this.dgvAlumnos.SelectedRows[0].DataBoundItem);
+            _InscripcionActual.State = AlumnoInscripcion.States.Modified;
             _InscripcionActual.Nota = 0;
             _InscripcionActual.Condicion = "Inscripto";
+            AlumnoInscripcionLogic AILogic = new AlumnoInscripcionLogic();
+            AILogic.Save(_InscripcionActual);
+            this.ListarAlumnos();
+        }
+
+        private void dgvCursos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.ListarAlumnos();
         }
     }
 }

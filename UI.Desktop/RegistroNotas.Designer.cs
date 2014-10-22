@@ -96,7 +96,7 @@
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCursos.Size = new System.Drawing.Size(303, 334);
             this.dgvCursos.TabIndex = 0;
-            this.dgvCursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCursos_CellContentClick);
+            this.dgvCursos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCursos_CellClick);
             // 
             // anio
             // 
@@ -220,10 +220,10 @@
             // 
             // cbxCondicion
             // 
-            this.cbxCondicion.AutoCompleteCustomSource.AddRange(new string[] {
+            this.cbxCondicion.FormattingEnabled = true;
+            this.cbxCondicion.Items.AddRange(new object[] {
             "Aprobado",
             "Libre"});
-            this.cbxCondicion.FormattingEnabled = true;
             this.cbxCondicion.Location = new System.Drawing.Point(68, 32);
             this.cbxCondicion.Name = "cbxCondicion";
             this.cbxCondicion.Size = new System.Drawing.Size(121, 21);

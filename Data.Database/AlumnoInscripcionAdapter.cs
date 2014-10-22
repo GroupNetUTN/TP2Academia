@@ -27,6 +27,7 @@ namespace Data.Database
                     AlumnoInscripcion ins = new AlumnoInscripcion();
                     ins.ID = (int)drInscripciones["id_inscripcion"];
                     ins.Condicion = (string)drInscripciones["condicion"];
+                    ins.Nota = (int)drInscripciones["nota"];
                     ins.Alumno.ID = (int)drInscripciones["id_persona"];
                     ins.Alumno.Nombre = (string)drInscripciones["nombre"];
                     ins.Alumno.Apellido = (string)drInscripciones["apellido"];
