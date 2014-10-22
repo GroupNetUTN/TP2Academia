@@ -11,28 +11,30 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class RegistroNotas : Form
+    public partial class RegistroNotas : ApplicationForm
     {
         public RegistroNotas(Usuario u)
         {
             InitializeComponent();
+            this._Modo = ModoForm.Modificacion;
             this.dgvCursos.AutoGenerateColumns = false;
             this.dgvAlumnos.AutoGenerateColumns = false;
             this._UsuarioActual = u;
         }
 
         private Usuario _UsuarioActual;
+        private AlumnoInscripcion _InscripcionActual;
 
         private void RegistroNotas_Load(object sender, EventArgs e)
         {
             this.ListarCursos();
+            dgvCursos.ClearSelection();
         }
 
         private void ListarCursos()
         {
             CursoLogic curlog = new CursoLogic();
-            dgvCursos.DataSource = curlog.GetCursosDocente(this._UsuarioActual.Persona.ID);
-            dgvCursos.ClearSelection();
+            dgvCursos.DataSource = curlog.GetCursosDocente(this._UsuarioActual.Persona.ID);   
         }
 
         public void ListarAlumnos()
@@ -48,7 +50,33 @@ namespace UI.Desktop
             this.dgvAlumnos.DataSource = alumnosInscriptos;
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        public override void MapearADatos()
+        {
+            _InscripcionActual.State = AlumnoInscripcion.States.Modified;
+            _InscripcionActual = ((Business.Entities.AlumnoInscripcion)this.dgvAlumnos.SelectedRows[0].DataBoundItem);
+            _InscripcionActual.Nota = Convert.ToInt32(this.txtNota.Text);
+            _InscripcionActual.Condicion = this.cbxCondicion.SelectedItem.ToString();
+        }
+
+        public override void GuardarCambios()
+        {
+            this.MapearADatos();
+            AlumnoInscripcionLogic AILogic = new AlumnoInscripcionLogic();
+            AILogic.Save(_InscripcionActual);
+        }
+
+        public override bool Validar()
+        {
+            bool EsValido = true;
+            if (this.txtNota.Text.Equals(""))
+                {
+                    EsValido = false;
+                    this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            return EsValido;
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -56,6 +84,23 @@ namespace UI.Desktop
         private void dgvCursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             this.ListarAlumnos();
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            if (Validar())
+            {
+                this.GuardarCambios();
+                this.ListarAlumnos();
+            }
+        }
+
+        private void btnBorrarNota_Click(object sender, EventArgs e)
+        {
+            _InscripcionActual.State = AlumnoInscripcion.States.Modified;
+            _InscripcionActual = ((Business.Entities.AlumnoInscripcion)this.dgvAlumnos.SelectedRows[0].DataBoundItem);
+            _InscripcionActual.Nota = 0;
+            _InscripcionActual.Condicion = "Inscripto";
         }
     }
 }

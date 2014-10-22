@@ -162,3 +162,4 @@ C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.DocenteC
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.SeleccionarDocentes.resources
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.DocentesCursos.resources
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.RegistroNotas.resources
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.RegistroNotas.resources
