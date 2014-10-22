@@ -43,8 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbxCondicion = new System.Windows.Forms.ComboBox();
-            this.txtNota = new System.Windows.Forms.TextBox();
             this.btnConfirmar = new System.Windows.Forms.Button();
+            this.cbxNota = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBorrarNota = new System.Windows.Forms.Button();
@@ -186,8 +186,8 @@
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.cbxCondicion, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.txtNota, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnConfirmar, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.cbxNota, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(312, 360);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -226,15 +226,8 @@
             "Libre"});
             this.cbxCondicion.Location = new System.Drawing.Point(68, 32);
             this.cbxCondicion.Name = "cbxCondicion";
-            this.cbxCondicion.Size = new System.Drawing.Size(121, 21);
+            this.cbxCondicion.Size = new System.Drawing.Size(82, 21);
             this.cbxCondicion.TabIndex = 2;
-            // 
-            // txtNota
-            // 
-            this.txtNota.Location = new System.Drawing.Point(68, 3);
-            this.txtNota.Name = "txtNota";
-            this.txtNota.Size = new System.Drawing.Size(100, 20);
-            this.txtNota.TabIndex = 3;
             // 
             // btnConfirmar
             // 
@@ -245,6 +238,25 @@
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
+            // cbxNota
+            // 
+            this.cbxNota.FormattingEnabled = true;
+            this.cbxNota.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cbxNota.Location = new System.Drawing.Point(68, 3);
+            this.cbxNota.Name = "cbxNota";
+            this.cbxNota.Size = new System.Drawing.Size(41, 21);
+            this.cbxNota.TabIndex = 5;
             // 
             // label3
             // 
@@ -268,7 +280,7 @@
             // 
             this.btnBorrarNota.Location = new System.Drawing.Point(312, 454);
             this.btnBorrarNota.Name = "btnBorrarNota";
-            this.btnBorrarNota.Size = new System.Drawing.Size(150, 23);
+            this.btnBorrarNota.Size = new System.Drawing.Size(143, 23);
             this.btnBorrarNota.TabIndex = 7;
             this.btnBorrarNota.Text = "Borrar Nota";
             this.btnBorrarNota.UseVisualStyleBackColor = true;
@@ -303,7 +315,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbxCondicion;
-        private System.Windows.Forms.TextBox txtNota;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -315,5 +326,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nota;
         private System.Windows.Forms.DataGridViewTextBoxColumn condicion;
         private System.Windows.Forms.Button btnBorrarNota;
+        private System.Windows.Forms.ComboBox cbxNota;
     }
 }

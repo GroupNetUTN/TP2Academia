@@ -38,7 +38,7 @@ namespace UI.Desktop
             MateriaLogic matlog = new MateriaLogic();
             foreach (Materia m in matlog.GetAll())
             {
-                if (m.Plan.ID == this._UsuarioActual.Persona.IDPlan)
+                if (m.Plan.ID == this._UsuarioActual.Persona.Plan.ID)
                     materias.Add(m);
             }
             this.dgvMaterias.DataSource = materias;

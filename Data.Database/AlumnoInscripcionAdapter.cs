@@ -48,7 +48,7 @@ namespace Data.Database
                             ins.Alumno.TipoPersona = "Docente";
                             break;
                     }
-                    ins.Alumno.IDPlan = (int)drInscripciones["id_plan"];
+                    ins.Alumno.Plan.ID = (int)drInscripciones["id_plan"];
                     ins.Curso.ID = (int)drInscripciones["id_curso"];
                     ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
                     ins.Curso.Comision.Descripcion = (string)drInscripciones["desc_comision"];
@@ -105,7 +105,7 @@ namespace Data.Database
                             ins.Alumno.TipoPersona = "Docente";
                             break;
                     }
-                    ins.Alumno.IDPlan = (int)drInscripciones["id_plan"];
+                    ins.Alumno.Plan.ID = (int)drInscripciones["id_plan"];
                     ins.Curso.ID = (int)drInscripciones["id_curso"];
                     ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
                     ins.Curso.Comision.Descripcion = (string)drInscripciones["desc_comision"];

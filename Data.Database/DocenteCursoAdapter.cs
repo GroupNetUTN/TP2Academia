@@ -59,7 +59,7 @@ namespace Data.Database
                             dc.Docente.TipoPersona = "Docente";
                             break;
                     }
-                    dc.Docente.IDPlan = (int)drDocentes["id_plan"];
+                    dc.Docente.Plan.ID = (int)drDocentes["id_plan"];
                     docentes.Add(dc);
                 }
                 drDocentes.Close();
@@ -123,7 +123,7 @@ namespace Data.Database
                             dc.Docente.TipoPersona = "Docente";
                             break;
                     }
-                    dc.Docente.IDPlan = (int)drDocentes["id_plan"];
+                    dc.Docente.Plan.ID = (int)drDocentes["id_plan"];
                 }
 
                 drDocentes.Close();

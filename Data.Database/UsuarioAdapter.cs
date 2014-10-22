@@ -28,7 +28,7 @@ namespace Data.Database
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.Persona.ID = (int)drUsuarios["id_persona"];
-                    usr.Persona.IDPlan = (int)drUsuarios["id_plan"];
+                    usr.Persona.Plan.ID = (int)drUsuarios["id_plan"];
                     usr.Persona.Nombre = (string)drUsuarios["nombre"];
                     usr.Persona.Apellido = (string)drUsuarios["apellido"];
                     usr.Persona.Email = (string)drUsuarios["email"];
@@ -81,7 +81,7 @@ namespace Data.Database
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.Persona.ID = (int)drUsuarios["id_persona"];
-                    usr.Persona.IDPlan = (int)drUsuarios["id_plan"];
+                    usr.Persona.Plan.ID = (int)drUsuarios["id_plan"];
                     usr.Persona.Nombre = (string)drUsuarios["nombre"];
                     usr.Persona.Apellido = (string)drUsuarios["apellido"];
                     usr.Persona.Email = (string)drUsuarios["email"];

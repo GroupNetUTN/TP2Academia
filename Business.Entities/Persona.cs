@@ -11,11 +11,16 @@ namespace Business.Entities
         private string _Direccion;
         private string _Email;
         private DateTime _FechaNacimiento;
-        private int _IDPlan;
         private int _Legajo;
         private string _Nombre;
         private string _Telefono;
         private string _TipoPersona;
+        private Plan _Plan;
+
+        public Persona()
+        {
+            this.Plan = new Plan();
+        }
 
         public string Apellido
         {
@@ -41,10 +46,10 @@ namespace Business.Entities
             set { _FechaNacimiento = value; }
         }
 
-        public int IDPlan
+        public Plan Plan
         {
-            get { return _IDPlan; }
-            set { _IDPlan = value; }
+            get { return _Plan; }
+            set { _Plan = value; }
         }
 
         public int Legajo
@@ -69,6 +74,11 @@ namespace Business.Entities
         {
             get { return _TipoPersona; }
             set { _TipoPersona = value; }
+        }
+
+        public string DescPlan
+        {
+            get{ return _Plan.Descripcion; }
         }
     }
 }

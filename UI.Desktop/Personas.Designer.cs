@@ -272,9 +272,9 @@
             // 
             // id_plan
             // 
-            this.id_plan.DataPropertyName = "IDPlan";
+            this.id_plan.DataPropertyName = "DescPlan";
             this.id_plan.FillWeight = 57.52265F;
-            this.id_plan.HeaderText = "ID Plan";
+            this.id_plan.HeaderText = "Plan";
             this.id_plan.Name = "id_plan";
             this.id_plan.ReadOnly = true;
             // 

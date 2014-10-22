@@ -34,7 +34,7 @@ namespace UI.Desktop
             PersonaLogic pl = new PersonaLogic();
             foreach (Persona p in pl.GetAll())
             {
-                if (p.TipoPersona == "Docente" && p.IDPlan == _CursoActual.Comision.Plan.ID)
+                if (p.TipoPersona == "Docente" && p.Plan.ID == _CursoActual.Comision.Plan.ID)
                     docentes.Add(p);
             }
             dgvDocentes.DataSource = docentes;

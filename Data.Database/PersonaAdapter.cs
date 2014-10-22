@@ -20,12 +20,14 @@ namespace Data.Database
                 cmdGetAlumnos.Connection = SqlConn;
                 if (tipo != 0)
                 {
-                    cmdGetAlumnos.CommandText = "SELECT * FROM dbo.personas";
+                    cmdGetAlumnos.CommandText = "SELECT dbo.personas.*, dbo.planes.* FROM dbo.personas INNER JOIN dbo.planes " + 
+                    "ON dbo.personas.id_plan=dbo.planes.id_plan WHERE dbo.personas.tipo_persona=@tipo";
                     cmdGetAlumnos.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
                 }
                 else
                 {
-                    cmdGetAlumnos.CommandText = "select * from personas ";
+                    cmdGetAlumnos.CommandText = "SELECT dbo.personas.*, dbo.planes.* FROM dbo.personas INNER JOIN dbo.planes " + 
+                    "ON dbo.personas.id_plan=dbo.planes.id_plan";
                 }
                 SqlDataReader drPersonas = cmdGetAlumnos.ExecuteReader();
 
@@ -52,7 +54,8 @@ namespace Data.Database
                             pers.TipoPersona = "Docente";
                             break;
                     }
-                    pers.IDPlan = (int)drPersonas["id_plan"];
+                    pers.Plan.ID = (int)drPersonas["id_plan"];
+                    pers.Plan.Descripcion = (string)drPersonas["desc_plan"];
                     personas.Add(pers);
                 }
                 drPersonas.Close();
@@ -100,7 +103,8 @@ namespace Data.Database
                             pers.TipoPersona = "Docente";
                             break;
                     }
-                    pers.IDPlan = (int)drPersonas["id_plan"];
+                    pers.Plan.ID = (int)drPersonas["id_plan"];
+                    pers.Plan.Descripcion = (string)drPersonas["desc_plan"];
                 }
 
                 drPersonas.Close();
@@ -165,7 +169,7 @@ namespace Data.Database
                         break;
                 }
                 
-                cmdUpdate.Parameters.Add("@idplan", SqlDbType.Int).Value = persona.IDPlan;
+                cmdUpdate.Parameters.Add("@idplan", SqlDbType.Int).Value = persona.Plan.ID;
                 cmdUpdate.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -205,7 +209,7 @@ namespace Data.Database
                         cmdInsert.Parameters.Add("@tipo_p", SqlDbType.Int).Value = 3;
                         break;
                 }
-                cmdInsert.Parameters.Add("@idplan", SqlDbType.Int).Value = persona.IDPlan;
+                cmdInsert.Parameters.Add("@idplan", SqlDbType.Int).Value = persona.Plan.ID;
                 persona.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
             }
             catch (Exception e)

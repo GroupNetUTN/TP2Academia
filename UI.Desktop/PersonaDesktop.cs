@@ -84,9 +84,9 @@ namespace UI.Desktop
             this.txtEmail.Text = PersonaActual.Email;
             this.cbxTipoPersona.SelectedItem = PersonaActual.TipoPersona;
             PlanLogic plan = new PlanLogic();
-            this.cbxEspecialidades.SelectedValue = plan.GetOne(PersonaActual.IDPlan).Especialidad.ID;
+            this.cbxEspecialidades.SelectedValue = plan.GetOne(PersonaActual.Plan.ID).Especialidad.ID;
             this.LlenarComboPlanes();
-            this.cbxPlanes.SelectedValue = PersonaActual.IDPlan;
+            this.cbxPlanes.SelectedValue = PersonaActual.Plan.ID;
 
             switch (this._Modo)
             {
@@ -131,7 +131,7 @@ namespace UI.Desktop
                 PersonaActual.Direccion = this.txtDireccion.Text;
                 PersonaActual.Telefono = this.txtTelefono.Text;
                 PersonaActual.Email = this.txtEmail.Text;
-                PersonaActual.IDPlan = Convert.ToInt32(this.cbxPlanes.SelectedValue);
+                PersonaActual.Plan.ID = Convert.ToInt32(this.cbxPlanes.SelectedValue);
                 PersonaActual.TipoPersona = this.cbxTipoPersona.SelectedItem.ToString();
             }
         }

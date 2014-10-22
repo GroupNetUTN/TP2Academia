@@ -54,7 +54,7 @@ namespace UI.Desktop
         {
             _InscripcionActual = ((Business.Entities.AlumnoInscripcion)this.dgvAlumnos.SelectedRows[0].DataBoundItem);
             _InscripcionActual.State = AlumnoInscripcion.States.Modified;
-            _InscripcionActual.Nota = Convert.ToInt32(this.txtNota.Text);
+            _InscripcionActual.Nota = Convert.ToInt32(this.cbxNota.SelectedItem);
             _InscripcionActual.Condicion = this.cbxCondicion.SelectedItem.ToString();
         }
 
@@ -68,7 +68,7 @@ namespace UI.Desktop
         public override bool Validar()
         {
             bool EsValido = true;
-            if (this.txtNota.Text.Equals(""))
+            if (this.cbxCondicion.SelectedIndex<0 || this.cbxNota.SelectedIndex<0)
                 {
                     EsValido = false;
                     this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
