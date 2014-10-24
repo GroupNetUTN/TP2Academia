@@ -129,12 +129,15 @@ namespace UI.Web
             switch(this.FormMode)
             {
                 case FormModes.Modificacion:
-                    this.Entity = new Usuario();
-                    this.Entity.ID = this.SelectedID;
-                    this.Entity.State = BusinessEntity.States.Modified;
-                    this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
-                    this.LoadGrid();
+                    if (Page.IsValid)
+                    {
+                        this.Entity = new Usuario();
+                        this.Entity.ID = this.SelectedID;
+                        this.Entity.State = BusinessEntity.States.Modified;
+                        this.LoadEntity(this.Entity);
+                        this.SaveEntity(this.Entity);
+                        this.LoadGrid();
+                    }
                     break;
                 case FormModes.Baja:
                     this.DeleteEntity(this.SelectedID);
@@ -180,12 +183,5 @@ namespace UI.Web
         }
 
         #endregion
-
-        
-
-        
-
-        
-
     }
 }

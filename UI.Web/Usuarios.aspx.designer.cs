@@ -112,6 +112,15 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtNombreUsuario;
         
         /// <summary>
+        /// Control rfvNombreUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombreUsuario;
+        
+        /// <summary>
         /// Control lblClave.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtClave;
         
         /// <summary>
+        /// Control rfvClave.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvClave;
+        
+        /// <summary>
         /// Control lblRepetirClave.
         /// </summary>
         /// <remarks>
@@ -146,6 +164,24 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRepetirClave;
+        
+        /// <summary>
+        /// Control cvRepetirClave.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvRepetirClave;
+        
+        /// <summary>
+        /// Control rfvRepetirClave.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRepetirClave;
         
         /// <summary>
         /// Control formActionsPanel.
@@ -173,5 +209,14 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton cancelarLinkButton;
+        
+        /// <summary>
+        /// Control vsValidaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsValidaciones;
     }
 }

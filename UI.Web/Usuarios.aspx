@@ -34,12 +34,25 @@
     <br />
     <asp:Label ID="lblNombreUsuario" runat="server" Text="Nombre de Usuario: "></asp:Label>
     <asp:TextBox ID="txtNombreUsuario" runat="server"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="rfvNombreUsuario" runat="server" 
+        ControlToValidate="txtNombreUsuario" 
+        ErrorMessage="El campo Nombre de Usuario es obligatorio" 
+        ForeColor="#FF3300">*</asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lblClave" runat="server" Text="Clave: "></asp:Label>
-    <asp:TextBox ID="txtClave" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtClave" runat="server" TextMode="Password"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="rfvClave" runat="server" 
+        ControlToValidate="txtClave" Display="Dynamic" 
+        ErrorMessage="El campo Clave es obligatorio" ForeColor="Red">*</asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lblRepetirClave" runat="server" Text="Repetir Clave: "></asp:Label>
-    <asp:TextBox ID="txtRepetirClave" runat="server"></asp:TextBox> 
+    <asp:TextBox ID="txtRepetirClave" runat="server" TextMode="Password"></asp:TextBox> 
+    <asp:CompareValidator ID="cvRepetirClave" runat="server" 
+        ControlToCompare="txtClave" ControlToValidate="txtRepetirClave" 
+        Display="Dynamic" ErrorMessage="Las claves deben coincidir" ForeColor="#FF3300">*</asp:CompareValidator>
+    <asp:RequiredFieldValidator ID="rfvRepetirClave" runat="server" 
+        ControlToValidate="txtRepetirClave" Display="Dynamic" 
+        ErrorMessage="El campo Repetir Clave es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator>
 </asp:Panel>
    
 <asp:Panel ID="formActionsPanel" runat="server">
@@ -47,6 +60,8 @@
         onclick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
     <asp:LinkButton ID="cancelarLinkButton" runat="server" 
         onclick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
+    <asp:ValidationSummary ID="vsValidaciones" runat="server" ForeColor="#FF3300" />
 </asp:Panel>
 
 </asp:Content>
+
