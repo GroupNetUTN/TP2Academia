@@ -3,76 +3,73 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Business.Entities;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Data.Database
 {
-    class ModuloAdapter : Adapter
+    public class ModuloAdapter : Adapter
     {
-        #region DatosEnMemoria
-
-        private static List<Modulo> _Modulos;
-
-        private static List<Modulo> Modulos
-        {
-            get
-            {
-                if (_Modulos == null)
-                {
-                    _Modulos = new List<Modulo>();
-                    Modulo m;
-
-                    m = new Modulo();
-                    m.Descripcion = "Modulo1";
-                    _Modulos.Add(m);
-
-                    m = new Modulo();
-                    m.Descripcion = "Modulo2";
-                    _Modulos.Add(m);
-
-                    m = new Modulo();
-                    m.Descripcion = "Modulo3";
-                    _Modulos.Add(m);
-
-                    m = new Modulo();
-                    m.Descripcion = "Modulo4";
-                    _Modulos.Add(m);   
-                }
-                return _Modulos;
-            }
-        }
-
-        #endregion
-
         public List<Modulo> GetAll()
         {
-            return new List<Modulo>(Modulos);
+            List<Modulo> modulos = new List<Modulo>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetAll = new SqlCommand("select * from dbo.modulos", SqlConn);
+                SqlDataReader drModulos = cmdGetAll.ExecuteReader();
+
+                while (drModulos.Read())
+                {
+                    Modulo mod = new Modulo();
+                    mod.ID = (int)drModulos["id_modulo"];
+                    mod.Descripcion = (string)drModulos["desc_modulo"];
+                    mod.Ejecuta = (string)drModulos["ejecuta"];
+
+                    modulos.Add(mod);
+                }
+                drModulos.Close();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de los Modulos", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return modulos;
         }
 
         public Modulo GetOne(string desc)
         {
-            return Modulos.Find(delegate(Modulo m) {return m.Descripcion == desc;} );
-
-        }
-
-        public void Delete(string desc)
-        {
-            Modulos.Remove(this.GetOne(desc));
-        }
-
-        public void Save(Modulo mod)
-        {
-            if (mod.State == BusinessEntity.States.New)
+            Modulo modulo = new Modulo();
+            try
             {
-                Modulos.Add(mod);
+                this.OpenConnection();
+                SqlCommand cmdGetOne = new SqlCommand("select * from dbo.modulos where desc_modulo=@desc", SqlConn);
+                cmdGetOne.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
+                SqlDataReader drModulos = cmdGetOne.ExecuteReader();
+
+                while (drModulos.Read())
+                {
+                    modulo.ID = (int)drModulos["id_modulo"];
+                    modulo.Descripcion = (string)drModulos["desc_modulo"];
+                    modulo.Ejecuta = (string)drModulos["ejecuta"];
+                }
+                drModulos.Close();
             }
-            else if (mod.State == BusinessEntity.States.Deleted)
+            catch (Exception e)
             {
-                this.Delete(mod.Descripcion);
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de los Modulos", e);
+                throw ExcepcionManejada;
             }
-            else if (mod.State == BusinessEntity.States.Modified)
+            finally
             {
-                Modulos[Modulos.FindIndex(delegate(Modulo m) { return m.Descripcion == mod.Descripcion; })] = mod;
+                this.CloseConnection();
             }
+            return modulo;
         }
     }
 }

@@ -169,7 +169,7 @@
             // 
             this.btnSeleccionarPersona.Location = new System.Drawing.Point(381, 45);
             this.btnSeleccionarPersona.Name = "btnSeleccionarPersona";
-            this.btnSeleccionarPersona.Size = new System.Drawing.Size(128, 23);
+            this.btnSeleccionarPersona.Size = new System.Drawing.Size(130, 23);
             this.btnSeleccionarPersona.TabIndex = 18;
             this.btnSeleccionarPersona.Text = "Seleccionar Persona";
             this.btnSeleccionarPersona.UseVisualStyleBackColor = true;
