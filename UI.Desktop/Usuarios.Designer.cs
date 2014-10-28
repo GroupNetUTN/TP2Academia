@@ -32,19 +32,18 @@
             this.tcUsuarios = new System.Windows.Forms.ToolStripContainer();
             this.tlUsuarios = new System.Windows.Forms.TableLayoutPanel();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidoPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombrePersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.tsUsuarios = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditarPermisos = new System.Windows.Forms.ToolStripButton();
-            this.tsbAsignarPermisos = new System.Windows.Forms.ToolStripButton();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombrePersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tcUsuarios.ContentPanel.SuspendLayout();
             this.tcUsuarios.TopToolStripPanel.SuspendLayout();
             this.tcUsuarios.SuspendLayout();
@@ -97,6 +96,7 @@
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.usuario,
+            this.tipoPersona,
             this.apellidoPersona,
             this.nombrePersona,
             this.habilitado});
@@ -110,44 +110,6 @@
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(878, 502);
             this.dgvUsuarios.TabIndex = 0;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "ID";
-            this.id.FillWeight = 74.63474F;
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // usuario
-            // 
-            this.usuario.DataPropertyName = "NombreUsuario";
-            this.usuario.FillWeight = 60.9137F;
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            // 
-            // apellidoPersona
-            // 
-            this.apellidoPersona.DataPropertyName = "Apellido";
-            this.apellidoPersona.HeaderText = "Apellido";
-            this.apellidoPersona.Name = "apellidoPersona";
-            this.apellidoPersona.ReadOnly = true;
-            // 
-            // nombrePersona
-            // 
-            this.nombrePersona.DataPropertyName = "Nombre";
-            this.nombrePersona.HeaderText = "Nombre";
-            this.nombrePersona.Name = "nombrePersona";
-            this.nombrePersona.ReadOnly = true;
-            // 
-            // habilitado
-            // 
-            this.habilitado.DataPropertyName = "Habilitado";
-            this.habilitado.FillWeight = 68.14109F;
-            this.habilitado.HeaderText = "Habilitado";
-            this.habilitado.Name = "habilitado";
-            this.habilitado.ReadOnly = true;
             // 
             // btnActualizar
             // 
@@ -176,12 +138,10 @@
             this.tsUsuarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNuevo,
             this.tsbEditar,
-            this.tsbEliminar,
-            this.tsbAsignarPermisos,
-            this.tsbEditarPermisos});
+            this.tsbEliminar});
             this.tsUsuarios.Location = new System.Drawing.Point(3, 0);
             this.tsUsuarios.Name = "tsUsuarios";
-            this.tsUsuarios.Size = new System.Drawing.Size(158, 25);
+            this.tsUsuarios.Size = new System.Drawing.Size(81, 25);
             this.tsUsuarios.TabIndex = 0;
             // 
             // tsbNuevo
@@ -214,26 +174,50 @@
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
-            // tsbEditarPermisos
+            // id
             // 
-            this.tsbEditarPermisos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditarPermisos.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditarPermisos.Image")));
-            this.tsbEditarPermisos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditarPermisos.Name = "tsbEditarPermisos";
-            this.tsbEditarPermisos.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditarPermisos.Text = "Modificar Permisos";
-            this.tsbEditarPermisos.Click += new System.EventHandler(this.tsbPermisos_Click);
+            this.id.DataPropertyName = "ID";
+            this.id.FillWeight = 74.63474F;
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
-            // tsbAsignarPermisos
+            // usuario
             // 
-            this.tsbAsignarPermisos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAsignarPermisos.Image = ((System.Drawing.Image)(resources.GetObject("tsbAsignarPermisos.Image")));
-            this.tsbAsignarPermisos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAsignarPermisos.Name = "tsbAsignarPermisos";
-            this.tsbAsignarPermisos.Size = new System.Drawing.Size(23, 22);
-            this.tsbAsignarPermisos.Text = "toolStripButton1";
-            this.tsbAsignarPermisos.ToolTipText = "Asignar Permisos";
-            this.tsbAsignarPermisos.Click += new System.EventHandler(this.tsbAsignarPermisos_Click);
+            this.usuario.DataPropertyName = "NombreUsuario";
+            this.usuario.FillWeight = 60.9137F;
+            this.usuario.HeaderText = "Usuario";
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            // 
+            // tipoPersona
+            // 
+            this.tipoPersona.DataPropertyName = "TipoPersona";
+            this.tipoPersona.HeaderText = "Tipo";
+            this.tipoPersona.Name = "tipoPersona";
+            this.tipoPersona.ReadOnly = true;
+            // 
+            // apellidoPersona
+            // 
+            this.apellidoPersona.DataPropertyName = "Apellido";
+            this.apellidoPersona.HeaderText = "Apellido";
+            this.apellidoPersona.Name = "apellidoPersona";
+            this.apellidoPersona.ReadOnly = true;
+            // 
+            // nombrePersona
+            // 
+            this.nombrePersona.DataPropertyName = "Nombre";
+            this.nombrePersona.HeaderText = "Nombre";
+            this.nombrePersona.Name = "nombrePersona";
+            this.nombrePersona.ReadOnly = true;
+            // 
+            // habilitado
+            // 
+            this.habilitado.DataPropertyName = "Habilitado";
+            this.habilitado.FillWeight = 68.14109F;
+            this.habilitado.HeaderText = "Habilitado";
+            this.habilitado.Name = "habilitado";
+            this.habilitado.ReadOnly = true;
             // 
             // Usuarios
             // 
@@ -270,11 +254,10 @@
         private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoPersona;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPersona;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombrePersona;
         private System.Windows.Forms.DataGridViewCheckBoxColumn habilitado;
-        private System.Windows.Forms.ToolStripButton tsbEditarPermisos;
-        private System.Windows.Forms.ToolStripButton tsbAsignarPermisos;
     }
 }
 

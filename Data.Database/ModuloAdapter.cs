@@ -56,7 +56,7 @@ namespace Data.Database
                 {
                     modulo.ID = (int)drModulos["id_modulo"];
                     modulo.Descripcion = (string)drModulos["desc_modulo"];
-                    modulo.Ejecuta = (string)drModulos["ejecuta"];
+                    //modulo.Ejecuta = (string)drModulos["ejecuta"];
                 }
                 drModulos.Close();
             }

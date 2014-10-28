@@ -21,7 +21,10 @@ namespace UI.Desktop
 
         private void UsuarioDesktop_Load(object sender, EventArgs e)
         {
-
+            if (_UsuarioActual.Persona.TipoPersona == "No docente")
+                this.dgvPermisos.Visible = true;
+            else
+                this.dgvPermisos.Visible = false;
         }
 
         Usuario _UsuarioActual;
@@ -30,6 +33,7 @@ namespace UI.Desktop
         {
             this._Modo = modo;
             _UsuarioActual = new Usuario();
+            
         }
 
         public UsuarioDesktop(int ID, ModoForm modo) : this()
@@ -37,6 +41,12 @@ namespace UI.Desktop
             this._Modo = modo;
             UsuarioLogic UsuarioNegocio = new UsuarioLogic();
             _UsuarioActual = UsuarioNegocio.GetOne(ID);
+            if(_UsuarioActual.Persona.TipoPersona == "No docente")
+            {
+                this.dgvPermisos.AutoGenerateColumns = false;
+                ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
+                dgvPermisos.DataSource = logic.GetAll(ID);
+            }
             this.MapearDeDatos();
         }
 
@@ -53,6 +63,7 @@ namespace UI.Desktop
             this.txtClave.Text = _UsuarioActual.Clave;
             this.txtConfirmarClave.Text = _UsuarioActual.Clave;
             this.chkHabilitado.Checked = _UsuarioActual.Habilitado;
+            this.txtPersona.Text = _UsuarioActual.Apellido + " " + _UsuarioActual.Nombre;
 
             switch (this._Modo) 
             {
@@ -92,6 +103,10 @@ namespace UI.Desktop
                 _UsuarioActual.NombreUsuario = this.txtUsuario.Text;
                 _UsuarioActual.Clave = this.txtClave.Text;
                 _UsuarioActual.Habilitado = this.chkHabilitado.Checked;
+                foreach (DataGridViewRow row in this.dgvPermisos.Rows)
+                {
+                    _UsuarioActual.ModulosUsuarios.Add((ModuloUsuario)row.DataBoundItem);
+                }
             }
 
         }
@@ -153,6 +168,16 @@ namespace UI.Desktop
             SeleccionarPersona select = new SeleccionarPersona(_UsuarioActual);
             select.ShowDialog();
             this._UsuarioActual = select.UsuarioActual;
+            this.txtPersona.Text = _UsuarioActual.Apellido + " " +  _UsuarioActual.Nombre;
+            if (_UsuarioActual.Persona.TipoPersona == "No docente")
+            {
+                this.dgvPermisos.AutoGenerateColumns = false;
+                ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
+                dgvPermisos.DataSource = logic.GetAll(0);
+                dgvPermisos.Visible = true;
+            }
+            else
+                this.dgvPermisos.Visible = false;
         }
     }
 }

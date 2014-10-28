@@ -10,27 +10,30 @@ namespace Data.Database
 {
     public class ModuloUsuarioAdapter : Adapter
     {
-        public List<ModuloUsuario> GetAll()
+        public List<ModuloUsuario> GetAll(int idUsuario)
         {
             List<ModuloUsuario> modulosusuarios = new List<ModuloUsuario>();
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.modulos_usuarios.*, dbo.modulos.* FROM dbo.modulos_usuarios INNER JOIN dbo.modulos ON dbo.modulos_usuarios.id_modulo = dbo.modulos.id_modulo", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.modulos.id_modulo, dbo.modulos.desc_modulo, " + 
+                "dbo.modulos_usuarios.id_modulo_usuario, dbo.modulos_usuarios.alta, dbo.modulos_usuarios.baja, dbo.modulos_usuarios.modificacion, " + 
+                "dbo.modulos_usuarios.consulta, dbo.modulos_usuarios.id_usuario FROM dbo.modulos_usuarios RIGHT OUTER JOIN " +
+                "dbo.modulos ON dbo.modulos_usuarios.id_modulo = dbo.modulos.id_modulo AND dbo.modulos_usuarios.id_usuario=@id", SqlConn);
+                cmdGetAll.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
                 SqlDataReader drModulosUsuarios = cmdGetAll.ExecuteReader();
 
                 while (drModulosUsuarios.Read())
                 {
                     ModuloUsuario modusu = new ModuloUsuario();
-                    modusu.ID = (int)drModulosUsuarios["id_modulo_usuario"];
-                    modusu.IdUsuario = (int)drModulosUsuarios["id_usuario"];
-                    modusu.PermiteAlta = (bool)drModulosUsuarios["alta"];
-                    modusu.PermiteBaja = (bool)drModulosUsuarios["baja"];
-                    modusu.PermiteModificacion = (bool)drModulosUsuarios["modificacion"];
-                    modusu.PermiteConsulta = (bool)drModulosUsuarios["consulta"];
+                    modusu.ID = drModulosUsuarios.IsDBNull(2)? modusu.ID=0 : (int)drModulosUsuarios["id_modulo_usuario"];
+                    modusu.IdUsuario = drModulosUsuarios.IsDBNull(7)? modusu.IdUsuario = idUsuario : (int)drModulosUsuarios["id_usuario"];
+                    modusu.PermiteAlta = drModulosUsuarios.IsDBNull(3)? modusu.PermiteAlta=false : (bool)drModulosUsuarios["alta"];
+                    modusu.PermiteBaja = drModulosUsuarios.IsDBNull(4)? modusu.PermiteBaja = false : (bool)drModulosUsuarios["baja"];
+                    modusu.PermiteModificacion = drModulosUsuarios.IsDBNull(5)? modusu.PermiteModificacion=false : (bool)drModulosUsuarios["modificacion"];
+                    modusu.PermiteConsulta = drModulosUsuarios.IsDBNull(6)? modusu.PermiteConsulta = false : (bool)drModulosUsuarios["consulta"];
                     modusu.Modulo.ID = (int)drModulosUsuarios["id_modulo"];
                     modusu.Modulo.Descripcion = (string)drModulosUsuarios["desc_modulo"];
-                    modusu.Modulo.Ejecuta = (string)drModulosUsuarios["ejecuta"];
                     modulosusuarios.Add(modusu);
                 }
                 drModulosUsuarios.Close();
@@ -82,13 +85,12 @@ namespace Data.Database
                 SqlCommand cmdInsert = new SqlCommand("insert into dbo.modulos_usuarios(id_modulo,id_usuario,alta,baja,modificacion,consulta) " +
                                                          "values(@idmodulo,@idusuario,@alta,@baja,@modif,@cons) select @@identity", SqlConn);
 
-                cmdInsert.Parameters.Add("@idmodulo", SqlDbType.Int).Value = 2;
-                cmdInsert.Parameters.Add("@idusuario", SqlDbType.Int).Value = 8;
+                cmdInsert.Parameters.Add("@idmodulo", SqlDbType.Int).Value = modusu.Modulo.ID;
+                cmdInsert.Parameters.Add("@idusuario", SqlDbType.Int).Value = modusu.IdUsuario;
                 cmdInsert.Parameters.Add("@alta", SqlDbType.Bit).Value = modusu.PermiteAlta;
                 cmdInsert.Parameters.Add("@baja", SqlDbType.Bit).Value = modusu.PermiteBaja;
                 cmdInsert.Parameters.Add("@modif", SqlDbType.Bit).Value = modusu.PermiteModificacion;
                 cmdInsert.Parameters.Add("@cons", SqlDbType.Bit).Value = modusu.PermiteConsulta;
-                //cmdInsert.ExecuteNonQuery();
                 modusu.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
             }
             catch (Exception e)

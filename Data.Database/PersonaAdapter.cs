@@ -78,7 +78,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select * from personas where id_persona=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("select * from personas inner join planes on " +
+                "personas.id_plan=planes.id_plan where id_persona=@id", SqlConn);
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drPersonas = cmdGetOne.ExecuteReader();
                 if (drPersonas.Read())

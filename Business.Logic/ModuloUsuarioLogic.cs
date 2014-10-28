@@ -21,9 +21,9 @@ namespace Business.Logic
             get { return _ModuloUsuarioData; }
         }
 
-        public List<ModuloUsuario> GetAll()
+        public List<ModuloUsuario> GetAll(int id)
         {
-            return ModuloUsuarioData.GetAll();
+            return ModuloUsuarioData.GetAll(id);
         }
 
         public void Save(ModuloUsuario mu)

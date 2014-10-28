@@ -49,5 +49,13 @@ namespace Business.Entities
             get { return _PermiteConsulta; }
             set { _PermiteConsulta = value; }
         }
+        public string DescModulo
+        {
+            get { return this.Modulo.Descripcion; }
+        }
+        public int IDModulo
+        {
+            get { return this.Modulo.ID; }
+        }
     }
 }

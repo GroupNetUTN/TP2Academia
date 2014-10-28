@@ -82,60 +82,6 @@
     <Compile Include="DocenteCursoDesktop.Designer.cs">
       <DependentUpon>DocenteCursoDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditorDePermisos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditorDePermisos.Designer.cs">
-      <DependentUpon>EditorDePermisos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PermisosComisiones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PermisosComisiones.Designer.cs">
-      <DependentUpon>PermisosComisiones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PermisosCursos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PermisosCursos.Designer.cs">
-      <DependentUpon>PermisosCursos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PermisosEspecialidades.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PermisosEspecialidades.Designer.cs">
-      <DependentUpon>PermisosEspecialidades.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PermisosInscripciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PermisosInscripciones.Designer.cs">
-      <DependentUpon>PermisosInscripciones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PermisosMaterias.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PermisosMaterias.Designer.cs">
-      <DependentUpon>PermisosMaterias.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PermisosPersonas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PermisosPersonas.Designer.cs">
-      <DependentUpon>PermisosPersonas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PermisosPlanes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PermisosPlanes.Designer.cs">
-      <DependentUpon>PermisosPlanes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PermisosUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PermisosUsuarios.Designer.cs">
-      <DependentUpon>PermisosUsuarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="RegistroNotas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,33 +209,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DocenteCursoDesktop.resx">
       <DependentUpon>DocenteCursoDesktop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditorDePermisos.resx">
-      <DependentUpon>EditorDePermisos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PermisosComisiones.resx">
-      <DependentUpon>PermisosComisiones.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PermisosCursos.resx">
-      <DependentUpon>PermisosCursos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PermisosEspecialidades.resx">
-      <DependentUpon>PermisosEspecialidades.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PermisosInscripciones.resx">
-      <DependentUpon>PermisosInscripciones.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PermisosMaterias.resx">
-      <DependentUpon>PermisosMaterias.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PermisosPersonas.resx">
-      <DependentUpon>PermisosPersonas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PermisosPlanes.resx">
-      <DependentUpon>PermisosPlanes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PermisosUsuarios.resx">
-      <DependentUpon>PermisosUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroNotas.resx">
       <DependentUpon>RegistroNotas.cs</DependentUpon>

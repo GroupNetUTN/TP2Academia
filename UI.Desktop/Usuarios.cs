@@ -67,33 +67,5 @@ namespace UI.Desktop
                 this.Listar();
             }
         }
-
-        private void tsbPermisos_Click(object sender, EventArgs e)
-        {
-            int ID = ((Business.Entities.Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
-            EditorDePermisos ep = new EditorDePermisos(ID);
-            ep.ShowDialog();
-        }
-
-        private void tsbAsignarPermisos_Click(object sender, EventArgs e)
-        {
-            int ID = ((Business.Entities.Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
-            PermisosUsuarios pu = new PermisosUsuarios(ID);
-            pu.ShowDialog();
-            PermisosPersonas pp = new PermisosPersonas(ID);
-            pp.ShowDialog();
-            PermisosPlanes pplanes = new PermisosPlanes(ID);
-            pplanes.ShowDialog();
-            PermisosMaterias pm = new PermisosMaterias(ID);
-            pm.ShowDialog();
-            PermisosEspecialidades pe = new PermisosEspecialidades(ID);
-            pe.ShowDialog();
-            PermisosCursos pc = new PermisosCursos(ID);
-            pc.ShowDialog();
-            PermisosComisiones pcomi = new PermisosComisiones(ID);
-            pcomi.ShowDialog();
-            PermisosInscripciones pi = new PermisosInscripciones(ID);
-            pi.ShowDialog();
-        }
     }
 }

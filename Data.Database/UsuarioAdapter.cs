@@ -152,6 +152,13 @@ namespace Data.Database
                 cmdUpdate.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdUpdate.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.Persona.ID;
                 cmdUpdate.ExecuteNonQuery();
+
+                ModuloUsuarioAdapter muadapter = new ModuloUsuarioAdapter();
+                foreach (ModuloUsuario mu in usuario.ModulosUsuarios)
+                {
+                    mu.State = BusinessEntity.States.Modified;
+                    muadapter.Save(mu);
+                }
             }
             catch (Exception e)
             {
@@ -177,7 +184,15 @@ namespace Data.Database
                 cmdInsert.Parameters.Add("@clave", SqlDbType.VarChar).Value = usuario.Clave;
                 cmdInsert.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdInsert.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.Persona.ID;
-                usuario.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
+                usuario.ID = Convert.ToInt32(cmdInsert.ExecuteScalar());
+
+                ModuloUsuarioAdapter muadapter = new ModuloUsuarioAdapter();
+                foreach (ModuloUsuario mu in usuario.ModulosUsuarios)
+                {
+                    mu.State = BusinessEntity.States.New;
+                    mu.IdUsuario = usuario.ID;
+                    muadapter.Save(mu);
+                }
             }
             catch (Exception e)
             {

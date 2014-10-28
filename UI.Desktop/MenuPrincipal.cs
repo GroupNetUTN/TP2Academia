@@ -84,5 +84,22 @@ namespace UI.Desktop
             RegistroNotas reg = new RegistroNotas(_UsuarioActual);
             reg.ShowDialog();
         }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Login login = new Login();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                this._UsuarioActual = login.UsuarioActual;
+                this.Visible = true;
+            }
+            else
+            {
+                this.Close();
+            }
+            
+           
+        }
     }
 }
