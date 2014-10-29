@@ -32,18 +32,18 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvMaterias = new System.Windows.Forms.DataGridView();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hs_Semanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hs_Totales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -111,6 +111,54 @@
             this.dgvMaterias.Size = new System.Drawing.Size(677, 470);
             this.dgvMaterias.TabIndex = 0;
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.FillWeight = 45.68528F;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.FillWeight = 110.8629F;
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // Hs_Semanales
+            // 
+            this.Hs_Semanales.DataPropertyName = "HSSemanales";
+            this.Hs_Semanales.FillWeight = 110.8629F;
+            this.Hs_Semanales.HeaderText = "Horas Semanales";
+            this.Hs_Semanales.Name = "Hs_Semanales";
+            this.Hs_Semanales.ReadOnly = true;
+            // 
+            // Hs_Totales
+            // 
+            this.Hs_Totales.DataPropertyName = "HSTotales";
+            this.Hs_Totales.FillWeight = 110.8629F;
+            this.Hs_Totales.HeaderText = "Horas Totales";
+            this.Hs_Totales.Name = "Hs_Totales";
+            this.Hs_Totales.ReadOnly = true;
+            // 
+            // Plan
+            // 
+            this.Plan.DataPropertyName = "DescPlan";
+            this.Plan.FillWeight = 110.8629F;
+            this.Plan.HeaderText = "Plan";
+            this.Plan.Name = "Plan";
+            this.Plan.ReadOnly = true;
+            // 
+            // especialidad
+            // 
+            this.especialidad.DataPropertyName = "DescEspecialidad";
+            this.especialidad.FillWeight = 110.8629F;
+            this.especialidad.HeaderText = "Especialidad";
+            this.especialidad.Name = "especialidad";
+            this.especialidad.ReadOnly = true;
+            // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -175,54 +223,6 @@
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.FillWeight = 45.68528F;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.FillWeight = 110.8629F;
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // Hs_Semanales
-            // 
-            this.Hs_Semanales.DataPropertyName = "HSSemanales";
-            this.Hs_Semanales.FillWeight = 110.8629F;
-            this.Hs_Semanales.HeaderText = "Horas Semanales";
-            this.Hs_Semanales.Name = "Hs_Semanales";
-            this.Hs_Semanales.ReadOnly = true;
-            // 
-            // Hs_Totales
-            // 
-            this.Hs_Totales.DataPropertyName = "HSTotales";
-            this.Hs_Totales.FillWeight = 110.8629F;
-            this.Hs_Totales.HeaderText = "Horas Totales";
-            this.Hs_Totales.Name = "Hs_Totales";
-            this.Hs_Totales.ReadOnly = true;
-            // 
-            // Plan
-            // 
-            this.Plan.DataPropertyName = "DescPlan";
-            this.Plan.FillWeight = 110.8629F;
-            this.Plan.HeaderText = "Plan";
-            this.Plan.Name = "Plan";
-            this.Plan.ReadOnly = true;
-            // 
-            // especialidad
-            // 
-            this.especialidad.DataPropertyName = "DescEspecialidad";
-            this.especialidad.FillWeight = 110.8629F;
-            this.especialidad.HeaderText = "Especialidad";
-            this.especialidad.Name = "especialidad";
-            this.especialidad.ReadOnly = true;
-            // 
             // Materias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +230,7 @@
             this.ClientSize = new System.Drawing.Size(683, 530);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "Materias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Materias";
             this.Load += new System.EventHandler(this.Materias_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);

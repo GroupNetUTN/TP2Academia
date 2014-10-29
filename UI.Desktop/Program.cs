@@ -18,7 +18,7 @@ namespace UI.Desktop
             Login login = new Login();
             if (login.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new MenuPrincipal(login.UsuarioActual));
+                Application.Run(new MainMenu(login.UsuarioActual));
             }
             else
             { 

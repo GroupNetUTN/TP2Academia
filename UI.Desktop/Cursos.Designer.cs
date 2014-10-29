@@ -227,6 +227,7 @@
             this.ClientSize = new System.Drawing.Size(575, 460);
             this.Controls.Add(this.tcCursos);
             this.Name = "Cursos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cursos";
             this.Load += new System.EventHandler(this.Cursos_Load);
             this.tcCursos.ContentPanel.ResumeLayout(false);

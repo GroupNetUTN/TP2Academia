@@ -208,6 +208,7 @@
             this.ClientSize = new System.Drawing.Size(634, 462);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "Inscripciones";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inscripciones";
             this.Load += new System.EventHandler(this.Inscripciones_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);

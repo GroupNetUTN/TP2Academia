@@ -32,17 +32,17 @@
             this.tscComisiones = new System.Windows.Forms.ToolStripContainer();
             this.tlpComisiones = new System.Windows.Forms.TableLayoutPanel();
             this.dgvComisiones = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc_comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anios_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.tsComisiones = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desc_comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.anios_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tscComisiones.ContentPanel.SuspendLayout();
             this.tscComisiones.TopToolStripPanel.SuspendLayout();
             this.tscComisiones.SuspendLayout();
@@ -108,6 +108,45 @@
             this.dgvComisiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvComisiones.Size = new System.Drawing.Size(528, 302);
             this.dgvComisiones.TabIndex = 0;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "ID";
+            this.id.FillWeight = 81.21827F;
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // desc_comision
+            // 
+            this.desc_comision.DataPropertyName = "Descripcion";
+            this.desc_comision.FillWeight = 171.2707F;
+            this.desc_comision.HeaderText = "Descripción";
+            this.desc_comision.Name = "desc_comision";
+            this.desc_comision.ReadOnly = true;
+            // 
+            // anios_especialidad
+            // 
+            this.anios_especialidad.DataPropertyName = "AnioEspecialidad";
+            this.anios_especialidad.FillWeight = 76.51565F;
+            this.anios_especialidad.HeaderText = "Años";
+            this.anios_especialidad.Name = "anios_especialidad";
+            this.anios_especialidad.ReadOnly = true;
+            // 
+            // plan
+            // 
+            this.plan.DataPropertyName = "DescPlan";
+            this.plan.FillWeight = 70.99537F;
+            this.plan.HeaderText = "Plan";
+            this.plan.Name = "plan";
+            this.plan.ReadOnly = true;
+            // 
+            // especialidad
+            // 
+            this.especialidad.DataPropertyName = "DescEspecialidad";
+            this.especialidad.HeaderText = "Especialidad";
+            this.especialidad.Name = "especialidad";
+            this.especialidad.ReadOnly = true;
             // 
             // btnActualizar
             // 
@@ -175,45 +214,6 @@
             this.tsbEliminar.ToolTipText = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "ID";
-            this.id.FillWeight = 81.21827F;
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // desc_comision
-            // 
-            this.desc_comision.DataPropertyName = "Descripcion";
-            this.desc_comision.FillWeight = 171.2707F;
-            this.desc_comision.HeaderText = "Descripción";
-            this.desc_comision.Name = "desc_comision";
-            this.desc_comision.ReadOnly = true;
-            // 
-            // anios_especialidad
-            // 
-            this.anios_especialidad.DataPropertyName = "AnioEspecialidad";
-            this.anios_especialidad.FillWeight = 76.51565F;
-            this.anios_especialidad.HeaderText = "Años";
-            this.anios_especialidad.Name = "anios_especialidad";
-            this.anios_especialidad.ReadOnly = true;
-            // 
-            // plan
-            // 
-            this.plan.DataPropertyName = "DescPlan";
-            this.plan.FillWeight = 70.99537F;
-            this.plan.HeaderText = "Plan";
-            this.plan.Name = "plan";
-            this.plan.ReadOnly = true;
-            // 
-            // especialidad
-            // 
-            this.especialidad.DataPropertyName = "DescEspecialidad";
-            this.especialidad.HeaderText = "Especialidad";
-            this.especialidad.Name = "especialidad";
-            this.especialidad.ReadOnly = true;
-            // 
             // Comisiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,6 +221,7 @@
             this.ClientSize = new System.Drawing.Size(534, 362);
             this.Controls.Add(this.tscComisiones);
             this.Name = "Comisiones";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comisiones";
             this.Load += new System.EventHandler(this.Comisiones_Load);
             this.tscComisiones.ContentPanel.ResumeLayout(false);

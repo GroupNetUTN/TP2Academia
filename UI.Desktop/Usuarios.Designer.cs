@@ -32,18 +32,18 @@
             this.tcUsuarios = new System.Windows.Forms.ToolStripContainer();
             this.tlUsuarios = new System.Windows.Forms.TableLayoutPanel();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.tsUsuarios = new System.Windows.Forms.ToolStrip();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombrePersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.tsUsuarios = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.tcUsuarios.ContentPanel.SuspendLayout();
             this.tcUsuarios.TopToolStripPanel.SuspendLayout();
             this.tcUsuarios.SuspendLayout();
@@ -111,6 +111,51 @@
             this.dgvUsuarios.Size = new System.Drawing.Size(878, 502);
             this.dgvUsuarios.TabIndex = 0;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "ID";
+            this.id.FillWeight = 74.63474F;
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // usuario
+            // 
+            this.usuario.DataPropertyName = "NombreUsuario";
+            this.usuario.FillWeight = 60.9137F;
+            this.usuario.HeaderText = "Usuario";
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            // 
+            // tipoPersona
+            // 
+            this.tipoPersona.DataPropertyName = "TipoPersona";
+            this.tipoPersona.HeaderText = "Tipo";
+            this.tipoPersona.Name = "tipoPersona";
+            this.tipoPersona.ReadOnly = true;
+            // 
+            // apellidoPersona
+            // 
+            this.apellidoPersona.DataPropertyName = "Apellido";
+            this.apellidoPersona.HeaderText = "Apellido";
+            this.apellidoPersona.Name = "apellidoPersona";
+            this.apellidoPersona.ReadOnly = true;
+            // 
+            // nombrePersona
+            // 
+            this.nombrePersona.DataPropertyName = "Nombre";
+            this.nombrePersona.HeaderText = "Nombre";
+            this.nombrePersona.Name = "nombrePersona";
+            this.nombrePersona.ReadOnly = true;
+            // 
+            // habilitado
+            // 
+            this.habilitado.DataPropertyName = "Habilitado";
+            this.habilitado.FillWeight = 68.14109F;
+            this.habilitado.HeaderText = "Habilitado";
+            this.habilitado.Name = "habilitado";
+            this.habilitado.ReadOnly = true;
+            // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -174,51 +219,6 @@
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "ID";
-            this.id.FillWeight = 74.63474F;
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // usuario
-            // 
-            this.usuario.DataPropertyName = "NombreUsuario";
-            this.usuario.FillWeight = 60.9137F;
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            // 
-            // tipoPersona
-            // 
-            this.tipoPersona.DataPropertyName = "TipoPersona";
-            this.tipoPersona.HeaderText = "Tipo";
-            this.tipoPersona.Name = "tipoPersona";
-            this.tipoPersona.ReadOnly = true;
-            // 
-            // apellidoPersona
-            // 
-            this.apellidoPersona.DataPropertyName = "Apellido";
-            this.apellidoPersona.HeaderText = "Apellido";
-            this.apellidoPersona.Name = "apellidoPersona";
-            this.apellidoPersona.ReadOnly = true;
-            // 
-            // nombrePersona
-            // 
-            this.nombrePersona.DataPropertyName = "Nombre";
-            this.nombrePersona.HeaderText = "Nombre";
-            this.nombrePersona.Name = "nombrePersona";
-            this.nombrePersona.ReadOnly = true;
-            // 
-            // habilitado
-            // 
-            this.habilitado.DataPropertyName = "Habilitado";
-            this.habilitado.FillWeight = 68.14109F;
-            this.habilitado.HeaderText = "Habilitado";
-            this.habilitado.Name = "habilitado";
-            this.habilitado.ReadOnly = true;
-            // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +226,7 @@
             this.ClientSize = new System.Drawing.Size(884, 562);
             this.Controls.Add(this.tcUsuarios);
             this.Name = "Usuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuarios";
             this.Load += new System.EventHandler(this.Usuarios_Load);
             this.tcUsuarios.ContentPanel.ResumeLayout(false);

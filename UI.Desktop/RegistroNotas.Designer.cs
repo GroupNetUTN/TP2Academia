@@ -293,6 +293,7 @@
             this.ClientSize = new System.Drawing.Size(668, 481);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RegistroNotas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistroNotas";
             this.Load += new System.EventHandler(this.RegistroNotas_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
