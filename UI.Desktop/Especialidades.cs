@@ -13,9 +13,18 @@ namespace UI.Desktop
 {
     public partial class Especialidades : ApplicationForm
     {
-        public Especialidades()
+        private Usuario _UsuarioActual;
+
+        public Usuario UsuarioActual
+        {
+            get { return _UsuarioActual; }
+            set { _UsuarioActual = value; }
+        }
+
+        public Especialidades(Usuario us)
         {
             InitializeComponent();
+            UsuarioActual = us;
             dgvEspecialidades.AutoGenerateColumns = false;
         }
 
@@ -27,6 +36,16 @@ namespace UI.Desktop
 
         private void Especialidades_Load(object sender, EventArgs e)
         {
+            foreach (ModuloUsuario mu in UsuarioActual.ModulosUsuarios)
+            {
+                if (mu.Modulo.Descripcion == "Especialidades")
+                {
+                    this.dgvEspecialidades.Visible = mu.PermiteConsulta;
+                    this.tsbNuevo.Visible = mu.PermiteAlta;
+                    this.tsbEliminar.Visible = mu.PermiteBaja;
+                    this.tsbEditar.Visible = mu.PermiteModificacion;
+                }
+            }
             this.Listar();
         }
 

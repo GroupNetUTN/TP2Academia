@@ -13,9 +13,18 @@ namespace UI.Desktop
 {
     public partial class Planes : ApplicationForm
     {
-        public Planes()
+        private Usuario _UsuarioActual;
+
+        public Usuario UsuarioActual
+        {
+            get { return _UsuarioActual; }
+            set { _UsuarioActual = value; }
+        }
+
+        public Planes(Usuario us)
         {
             InitializeComponent();
+            UsuarioActual = us;
             dgvPlanes.AutoGenerateColumns = false;
         }
 
@@ -27,6 +36,16 @@ namespace UI.Desktop
 
         private void Planes_Load(object sender, EventArgs e)
         {
+            foreach (ModuloUsuario mu in UsuarioActual.ModulosUsuarios)
+            {
+                if (mu.Modulo.Descripcion == "Planes")
+                {
+                    this.dgvPlanes.Visible = mu.PermiteConsulta;
+                    this.tsbNuevo.Visible = mu.PermiteAlta;
+                    this.tsbEliminar.Visible = mu.PermiteBaja;
+                    this.tsbEditar.Visible = mu.PermiteModificacion;
+                }
+            }
             this.Listar();
         }
 

@@ -16,10 +16,10 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.modulos.id_modulo, dbo.modulos.desc_modulo, " + 
-                "dbo.modulos_usuarios.id_modulo_usuario, dbo.modulos_usuarios.alta, dbo.modulos_usuarios.baja, dbo.modulos_usuarios.modificacion, " + 
-                "dbo.modulos_usuarios.consulta, dbo.modulos_usuarios.id_usuario FROM dbo.modulos_usuarios RIGHT OUTER JOIN " +
-                "dbo.modulos ON dbo.modulos_usuarios.id_modulo = dbo.modulos.id_modulo AND dbo.modulos_usuarios.id_usuario=@id", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.modulos.id_modulo, dbo.modulos.desc_modulo, dbo.modulos_usuarios.id_modulo_usuario, dbo.modulos_usuarios.alta, " +
+                                                             "dbo.modulos_usuarios.baja, dbo.modulos_usuarios.modificacion, dbo.modulos_usuarios.consulta, dbo.modulos_usuarios.id_usuario " +
+                                                      "FROM dbo.modulos_usuarios RIGHT OUTER JOIN dbo.modulos ON dbo.modulos_usuarios.id_modulo = dbo.modulos.id_modulo " +
+                                                                                                             "AND dbo.modulos_usuarios.id_usuario=@id", SqlConn);
                 cmdGetAll.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
                 SqlDataReader drModulosUsuarios = cmdGetAll.ExecuteReader();
 
@@ -32,6 +32,46 @@ namespace Data.Database
                     modusu.PermiteBaja = drModulosUsuarios.IsDBNull(4)? modusu.PermiteBaja = false : (bool)drModulosUsuarios["baja"];
                     modusu.PermiteModificacion = drModulosUsuarios.IsDBNull(5)? modusu.PermiteModificacion=false : (bool)drModulosUsuarios["modificacion"];
                     modusu.PermiteConsulta = drModulosUsuarios.IsDBNull(6)? modusu.PermiteConsulta = false : (bool)drModulosUsuarios["consulta"];
+                    modusu.Modulo.ID = (int)drModulosUsuarios["id_modulo"];
+                    modusu.Modulo.Descripcion = (string)drModulosUsuarios["desc_modulo"];
+                    modulosusuarios.Add(modusu);
+                }
+                drModulosUsuarios.Close();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de los permisos.", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return modulosusuarios;
+        }
+
+        public List<ModuloUsuario> GetPermisos(int idUsuario)
+        {
+            List<ModuloUsuario> modulosusuarios = new List<ModuloUsuario>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.modulos_usuarios.id_modulo_usuario, dbo.modulos_usuarios.id_modulo, dbo.modulos_usuarios.id_usuario, dbo.modulos_usuarios.alta, " +
+                                                             "dbo.modulos_usuarios.baja, dbo.modulos_usuarios.modificacion, dbo.modulos_usuarios.consulta, dbo.modulos.desc_modulo " +
+                                                      "FROM dbo.modulos_usuarios INNER JOIN dbo.modulos ON dbo.modulos_usuarios.id_modulo = dbo.modulos.id_modulo " +
+                                                      "WHERE (dbo.modulos_usuarios.id_usuario = @id)", SqlConn);
+                cmdGetAll.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
+                SqlDataReader drModulosUsuarios = cmdGetAll.ExecuteReader();
+
+                while (drModulosUsuarios.Read())
+                {
+                    ModuloUsuario modusu = new ModuloUsuario();
+                    modusu.ID = (int)drModulosUsuarios["id_modulo_usuario"];
+                    modusu.IdUsuario = (int)drModulosUsuarios["id_usuario"];
+                    modusu.PermiteAlta = (bool)drModulosUsuarios["alta"];
+                    modusu.PermiteBaja = (bool)drModulosUsuarios["baja"];
+                    modusu.PermiteModificacion = (bool)drModulosUsuarios["modificacion"];
+                    modusu.PermiteConsulta = (bool)drModulosUsuarios["consulta"];
                     modusu.Modulo.ID = (int)drModulosUsuarios["id_modulo"];
                     modusu.Modulo.Descripcion = (string)drModulosUsuarios["desc_modulo"];
                     modulosusuarios.Add(modusu);

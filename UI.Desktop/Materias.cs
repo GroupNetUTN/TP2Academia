@@ -13,9 +13,18 @@ namespace UI.Desktop
 {
     public partial class Materias : ApplicationForm
     {
-        public Materias()
+        private Usuario _UsuarioActual;
+
+        public Usuario UsuarioActual
+        {
+            get { return _UsuarioActual; }
+            set { _UsuarioActual = value; }
+        }
+
+        public Materias(Usuario us)
         {
             InitializeComponent();
+            UsuarioActual = us;
             dgvMaterias.AutoGenerateColumns = false;
         }
 
@@ -27,6 +36,16 @@ namespace UI.Desktop
 
         private void Materias_Load(object sender, EventArgs e)
         {
+            foreach (ModuloUsuario mu in UsuarioActual.ModulosUsuarios)
+            {
+                if (mu.Modulo.Descripcion == "Materias")
+                {
+                    this.dgvMaterias.Visible = mu.PermiteConsulta;
+                    this.tsbNuevo.Visible = mu.PermiteAlta;
+                    this.tsbEliminar.Visible = mu.PermiteBaja;
+                    this.tsbEditar.Visible = mu.PermiteModificacion;
+                }
+            }
             this.Listar();
         }
 

@@ -28,43 +28,43 @@ namespace UI.Desktop
 
         private void btnEspecialidades_Click(object sender, EventArgs e)
         {
-            Especialidades esp = new Especialidades();
+            Especialidades esp = new Especialidades(UsuarioActual);
             esp.ShowDialog();
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            Usuarios user = new Usuarios();
+            Usuarios user = new Usuarios(UsuarioActual);
             user.ShowDialog();
         }
 
         private void btnPlanes_Click(object sender, EventArgs e)
         {
-            Planes planes = new Planes();
+            Planes planes = new Planes(UsuarioActual);
             planes.ShowDialog();
         }
 
         private void btnPersonas_Click(object sender, EventArgs e)
         {
-            Personas per = new Personas();
+            Personas per = new Personas(UsuarioActual);
             per.ShowDialog();
         }
 
         private void btnComisiones_Click(object sender, EventArgs e)
         {
-            Comisiones comi = new Comisiones();
+            Comisiones comi = new Comisiones(UsuarioActual);
             comi.ShowDialog();
         }
 
         private void btnMaterias_Click(object sender, EventArgs e)
         {
-            Materias mat = new Materias();
+            Materias mat = new Materias(UsuarioActual);
             mat.ShowDialog();
         }
 
         private void btnCursos_Click(object sender, EventArgs e)
         {
-            Cursos cur = new Cursos();
+            Cursos cur = new Cursos(UsuarioActual);
             cur.ShowDialog();
         }
 
