@@ -40,6 +40,10 @@ namespace UI.Desktop
             {
                 this.registrarNotasToolStripMenuItem.Visible = true;
             }
+            else if (UsuarioActual.Persona.TipoPersona == "No docente")
+            {
+                this.reportesToolStripMenuItem.Visible = true;
+            }
 
             foreach (ModuloUsuario mu in UsuarioActual.ModulosUsuarios)
             {
@@ -170,6 +174,13 @@ namespace UI.Desktop
             RegistroNotas reg = new RegistroNotas(_UsuarioActual);
             reg.MdiParent = this;
             reg.Show();
+        }
+
+        private void reportesCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReporteCursosViewer rpc = new ReporteCursosViewer();
+            rpc.MdiParent = this;
+            rpc.Show();
         }
 
         

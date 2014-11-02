@@ -186,3 +186,4 @@ C:\Users\Usuario\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Selecci
 C:\Users\Usuario\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.MenuPrincipal.resources
 C:\Users\Usuario\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.dll
 C:\Users\Usuario\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.pdb
+C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.ReporteCursosViewer.resources
