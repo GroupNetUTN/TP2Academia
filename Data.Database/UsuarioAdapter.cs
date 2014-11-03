@@ -221,5 +221,59 @@ namespace Data.Database
             }
             usuario.State = BusinessEntity.States.Unmodified;
         }
+
+        public Usuario GetUsuarioForLogin(string user, string pass)
+        {
+            Usuario usr = new Usuario();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand GetUsuarioForLogin = new SqlCommand("SELECT dbo.usuarios.*, dbo.personas.* FROM dbo.personas " +
+                    "INNER JOIN dbo.usuarios ON dbo.personas.id_persona = dbo.usuarios.id_persona WHERE nombre_usuario=@user AND clave=@pass", SqlConn);
+                GetUsuarioForLogin.Parameters.Add("@user", SqlDbType.VarChar).Value = user;
+                GetUsuarioForLogin.Parameters.Add("@pass", SqlDbType.VarChar).Value = pass;
+                SqlDataReader drUsuarios = GetUsuarioForLogin.ExecuteReader();
+                if (drUsuarios.Read())
+                {
+                    usr.ID = (int)drUsuarios["id_usuario"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
+                    usr.Clave = (string)drUsuarios["clave"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    usr.Persona.ID = (int)drUsuarios["id_persona"];
+                    usr.Persona.Plan.ID = (int)drUsuarios["id_plan"];
+                    usr.Persona.Nombre = (string)drUsuarios["nombre"];
+                    usr.Persona.Apellido = (string)drUsuarios["apellido"];
+                    usr.Persona.Email = (string)drUsuarios["email"];
+                    usr.Persona.Direccion = (string)drUsuarios["direccion"];
+                    usr.Persona.Telefono = (string)drUsuarios["telefono"];
+                    usr.Persona.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
+                    usr.Persona.Legajo = (int)drUsuarios["legajo"];
+                    switch ((int)drUsuarios["tipo_persona"])
+                    {
+                        case 1:
+                            usr.Persona.TipoPersona = "No docente";
+                            break;
+                        case 2:
+                            usr.Persona.TipoPersona = "Alumno";
+                            break;
+                        case 3:
+                            usr.Persona.TipoPersona = "Docente";
+                            break;
+                    }
+                }
+
+                drUsuarios.Close();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos del usuario", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return usr;
+        }
     }
 }

@@ -32,19 +32,11 @@ namespace UI.Desktop
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            bool Existe = false;
-            bool Habilitado = false;
             UsuarioLogic user = new UsuarioLogic();
-            foreach (Usuario u in user.GetAll())
-                if (u.NombreUsuario == this.txtUsuario.Text && u.Clave == this.txtContraseña.Text)
-                {
-                    Existe = true;
-                    Habilitado = u.Habilitado;
-                    _UsuarioActual = u;
-                }
-            if (Existe)
+            _UsuarioActual = user.GetUsuarioForLogin(txtUsuario.Text, txtContraseña.Text);
+            if (_UsuarioActual.ID != 0)
             {
-                if(Habilitado)
+                if (_UsuarioActual.Habilitado)
                 {
                     this.DialogResult = DialogResult.OK;
                 }
@@ -58,6 +50,7 @@ namespace UI.Desktop
                 this.Notificar("Usuario o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtContraseña.Clear();
             }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

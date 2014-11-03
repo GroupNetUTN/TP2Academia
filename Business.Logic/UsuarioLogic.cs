@@ -43,5 +43,10 @@ namespace Business.Logic
         {
             UsuarioData.Delete(ID);
         }
+
+        public Usuario GetUsuarioForLogin(string user, string pass)
+        {
+            return UsuarioData.GetUsuarioForLogin(user, pass);
+        }
     }
 }
