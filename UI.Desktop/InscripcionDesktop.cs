@@ -94,13 +94,18 @@ namespace UI.Desktop
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            var rta = MessageBox.Show("Se esta inscribiendo a la Materia: " + ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).Descripcion +
-                " en la Comision: " + ((Business.Entities.Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).Descripcion, "Atencion", MessageBoxButtons.YesNo);
-            if (rta == DialogResult.Yes)
+            if (dgvComisiones.SelectedRows.Count > 0)
             {
-                this.GuardarCambios();
-                this.Close();
+                var rta = MessageBox.Show("Se esta inscribiendo a la Materia: " + ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).Descripcion +
+                    " en la Comision: " + ((Business.Entities.Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).Descripcion, "Atencion", MessageBoxButtons.YesNo);
+                if (rta == DialogResult.Yes)
+                {
+                    this.GuardarCambios();
+                    this.Close();
+                }
             }
+            else
+                this.Notificar("Seleccione una comision a la cual inscribirse", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
 
