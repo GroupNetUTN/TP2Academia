@@ -16,9 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.materias.*, dbo.planes.*, dbo.especialidades.* " +
-                                                      "FROM dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan " + 
-                                                      "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_Materias", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drMaterias = cmdGetAll.ExecuteReader();
 
                 while (drMaterias.Read())
@@ -54,10 +53,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.materias.*, dbo.planes.*, dbo.especialidades.* " +
-                                                      "FROM dbo.materias INNER JOIN dbo.planes ON dbo.materias.id_plan = dbo.planes.id_plan " +
-                                                                        "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad " + 
-                                                      "where id_materia=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_Materias", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drMaterias = cmdGetOne.ExecuteReader();
                 if (drMaterias.Read())
@@ -91,7 +88,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete materias where id_materia = @id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete_Materias", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -111,8 +109,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE materias SET desc_materia=@desc, hs_semanales=@hs_sem, hs_totales=@hs_tot, id_plan=@id_plan " +
-                    "WHERE id_materia=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_Materias", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = mat.ID;
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar).Value = mat.Descripcion;
@@ -137,7 +135,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into materias(desc_materia,hs_semanales,hs_totales,id_plan) values(@desc,@hs_sem,@hs_tot,@id_plan) select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_Materias", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
 
                 cmdInsert.Parameters.Add("@desc", SqlDbType.VarChar).Value = mat.Descripcion;
                 cmdInsert.Parameters.Add("@hs_sem", SqlDbType.Int).Value = mat.HSSemanales;

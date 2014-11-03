@@ -16,9 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.comisiones.*, dbo.planes.*, dbo.especialidades.* " +
-                                                      "FROM dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan " + 
-                                                                          "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_Comisiones", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drComisiones = cmdGetAll.ExecuteReader();
 
                 while (drComisiones.Read())
@@ -53,10 +52,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.comisiones.*, dbo.planes.*, dbo.especialidades.* " +
-                                                      "FROM dbo.comisiones INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan " + 
-                                                                          "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad " +
-                                                                          "where id_comision=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_Comisiones", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drComisiones = cmdGetOne.ExecuteReader();
                 if (drComisiones.Read())
@@ -89,7 +86,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete comisiones where id_comision = @id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete_Comisiones", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 
                 cmdDelete.ExecuteNonQuery();
@@ -110,7 +108,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE comisiones SET desc_comision=@desc, anio_especialidad=@anios, id_plan=@plan WHERE id_comision=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_Comisiones", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = comision.ID;
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar).Value = comision.Descripcion;
@@ -134,7 +133,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into comisiones(desc_comision, anio_especialidad, id_plan) values(@desc, @anios, @plan) select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_Comisiones", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
 
                 cmdInsert.Parameters.Add("@desc", SqlDbType.VarChar).Value = comision.Descripcion;
                 cmdInsert.Parameters.Add("@anios", SqlDbType.Int).Value = comision.AnioEspecialidad;

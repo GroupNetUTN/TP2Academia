@@ -16,11 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.alumnos_inscripciones.*, dbo.personas.*, dbo.materias.*, dbo.comisiones.*, dbo.cursos.* "+
-                                                      "FROM dbo.alumnos_inscripciones INNER JOIN dbo.personas ON dbo.alumnos_inscripciones.id_alumno = dbo.personas.id_persona "+ 
-                                                                                     "INNER JOIN dbo.cursos ON dbo.alumnos_inscripciones.id_curso = dbo.cursos.id_curso "+ 
-                                                                                     "INNER JOIN dbo.materias ON dbo.cursos.id_materia = dbo.materias.id_materia "+ 
-                                                                                     "INNER JOIN dbo.comisiones ON dbo.cursos.id_comision = dbo.comisiones.id_comision", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_AlumnosInscripciones", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drInscripciones = cmdGetAll.ExecuteReader();
                 while (drInscripciones.Read())
                 {
@@ -75,10 +72,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.alumnos_inscripciones.*, dbo.personas.*, dbo.cursos.* " +
-                    "FROM dbo.alumnos_inscripciones INNER JOIN dbo.personas ON " +
-                    "dbo.alumnos_inscripciones.id_alumno = dbo.personas.id_persona " +
-                    "INNER JOIN dbo.cursos ON dbo.alumnos_inscripciones.id_curso = dbo.cursos.id_curso WHERE id_materia=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_AlumnosInscripciones", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drInscripciones = cmdGetOne.ExecuteReader();
                 if (drInscripciones.Read())
@@ -131,7 +126,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete alumnos_inscripciones where id_inscripcion = @id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete_AlumnosInscripciones", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -151,9 +147,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE alumnos_inscripciones SET id_alumno=@id_alumno, id_curso=@id_curso, "
-                + "condicion=@condicion, nota=@nota " +
-                    "WHERE id_inscripcion=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_AlumnosInscripciones", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = ins.ID;
                 cmdUpdate.Parameters.Add("@id_alumno", SqlDbType.Int).Value = ins.Alumno.ID;
@@ -178,8 +173,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into alumnos_inscripciones(id_alumno,id_curso,condicion,nota) " +
-                    "values(@id_alumno,@id_curso,@condicion,@nota) select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_AlumnosInscripciones", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
 
                 cmdInsert.Parameters.Add("@id_alumno", SqlDbType.Int).Value = ins.Alumno.ID;
                 cmdInsert.Parameters.Add("@id_curso", SqlDbType.Int).Value = ins.Curso.ID;

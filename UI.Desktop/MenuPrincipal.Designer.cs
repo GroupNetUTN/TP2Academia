@@ -255,7 +255,7 @@
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
@@ -286,7 +286,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MenuPrincipal";
-            this.Text = "Menu Principal";
+            this.Text = "Menu Para Testear";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

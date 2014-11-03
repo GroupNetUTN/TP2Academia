@@ -16,9 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.docentes_cursos.*, dbo.personas.*, dbo.cursos.* " +
-                                                      "FROM dbo.docentes_cursos INNER JOIN dbo.personas ON dbo.docentes_cursos.id_docente = dbo.personas.id_persona " + 
-                                                      "INNER JOIN dbo.cursos ON dbo.docentes_cursos.id_curso = dbo.cursos.id_curso", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_DocentesCursos", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drDocentes = cmdGetAll.ExecuteReader();
                 while (drDocentes.Read())
                 {
@@ -82,9 +81,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.docentes_cursos.*, dbo.personas.* " +
-                                                      "FROM dbo.docentes_cursos INNER JOIN dbo.personas ON dbo.docentes_cursos.id_docente = dbo.personas.id_persona " + 
-                                                      "WHERE id_dictado=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_DocentesCursos", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drDocentes = cmdGetOne.ExecuteReader();
                 if (drDocentes.Read())
@@ -145,7 +143,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete docentes_cursos where id_dictado = @id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete_DocentesCursos", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -165,8 +164,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE docentes_cursos SET id_docente=@id_docente, id_curso=@id_curso, cargo=@cargo " +
-                                                      "WHERE id_dictado=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_DocentesCursos", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = dc.ID;
                 cmdUpdate.Parameters.Add("@id_docente", SqlDbType.Int).Value = dc.Docente.ID;
@@ -201,8 +200,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into docentes_cursos(id_docente, id_curso, cargo) " +
-                                                      "values(@id_docente, @id_curso, @cargo) select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_DocentesCursos", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
 
                 cmdInsert.Parameters.Add("@id_docente", SqlDbType.Int).Value = dc.Docente.ID;
                 cmdInsert.Parameters.Add("@id_curso", SqlDbType.Int).Value = dc.Curso.ID;

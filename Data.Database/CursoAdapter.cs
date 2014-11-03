@@ -16,9 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.cursos.*, dbo.materias.*, dbo.comisiones.* FROM dbo.cursos " + 
-                "INNER JOIN dbo.materias ON dbo.cursos.id_materia = dbo.materias.id_materia INNER JOIN dbo.comisiones " + 
-                "ON dbo.cursos.id_comision = dbo.comisiones.id_comision", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_Cursos", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drCursos = cmdGetAll.ExecuteReader();
                 while(drCursos.Read())
                 {
@@ -58,12 +57,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.cursos.*, dbo.materias.*, dbo.comisiones.*, dbo.planes.*, dbo.especialidades.* " +
-                                                      "FROM dbo.cursos INNER JOIN dbo.comisiones ON dbo.cursos.id_comision = dbo.comisiones.id_comision " + 
-                                                                      "INNER JOIN dbo.materias ON dbo.cursos.id_materia = dbo.materias.id_materia " + 
-                                                                      "INNER JOIN dbo.planes ON dbo.comisiones.id_plan = dbo.planes.id_plan AND dbo.materias.id_plan = dbo.planes.id_plan " + 
-                                                                      "INNER JOIN dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad " + 
-                                                      "WHERE id_curso=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_Cursos", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drCursos = cmdGetOne.ExecuteReader();
                 if (drCursos.Read())
@@ -102,7 +97,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete cursos where id_curso=@id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete_Cursos", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -122,8 +118,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE cursos SET id_comision=@id_com, id_materia=@id_mat, anio_calendario=@anio, " +
-                    "cupo=@cupo WHERE id_curso=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_Cursos", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = curso.ID;
                 cmdUpdate.Parameters.Add("@id_com", SqlDbType.Int).Value = curso.Comision.ID;
                 cmdUpdate.Parameters.Add("@id_mat", SqlDbType.Int).Value = curso.Materia.ID;
@@ -147,7 +143,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("INSERT into cursos(id_materia,id_comision,anio_calendario,cupo) values(@id_mat,@id_com,@anio,@cupo) select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_Cursos", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
                 cmdInsert.Parameters.Add("@id_mat", SqlDbType.Int).Value = curso.Materia.ID;
                 cmdInsert.Parameters.Add("@id_com", SqlDbType.Int).Value = curso.Comision.ID;
                 cmdInsert.Parameters.Add("@anio", SqlDbType.Int).Value = curso.AnioCalendario;
@@ -186,11 +183,8 @@ namespace Data.Database
         {
             List<Curso> cursosDocente = new List<Curso>();
             this.OpenConnection();
-            SqlCommand cmdCursosDocente = new SqlCommand("SELECT dbo.docentes_cursos.*, dbo.cursos.*, dbo.materias.*, dbo.comisiones.* " + 
-                                                         "FROM  dbo.cursos INNER JOIN dbo.docentes_cursos ON dbo.cursos.id_curso = dbo.docentes_cursos.id_curso " + 
-                                                                          "INNER JOIN dbo.materias ON dbo.cursos.id_materia = dbo.materias.id_materia " + 
-                                                                          "INNER JOIN dbo.comisiones ON dbo.cursos.id_comision = dbo.comisiones.id_comision " + 
-                                                         "WHERE dbo.docentes_cursos.id_docente=@id", SqlConn);
+            SqlCommand cmdCursosDocente = new SqlCommand("GetAllPorDocente_Cursos", SqlConn);
+            cmdCursosDocente.CommandType = CommandType.StoredProcedure;
             cmdCursosDocente.Parameters.Add("@id", SqlDbType.Int).Value = IDDocente;
             SqlDataReader drCursosDocente = cmdCursosDocente.ExecuteReader();
 

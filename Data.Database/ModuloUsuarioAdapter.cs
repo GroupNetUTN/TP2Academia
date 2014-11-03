@@ -16,10 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.modulos.id_modulo, dbo.modulos.desc_modulo, dbo.modulos_usuarios.id_modulo_usuario, dbo.modulos_usuarios.alta, " +
-                                                             "dbo.modulos_usuarios.baja, dbo.modulos_usuarios.modificacion, dbo.modulos_usuarios.consulta, dbo.modulos_usuarios.id_usuario " +
-                                                      "FROM dbo.modulos_usuarios RIGHT OUTER JOIN dbo.modulos ON dbo.modulos_usuarios.id_modulo = dbo.modulos.id_modulo " +
-                                                                                                             "AND dbo.modulos_usuarios.id_usuario=@id", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_ModulosUsuarios", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 cmdGetAll.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
                 SqlDataReader drModulosUsuarios = cmdGetAll.ExecuteReader();
 
@@ -56,10 +54,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.modulos_usuarios.id_modulo_usuario, dbo.modulos_usuarios.id_modulo, dbo.modulos_usuarios.id_usuario, dbo.modulos_usuarios.alta, " +
-                                                             "dbo.modulos_usuarios.baja, dbo.modulos_usuarios.modificacion, dbo.modulos_usuarios.consulta, dbo.modulos.desc_modulo " +
-                                                      "FROM dbo.modulos_usuarios INNER JOIN dbo.modulos ON dbo.modulos_usuarios.id_modulo = dbo.modulos.id_modulo " +
-                                                      "WHERE (dbo.modulos_usuarios.id_usuario = @id)", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetPermisos_ModulosUsuarios", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 cmdGetAll.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
                 SqlDataReader drModulosUsuarios = cmdGetAll.ExecuteReader();
 
@@ -95,7 +91,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE dbo.modulos_usuarios SET id_modulo=@idmodulo, id_usuario=@idusuario, alta=@alta, baja=@baja, modificacion=@modif, consulta=@cons WHERE id_modulo_usuario=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_ModulosUsuarios", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = modusu.ID;
                 cmdUpdate.Parameters.Add("@idmodulo", SqlDbType.Int).Value = modusu.Modulo.ID;
@@ -122,8 +119,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into dbo.modulos_usuarios(id_modulo,id_usuario,alta,baja,modificacion,consulta) " +
-                                                         "values(@idmodulo,@idusuario,@alta,@baja,@modif,@cons) select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_ModulosUsuarios", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
 
                 cmdInsert.Parameters.Add("@idmodulo", SqlDbType.Int).Value = modusu.Modulo.ID;
                 cmdInsert.Parameters.Add("@idusuario", SqlDbType.Int).Value = modusu.IdUsuario;

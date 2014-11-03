@@ -16,8 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.usuarios.*, dbo.personas.* FROM dbo.personas " + 
-                    "INNER JOIN dbo.usuarios ON dbo.personas.id_persona = dbo.usuarios.id_persona", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_Usuarios", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drUsuarios = cmdGetAll.ExecuteReader();
 
                 while (drUsuarios.Read())
@@ -70,8 +70,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.usuarios.*, dbo.personas.* FROM dbo.personas " +
-                    "INNER JOIN dbo.usuarios ON dbo.personas.id_persona = dbo.usuarios.id_persona WHERE id_usuario=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_Usuarios", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drUsuarios = cmdGetOne.ExecuteReader();
                 if (drUsuarios.Read())
@@ -122,7 +122,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete usuarios where id_usuario = @id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete_Usuarios", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -142,9 +143,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE usuarios SET nombre_usuario=@nombre_usuario, clave=@clave, " +
-                    "habilitado=@habilitado, id_persona=@id_persona " +
-                    "WHERE id_usuario=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_Usuarios", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdUpdate.Parameters.Add("@nombre_usuario", SqlDbType.VarChar).Value = usuario.NombreUsuario;
@@ -176,9 +176,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into usuarios(nombre_usuario,clave,habilitado,id_persona)" +
-                    "values(@nombre_usuario,@clave,@habilitado,@id_persona) " +
-                    "select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_Usuarios", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
 
                 cmdInsert.Parameters.Add("@nombre_usuario", SqlDbType.VarChar).Value = usuario.NombreUsuario;
                 cmdInsert.Parameters.Add("@clave", SqlDbType.VarChar).Value = usuario.Clave;
@@ -228,8 +227,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand GetUsuarioForLogin = new SqlCommand("SELECT dbo.usuarios.*, dbo.personas.* FROM dbo.personas " +
-                    "INNER JOIN dbo.usuarios ON dbo.personas.id_persona = dbo.usuarios.id_persona WHERE nombre_usuario=@user AND clave=@pass", SqlConn);
+                SqlCommand GetUsuarioForLogin = new SqlCommand("Login_Usuarios", SqlConn);
+                GetUsuarioForLogin.CommandType = CommandType.StoredProcedure;
                 GetUsuarioForLogin.Parameters.Add("@user", SqlDbType.VarChar).Value = user;
                 GetUsuarioForLogin.Parameters.Add("@pass", SqlDbType.VarChar).Value = pass;
                 SqlDataReader drUsuarios = GetUsuarioForLogin.ExecuteReader();

@@ -16,8 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("SELECT dbo.planes.*, dbo.especialidades.* FROM dbo.planes INNER JOIN "+
-                "dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_Planes", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drPlanes = cmdGetAll.ExecuteReader();
 
                 while (drPlanes.Read())
@@ -51,9 +51,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("SELECT dbo.planes.*, dbo.especialidades.* FROM dbo.planes INNER JOIN " +
-                "dbo.especialidades ON dbo.planes.id_especialidad = dbo.especialidades.id_especialidad " +
-                "WHERE dbo.planes.id_plan=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_Planes", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drPlanes = cmdGetOne.ExecuteReader();
                 if (drPlanes.Read())
@@ -82,7 +81,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete planes where id_plan = @id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete_Planes", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -102,8 +102,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE planes SET desc_plan=@desc, id_especialidad=@id_esp " +
-                    "WHERE id_plan=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_Planes", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar).Value = plan.Descripcion;
@@ -126,7 +126,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into planes(desc_plan,id_especialidad) values(@desc,@esp) select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_Planes", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
 
                 cmdInsert.Parameters.Add("@desc", SqlDbType.VarChar).Value = plan.Descripcion;
                 cmdInsert.Parameters.Add("@esp", SqlDbType.Int).Value = plan.Especialidad.ID;

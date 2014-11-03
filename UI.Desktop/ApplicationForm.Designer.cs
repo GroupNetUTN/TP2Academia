@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "ApplicationForm";
+            this.ShowIcon = false;
             this.Text = "ApplicationForm";
             this.ResumeLayout(false);
 

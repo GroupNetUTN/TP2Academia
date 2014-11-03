@@ -294,7 +294,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RegistroNotas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RegistroNotas";
+            this.Text = "Registro de Notas";
             this.Load += new System.EventHandler(this.RegistroNotas_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

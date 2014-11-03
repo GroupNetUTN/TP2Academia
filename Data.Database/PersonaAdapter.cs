@@ -16,20 +16,19 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAlumnos = new SqlCommand();
-                cmdGetAlumnos.Connection = SqlConn;
+                SqlCommand cmdGetAll = new SqlCommand();
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
+                cmdGetAll.Connection = SqlConn;
                 if (tipo != 0)
                 {
-                    cmdGetAlumnos.CommandText = "SELECT dbo.personas.*, dbo.planes.* FROM dbo.personas INNER JOIN dbo.planes " + 
-                    "ON dbo.personas.id_plan=dbo.planes.id_plan WHERE dbo.personas.tipo_persona=@tipo";
-                    cmdGetAlumnos.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
+                    cmdGetAll.CommandText = "GetAllPorTipo_Personas";
+                    cmdGetAll.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
                 }
                 else
                 {
-                    cmdGetAlumnos.CommandText = "SELECT dbo.personas.*, dbo.planes.* FROM dbo.personas INNER JOIN dbo.planes " + 
-                    "ON dbo.personas.id_plan=dbo.planes.id_plan";
+                    cmdGetAll.CommandText = "GetAll_Personas";
                 }
-                SqlDataReader drPersonas = cmdGetAlumnos.ExecuteReader();
+                SqlDataReader drPersonas = cmdGetAll.ExecuteReader();
 
                 while (drPersonas.Read())
                 {
@@ -78,8 +77,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select * from personas inner join planes on " +
-                "personas.id_plan=planes.id_plan where id_persona=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_Personas", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drPersonas = cmdGetOne.ExecuteReader();
                 if (drPersonas.Read())
@@ -127,7 +126,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete personas where id_persona = @id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete_Personas", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -147,7 +147,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE personas SET nombre=@nombre, apellido=@apellido, email=@email, direccion=@direc, telefono=@tel, fecha_nac=@fecha, legajo=@legajo, tipo_persona=@tipo_p, id_plan=@idplan WHERE id_persona=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_Personas", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = persona.ID;
                 cmdUpdate.Parameters.Add("@nombre", SqlDbType.VarChar).Value = persona.Nombre;
@@ -189,7 +190,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into personas(nombre,apellido,email,direccion,telefono,fecha_nac,legajo,tipo_persona,id_plan) values(@nombre,@apellido,@email,@direc,@tel,@fecha,@legajo,@tipo_P,@idplan) select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_Personas", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
 
                 cmdInsert.Parameters.Add("@nombre", SqlDbType.VarChar).Value = persona.Nombre;
                 cmdInsert.Parameters.Add("@apellido", SqlDbType.VarChar).Value = persona.Apellido;

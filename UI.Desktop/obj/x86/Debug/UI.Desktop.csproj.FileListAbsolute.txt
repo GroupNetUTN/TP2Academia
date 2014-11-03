@@ -162,15 +162,6 @@ C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Seleccio
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.DocentesCursos.resources
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.RegistroNotas.resources
 C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.RegistroNotas.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.PermisosUsuarios.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.EditorDePermisos.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.PermisosComisiones.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.PermisosCursos.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.PermisosEspecialidades.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.PermisosInscripciones.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.PermisosMaterias.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.PermisosPersonas.resources
-C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.PermisosPlanes.resources
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.MainMenu.resources
 C:\Users\Usuario\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.CursoDesktop.resources
 C:\Users\Usuario\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.Cursos.resources
@@ -187,3 +178,5 @@ C:\Users\Usuario\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.MenuPri
 C:\Users\Usuario\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.dll
 C:\Users\Usuario\Desktop\TP2Academia\UI.Desktop\bin\Debug\Util.pdb
 C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.ReporteCursosViewer.resources
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.MainMenu.resources
+C:\Users\Usuario\Desktop\JuanPablo\UTN\IDE\TP 2\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.ReporteCursosViewer.resources

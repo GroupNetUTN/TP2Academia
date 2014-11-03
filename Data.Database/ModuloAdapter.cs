@@ -16,7 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("select * from dbo.modulos", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_Modulos", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drModulos = cmdGetAll.ExecuteReader();
 
                 while (drModulos.Read())
@@ -48,7 +49,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select * from dbo.modulos where desc_modulo=@desc", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_Modulos", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
                 SqlDataReader drModulos = cmdGetOne.ExecuteReader();
 

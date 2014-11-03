@@ -16,7 +16,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("select * from especialidades", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_Especialidades", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drEspecialidades = cmdGetAll.ExecuteReader();
 
                 while (drEspecialidades.Read())
@@ -47,7 +48,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select * from especialidades where id_especialidad=@id", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_Especialidades", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drEspecialidad = cmdGetOne.ExecuteReader();
                 if (drEspecialidad.Read())
@@ -74,7 +76,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete especialidades where id_especialidad = @id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete_Especialidades", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -94,8 +97,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("UPDATE especialidades SET desc_especialidad=@desc " +
-                    "WHERE id_especialidad=@id", SqlConn);
+                SqlCommand cmdUpdate = new SqlCommand("Update_Especialidades", SqlConn);
+                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = especialidad.ID;
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar).Value = especialidad.Descripcion;
@@ -117,9 +120,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("insert into especialidades(desc_especialidad)" +
-                    "values(@desc) " +
-                    "select @@identity", SqlConn);
+                SqlCommand cmdInsert = new SqlCommand("Insert_Especialidades", SqlConn);
+                cmdInsert.CommandType = CommandType.StoredProcedure;
 
                 cmdInsert.Parameters.Add("@desc", SqlDbType.VarChar).Value = especialidad.Descripcion;
                 especialidad.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());

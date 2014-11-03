@@ -136,7 +136,7 @@
             this.ClientSize = new System.Drawing.Size(345, 188);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DocenteCursoDesktop";
-            this.Text = "DocenteCursoDesktop";
+            this.Text = "Asignación de Docentes";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

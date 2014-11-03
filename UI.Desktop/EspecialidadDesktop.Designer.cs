@@ -103,7 +103,7 @@
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAceptar);
             this.Name = "EspecialidadDesktop";
-            this.Text = "Especialidad";
+            this.Text = "Especialidades";
             this.ResumeLayout(false);
             this.PerformLayout();
 

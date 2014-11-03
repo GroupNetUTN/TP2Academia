@@ -145,7 +145,7 @@
             this.ClientSize = new System.Drawing.Size(360, 328);
             this.Controls.Add(this.tblSeleccionarPersona);
             this.Name = "SeleccionarPersona";
-            this.Text = "SeleccionarPersona";
+            this.Text = "Personas";
             this.Load += new System.EventHandler(this.SeleccionarPersona_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSeleccionarPersona)).EndInit();
             this.tblSeleccionarPersona.ResumeLayout(false);

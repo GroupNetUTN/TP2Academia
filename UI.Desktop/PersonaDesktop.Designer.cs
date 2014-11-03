@@ -312,7 +312,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "PersonaDesktop";
-            this.Text = "PersonaDesktop";
+            this.Text = "Personas";
             this.Load += new System.EventHandler(this.PersonaDesktop_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

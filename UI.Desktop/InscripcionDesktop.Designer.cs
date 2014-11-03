@@ -181,14 +181,14 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Seleccionar Comision:";
             // 
-            // InscripcionCurso
+            // InscripcionDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 455);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "InscripcionCurso";
-            this.Text = "Inscripcion";
+            this.Name = "InscripcionDesktop";
+            this.Text = "Inscripcion a Cursado";
             this.Load += new System.EventHandler(this.InscripcionCurso_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

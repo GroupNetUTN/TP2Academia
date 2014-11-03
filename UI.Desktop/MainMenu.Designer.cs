@@ -85,19 +85,19 @@
             // mnuCerrarSesion
             // 
             this.mnuCerrarSesion.Name = "mnuCerrarSesion";
-            this.mnuCerrarSesion.Size = new System.Drawing.Size(152, 22);
+            this.mnuCerrarSesion.Size = new System.Drawing.Size(143, 22);
             this.mnuCerrarSesion.Text = "Cerrar Sesion";
             this.mnuCerrarSesion.Click += new System.EventHandler(this.mnuCerrarSesion_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(140, 6);
             // 
             // mnuSalir
             // 
             this.mnuSalir.Name = "mnuSalir";
-            this.mnuSalir.Size = new System.Drawing.Size(152, 22);
+            this.mnuSalir.Size = new System.Drawing.Size(143, 22);
             this.mnuSalir.Text = "&Salir";
             this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
             // 
@@ -272,7 +272,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainMenu";
-            this.Text = "MainMenu";
+            this.Text = "Menu Principal - Gestión de Academia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip.ResumeLayout(false);
