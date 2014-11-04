@@ -182,30 +182,41 @@ namespace Data.Database
         public List<Curso> GetCursosDocente(int IDDocente)
         {
             List<Curso> cursosDocente = new List<Curso>();
-            this.OpenConnection();
-            SqlCommand cmdCursosDocente = new SqlCommand("GetAllPorDocente_Cursos", SqlConn);
-            cmdCursosDocente.CommandType = CommandType.StoredProcedure;
-            cmdCursosDocente.Parameters.Add("@id", SqlDbType.Int).Value = IDDocente;
-            SqlDataReader drCursosDocente = cmdCursosDocente.ExecuteReader();
+            try
+            { 
+                this.OpenConnection();
+                SqlCommand cmdCursosDocente = new SqlCommand("GetAllPorDocente_Cursos", SqlConn);
+                cmdCursosDocente.CommandType = CommandType.StoredProcedure;
+                cmdCursosDocente.Parameters.Add("@id", SqlDbType.Int).Value = IDDocente;
+                SqlDataReader drCursosDocente = cmdCursosDocente.ExecuteReader();
 
-            while (drCursosDocente.Read())
-            {
-                Curso cur = new Curso();
-                cur.ID = (int)drCursosDocente["id_curso"];
-                cur.AnioCalendario = (int)drCursosDocente["anio_calendario"];
-                cur.Cupo = (int)drCursosDocente["cupo"];
-                cur.Materia.ID = (int)drCursosDocente["id_materia"];
-                cur.Materia.Descripcion = (string)drCursosDocente["desc_materia"];
-                cur.Materia.HSSemanales = (int)drCursosDocente["hs_semanales"];
-                cur.Materia.HSTotales = (int)drCursosDocente["hs_totales"];
-                cur.Materia.Plan.ID = (int)drCursosDocente["id_plan"];
-                cur.Comision.ID = (int)drCursosDocente["id_comision"];
-                cur.Comision.Descripcion = (string)drCursosDocente["desc_comision"];
-                cur.Comision.AnioEspecialidad = (int)drCursosDocente["anio_especialidad"];
-                cur.Comision.Plan.ID = (int)drCursosDocente["id_plan"];
-                cursosDocente.Add(cur);
+                while (drCursosDocente.Read())
+                {
+                    Curso cur = new Curso();
+                    cur.ID = (int)drCursosDocente["id_curso"];
+                    cur.AnioCalendario = (int)drCursosDocente["anio_calendario"];
+                    cur.Cupo = (int)drCursosDocente["cupo"];
+                    cur.Materia.ID = (int)drCursosDocente["id_materia"];
+                    cur.Materia.Descripcion = (string)drCursosDocente["desc_materia"];
+                    cur.Materia.HSSemanales = (int)drCursosDocente["hs_semanales"];
+                    cur.Materia.HSTotales = (int)drCursosDocente["hs_totales"];
+                    cur.Materia.Plan.ID = (int)drCursosDocente["id_plan"];
+                    cur.Comision.ID = (int)drCursosDocente["id_comision"];
+                    cur.Comision.Descripcion = (string)drCursosDocente["desc_comision"];
+                    cur.Comision.AnioEspecialidad = (int)drCursosDocente["anio_especialidad"];
+                    cur.Comision.Plan.ID = (int)drCursosDocente["id_plan"];
+                    cursosDocente.Add(cur);
+                }
             }
-
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar los cursos del docente.", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
             return cursosDocente;
         }
     }

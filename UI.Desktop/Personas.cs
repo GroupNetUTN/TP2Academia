@@ -30,15 +30,22 @@ namespace UI.Desktop
 
         public void Listar(string tipo)
         {
-            PersonaLogic pl = new PersonaLogic();
-            if (tipo == "Todos")
-                this.dgvPersonas.DataSource = pl.GetAll();
-            else if (tipo == "Alumnos")
-                this.dgvPersonas.DataSource = pl.GetAlumnos();
-            else if (tipo == "Docentes")
-                this.dgvPersonas.DataSource = pl.GetDocentes();
-            else if (tipo == "No docentes")
-                this.dgvPersonas.DataSource = pl.GetNoDocentes();
+            try
+            {
+                PersonaLogic pl = new PersonaLogic();
+                if (tipo == "Todos")
+                    this.dgvPersonas.DataSource = pl.GetAll();
+                else if (tipo == "Alumnos")
+                    this.dgvPersonas.DataSource = pl.GetAlumnos();
+                else if (tipo == "Docentes")
+                    this.dgvPersonas.DataSource = pl.GetDocentes();
+                else if (tipo == "No docentes")
+                    this.dgvPersonas.DataSource = pl.GetNoDocentes();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Personas_Load(object sender, EventArgs e)
@@ -87,10 +94,17 @@ namespace UI.Desktop
             var rta = MessageBox.Show("¿Esta seguro que desea eliminar la Persona seleccionada?", "Atencion", MessageBoxButtons.YesNo);
             if (rta == DialogResult.Yes)
             {
-                int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
-                PersonaLogic per = new PersonaLogic();
-                per.Delete(ID);
-                this.Listar(cbxTipoPersona.SelectedItem.ToString());
+                try
+                {
+                    int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+                    PersonaLogic per = new PersonaLogic();
+                    per.Delete(ID);
+                    this.Listar(cbxTipoPersona.SelectedItem.ToString());
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

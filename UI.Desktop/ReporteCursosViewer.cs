@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    public partial class ReporteCursosViewer : Form
+    public partial class ReporteCursosViewer : ApplicationForm
     {
         public ReporteCursosViewer()
         {

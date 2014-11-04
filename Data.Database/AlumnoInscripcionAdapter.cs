@@ -10,6 +10,62 @@ namespace Data.Database
 {
     public class AlumnoInscripcionAdapter : Adapter
     {
+        public List<AlumnoInscripcion> GetAll()
+        {
+            List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetAll = new SqlCommand("GetAll_AlumnosInscripciones", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
+                SqlDataReader drInscripciones = cmdGetAll.ExecuteReader();
+                while (drInscripciones.Read())
+                {
+                    AlumnoInscripcion ins = new AlumnoInscripcion();
+                    ins.ID = (int)drInscripciones["id_inscripcion"];
+                    ins.Condicion = (string)drInscripciones["condicion"];
+                    ins.Nota = (int)drInscripciones["nota"];
+                    ins.Alumno.ID = (int)drInscripciones["id_persona"];
+                    ins.Alumno.Nombre = (string)drInscripciones["nombre"];
+                    ins.Alumno.Apellido = (string)drInscripciones["apellido"];
+                    ins.Alumno.Email = (string)drInscripciones["email"];
+                    ins.Alumno.Direccion = (string)drInscripciones["direccion"];
+                    ins.Alumno.Telefono = (string)drInscripciones["telefono"];
+                    ins.Alumno.FechaNacimiento = (DateTime)drInscripciones["fecha_nac"];
+                    ins.Alumno.Legajo = (int)drInscripciones["legajo"];
+                    switch ((int)drInscripciones["tipo_persona"])
+                    {
+                        case 1:
+                            ins.Alumno.TipoPersona = "No docente";
+                            break;
+                        case 2:
+                            ins.Alumno.TipoPersona = "Alumno";
+                            break;
+                        case 3:
+                            ins.Alumno.TipoPersona = "Docente";
+                            break;
+                    }
+                    ins.Alumno.Plan.ID = (int)drInscripciones["id_plan"];
+                    ins.Curso.ID = (int)drInscripciones["id_curso"];
+                    ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
+                    ins.Curso.Comision.Descripcion = (string)drInscripciones["desc_comision"];
+                    ins.Curso.Materia.Descripcion = (string)drInscripciones["desc_materia"];
+                    inscripciones.Add(ins);
+                }
+                drInscripciones.Close();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de las inscripciones.", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return inscripciones;
+        }
+
         public List<AlumnoInscripcion> GetAll(int IDAlumno)
         {
             List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();

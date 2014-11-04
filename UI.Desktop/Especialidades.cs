@@ -30,8 +30,15 @@ namespace UI.Desktop
 
         public void Listar()
         {
-            EspecialidadLogic el = new EspecialidadLogic();
-            this.dgvEspecialidades.DataSource = el.GetAll();
+            try
+            {
+                EspecialidadLogic el = new EspecialidadLogic();
+                this.dgvEspecialidades.DataSource = el.GetAll();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Especialidades_Load(object sender, EventArgs e)
@@ -80,10 +87,17 @@ namespace UI.Desktop
             var rta = MessageBox.Show("¿Esta seguro que desea eliminar esta especialidad?", "Atencion", MessageBoxButtons.YesNo);
             if (rta == DialogResult.Yes)
             {
-                int ID = ((Business.Entities.Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
-                EspecialidadLogic especialidad = new EspecialidadLogic();
-                especialidad.Delete(ID);
-                this.Listar();
+                try
+                {
+                    int ID = ((Business.Entities.Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
+                    EspecialidadLogic especialidad = new EspecialidadLogic();
+                    especialidad.Delete(ID);
+                    this.Listar();
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

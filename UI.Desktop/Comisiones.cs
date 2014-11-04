@@ -30,8 +30,15 @@ namespace UI.Desktop
 
         public void Listar()
         {
-            ComisionLogic cl = new ComisionLogic();
-            dgvComisiones.DataSource = cl.GetAll();
+            try
+            {
+                ComisionLogic cl = new ComisionLogic();
+                dgvComisiones.DataSource = cl.GetAll();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Comisiones_Load(object sender, EventArgs e)
@@ -79,10 +86,17 @@ namespace UI.Desktop
             var rta = MessageBox.Show("¿Esta seguro que desea eliminar la Comision seleccionada?", "Atencion", MessageBoxButtons.YesNo);
             if (rta == DialogResult.Yes)
             {
-                int ID = ((Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).ID;
-                ComisionLogic comision = new ComisionLogic();
-                comision.Delete(ID);
-                this.Listar();
+                try
+                {
+                    int ID = ((Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).ID;
+                    ComisionLogic comision = new ComisionLogic();
+                    comision.Delete(ID);
+                    this.Listar();
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

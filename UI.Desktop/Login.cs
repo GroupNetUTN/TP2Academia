@@ -33,22 +33,29 @@ namespace UI.Desktop
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             UsuarioLogic user = new UsuarioLogic();
-            _UsuarioActual = user.GetUsuarioForLogin(txtUsuario.Text, txtContraseña.Text);
-            if (_UsuarioActual.ID != 0)
+            try
             {
-                if (_UsuarioActual.Habilitado)
+                _UsuarioActual = user.GetUsuarioForLogin(txtUsuario.Text, txtContraseña.Text);
+                if (_UsuarioActual.ID != 0)
                 {
-                    this.DialogResult = DialogResult.OK;
+                    if (_UsuarioActual.Habilitado)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        this.Notificar("El Usuario no está habilitado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    this.Notificar("El Usuario no está habilitado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Notificar("Usuario o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.txtContraseña.Clear();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                this.Notificar("Usuario o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.txtContraseña.Clear();
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

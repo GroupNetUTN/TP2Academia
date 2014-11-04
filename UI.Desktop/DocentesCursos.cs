@@ -24,14 +24,21 @@ namespace UI.Desktop
 
         public void Listar()
         {
-            DocenteCursoLogic dcl = new DocenteCursoLogic();
-            List<DocenteCurso> docentes = new List<DocenteCurso>();
-            foreach (DocenteCurso dc in dcl.GetAll())
+            try
             {
-                if (dc.Curso.ID == _CursoActual.ID)
-                    docentes.Add(dc);
+                DocenteCursoLogic dcl = new DocenteCursoLogic();
+                List<DocenteCurso> docentes = new List<DocenteCurso>();
+                foreach (DocenteCurso dc in dcl.GetAll())
+                {
+                    if (dc.Curso.ID == _CursoActual.ID)
+                        docentes.Add(dc);
+                }
+                dgvDocentesCursos.DataSource = docentes;
             }
-            dgvDocentesCursos.DataSource = docentes;
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void DocentesCursos_Load(object sender, EventArgs e)
@@ -62,10 +69,17 @@ namespace UI.Desktop
             var rta = MessageBox.Show("¿Esta seguro que desea eliminar el Docente seleccionado?", "Atencion", MessageBoxButtons.YesNo);
             if (rta == DialogResult.Yes)
             {
-                int ID = ((Business.Entities.DocenteCurso)this.dgvDocentesCursos.SelectedRows[0].DataBoundItem).ID;
-                DocenteCursoLogic dcl = new DocenteCursoLogic();
-                dcl.Delete(ID);
-                this.Listar();
+                try
+                {
+                    int ID = ((Business.Entities.DocenteCurso)this.dgvDocentesCursos.SelectedRows[0].DataBoundItem).ID;
+                    DocenteCursoLogic dcl = new DocenteCursoLogic();
+                    dcl.Delete(ID);
+                    this.Listar();
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

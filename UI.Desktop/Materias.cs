@@ -30,8 +30,15 @@ namespace UI.Desktop
 
         public void Listar()
         {
-            MateriaLogic ml = new MateriaLogic();
-            dgvMaterias.DataSource = ml.GetAll();
+            try
+            {
+                MateriaLogic ml = new MateriaLogic();
+                dgvMaterias.DataSource = ml.GetAll();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Materias_Load(object sender, EventArgs e)
@@ -79,10 +86,17 @@ namespace UI.Desktop
             var rta = MessageBox.Show("¿Esta seguro que desea eliminar la Materia seleccionada?", "Atencion", MessageBoxButtons.YesNo);
             if (rta == DialogResult.Yes)
             {
-                int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-                MateriaLogic materia = new MateriaLogic();
-                materia.Delete(ID);
-                this.Listar();
+                try
+                {
+                    int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+                    MateriaLogic materia = new MateriaLogic();
+                    materia.Delete(ID);
+                    this.Listar();
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
 

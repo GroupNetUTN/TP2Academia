@@ -30,15 +30,22 @@ namespace UI.Desktop
 
         private void Listar()
         {
-            List<Persona> docentes = new List<Persona>();
-            PersonaLogic pl = new PersonaLogic();
-            foreach (Persona p in pl.GetAll())
+            try
             {
-                if (p.TipoPersona == "Docente" && p.Plan.ID == _CursoActual.Comision.Plan.ID)
-                    docentes.Add(p);
+                List<Persona> docentes = new List<Persona>();
+                PersonaLogic pl = new PersonaLogic();
+                foreach (Persona p in pl.GetAll())
+                {
+                    if (p.TipoPersona == "Docente" && p.Plan.ID == _CursoActual.Comision.Plan.ID)
+                        docentes.Add(p);
+                }
+                dgvDocentes.DataSource = docentes;
+                dgvDocentes.ClearSelection();
             }
-            dgvDocentes.DataSource = docentes;
-            dgvDocentes.ClearSelection();
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class MainMenu : Form
+    public partial class MainMenu : ApplicationForm
     {
         public MainMenu(Usuario u)
         {
@@ -34,7 +34,9 @@ namespace UI.Desktop
 
         private void chequearPermisos()
         {
-            mnuComisiones.Visible =
+            try
+            {
+                mnuComisiones.Visible =
                 mnuCursos.Visible =
                 mnuEspecialidades.Visible =
                 mnuInscripcionCurso.Visible =
@@ -45,60 +47,65 @@ namespace UI.Desktop
                 mnuReportes.Visible =
                 mnuUsuarios.Visible = false;
 
-            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
-            UsuarioActual.ModulosUsuarios = mul.GetPermisos(UsuarioActual.ID);
+                ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+                UsuarioActual.ModulosUsuarios = mul.GetPermisos(UsuarioActual.ID);
 
-            if (UsuarioActual.Persona.TipoPersona == "Alumno")
-            {
-                this.mnuInscripcionCurso.Visible = true;
-            }
-            else if (UsuarioActual.Persona.TipoPersona == "Docente")
-            {
-                this.mnuRegistrarNotas.Visible = true;
-            }
-            else if (UsuarioActual.Persona.TipoPersona == "No docente")
-            {
-                this.mnuReportes.Visible = true;
-            }
+                if (UsuarioActual.Persona.TipoPersona == "Alumno")
+                {
+                    this.mnuInscripcionCurso.Visible = true;
+                }
+                else if (UsuarioActual.Persona.TipoPersona == "Docente")
+                {
+                    this.mnuRegistrarNotas.Visible = true;
+                }
+                else if (UsuarioActual.Persona.TipoPersona == "No docente")
+                {
+                    this.mnuReportes.Visible = true;
+                }
 
-            foreach (ModuloUsuario mu in UsuarioActual.ModulosUsuarios)
+                foreach (ModuloUsuario mu in UsuarioActual.ModulosUsuarios)
+                {
+                    if (mu.Modulo.Descripcion == "Usuarios")
+                    {
+                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                            this.mnuUsuarios.Visible = true;
+                    }
+                    else if (mu.Modulo.Descripcion == "Personas")
+                    {
+                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                            this.mnuPersonas.Visible = true;
+                    }
+                    else if (mu.Modulo.Descripcion == "Planes")
+                    {
+                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                            this.mnuPlanes.Visible = true;
+                    }
+                    else if (mu.Modulo.Descripcion == "Materias")
+                    {
+                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                            this.mnuMaterias.Visible = true;
+                    }
+                    else if (mu.Modulo.Descripcion == "Especialidades")
+                    {
+                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                            this.mnuEspecialidades.Visible = true;
+                    }
+                    else if (mu.Modulo.Descripcion == "Cursos")
+                    {
+                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                            this.mnuCursos.Visible = true;
+                    }
+                    else if (mu.Modulo.Descripcion == "Comisiones")
+                    {
+                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                            this.mnuComisiones.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                if (mu.Modulo.Descripcion == "Usuarios")
-                {
-                    if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
-                        this.mnuUsuarios.Visible = true;
-                }
-                else if (mu.Modulo.Descripcion == "Personas")
-                {
-                    if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
-                        this.mnuPersonas.Visible = true;
-                }
-                else if (mu.Modulo.Descripcion == "Planes")
-                {
-                    if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
-                        this.mnuPlanes.Visible = true;
-                }
-                else if (mu.Modulo.Descripcion == "Materias")
-                {
-                    if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
-                        this.mnuMaterias.Visible = true;
-                }
-                else if (mu.Modulo.Descripcion == "Especialidades")
-                {
-                    if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
-                        this.mnuEspecialidades.Visible = true;
-                }
-                else if (mu.Modulo.Descripcion == "Cursos")
-                {
-                    if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
-                        this.mnuCursos.Visible = true;
-                }
-                else if (mu.Modulo.Descripcion == "Comisiones")
-                {
-                    if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
-                        this.mnuComisiones.Visible = true;
-                }
-            }           
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void mnuCerrarSesion_Click(object sender, EventArgs e)

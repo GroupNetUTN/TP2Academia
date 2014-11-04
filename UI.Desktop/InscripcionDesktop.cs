@@ -34,43 +34,71 @@ namespace UI.Desktop
 
         private void ListarMaterias()
         {
-            MateriaLogic matlog = new MateriaLogic();
-            this.dgvMaterias.DataSource = matlog.GetMateriasParaInscripcion(_UsuarioActual.Persona.Plan.ID, _UsuarioActual.Persona.ID);
-            this.dgvMaterias.ClearSelection();
+            try
+            {
+                MateriaLogic matlog = new MateriaLogic();
+                this.dgvMaterias.DataSource = matlog.GetMateriasParaInscripcion(_UsuarioActual.Persona.Plan.ID, _UsuarioActual.Persona.ID);
+                this.dgvMaterias.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         
         public override void MapearADatos()
         {
-            _InscripcionActual.Alumno = _UsuarioActual.Persona;
-            _InscripcionActual.Condicion = "Inscripto";
-            CursoLogic curlog = new CursoLogic();
-            int IDMateria = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            int IDComision = ((Business.Entities.Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).ID;
-            foreach (Curso c in curlog.GetAll())
+            try
             {
-                if(c.Comision.ID == IDComision && c.Materia.ID == IDMateria)
+                _InscripcionActual.Alumno = _UsuarioActual.Persona;
+                _InscripcionActual.Condicion = "Inscripto";
+                CursoLogic curlog = new CursoLogic();
+                int IDMateria = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+                int IDComision = ((Business.Entities.Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).ID;
+                foreach (Curso c in curlog.GetAll())
                 {
-                    c.Cupo--;
-                    _InscripcionActual.Curso = c;
-                    _InscripcionActual.Curso.State = BusinessEntity.States.Modified;
+                    if (c.Comision.ID == IDComision && c.Materia.ID == IDMateria)
+                    {
+                        c.Cupo--;
+                        _InscripcionActual.Curso = c;
+                        _InscripcionActual.Curso.State = BusinessEntity.States.Modified;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void dgvMaterias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int IDMateria = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            ComisionLogic comlog = new ComisionLogic();
-            this.dgvComisiones.DataSource =  comlog.GetComisionesDisponibles(IDMateria);
+            try
+            {
+                int IDMateria = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+                ComisionLogic comlog = new ComisionLogic();            
+                this.dgvComisiones.DataSource = comlog.GetComisionesDisponibles(IDMateria);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override void GuardarCambios()
         {
-            this.MapearADatos();
-            AlumnoInscripcionLogic inslogic = new AlumnoInscripcionLogic();
-            inslogic.Save(_InscripcionActual);
-            CursoLogic curlog = new CursoLogic();
-            curlog.Save(_InscripcionActual.Curso);     
+            try
+            {
+                this.MapearADatos();
+                AlumnoInscripcionLogic inslogic = new AlumnoInscripcionLogic();
+                inslogic.Save(_InscripcionActual);
+                CursoLogic curlog = new CursoLogic();
+                curlog.Save(_InscripcionActual.Curso);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

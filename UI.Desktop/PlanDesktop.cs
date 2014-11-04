@@ -41,17 +41,31 @@ namespace UI.Desktop
         {
             this._Modo = modo;
             PlanLogic PlanNegocio = new PlanLogic();
-            _PlanActual = PlanNegocio.GetOne(ID);
-            this.llenarCombo();
-            this.MapearDeDatos();
+            try
+            {
+                _PlanActual = PlanNegocio.GetOne(ID);
+                this.llenarCombo();
+                this.MapearDeDatos();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void llenarCombo()
         {
-            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
-            cbxEspecialidad.DataSource = EspecialidadNegocio.GetAll();
-            cbxEspecialidad.DisplayMember = "Descripcion";
-            cbxEspecialidad.ValueMember = "ID";
+            try
+            {
+                EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
+                cbxEspecialidad.DataSource = EspecialidadNegocio.GetAll();
+                cbxEspecialidad.DisplayMember = "Descripcion";
+                cbxEspecialidad.ValueMember = "ID";
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override void MapearDeDatos()
@@ -103,9 +117,16 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            this.MapearADatos();
-            PlanLogic planLogic = new PlanLogic();
-            planLogic.Save(_PlanActual);
+            try
+            {
+                this.MapearADatos();
+                PlanLogic planLogic = new PlanLogic();
+                planLogic.Save(_PlanActual);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override bool Validar()

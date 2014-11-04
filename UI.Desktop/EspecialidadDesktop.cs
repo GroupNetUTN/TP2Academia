@@ -34,8 +34,15 @@ namespace UI.Desktop
         {
             this._Modo = modo;
             EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
-            _EspecialidadActual = EspecialidadNegocio.GetOne(ID);
-            this.MapearDeDatos();
+            try
+            {
+                _EspecialidadActual = EspecialidadNegocio.GetOne(ID);
+                this.MapearDeDatos();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public Especialidad EspecialidadActual
@@ -92,9 +99,16 @@ namespace UI.Desktop
 
         public override void GuardarCambios() 
         {
-            this.MapearADatos();
-            EspecialidadLogic esplogic = new EspecialidadLogic();
-            esplogic.Save(_EspecialidadActual);
+            try
+            {
+                this.MapearADatos();
+                EspecialidadLogic esplogic = new EspecialidadLogic();
+                esplogic.Save(_EspecialidadActual);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override bool Validar()

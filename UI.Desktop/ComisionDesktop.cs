@@ -41,33 +41,54 @@ namespace UI.Desktop
         {
             this._Modo = modo;
             ComisionLogic ComisionNegocio = new ComisionLogic();
-            _ComisionActual = ComisionNegocio.GetOne(ID);
-            this.LlenarComboEspecialidades();
-            this.MapearDeDatos();
+            try
+            {
+                _ComisionActual = ComisionNegocio.GetOne(ID);
+                this.LlenarComboEspecialidades();
+                this.MapearDeDatos();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LlenarComboEspecialidades()
         {
-            EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
-            cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
-            cbxEspecialidades.DisplayMember = "Descripcion";
-            cbxEspecialidades.ValueMember = "ID";
+            try
+            {
+                EspecialidadLogic EspecialidadNegocio = new EspecialidadLogic();
+                cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
+                cbxEspecialidades.DisplayMember = "Descripcion";
+                cbxEspecialidades.ValueMember = "ID";
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LlenarComboPlanes()
         {
-            PlanLogic pl = new PlanLogic();
-            List<Plan> planes = new List<Plan>();
-            foreach (Plan p in pl.GetAll())
+            try
             {
-                if (p.Especialidad.ID == Convert.ToInt32(cbxEspecialidades.SelectedValue))
+                PlanLogic pl = new PlanLogic();
+                List<Plan> planes = new List<Plan>();
+                foreach (Plan p in pl.GetAll())
                 {
-                    planes.Add(p);
+                    if (p.Especialidad.ID == Convert.ToInt32(cbxEspecialidades.SelectedValue))
+                    {
+                        planes.Add(p);
+                    }
                 }
+                cbxPlan.DataSource = planes;
+                cbxPlan.DisplayMember = "Descripcion";
+                cbxPlan.ValueMember = "ID";
             }
-            cbxPlan.DataSource = planes;
-            cbxPlan.DisplayMember = "Descripcion";
-            cbxPlan.ValueMember = "ID";
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override void MapearDeDatos()
@@ -123,9 +144,16 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            this.MapearADatos();
-            ComisionLogic comisionLogic = new ComisionLogic();
-            comisionLogic.Save(ComisionActual);
+            try
+            {
+                this.MapearADatos();
+                ComisionLogic comisionLogic = new ComisionLogic();
+                comisionLogic.Save(ComisionActual);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override bool Validar()

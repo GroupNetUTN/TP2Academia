@@ -31,10 +31,17 @@ namespace UI.Desktop
         public DocenteCursoDesktop(int ID, ModoForm modo, Curso c) : this()
         {
             this._Modo = modo;
-            _CursoActual = c; 
-            DocenteCursoLogic DocCursNegocio = new DocenteCursoLogic();
-            _DocenteCursoActual = DocCursNegocio.GetOne(ID);
-            this.MapearDeDatos();
+            try
+            {
+                _CursoActual = c;
+                DocenteCursoLogic DocCursNegocio = new DocenteCursoLogic();
+                _DocenteCursoActual = DocCursNegocio.GetOne(ID);
+                this.MapearDeDatos();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override void MapearDeDatos()
@@ -82,9 +89,16 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            this.MapearADatos();
-            DocenteCursoLogic DCLogic = new DocenteCursoLogic();
-            DCLogic.Save(_DocenteCursoActual);
+            try
+            {
+                this.MapearADatos();
+                DocenteCursoLogic DCLogic = new DocenteCursoLogic();
+                DCLogic.Save(_DocenteCursoActual);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override bool Validar()

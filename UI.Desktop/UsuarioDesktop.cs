@@ -40,14 +40,21 @@ namespace UI.Desktop
         {
             this._Modo = modo;
             UsuarioLogic UsuarioNegocio = new UsuarioLogic();
-            _UsuarioActual = UsuarioNegocio.GetOne(ID);
-            if(_UsuarioActual.Persona.TipoPersona == "No docente")
+            try
             {
-                this.dgvPermisos.AutoGenerateColumns = false;
-                ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
-                dgvPermisos.DataSource = logic.GetAll(ID);
+                _UsuarioActual = UsuarioNegocio.GetOne(ID);
+                if (_UsuarioActual.Persona.TipoPersona == "No docente")
+                {
+                    this.dgvPermisos.AutoGenerateColumns = false;
+                    ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
+                    dgvPermisos.DataSource = logic.GetAll(ID);
+                }
+                this.MapearDeDatos();
             }
-            this.MapearDeDatos();
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public Usuario UsuarioActual
@@ -113,9 +120,16 @@ namespace UI.Desktop
 
         public override void GuardarCambios() 
         {
-            this.MapearADatos();
-            UsuarioLogic userlogic = new UsuarioLogic();
-            userlogic.Save(_UsuarioActual);
+            try
+            {
+                this.MapearADatos();
+                UsuarioLogic userlogic = new UsuarioLogic();
+                userlogic.Save(_UsuarioActual);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
  
         public override bool Validar()
@@ -171,10 +185,17 @@ namespace UI.Desktop
             this.txtPersona.Text = _UsuarioActual.Apellido + " " +  _UsuarioActual.Nombre;
             if (_UsuarioActual.Persona.TipoPersona == "No docente")
             {
-                this.dgvPermisos.AutoGenerateColumns = false;
-                ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
-                dgvPermisos.DataSource = logic.GetAll(0);
-                dgvPermisos.Visible = true;
+                try
+                {
+                    this.dgvPermisos.AutoGenerateColumns = false;
+                    ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
+                    dgvPermisos.DataSource = logic.GetAll(0);
+                    dgvPermisos.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
                 this.dgvPermisos.Visible = false;

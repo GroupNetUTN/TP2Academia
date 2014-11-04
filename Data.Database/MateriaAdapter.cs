@@ -174,23 +174,35 @@ namespace Data.Database
 
         public List<Materia> GetMateriasParaInscripcion(int IDPlan, int IDAlumno)
         {
-            this.OpenConnection();
             List<Materia> materias = new List<Materia>();
-            SqlCommand cmdGetMateriasParaInscripcion = new SqlCommand("GetMateriasParaInscripcion", SqlConn);
-            cmdGetMateriasParaInscripcion.CommandType = CommandType.StoredProcedure;
-            cmdGetMateriasParaInscripcion.Parameters.Add("@id_plan", SqlDbType.Int).Value = IDPlan;
-            cmdGetMateriasParaInscripcion.Parameters.Add("@id_alumno", SqlDbType.Int).Value = IDAlumno;
-            SqlDataReader drMaterias = cmdGetMateriasParaInscripcion.ExecuteReader();
-
-            while (drMaterias.Read())
+            try
             {
-                Materia mat = new Materia();
-                mat.ID = (int)drMaterias["id_materia"];
-                mat.Descripcion = (string)drMaterias["desc_materia"];
-                mat.HSSemanales = (int)drMaterias["hs_semanales"];
-                mat.HSTotales = (int)drMaterias["hs_totales"];
-                mat.Plan.ID = (int)drMaterias["id_plan"];
-                materias.Add(mat);
+                this.OpenConnection();
+                SqlCommand cmdGetMateriasParaInscripcion = new SqlCommand("GetMateriasParaInscripcion", SqlConn);
+                cmdGetMateriasParaInscripcion.CommandType = CommandType.StoredProcedure;
+                cmdGetMateriasParaInscripcion.Parameters.Add("@id_plan", SqlDbType.Int).Value = IDPlan;
+                cmdGetMateriasParaInscripcion.Parameters.Add("@id_alumno", SqlDbType.Int).Value = IDAlumno;
+                SqlDataReader drMaterias = cmdGetMateriasParaInscripcion.ExecuteReader();
+
+                while (drMaterias.Read())
+                {
+                    Materia mat = new Materia();
+                    mat.ID = (int)drMaterias["id_materia"];
+                    mat.Descripcion = (string)drMaterias["desc_materia"];
+                    mat.HSSemanales = (int)drMaterias["hs_semanales"];
+                    mat.HSTotales = (int)drMaterias["hs_totales"];
+                    mat.Plan.ID = (int)drMaterias["id_plan"];
+                    materias.Add(mat);
+                }
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar las materias disponibles para el alumno.", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
             }
             return materias;
         }

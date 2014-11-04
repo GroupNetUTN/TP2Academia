@@ -33,21 +33,35 @@ namespace UI.Desktop
 
         private void ListarCursos()
         {
-            CursoLogic curlog = new CursoLogic();
-            dgvCursos.DataSource = curlog.GetCursosDocente(this._UsuarioActual.Persona.ID);   
+            try
+            {
+                CursoLogic curlog = new CursoLogic();
+                dgvCursos.DataSource = curlog.GetCursosDocente(this._UsuarioActual.Persona.ID);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void ListarAlumnos()
         {
-            int IDCurso = ((Business.Entities.Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
-            AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
-            List<AlumnoInscripcion> alumnosInscriptos = new List<AlumnoInscripcion>();
-            foreach (AlumnoInscripcion ai in ail.GetAll(_UsuarioActual.Persona.ID))
+            try
             {
-                if (ai.Curso.ID == IDCurso)
-                    alumnosInscriptos.Add(ai);
+                int IDCurso = ((Business.Entities.Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
+                AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
+                List<AlumnoInscripcion> alumnosInscriptos = new List<AlumnoInscripcion>();
+                foreach (AlumnoInscripcion ai in ail.GetAll(_UsuarioActual.Persona.ID))
+                {
+                    if (ai.Curso.ID == IDCurso)
+                        alumnosInscriptos.Add(ai);
+                }
+                this.dgvAlumnos.DataSource = alumnosInscriptos;
             }
-            this.dgvAlumnos.DataSource = alumnosInscriptos;
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override void MapearADatos()
@@ -60,9 +74,16 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            this.MapearADatos();
-            AlumnoInscripcionLogic AILogic = new AlumnoInscripcionLogic();
-            AILogic.Save(_InscripcionActual);
+            try
+            {
+                this.MapearADatos();
+                AlumnoInscripcionLogic AILogic = new AlumnoInscripcionLogic();
+                AILogic.Save(_InscripcionActual);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override bool Validar()
@@ -92,13 +113,20 @@ namespace UI.Desktop
 
         private void btnBorrarNota_Click(object sender, EventArgs e)
         {
-            _InscripcionActual = ((Business.Entities.AlumnoInscripcion)this.dgvAlumnos.SelectedRows[0].DataBoundItem);
-            _InscripcionActual.State = AlumnoInscripcion.States.Modified;
-            _InscripcionActual.Nota = 0;
-            _InscripcionActual.Condicion = "Inscripto";
-            AlumnoInscripcionLogic AILogic = new AlumnoInscripcionLogic();
-            AILogic.Save(_InscripcionActual);
-            this.ListarAlumnos();
+            try
+            {
+                _InscripcionActual = ((Business.Entities.AlumnoInscripcion)this.dgvAlumnos.SelectedRows[0].DataBoundItem);
+                _InscripcionActual.State = AlumnoInscripcion.States.Modified;
+                _InscripcionActual.Nota = 0;
+                _InscripcionActual.Condicion = "Inscripto";
+                AlumnoInscripcionLogic AILogic = new AlumnoInscripcionLogic();
+                AILogic.Save(_InscripcionActual);
+                this.ListarAlumnos();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvCursos_CellClick(object sender, DataGridViewCellEventArgs e)

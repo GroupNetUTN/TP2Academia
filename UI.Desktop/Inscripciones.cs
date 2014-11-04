@@ -24,8 +24,15 @@ namespace UI.Desktop
 
         public void Listar()
         {
-            AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
-            this.dgvInscripciones.DataSource = ail.GetAll(_UsuarioActual.Persona.ID);
+            try
+            {
+                AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
+                this.dgvInscripciones.DataSource = ail.GetAll(_UsuarioActual.Persona.ID);
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Inscripciones_Load(object sender, EventArgs e)
@@ -55,15 +62,22 @@ namespace UI.Desktop
             var rta = MessageBox.Show("¿Esta seguro que desea eliminar esta Inscripción?", "Atencion", MessageBoxButtons.YesNo);
             if (rta == DialogResult.Yes)
             {
-                int ID = ((Business.Entities.AlumnoInscripcion)this.dgvInscripciones.SelectedRows[0].DataBoundItem).ID;
-                AlumnoInscripcionLogic insc = new AlumnoInscripcionLogic();
-                insc.Delete(ID);
-                CursoLogic curlog = new CursoLogic();
-                Curso cur = curlog.GetOne(((Business.Entities.AlumnoInscripcion)this.dgvInscripciones.SelectedRows[0].DataBoundItem).Curso.ID);
-                cur.State = BusinessEntity.States.Modified;
-                cur.Cupo++;
-                curlog.Save(cur);
-                this.Listar();
+                try
+                {
+                    int ID = ((Business.Entities.AlumnoInscripcion)this.dgvInscripciones.SelectedRows[0].DataBoundItem).ID;
+                    AlumnoInscripcionLogic insc = new AlumnoInscripcionLogic();
+                    insc.Delete(ID);
+                    CursoLogic curlog = new CursoLogic();
+                    Curso cur = curlog.GetOne(((Business.Entities.AlumnoInscripcion)this.dgvInscripciones.SelectedRows[0].DataBoundItem).Curso.ID);
+                    cur.State = BusinessEntity.States.Modified;
+                    cur.Cupo++;
+                    curlog.Save(cur);
+                    this.Listar();
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

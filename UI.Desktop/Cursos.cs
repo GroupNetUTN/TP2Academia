@@ -30,8 +30,15 @@ namespace UI.Desktop
 
         public void Listar()
         {
-            CursoLogic cl = new CursoLogic();
-            this.dgvCursos.DataSource = cl.GetAll();
+            try
+            {
+                CursoLogic cl = new CursoLogic();
+                this.dgvCursos.DataSource = cl.GetAll();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Cursos_Load(object sender, EventArgs e)
@@ -80,10 +87,17 @@ namespace UI.Desktop
             var rta = MessageBox.Show("¿Esta seguro que desea eliminar el Curso seleccionado?", "Atencion", MessageBoxButtons.YesNo);
             if (rta == DialogResult.Yes)
             {
-                int ID = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
-                CursoLogic curso = new CursoLogic();
-                curso.Delete(ID);
-                this.Listar();
+                try
+                {
+                    int ID = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
+                    CursoLogic curso = new CursoLogic();
+                    curso.Delete(ID);
+                    this.Listar();
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

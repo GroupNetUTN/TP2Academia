@@ -11,7 +11,7 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class SeleccionarPersona : Form
+    public partial class SeleccionarPersona : ApplicationForm
     {
         public SeleccionarPersona(Usuario u)
         {
@@ -35,15 +35,22 @@ namespace UI.Desktop
 
         public void Listar(string tipo)
         {
-            PersonaLogic pl = new PersonaLogic();
-            if (tipo == "Todos")
-                this.dgvSeleccionarPersona.DataSource = pl.GetAll();
-            else if (tipo == "Alumnos")
-                this.dgvSeleccionarPersona.DataSource = pl.GetAlumnos();
-            else if (tipo == "Docentes")
-                this.dgvSeleccionarPersona.DataSource = pl.GetDocentes();
-            else if (tipo == "No docentes")
-                this.dgvSeleccionarPersona.DataSource = pl.GetNoDocentes();
+            try
+            {
+                PersonaLogic pl = new PersonaLogic();
+                if (tipo == "Todos")
+                    this.dgvSeleccionarPersona.DataSource = pl.GetAll();
+                else if (tipo == "Alumnos")
+                    this.dgvSeleccionarPersona.DataSource = pl.GetAlumnos();
+                else if (tipo == "Docentes")
+                    this.dgvSeleccionarPersona.DataSource = pl.GetDocentes();
+                else if (tipo == "No docentes")
+                    this.dgvSeleccionarPersona.DataSource = pl.GetNoDocentes();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cbxTipoPersona_SelectedIndexChanged(object sender, EventArgs e)
