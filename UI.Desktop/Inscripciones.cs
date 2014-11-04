@@ -25,13 +25,7 @@ namespace UI.Desktop
         public void Listar()
         {
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
-            List<AlumnoInscripcion> InscDelAlumno = new List<AlumnoInscripcion>();
-            foreach (AlumnoInscripcion ai in ail.GetAll())
-            {
-                if (ai.Alumno.ID == _UsuarioActual.Persona.ID)
-                    InscDelAlumno.Add(ai);
-            }
-            this.dgvInscripciones.DataSource = InscDelAlumno;
+            this.dgvInscripciones.DataSource = ail.GetAll(_UsuarioActual.Persona.ID);
         }
 
         private void Inscripciones_Load(object sender, EventArgs e)

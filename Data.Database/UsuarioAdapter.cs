@@ -108,6 +108,7 @@ namespace Data.Database
             catch (Exception e)
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar datos del usuario", e);
+
                 throw ExcepcionManejada;
             }
             finally

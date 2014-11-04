@@ -199,19 +199,18 @@
             this.mnuReportes.Size = new System.Drawing.Size(175, 22);
             this.mnuReportes.Text = "Reportes";
             this.mnuReportes.Visible = false;
-            this.mnuReportes.Click += new System.EventHandler(this.mnuReportes_Click);
             // 
             // reporteCursosToolStripMenuItem
             // 
             this.reporteCursosToolStripMenuItem.Name = "reporteCursosToolStripMenuItem";
-            this.reporteCursosToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.reporteCursosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.reporteCursosToolStripMenuItem.Text = "Cursos";
-            this.reporteCursosToolStripMenuItem.Click += new System.EventHandler(this.mnuReportes_Click);
+            this.reporteCursosToolStripMenuItem.Click += new System.EventHandler(this.mnuReportesCursos_Click);
             // 
             // planesToolStripMenuItem1
             // 
             this.planesToolStripMenuItem1.Name = "planesToolStripMenuItem1";
-            this.planesToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
+            this.planesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.planesToolStripMenuItem1.Text = "Planes";
             // 
             // helpMenu

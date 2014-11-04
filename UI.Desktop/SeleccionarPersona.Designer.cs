@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.dgvSeleccionarPersona = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblSeleccionarPersona = new System.Windows.Forms.TableLayoutPanel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cbxTipoPersona = new System.Windows.Forms.ComboBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSeleccionarPersona)).BeginInit();
             this.tblSeleccionarPersona.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +50,8 @@
             this.dgvSeleccionarPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Apellido,
-            this.Nombre});
+            this.Nombre,
+            this.tipoPersona});
             this.tblSeleccionarPersona.SetColumnSpan(this.dgvSeleccionarPersona, 2);
             this.dgvSeleccionarPersona.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSeleccionarPersona.Location = new System.Drawing.Point(3, 32);
@@ -60,27 +62,6 @@
             this.dgvSeleccionarPersona.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSeleccionarPersona.Size = new System.Drawing.Size(354, 263);
             this.dgvSeleccionarPersona.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.DataPropertyName = "Apellido";
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
             // 
             // tblSeleccionarPersona
             // 
@@ -138,6 +119,34 @@
             this.cbxTipoPersona.Text = "Mostrar:";
             this.cbxTipoPersona.SelectedIndexChanged += new System.EventHandler(this.cbxTipoPersona_SelectedIndexChanged);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.DataPropertyName = "Apellido";
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // tipoPersona
+            // 
+            this.tipoPersona.DataPropertyName = "TipoPersona";
+            this.tipoPersona.HeaderText = "TipoPersona";
+            this.tipoPersona.Name = "tipoPersona";
+            this.tipoPersona.ReadOnly = true;
+            // 
             // SeleccionarPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,5 +172,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoPersona;
     }
 }

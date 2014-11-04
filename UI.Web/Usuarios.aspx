@@ -27,7 +27,7 @@
         onclick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
 </asp:Panel>
 
-<asp:Panel ID="formPanel" Visible="false" runat="server">
+<asp:Panel ID="formPanel" Visible="false" runat="server" Height="158px">
     <br />
     <asp:Label ID="lblHabilitado" runat="server" Text="Habilitado: "></asp:Label>
     <asp:CheckBox ID="chxHabilitado" runat="server"></asp:CheckBox>
@@ -53,6 +53,9 @@
     <asp:RequiredFieldValidator ID="rfvRepetirClave" runat="server" 
         ControlToValidate="txtRepetirClave" Display="Dynamic" 
         ErrorMessage="El campo Repetir Clave es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator>
+    <br />
+    <asp:LinkButton ID="lbSeleccionarPersona" runat="server" 
+        onclick="lbSeleccionarPersona_Click">SeleccionarPersona</asp:LinkButton>
 </asp:Panel>
    
 <asp:Panel ID="formActionsPanel" runat="server">

@@ -34,14 +34,8 @@ namespace UI.Desktop
 
         private void ListarMaterias()
         {
-            List<Materia> materias = new List<Materia>();
             MateriaLogic matlog = new MateriaLogic();
-            foreach (Materia m in matlog.GetAll())
-            {
-                if (m.Plan.ID == this._UsuarioActual.Persona.Plan.ID)
-                    materias.Add(m);
-            }
-            this.dgvMaterias.DataSource = materias;
+            this.dgvMaterias.DataSource = matlog.GetMateriasParaInscripcion(_UsuarioActual.Persona.Plan.ID, _UsuarioActual.Persona.ID);
             this.dgvMaterias.ClearSelection();
         }
         
@@ -65,17 +59,9 @@ namespace UI.Desktop
 
         private void dgvMaterias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            List<Comision> comisiones = new List<Comision>();
-            CursoLogic curlog = new CursoLogic();
-            foreach (Curso c in curlog.GetAll())
-            {
-                if (c.Materia.ID == ID && c.Cupo>0)
-                {
-                    comisiones.Add(c.Comision);
-                }
-            }
-            this.dgvComisiones.DataSource = comisiones;
+            int IDMateria = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+            ComisionLogic comlog = new ComisionLogic();
+            this.dgvComisiones.DataSource =  comlog.GetComisionesDisponibles(IDMateria);
         }
 
         public override void GuardarCambios()

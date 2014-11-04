@@ -43,5 +43,19 @@ namespace Business.Logic
         {
             ComisionData.Delete(ID);
         }
+
+        public List<Comision> GetComisionesDisponibles(int IDMateria)
+        {
+            List<Comision> comisiones = new List<Comision>();
+            CursoLogic curlog = new CursoLogic();
+            foreach (Curso c in curlog.GetAll())
+            {
+                if (c.Materia.ID == IDMateria && c.Cupo > 0)
+                {
+                    comisiones.Add(c.Comision);
+                }
+            }
+            return comisiones;
+        }
     }
 }

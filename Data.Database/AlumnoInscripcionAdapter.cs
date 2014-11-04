@@ -10,13 +10,14 @@ namespace Data.Database
 {
     public class AlumnoInscripcionAdapter : Adapter
     {
-        public List<AlumnoInscripcion> GetAll()
+        public List<AlumnoInscripcion> GetAll(int IDAlumno)
         {
             List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();
             try
             {
                 this.OpenConnection();
                 SqlCommand cmdGetAll = new SqlCommand("GetAll_AlumnosInscripciones", SqlConn);
+                cmdGetAll.Parameters.Add("@id_pers", SqlDbType.Int).Value = IDAlumno;
                 cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drInscripciones = cmdGetAll.ExecuteReader();
                 while (drInscripciones.Read())

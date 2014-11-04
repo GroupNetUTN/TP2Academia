@@ -103,7 +103,7 @@
             this.Controls.Add(this.btnAceptar);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestión de Academia";
+            this.Text = "Inicio de Sesión";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

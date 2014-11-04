@@ -124,7 +124,7 @@
             this.txtUsuario.Location = new System.Drawing.Point(88, 39);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(190, 20);
-            this.txtUsuario.TabIndex = 4;
+            this.txtUsuario.TabIndex = 1;
             // 
             // lblClave
             // 
@@ -140,7 +140,7 @@
             this.txtClave.Location = new System.Drawing.Point(88, 75);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(190, 20);
-            this.txtClave.TabIndex = 5;
+            this.txtClave.TabIndex = 2;
             this.txtClave.UseSystemPasswordChar = true;
             // 
             // chkHabilitado
@@ -149,7 +149,7 @@
             this.chkHabilitado.Location = new System.Drawing.Point(371, 3);
             this.chkHabilitado.Name = "chkHabilitado";
             this.chkHabilitado.Size = new System.Drawing.Size(73, 17);
-            this.chkHabilitado.TabIndex = 7;
+            this.chkHabilitado.TabIndex = 4;
             this.chkHabilitado.Text = "Habilitado";
             this.chkHabilitado.UseVisualStyleBackColor = true;
             // 
@@ -158,7 +158,7 @@
             this.btnSeleccionarPersona.Location = new System.Drawing.Point(371, 39);
             this.btnSeleccionarPersona.Name = "btnSeleccionarPersona";
             this.btnSeleccionarPersona.Size = new System.Drawing.Size(130, 23);
-            this.btnSeleccionarPersona.TabIndex = 18;
+            this.btnSeleccionarPersona.TabIndex = 5;
             this.btnSeleccionarPersona.Text = "Seleccionar Persona";
             this.btnSeleccionarPersona.UseVisualStyleBackColor = true;
             this.btnSeleccionarPersona.Click += new System.EventHandler(this.btnSeleccionarPersona_Click);
@@ -179,6 +179,7 @@
             this.txtPersona.Name = "txtPersona";
             this.txtPersona.Size = new System.Drawing.Size(147, 20);
             this.txtPersona.TabIndex = 20;
+            this.txtPersona.TabStop = false;
             this.txtPersona.Text = "--Persona no seleccionada--";
             // 
             // txtConfirmarClave
@@ -186,7 +187,7 @@
             this.txtConfirmarClave.Location = new System.Drawing.Point(88, 111);
             this.txtConfirmarClave.Name = "txtConfirmarClave";
             this.txtConfirmarClave.Size = new System.Drawing.Size(190, 20);
-            this.txtConfirmarClave.TabIndex = 6;
+            this.txtConfirmarClave.TabIndex = 3;
             this.txtConfirmarClave.UseSystemPasswordChar = true;
             // 
             // dgvPermisos

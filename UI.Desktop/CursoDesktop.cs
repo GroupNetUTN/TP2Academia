@@ -190,11 +190,13 @@ namespace UI.Desktop
 
         private void cbxEspecialidades_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            this.cbxPlanes.SelectedIndex = -1;
             this.LlenarComboPlanes();
         }
 
         private void cbxPlanes_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            this.cbxMaterias.SelectedIndex = this.cbxComisiones.SelectedIndex = -1;
             this.LlenarComboMaterias();
             this.LlenarComboComisiones();
         }

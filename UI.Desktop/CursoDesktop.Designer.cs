@@ -53,14 +53,14 @@
             this.txtAnioCalendario.Location = new System.Drawing.Point(88, 111);
             this.txtAnioCalendario.Name = "txtAnioCalendario";
             this.txtAnioCalendario.Size = new System.Drawing.Size(78, 20);
-            this.txtAnioCalendario.TabIndex = 1;
+            this.txtAnioCalendario.TabIndex = 5;
             // 
             // txtCupo
             // 
             this.txtCupo.Location = new System.Drawing.Point(372, 111);
             this.txtCupo.Name = "txtCupo";
             this.txtCupo.Size = new System.Drawing.Size(75, 20);
-            this.txtCupo.TabIndex = 2;
+            this.txtCupo.TabIndex = 6;
             // 
             // txtID
             // 
@@ -76,7 +76,7 @@
             this.cbxMaterias.Location = new System.Drawing.Point(88, 75);
             this.cbxMaterias.Name = "cbxMaterias";
             this.cbxMaterias.Size = new System.Drawing.Size(121, 21);
-            this.cbxMaterias.TabIndex = 4;
+            this.cbxMaterias.TabIndex = 3;
             // 
             // cbxComisiones
             // 
@@ -84,7 +84,7 @@
             this.cbxComisiones.Location = new System.Drawing.Point(372, 75);
             this.cbxComisiones.Name = "cbxComisiones";
             this.cbxComisiones.Size = new System.Drawing.Size(121, 21);
-            this.cbxComisiones.TabIndex = 5;
+            this.cbxComisiones.TabIndex = 4;
             // 
             // cbxEspecialidades
             // 
@@ -92,7 +92,7 @@
             this.cbxEspecialidades.Location = new System.Drawing.Point(88, 39);
             this.cbxEspecialidades.Name = "cbxEspecialidades";
             this.cbxEspecialidades.Size = new System.Drawing.Size(121, 21);
-            this.cbxEspecialidades.TabIndex = 6;
+            this.cbxEspecialidades.TabIndex = 1;
             this.cbxEspecialidades.SelectionChangeCommitted += new System.EventHandler(this.cbxEspecialidades_SelectionChangeCommitted);
             // 
             // cbxPlanes
@@ -101,7 +101,7 @@
             this.cbxPlanes.Location = new System.Drawing.Point(372, 39);
             this.cbxPlanes.Name = "cbxPlanes";
             this.cbxPlanes.Size = new System.Drawing.Size(121, 21);
-            this.cbxPlanes.TabIndex = 7;
+            this.cbxPlanes.TabIndex = 2;
             this.cbxPlanes.SelectionChangeCommitted += new System.EventHandler(this.cbxPlanes_SelectionChangeCommitted);
             // 
             // tableLayoutPanel1
@@ -144,7 +144,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(287, 147);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 8;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -154,7 +154,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(372, 147);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);

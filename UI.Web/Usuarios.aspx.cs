@@ -183,5 +183,11 @@ namespace UI.Web
         }
 
         #endregion
+
+        protected void lbSeleccionarPersona_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect("~/SeleccionarPersona.aspx");
+        }
+
     }
 }

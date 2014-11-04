@@ -85,7 +85,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(261, 161);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 0;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -96,7 +96,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(180, 161);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 1;
+            this.btnAceptar.TabIndex = 3;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -109,7 +109,7 @@
             this.btnSelecDocente.Location = new System.Drawing.Point(11, 91);
             this.btnSelecDocente.Name = "btnSelecDocente";
             this.btnSelecDocente.Size = new System.Drawing.Size(150, 23);
-            this.btnSelecDocente.TabIndex = 2;
+            this.btnSelecDocente.TabIndex = 1;
             this.btnSelecDocente.Text = "Seleccionar Docente";
             this.btnSelecDocente.UseVisualStyleBackColor = true;
             this.btnSelecDocente.Click += new System.EventHandler(this.btnSelecDocente_Click);
@@ -126,7 +126,7 @@
             this.cbxCargo.Location = new System.Drawing.Point(198, 92);
             this.cbxCargo.Name = "cbxCargo";
             this.cbxCargo.Size = new System.Drawing.Size(121, 21);
-            this.cbxCargo.TabIndex = 5;
+            this.cbxCargo.TabIndex = 2;
             this.cbxCargo.Text = "-Seleccionar Cargo-";
             // 
             // DocenteCursoDesktop

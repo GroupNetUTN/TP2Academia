@@ -192,7 +192,7 @@ namespace UI.Desktop
             reg.Show();
         }
 
-        private void mnuReportes_Click(object sender, EventArgs e)
+        private void mnuReportesCursos_Click(object sender, EventArgs e)
         {
             ReporteCursosViewer rpc = new ReporteCursosViewer();
             rpc.MdiParent = this;
