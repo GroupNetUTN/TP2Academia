@@ -48,8 +48,6 @@ namespace Data.Database
                     ins.Alumno.Plan.ID = (int)drInscripciones["id_plan"];
                     ins.Curso.ID = (int)drInscripciones["id_curso"];
                     ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
-                    ins.Curso.Comision.Descripcion = (string)drInscripciones["desc_comision"];
-                    ins.Curso.Materia.Descripcion = (string)drInscripciones["desc_materia"];
                     inscripciones.Add(ins);
                 }
                 drInscripciones.Close();
@@ -72,7 +70,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("GetAll_AlumnosInscripciones", SqlConn);
+                SqlCommand cmdGetAll = new SqlCommand("GetAllPorAlumno_AlumnosInscripciones", SqlConn);
                 cmdGetAll.Parameters.Add("@id_pers", SqlDbType.Int).Value = IDAlumno;
                 cmdGetAll.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drInscripciones = cmdGetAll.ExecuteReader();

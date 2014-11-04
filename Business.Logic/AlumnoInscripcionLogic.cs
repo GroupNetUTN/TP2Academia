@@ -34,6 +34,11 @@ namespace Business.Logic
             return _InscripcionData.GetAll(IDAlumno);
         }
 
+        public List<AlumnoInscripcion> GetAll()
+        {
+            return _InscripcionData.GetAll();
+        }
+
         public void Save(AlumnoInscripcion ins)
         {
             _InscripcionData.Save(ins);

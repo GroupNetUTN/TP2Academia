@@ -51,7 +51,7 @@ namespace UI.Desktop
                 int IDCurso = ((Business.Entities.Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
                 AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
                 List<AlumnoInscripcion> alumnosInscriptos = new List<AlumnoInscripcion>();
-                foreach (AlumnoInscripcion ai in ail.GetAll(_UsuarioActual.Persona.ID))
+                foreach (AlumnoInscripcion ai in ail.GetAll())
                 {
                     if (ai.Curso.ID == IDCurso)
                         alumnosInscriptos.Add(ai);
