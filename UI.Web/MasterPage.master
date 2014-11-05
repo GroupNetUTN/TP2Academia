@@ -1,0 +1,36 @@
+<%@ Master Language="C#" CodeFile="MasterPage.master.cs" Inherits="MasterPage" EnableViewState="false" %><!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>>Academia</title>
+    <link rel="stylesheet" href="style.css" />
+    <asp:ContentPlaceHolder id="Head" runat="server" />
+</head>
+<body runat="server">
+    <div class="BackgroundGradient" runat="server"> </div>
+    <div class="BodyContent" runat="server">
+
+    <div class="BorderBorder" runat="server"><div class="BorderBL" runat="server"><div></div></div><div class="BorderBR" runat="server"><div></div></div><div class="BorderTL" runat="server"></div><div class="BorderTR" runat="server"><div></div></div><div class="BorderT" runat="server"></div><div class="BorderR"><div></div></div><div class="BorderB" runat="server"><div></div></div><div class="BorderL"></div><div class="BorderC" runat="server"></div><div class="Border" runat="server">
+
+        <div class="Header" runat="server">
+          <div class="HeaderTitle" runat="server">
+            <h1><a href="#">Academia</a></h1>
+            <h2>Gestion</h2>
+          </div>
+        </div><div class="Menu" runat="server">
+             <ul><%= RenderMenu() %></ul>
+        </div><div class="Columns" runat="server"><div class="MainColumn" runat="server">
+        <div class="ArticleBorder" runat="server"><div class="ArticleBL" runat="server"><div></div></div><div class="ArticleBR" runat="server"><div></div></div><div class="ArticleTL" runat="server"></div><div class="ArticleTR" runat="server"><div></div></div><div class="ArticleT" runat="server"></div><div class="ArticleR"><div></div></div><div class="ArticleB" runat="server"><div></div></div><div class="ArticleL" runat="server"></div><div class="ArticleC" runat="server"></div><div class="Article" runat="server">
+        <form id="bodyForm" runat="server">
+            <asp:ContentPlaceHolder id="bodyContentPlaceHolder" runat="server" />
+        </form>
+        </div></div></div></div>
+        <div class="Footer" runat="server">
+            <asp:ContentPlaceHolder id="Footer" runat="server" />
+            <a href="#">Contact Us</a>
+        </div>                
+
+    </div></div>
+    </div>
+    <asp:ContentPlaceHolder id="AfterBody" runat="server" />
+</body>
+</html>

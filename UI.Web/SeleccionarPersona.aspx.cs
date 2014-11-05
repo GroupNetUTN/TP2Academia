@@ -54,5 +54,18 @@ namespace UI.Web
             this.SelectedID = (int)this.dgvPersonas.SelectedValue;
         }
 
+        protected void lbSeleccionar_Click(object sender, EventArgs e)
+        {
+            Session["ID_Persona"] = this.SelectedID;
+            Persona SelectedPersona = this.Logic.GetOne(SelectedID);
+            Session["ApeNom_Persona"] = SelectedPersona.Apellido + SelectedPersona.Nombre;
+            Page.Response.Redirect("~/Usuarios.aspx");
+        }
+
+        protected void lbCancelar_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect("~/Usuarios.aspx");
+        }
+
     }
 }

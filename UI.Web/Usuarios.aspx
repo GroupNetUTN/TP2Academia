@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="UI.Web.Usuarios" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="UI.Web.Usuarios" %>
 <asp:Content ID="Usuarios" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 
 <asp:Panel ID="gridPanel" runat="server">
@@ -18,7 +18,7 @@
         </asp:GridView>
     </asp:Panel>
 
-<asp:Panel ID="gridActionsPanel" runat="server">
+<asp:Panel ID="gridActionsPanel" runat="server" >
     <asp:LinkButton ID="editarLinkButton" runat="server" 
         onclick="editarLinkButton_Click">Editar</asp:LinkButton>
     <asp:LinkButton ID="eliminarLinkButton" runat="server" 
@@ -39,6 +39,10 @@
         ErrorMessage="El campo Nombre de Usuario es obligatorio" 
         ForeColor="#FF3300">*</asp:RequiredFieldValidator>
     <br />
+     <asp:LinkButton ID="lbSeleccionarPersona" runat="server" 
+        onclick="lbSeleccionarPersona_Click" CausesValidation="False">SeleccionarPersona</asp:LinkButton>
+    <asp:TextBox ID="txtPersona" runat="server" Enabled="False" Width="173px">--Persona no seleccionada--</asp:TextBox>
+    <br />
     <asp:Label ID="lblClave" runat="server" Text="Clave: "></asp:Label>
     <asp:TextBox ID="txtClave" runat="server" TextMode="Password"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvClave" runat="server" 
@@ -53,16 +57,13 @@
     <asp:RequiredFieldValidator ID="rfvRepetirClave" runat="server" 
         ControlToValidate="txtRepetirClave" Display="Dynamic" 
         ErrorMessage="El campo Repetir Clave es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator>
-    <br />
-    <asp:LinkButton ID="lbSeleccionarPersona" runat="server" 
-        onclick="lbSeleccionarPersona_Click">SeleccionarPersona</asp:LinkButton>
 </asp:Panel>
    
 <asp:Panel ID="formActionsPanel" runat="server">
     <asp:LinkButton ID="aceptarLinkButton" runat="server" 
         onclick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
     <asp:LinkButton ID="cancelarLinkButton" runat="server" 
-        onclick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
+        onclick="cancelarLinkButton_Click" CausesValidation="False">Cancelar</asp:LinkButton>
     <asp:ValidationSummary ID="vsValidaciones" runat="server" ForeColor="#FF3300" />
 </asp:Panel>
 

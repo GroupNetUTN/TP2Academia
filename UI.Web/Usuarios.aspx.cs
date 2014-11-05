@@ -15,6 +15,21 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            if (Session["Habilitado"] != null)
+            {
+                this.formPanel.Visible = true;
+                this.txtNombreUsuario.Text = Session["Nombre_Usuario"].ToString();
+                this.chxHabilitado.Checked = Convert.ToBoolean(Session["Habilitado"]);
+                if (Session["ApeNom_Persona"] != null)
+                    this.txtPersona.Text = Session["ApeNom_Persona"].ToString();
+                if (Session["SelectedID"]!=null)
+                {
+                    this.SelectedID = (int)Session["SelectedID"];
+                    this.FormMode = FormModes.Modificacion;
+                }
+                else
+                    this.FormMode = FormModes.Alta;
+            }
         }
 
         UsuarioLogic _logic;
@@ -34,12 +49,22 @@ namespace UI.Web
             this.gridView.DataSource = this.Logic.GetAll();
             this.gridView.DataBind();
         }
-                     
+
+        Usuario _Entity;    
         
         private Usuario Entity
         {
-            get;
-            set;
+            get
+            {
+                if (_Entity != null)
+                    return _Entity;
+                else
+                    return null;
+            }
+            set
+            {
+                _Entity = value;
+            }
         }
 
         private int SelectedID
@@ -71,6 +96,7 @@ namespace UI.Web
             this.Entity = this.Logic.GetOne(id);
             this.chxHabilitado.Checked = this.Entity.Habilitado;
             this.txtNombreUsuario.Text = this.Entity.NombreUsuario;
+            this.txtPersona.Text = this.Entity.Persona.Apellido + " " + this.Entity.Persona.Nombre;
         }
 
         private void LoadEntity(Usuario usuario)
@@ -78,6 +104,8 @@ namespace UI.Web
             usuario.NombreUsuario = this.txtNombreUsuario.Text;
             usuario.Clave = this.txtClave.Text;
             usuario.Habilitado = this.chxHabilitado.Checked;
+            if (Session["ID_Persona"] != null)
+                usuario.Persona.ID = Convert.ToInt32(Session["ID_Persona"]);
         }
 
         private void SaveEntity(Usuario usuario)
@@ -131,29 +159,33 @@ namespace UI.Web
                 case FormModes.Modificacion:
                     if (Page.IsValid)
                     {
-                        this.Entity = new Usuario();
-                        this.Entity.ID = this.SelectedID;
+                        this.Entity = this.Logic.GetOne(this.SelectedID);
                         this.Entity.State = BusinessEntity.States.Modified;
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
+                        this.ClearSession();
                     }
-                    break;
-                case FormModes.Baja:
-                    this.DeleteEntity(this.SelectedID);
-                    this.LoadGrid();
                     break;
                 case FormModes.Alta:
                     this.Entity = new Usuario();
                     this.LoadEntity(this.Entity);
                     this.SaveEntity(this.Entity);
                     this.LoadGrid();
-                    break;
-                default:
+                    this.ClearSession();
                     break;
             }
 
             this.formPanel.Visible = false;
+        }
+
+        private void ClearSession()
+        {
+            Session["Nombre_Usuario"] =
+                 Session["Habilitado"] =
+                 Session["ApeNom_Persona"] =
+                 Session["SelectedID"] =
+                 Session["ID_Persona"] =  null;
         }
             
 
@@ -161,10 +193,8 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.EnableForm(false);
-                this.LoadForm(this.SelectedID);
+                this.DeleteEntity(this.SelectedID);
+                this.LoadGrid();
             }
         }
 
@@ -186,6 +216,13 @@ namespace UI.Web
 
         protected void lbSeleccionarPersona_Click(object sender, EventArgs e)
         {
+            Session["Nombre_Usuario"] = this.txtNombreUsuario.Text;
+            Session["Habilitado"] = this.chxHabilitado.Checked;
+            
+            if(FormMode == FormModes.Modificacion)
+            {
+                Session["SelectedID"] = this.SelectedID;
+            }
             Page.Response.Redirect("~/SeleccionarPersona.aspx");
         }
 
