@@ -1,4 +1,4 @@
-<%@ Master Language="C#" CodeFile="MasterPage.master.cs" Inherits="MasterPage" EnableViewState="false" %><!DOCTYPE html>
+<%@ Master Language="C#" CodeFile="MasterPage.master.cs" Inherits="MasterPage" EnableViewState="true" %><!DOCTYPE html>
 <html>
 <head runat="server">
     <title>>Academia</title>
@@ -9,7 +9,7 @@
     <div class="BackgroundGradient" runat="server"> </div>
     <div class="BodyContent" runat="server">
 
-    <div class="BorderBorder" runat="server"><div class="BorderBL" runat="server"><div></div></div><div class="BorderBR" runat="server"><div></div></div><div class="BorderTL" runat="server"></div><div class="BorderTR" runat="server"><div></div></div><div class="BorderT" runat="server"></div><div class="BorderR"><div></div></div><div class="BorderB" runat="server"><div></div></div><div class="BorderL"></div><div class="BorderC" runat="server"></div><div class="Border" runat="server">
+    <div class="BorderBorder" runat="server"><div class="BorderBL" runat="server"><div></div></div><div class="BorderBR" runat="server"><div></div></div><div class="BorderTL" runat="server"></div><div class="BorderTR" runat="server"><div></div></div><div class="BorderT" runat="server" runat="server"></div><div class="BorderR" runat="server"><div></div></div><div class="BorderB" runat="server"><div></div></div><div class="BorderL" runat="server"></div><div class="BorderC" runat="server"></div><div class="Border" runat="server">
 
         <div class="Header" runat="server">
           <div class="HeaderTitle" runat="server">
@@ -19,7 +19,7 @@
         </div><div class="Menu" runat="server">
              <ul><%= RenderMenu() %></ul>
         </div><div class="Columns" runat="server"><div class="MainColumn" runat="server">
-        <div class="ArticleBorder" runat="server"><div class="ArticleBL" runat="server"><div></div></div><div class="ArticleBR" runat="server"><div></div></div><div class="ArticleTL" runat="server"></div><div class="ArticleTR" runat="server"><div></div></div><div class="ArticleT" runat="server"></div><div class="ArticleR"><div></div></div><div class="ArticleB" runat="server"><div></div></div><div class="ArticleL" runat="server"></div><div class="ArticleC" runat="server"></div><div class="Article" runat="server">
+        <div class="ArticleBorder" runat="server"><div class="ArticleBL" runat="server"><div></div></div><div class="ArticleBR" runat="server"><div></div></div><div class="ArticleTL" runat="server"></div><div class="ArticleTR" runat="server"><div></div></div><div class="ArticleT" runat="server"></div><div class="ArticleR" runat="server"><div></div></div><div class="ArticleB" runat="server"><div></div></div><div class="ArticleL" runat="server"></div><div class="ArticleC" runat="server"></div><div class="Article" runat="server">
         <form id="bodyForm" runat="server">
             <asp:ContentPlaceHolder id="bodyContentPlaceHolder" runat="server" />
         </form>

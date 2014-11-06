@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:Panel ID="Panel1" runat="server">
+    <asp:Panel ID="gridPanel" runat="server">
         <asp:GridView ID="GridView" runat="server" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White"
             AutoGenerateColumns="False" 

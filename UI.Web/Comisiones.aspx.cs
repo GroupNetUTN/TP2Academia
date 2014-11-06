@@ -9,28 +9,28 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Planes : BasePage
+    public partial class Comisiones : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
         }
 
-        PlanLogic _logic;
+        ComisionLogic _logic;
 
-        private PlanLogic Logic
+        private ComisionLogic Logic
         {
             get
             {
                 if (_logic == null)
-                    _logic = new PlanLogic();
+                    _logic = new ComisionLogic();
                 return _logic;
             }
         }
 
-        Plan _Entity;
+        Comision _Entity;
 
-        private Plan Entity
+        private Comision Entity
         {
             get
             {
@@ -74,7 +74,7 @@ namespace UI.Web
             this.GridView.DataBind();
         }
 
-        private void LoadDDL()
+        private void LoadDdlEspecialidades()
         {
             EspecialidadLogic el = new EspecialidadLogic();
             this.ddlEspecialidades.DataSource = el.GetAll();
@@ -83,17 +83,39 @@ namespace UI.Web
             this.ddlEspecialidades.DataBind();
         }
 
+        private void LoadDdlPlanes()
+        {
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = new List<Plan>();
+            foreach (Plan p in pl.GetAll())
+            {
+                if (p.Especialidad.ID == Convert.ToInt32(this.ddlEspecialidades.SelectedValue))
+                {
+                    planes.Add(p);
+                }
+            }
+            this.ddlPlanes.DataSource = planes;
+            this.ddlPlanes.DataTextField = "Descripcion";
+            this.ddlPlanes.DataValueField = "ID";
+            this.ddlPlanes.DataBind();
+        }
+
         private void EnableForm(bool enable)
         {
-            this.lblDescripcionPlan.Visible = enable;
-            this.txtDescripcionPlan.Visible = enable;
+            this.lblDescripcion.Visible = enable;
+            this.txtDescripcion.Visible = enable;
+            this.lblAnioEspecialidad.Visible = enable;
+            this.txtAnio.Visible = enable;
             this.lblEspecialidad.Visible = enable;
             this.ddlEspecialidades.Visible = enable;
+            this.lblPlan.Visible = enable;
+            this.ddlPlanes.Visible = enable;
         }
 
         private void ClearForm()
         {
-            this.txtDescripcionPlan.Text = string.Empty;
+            this.txtDescripcion.Text = string.Empty;
+            this.txtAnio.Text = string.Empty;
         }
 
         private void DeleteEntity(int id)
@@ -104,19 +126,23 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
-            this.txtDescripcionPlan.Text = this.Entity.Descripcion;
-            this.ddlEspecialidades.SelectedValue = this.Entity.Especialidad.ID.ToString();
+            this.txtDescripcion.Text = this.Entity.Descripcion;
+            this.txtAnio.Text = this.Entity.AnioEspecialidad.ToString();
+            this.ddlEspecialidades.SelectedValue = this.Entity.Plan.Especialidad.ID.ToString();
+            this.ddlPlanes.SelectedValue = this.Entity.Plan.ID.ToString();
         }
 
-        private void LoadEntity(Plan plan)
+        private void LoadEntity(Comision comi)
         {
-            plan.Descripcion = this.txtDescripcionPlan.Text;
-            plan.Especialidad.ID = Convert.ToInt32(this.ddlEspecialidades.SelectedValue);
+            comi.Descripcion = this.txtDescripcion.Text;
+            comi.AnioEspecialidad = Convert.ToInt32(this.txtAnio.Text);
+            comi.Plan.Especialidad.ID = Convert.ToInt32(this.ddlEspecialidades.SelectedValue);
+            comi.Plan.ID = Convert.ToInt32(this.ddlPlanes.SelectedValue);
         }
 
-        private void SaveEntity(Plan plan)
+        private void SaveEntity(Comision comi)
         {
-            this.Logic.Save(plan);
+            this.Logic.Save(comi);
         }
 
         private void ClearSession()
@@ -133,7 +159,7 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
-                this.LoadDDL();
+                this.LoadDdlEspecialidades();
                 this.formPanel.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.EnableForm(true);
@@ -152,7 +178,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            this.LoadDDL();
+            this.LoadDdlEspecialidades();
             this.formPanel.Visible = true;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
@@ -175,7 +201,7 @@ namespace UI.Web
                     }
                     break;
                 case FormModes.Alta:
-                    this.Entity = new Plan();
+                    this.Entity = new Comision();
                     this.LoadEntity(this.Entity);
                     this.SaveEntity(this.Entity);
                     this.LoadGrid();
@@ -190,6 +216,11 @@ namespace UI.Web
         {
             this.ClearForm();
             this.formPanel.Visible = false;
+        }
+
+        protected void ddlEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadDdlPlanes();
         }
     }
 }
