@@ -34,7 +34,7 @@
     <br />
     <asp:Label ID="lblEspecialidad" runat="server" Text="Especialidad: "></asp:Label>   
     <asp:DropDownList ID="ddlEspecialidades" runat="server" Width="200px" 
-            DataValueField="ID" DataTextField="Descripcion" AutoPostBack="True">
+            DataValueField="ID" DataTextField="Descripcion">
     </asp:DropDownList>   
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
             ControlToValidate="ddlEspecialidades" 

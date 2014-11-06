@@ -14,7 +14,10 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
-            formPanel.Visible = true;
+            if (Page.IsPostBack)
+            {
+                this.LoadDDL();
+            }
         }
 
         PlanLogic _logic;
@@ -106,13 +109,13 @@ namespace UI.Web
         {
             this.Entity = this.Logic.GetOne(id);
             this.txtDescripcionPlan.Text = this.Entity.Descripcion;
-          //  this.ddlEspecialidades.SelectedValue = this.Entity.Especialidad.ID;
+            this.ddlEspecialidades.SelectedValue = this.Entity.Especialidad.ID.ToString();
         }
 
         private void LoadEntity(Plan plan)
         {
             plan.Descripcion = this.txtDescripcionPlan.Text;
-            plan.Especialidad.ID = (int)ViewState["id_especialidad"];
+            plan.Especialidad.ID = Convert.ToInt32(this.ddlEspecialidades.SelectedValue);
         }
 
         private void SaveEntity(Plan plan)
