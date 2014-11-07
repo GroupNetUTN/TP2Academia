@@ -9,28 +9,28 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Comisiones : BasePage
+    public partial class Materias : BasePage
     {
-        protected void Page_Load(object sender, EventArgs e)
+       protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
         }
 
-        ComisionLogic _logic;
+        MateriaLogic _logic;
 
-        private ComisionLogic Logic
+        private MateriaLogic Logic
         {
             get
             {
                 if (_logic == null)
-                    _logic = new ComisionLogic();
+                    _logic = new MateriaLogic();
                 return _logic;
             }
         }
 
-        Comision _Entity;
+        Materia _Entity;
 
-        private Comision Entity
+        private Materia Entity
         {
             get
             {
@@ -104,8 +104,10 @@ namespace UI.Web
         {
             this.lblDescripcion.Visible = enable;
             this.txtDescripcion.Visible = enable;
-            this.lblAnioEspecialidad.Visible = enable;
-            this.txtAnio.Visible = enable;
+            this.lblHsSemanales.Visible = enable;
+            this.txtHsSemanales.Visible = enable;
+            this.lblHsTotales.Visible = enable;
+            this.txtHsTotales.Visible = enable;
             this.lblEspecialidad.Visible = enable;
             this.ddlEspecialidades.Visible = enable;
             this.lblPlan.Visible = enable;
@@ -115,7 +117,8 @@ namespace UI.Web
         private void ClearForm()
         {
             this.txtDescripcion.Text = string.Empty;
-            this.txtAnio.Text = string.Empty;
+            this.txtHsSemanales.Text = string.Empty;
+            this.txtHsTotales.Text = string.Empty;
         }
 
         private void DeleteEntity(int id)
@@ -127,24 +130,26 @@ namespace UI.Web
         {
             this.Entity = this.Logic.GetOne(id);
             this.txtDescripcion.Text = this.Entity.Descripcion;
-            this.txtAnio.Text = this.Entity.AnioEspecialidad.ToString();
+            this.txtHsSemanales.Text = this.Entity.HSSemanales.ToString();
+            this.txtHsTotales.Text = this.Entity.HSTotales.ToString();
             this.ddlEspecialidades.SelectedValue = this.Entity.Plan.Especialidad.ID.ToString();
             if (FormMode == FormModes.Modificacion)
                 this.LoadDdlPlanes();
             this.ddlPlanes.SelectedValue = this.Entity.Plan.ID.ToString();
         }
 
-        private void LoadEntity(Comision comi)
+        private void LoadEntity(Materia mat)
         {
-            comi.Descripcion = this.txtDescripcion.Text;
-            comi.AnioEspecialidad = Convert.ToInt32(this.txtAnio.Text);
-            comi.Plan.Especialidad.ID = Convert.ToInt32(this.ddlEspecialidades.SelectedValue);
-            comi.Plan.ID = Convert.ToInt32(this.ddlPlanes.SelectedValue);
+            mat.Descripcion = this.txtDescripcion.Text;
+            mat.HSSemanales = Convert.ToInt32(this.txtHsSemanales.Text);
+            mat.HSTotales = Convert.ToInt32(this.txtHsTotales.Text);
+            mat.Plan.Especialidad.ID = Convert.ToInt32(this.ddlEspecialidades.SelectedValue);
+            mat.Plan.ID = Convert.ToInt32(this.ddlPlanes.SelectedValue);
         }
 
-        private void SaveEntity(Comision comi)
+        private void SaveEntity(Materia mat)
         {
-            this.Logic.Save(comi);
+            this.Logic.Save(mat);
         }
 
         private void ClearSession()
@@ -203,7 +208,7 @@ namespace UI.Web
                     }
                     break;
                 case FormModes.Alta:
-                    this.Entity = new Comision();
+                    this.Entity = new Materia();
                     this.LoadEntity(this.Entity);
                     this.SaveEntity(this.Entity);
                     this.LoadGrid();

@@ -26,7 +26,7 @@
         </div></div></div></div>
         <div class="Footer" runat="server">
             <asp:ContentPlaceHolder id="Footer" runat="server" />
-            <a href="#">Contact Us</a>
+            <a href="#">Developed by Ficarrotti Matias & Petrozzi Juan Pablo. Copyright  © 2014 – All Rights Reserved.</a>
         </div>                
 
     </div></div>

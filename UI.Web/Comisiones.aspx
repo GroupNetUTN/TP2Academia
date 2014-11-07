@@ -6,7 +6,7 @@
         <asp:GridView ID="GridView" runat="server" 
     AutoGenerateColumns="False" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White" 
-            onselectedindexchanged="gridView_SelectedIndexChanged">
+            onselectedindexchanged="gridView_SelectedIndexChanged" DataKeyNames="ID">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
@@ -18,10 +18,12 @@
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
         </asp:GridView>
         <asp:Panel ID="gridActionsPanel" runat="server">
-            <asp:LinkButton ID="lbEditar" runat="server" onclick="editarLinkButton_Click">Editar</asp:LinkButton>
+            <asp:LinkButton ID="lbEditar" runat="server" onclick="editarLinkButton_Click" 
+                CausesValidation="False">Editar</asp:LinkButton>
             <asp:LinkButton ID="lbEliminar" runat="server" 
-                onclick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
-            <asp:LinkButton ID="lbNuevo" runat="server" onclick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
+                onclick="eliminarLinkButton_Click" CausesValidation="False">Eliminar</asp:LinkButton>
+            <asp:LinkButton ID="lbNuevo" runat="server" onclick="nuevoLinkButton_Click" 
+                CausesValidation="False">Nuevo</asp:LinkButton>
             <br />
             <asp:Panel ID="formPanel" Visible="false" runat="server">
                 <asp:Label ID="lblDescripcion" runat="server" 
@@ -40,7 +42,8 @@
                 <br />
                 <asp:Label ID="lblEspecialidad" runat="server" Text="Especialidad: "></asp:Label>
                 <asp:DropDownList ID="ddlEspecialidades" runat="server" Height="16px" 
-                    onselectedindexchanged="ddlEspecialidades_SelectedIndexChanged" Width="150px">
+                    onselectedindexchanged="ddlEspecialidades_SelectedIndexChanged" 
+                    Width="150px" AutoPostBack="True">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                     ControlToValidate="ddlEspecialidades" 
@@ -55,7 +58,7 @@
                 <asp:Panel ID="formActionsPanel" runat="server">
                     <asp:LinkButton ID="lbAceptar" runat="server" onclick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
                     <asp:LinkButton ID="lbCancelar" runat="server" 
-                        onclick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
+                        onclick="cancelarLinkButton_Click" CausesValidation="False">Cancelar</asp:LinkButton>
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
                         ForeColor="#FF3300" />
                 </asp:Panel>

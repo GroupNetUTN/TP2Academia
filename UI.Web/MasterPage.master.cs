@@ -17,7 +17,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         var result = new StringBuilder();
         RenderMenuItem("Home", "Default.aspx", result);
-        RenderMenuItem("About", "About.aspx", result);
+        RenderMenuItem("Usuarios", "Usuarios.aspx", result);
+        RenderMenuItem("Especialidades", "Especialidades.aspx", result);
+        RenderMenuItem("Planes", "Planes.aspx", result);
+        RenderMenuItem("Comisiones", "Comisiones.aspx", result);
+        RenderMenuItem("Materias", "Materias.aspx", result);
         return result.ToString();
     }
 
