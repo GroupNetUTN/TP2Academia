@@ -104,8 +104,7 @@ namespace UI.Desktop
             this.txtTelefono.Text = PersonaActual.Telefono;
             this.txtEmail.Text = PersonaActual.Email;
             this.cbxTipoPersona.SelectedItem = PersonaActual.TipoPersona;
-            PlanLogic plan = new PlanLogic();
-            this.cbxEspecialidades.SelectedValue = plan.GetOne(PersonaActual.Plan.ID).Especialidad.ID;
+            this.cbxEspecialidades.SelectedValue = PersonaActual.Plan.Especialidad.ID;
             this.LlenarComboPlanes();
             this.cbxPlanes.SelectedValue = PersonaActual.Plan.ID;
 

@@ -9,7 +9,7 @@
     <div class="BackgroundGradient" runat="server"> </div>
     <div class="BodyContent" runat="server">
 
-    <div class="BorderBorder" runat="server"><div class="BorderBL" runat="server"><div></div></div><div class="BorderBR" runat="server"><div></div></div><div class="BorderTL" runat="server"></div><div class="BorderTR" runat="server"><div></div></div><div class="BorderT" runat="server" runat="server"></div><div class="BorderR" runat="server"><div></div></div><div class="BorderB" runat="server"><div></div></div><div class="BorderL" runat="server"></div><div class="BorderC" runat="server"></div><div class="Border" runat="server">
+    <div class="BorderBorder" runat="server"><div class="BorderBL" runat="server"><div></div></div><div class="BorderBR" runat="server"><div></div></div><div class="BorderTL" runat="server"></div><div class="BorderTR" runat="server"><div></div></div><div class="BorderT" runat="server"></div><div class="BorderR" runat="server"><div></div></div><div class="BorderB" runat="server"><div></div></div><div class="BorderL" runat="server"></div><div class="BorderC" runat="server"></div><div class="Border" runat="server">
 
         <div class="Header" runat="server">
           <div class="HeaderTitle" runat="server">
@@ -17,7 +17,19 @@
             <h2>Gestion</h2>
           </div>
         </div><div class="Menu" runat="server">
-             <ul><%= RenderMenu() %></ul>
+        <ul class="nav">
+						<li><a href="Default.aspx">Inicio</a></li>
+						<li><a href="#">Modulos</a>
+							<ul>
+								<li><a href="Usuarios.aspx">Usuarios</a></li>
+								<li><a href="Especialidades.aspx">Especialidades</a></li>
+								<li><a href="Planes.aspx">Planes</a></li>
+								<li><a href="Materias.aspx">Materias</a></li>
+                                <li><a href="Comisiones.aspx">Comisiones</a></li>
+                                <li><a href="Personas.aspx">Personas</a></li>
+							</ul>
+						</li>
+			</ul>
         </div><div class="Columns" runat="server"><div class="MainColumn" runat="server">
         <div class="ArticleBorder" runat="server"><div class="ArticleBL" runat="server"><div></div></div><div class="ArticleBR" runat="server"><div></div></div><div class="ArticleTL" runat="server"></div><div class="ArticleTR" runat="server"><div></div></div><div class="ArticleT" runat="server"></div><div class="ArticleR" runat="server"><div></div></div><div class="ArticleB" runat="server"><div></div></div><div class="ArticleL" runat="server"></div><div class="ArticleC" runat="server"></div><div class="Article" runat="server">
         <form id="bodyForm" runat="server">

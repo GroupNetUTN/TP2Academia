@@ -17,8 +17,10 @@
                 <asp:BoundField DataField="Legajo" HeaderText="Legajo" />
                 <asp:BoundField DataField="TipoPersona" HeaderText="Tipo" />
                 <asp:BoundField DataField="DescPlan" HeaderText="Plan" />
+                <asp:BoundField DataField="DescEspecialidad" HeaderText="Especialidad" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
+            <SelectedRowStyle BackColor="Black" ForeColor="White" />
         </asp:GridView>
         <asp:Panel ID="gridActionsPanel" runat="server">
             <asp:LinkButton ID="lbEditar" runat="server" CausesValidation="False" 
@@ -90,7 +92,8 @@
                 <asp:Label ID="lblEspecialidad" runat="server" Text="Especialidad: "></asp:Label>
                 <asp:DropDownList ID="ddlEspecialidades" runat="server" Height="22px" 
                     Width="200px" 
-                    onselectedindexchanged="ddlEspecialidades_SelectedIndexChanged">
+                    onselectedindexchanged="ddlEspecialidades_SelectedIndexChanged" 
+                    AutoPostBack="True">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
                     ControlToValidate="ddlEspecialidades" 

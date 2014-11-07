@@ -80,5 +80,10 @@ namespace Business.Entities
         {
             get{ return _Plan.Descripcion; }
         }
+
+        public string DescEspecialidad
+        {
+            get { return _Plan.DescEspecialidad; }
+        }
     }
 }

@@ -55,6 +55,8 @@ namespace Data.Database
                     }
                     pers.Plan.ID = (int)drPersonas["id_plan"];
                     pers.Plan.Descripcion = (string)drPersonas["desc_plan"];
+                    pers.Plan.Especialidad.ID = (int)drPersonas["id_especialidad"];
+                    pers.Plan.Especialidad.Descripcion = (string)drPersonas["desc_especialidad"];
                     personas.Add(pers);
                 }
                 drPersonas.Close();
@@ -105,6 +107,8 @@ namespace Data.Database
                     }
                     pers.Plan.ID = (int)drPersonas["id_plan"];
                     pers.Plan.Descripcion = (string)drPersonas["desc_plan"];
+                    pers.Plan.Especialidad.ID = (int)drPersonas["id_especialidad"];
+                    pers.Plan.Especialidad.Descripcion = (string)drPersonas["desc_especialidad"];
                 }
 
                 drPersonas.Close();
