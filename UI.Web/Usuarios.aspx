@@ -14,11 +14,14 @@
                 <asp:BoundField DataField="Habilitado" HeaderText="Habilitado" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
-            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
+                Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="White" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
         </asp:GridView>
     </asp:Panel>
 
-<asp:Panel ID="gridActionsPanel" runat="server" >
+<asp:Panel ID="gridActionsPanel" runat="server">
     <asp:LinkButton ID="editarLinkButton" runat="server" 
         onclick="editarLinkButton_Click">Editar</asp:LinkButton>
     <asp:LinkButton ID="eliminarLinkButton" runat="server" 
@@ -56,15 +59,14 @@
         Display="Dynamic" ErrorMessage="Las claves deben coincidir" ForeColor="#FF3300">*</asp:CompareValidator>
     <asp:RequiredFieldValidator ID="rfvRepetirClave" runat="server" 
         ControlToValidate="txtRepetirClave" Display="Dynamic" 
-        ErrorMessage="El campo Repetir Clave es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator>
-</asp:Panel>
-   
+        ErrorMessage="El campo Repetir Clave es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator> 
 <asp:Panel ID="formActionsPanel" runat="server">
     <asp:LinkButton ID="aceptarLinkButton" runat="server" 
         onclick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
     <asp:LinkButton ID="cancelarLinkButton" runat="server" 
         onclick="cancelarLinkButton_Click" CausesValidation="False">Cancelar</asp:LinkButton>
     <asp:ValidationSummary ID="vsValidaciones" runat="server" ForeColor="#FF3300" />
+</asp:Panel>
 </asp:Panel>
 
 </asp:Content>

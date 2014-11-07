@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Planes.aspx.cs" Inherits="UI.Web.Planes" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
         <asp:GridView ID="GridView" runat="server" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" 
@@ -41,7 +40,7 @@
             ErrorMessage="El campo Especialidad es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator>
    
     <br />
-    </asp:Panel>
+
     <asp:Panel ID="formActionsPanel" runat="server">
     <br />
     <asp:LinkButton ID="aceptarLinkButton" runat="server" 
@@ -50,8 +49,5 @@
         onclick="cancelarLinkButton_Click" CausesValidation="False">Cancelar</asp:LinkButton>
     <asp:ValidationSummary ID="vsValidaciones" runat="server" ForeColor="#FF3300" />
     </asp:Panel>
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Footer" runat="server">
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="AfterBody" runat="server">
+    </asp:Panel>
 </asp:Content>

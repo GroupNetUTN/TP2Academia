@@ -31,7 +31,7 @@
             ControlToValidate="txtDescEspecialidad" 
             ErrorMessage="El campo Descripción es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator>
     <br />
-    </asp:Panel>
+
     <asp:Panel ID="formActionsPanel" runat="server">
     <br />
         <asp:LinkButton ID="aceptarLinkButton" runat="server" 
@@ -40,9 +40,6 @@
             onclick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
             <br />
         <asp:ValidationSummary ID="vsValidaciones" runat="server" ForeColor="#FF3300" />
+        </asp:Panel>
     </asp:Panel>
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Footer" runat="server">
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="AfterBody" runat="server">
 </asp:Content>

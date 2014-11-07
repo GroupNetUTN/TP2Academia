@@ -210,6 +210,7 @@ namespace UI.Web
         {
             this.ClearForm();
             this.formPanel.Visible = false;
+            this.formActionsPanel.Visible = false;
         }
 
         #endregion

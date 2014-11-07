@@ -126,7 +126,7 @@ blockquote{width:80%;color:#000;border:solid 1px #3B3B2B;background:#FFF;margin:
 blockquote a,blockquote a:link{color:#00628B!important;text-decoration:underline;}
 blockquote a:visited{color:#00628B!important;text-decoration:underline;}
 blockquote a:hover{color:#000!important;text-decoration:none;}
-.Article{position:relative;z-index:1;overflow:hidden;padding:15px 15px 15px 15px;color:#000;font-size:13px; height:400px;}
+.Article{position:relative;z-index:1;overflow:hidden;padding:15px 15px 15px 15px;color:#000;font-size:13px; height:auto; min-height:400px;}
 .Article a{color:#00628B;text-decoration:underline;}
 .Article a:visited{color:#00628B;text-decoration:underline;}
 .Article a:hover{color:#000;text-decoration:none;}
