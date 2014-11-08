@@ -16,7 +16,7 @@
             <h1><a href="#">Academia</a></h1>
             <h2>Gestion</h2>
           </div>
-        </div><div class="Menu" runat="server">
+        </div><div class="Menu" runat="server" visible="True">
         <ul class="nav">
 						<li><a href="Default.aspx">Inicio</a></li>
 						<li><a href="#">Modulos</a>
@@ -27,6 +27,7 @@
 								<li><a href="Materias.aspx">Materias</a></li>
                                 <li><a href="Comisiones.aspx">Comisiones</a></li>
                                 <li><a href="Personas.aspx">Personas</a></li>
+                                <li><a href="Cursos.aspx">Cursos</a></li>
 							</ul>
 						</li>
 			</ul>

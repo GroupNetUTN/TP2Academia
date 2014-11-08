@@ -23,6 +23,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         RenderMenuItem("Comisiones", "Comisiones.aspx", result);
         RenderMenuItem("Materias", "Materias.aspx", result);
         RenderMenuItem("Personas", "Personas.aspx", result);
+        RenderMenuItem("Cursos", "Cursos.aspx", result);
         return result.ToString();
     }
 

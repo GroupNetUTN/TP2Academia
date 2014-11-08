@@ -29,32 +29,32 @@
 <br />
 <asp:Panel ID="formPanel" Visible="false" runat="server">
     <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:"></asp:Label>
-    <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtDescripcion" runat="server" Width="200px"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
         ErrorMessage="El campo Descripcion es obligatorio" ForeColor="Red" 
         ControlToValidate="txtDescripcion">*</asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lblHsSemanales" runat="server" Text="Hs Semanales:"></asp:Label>
-    <asp:TextBox ID="txtHsSemanales" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtHsSemanales" runat="server" Width="50px"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
         ErrorMessage="El campo Hs Semanales es obligatorio" ForeColor="Red" 
-        ControlToValidate="txtHsSemanales">*</asp:RequiredFieldValidator>
-    <br />
+        ControlToValidate="txtHsSemanales">* </asp:RequiredFieldValidator>
     <asp:Label ID="lblHsTotales" runat="server" Text="Hs Totales:"></asp:Label>
-    <asp:TextBox ID="txtHsTotales" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtHsTotales" runat="server" Width="50px"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
         ErrorMessage="El campo Hs Totales es obligatorio" ForeColor="Red" 
         ControlToValidate="txtHsTotales">*</asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lblEspecialidad" runat="server" Text="Especialidad:"></asp:Label>
     <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="True" 
-        onselectedindexchanged="ddlEspecialidades_SelectedIndexChanged">
+        onselectedindexchanged="ddlEspecialidades_SelectedIndexChanged" 
+        Height="22px" Width="200px">
     </asp:DropDownList>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
         ControlToValidate="ddlEspecialidades" 
         ErrorMessage="El campo Especialidad es obligatorio" ForeColor="Red">*</asp:RequiredFieldValidator>
     <asp:Label ID="lblPlan" runat="server" Text="Plan:"></asp:Label>
-    <asp:DropDownList ID="ddlPlanes" runat="server">
+    <asp:DropDownList ID="ddlPlanes" runat="server" Width="150px">
     </asp:DropDownList>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
         ControlToValidate="ddlPlanes" ErrorMessage="El campo Plan es obligatorio" 
