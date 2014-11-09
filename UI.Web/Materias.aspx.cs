@@ -14,6 +14,11 @@ namespace UI.Web
        protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            if (this.GridView.SelectedIndex == -1)
+            {
+                this.lbEliminar.Visible =
+                   this.lbEditar.Visible = false;
+            }
         }
 
         MateriaLogic _logic;
@@ -81,6 +86,11 @@ namespace UI.Web
             this.ddlEspecialidades.DataTextField = "Descripcion";
             this.ddlEspecialidades.DataValueField = "ID";
             this.ddlEspecialidades.DataBind();
+            ListItem init = new ListItem();
+            init.Text = "--Seleccionar Especialidad--";
+            init.Value = "-1";
+            this.ddlEspecialidades.Items.Add(init); 
+            this.ddlEspecialidades.SelectedValue = "-1";
         }
 
         private void LoadDdlPlanes()
@@ -119,6 +129,8 @@ namespace UI.Web
             this.txtDescripcion.Text = string.Empty;
             this.txtHsSemanales.Text = string.Empty;
             this.txtHsTotales.Text = string.Empty;
+            this.ddlPlanes.Items.Clear();
+            this.GridView.SelectedIndex = -1;
         }
 
         private void DeleteEntity(int id)
@@ -160,6 +172,8 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.GridView.SelectedValue;
+            this.lbEliminar.Visible =
+                  this.lbEditar.Visible = true;
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)

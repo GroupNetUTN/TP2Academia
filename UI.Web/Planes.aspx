@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Planes.aspx.cs" Inherits="UI.Web.Planes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageConMenu.master" AutoEventWireup="true" CodeBehind="Planes.aspx.cs" Inherits="UI.Web.Planes" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
@@ -15,11 +15,11 @@
         </asp:GridView>
     </asp:Panel>
     <asp:Panel ID="gridActionsPanel" runat="server" >
-    <asp:LinkButton ID="editarLinkButton" runat="server" 
+    <asp:LinkButton ID="lbEditar" runat="server" 
         onclick="editarLinkButton_Click">Editar</asp:LinkButton>
-    <asp:LinkButton ID="eliminarLinkButton" runat="server" 
+    <asp:LinkButton ID="lbEliminar" runat="server" 
         onclick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
-    <asp:LinkButton ID="nuevoLinkButton" runat="server" 
+    <asp:LinkButton ID="lbNuevo" runat="server" 
         onclick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
     </asp:Panel>
     <asp:Panel ID="formPanel" Visible="false" runat="server">

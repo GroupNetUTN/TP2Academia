@@ -1,6 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Cursos.aspx.cs" Inherits="UI.Web.Cursos" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-</asp:Content>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageConMenu.master" AutoEventWireup="true" CodeBehind="Cursos.aspx.cs" Inherits="UI.Web.Cursos" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
         <asp:GridView ID="GridView" AutoGenerateColumns="False" 
@@ -19,13 +17,14 @@
         </asp:GridView>
         <asp:Panel ID="gridActionsPanel" runat="server">
             <asp:LinkButton ID="lbEditar" runat="server" CausesValidation="False" 
-                onclick="editarLinkButton_Click">Editar</asp:LinkButton>
+                onclick="editarLinkButton_Click" Visible="False">Editar</asp:LinkButton>
             <asp:LinkButton ID="lbEliminar" runat="server" CausesValidation="False" 
-                onclick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
+                onclick="eliminarLinkButton_Click" Visible="False">Eliminar</asp:LinkButton>
             <asp:LinkButton ID="lbNuevo" runat="server" CausesValidation="False" 
                 onclick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
             <asp:LinkButton ID="lbDocente" runat="server" CausesValidation="False" 
-                onclick="lbDocente_Click">Asignar Docente</asp:LinkButton>
+                onclick="lbDocente_Click" Visible="False">Asignar Docente</asp:LinkButton>
+            </asp:Panel>
             <asp:Panel ID="formPanel" runat="server" Visible="False">
                 <asp:Label ID="lblEspecialidad" runat="server" Text="Especialidad: "></asp:Label>
                 <asp:DropDownList ID="ddlEspecialidades" runat="server" Width="200px" 
@@ -77,9 +76,4 @@
                 </asp:Panel>
             </asp:Panel>
         </asp:Panel>
-    </asp:Panel>
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Footer" runat="server">
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="AfterBody" runat="server">
 </asp:Content>

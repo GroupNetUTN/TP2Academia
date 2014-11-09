@@ -14,6 +14,11 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            if (this.GridView.SelectedIndex == -1)
+            {
+                this.lbEliminar.Visible =
+                   this.lbEditar.Visible = false;
+            }
         }
 
         PlanLogic _logic;
@@ -94,6 +99,7 @@ namespace UI.Web
         private void ClearForm()
         {
             this.txtDescripcionPlan.Text = string.Empty;
+            this.GridView.SelectedIndex = -1;
         }
 
         private void DeleteEntity(int id)
@@ -127,6 +133,8 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.GridView.SelectedValue;
+            this.lbEliminar.Visible =
+                  this.lbEditar.Visible = true;
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)

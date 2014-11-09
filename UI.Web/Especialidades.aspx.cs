@@ -14,6 +14,11 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
            this.LoadGrid();
+           if (this.GridView.SelectedIndex == -1)
+           {
+               this.lbEliminar.Visible =
+                  this.lbEditar.Visible = false;
+           }
         }
 
         EspecialidadLogic _logic;
@@ -93,6 +98,8 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.GridView.SelectedValue;
+            this.lbEliminar.Visible =
+                  this.lbEditar.Visible = true;
         }
 
         private void LoadForm(int id)

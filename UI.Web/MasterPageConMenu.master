@@ -1,0 +1,20 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="MasterPageConMenu.master.cs" Inherits="UI.Web.MasterPageConMenu" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="menuContentPlaceHolder" runat="server">
+ <ul class="nav">
+						<li><a href="Home.aspx">Inicio</a></li>
+						<li><a href="#">Modulos</a>
+							<ul>
+								<li><a href="Usuarios.aspx">Usuarios</a></li>
+								<li><a href="Especialidades.aspx">Especialidades</a></li>
+								<li><a href="Planes.aspx">Planes</a></li>
+								<li><a href="Materias.aspx">Materias</a></li>
+                                <li><a href="Comisiones.aspx">Comisiones</a></li>
+                                <li><a href="Personas.aspx">Personas</a></li>
+                                <li><a href="Cursos.aspx">Cursos</a></li>
+							</ul>
+						</li>
+			</ul>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="server">
+<asp:ContentPlaceHolder id="bodyContentPlaceHolder" runat="server" />
+</asp:Content>

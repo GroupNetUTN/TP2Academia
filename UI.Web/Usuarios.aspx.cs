@@ -15,6 +15,11 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            if (this.GridView.SelectedIndex == -1)
+            {
+                this.lbEliminar.Visible =
+                   this.lbEditar.Visible = false;
+            }
             if (Session["Habilitado"] != null)
             {
                 this.formPanel.Visible = true;
@@ -46,8 +51,8 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            this.gridView.DataSource = this.Logic.GetAll();
-            this.gridView.DataBind();
+            this.GridView.DataSource = this.Logic.GetAll();
+            this.GridView.DataBind();
         }
 
         Usuario _Entity;    
@@ -138,7 +143,9 @@ namespace UI.Web
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.gridView.SelectedValue;
+            this.SelectedID = (int)this.GridView.SelectedValue;
+            this.lbEliminar.Visible =
+                  this.lbEditar.Visible = true;
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)

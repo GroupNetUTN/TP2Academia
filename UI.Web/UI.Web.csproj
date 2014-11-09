@@ -60,6 +60,7 @@
     <Content Include="Cursos.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Especialidades.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="images\ActiveMenuButton.png" />
     <Content Include="images\ActiveMenuButtonAnchor.png" />
     <Content Include="images\ArticleCenter.png" />
@@ -176,9 +177,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPageConMenu.master.cs">
+      <DependentUpon>MasterPageConMenu.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPageConMenu.master.designer.cs">
+      <DependentUpon>MasterPageConMenu.master</DependentUpon>
     </Compile>
     <Compile Include="Materias.aspx.cs">
       <DependentUpon>Materias.aspx</DependentUpon>
@@ -242,6 +257,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPage.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPageConMenu.master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

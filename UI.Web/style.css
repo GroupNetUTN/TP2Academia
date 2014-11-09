@@ -116,10 +116,10 @@ margin:10px auto;
 .ActiveMenuButton:hover span,.ActiveMenuButtonInput:hover span{background-position:right center;color:#FFF;}
 .ActiveMenuButton:active,.ActiveMenuButtonInput:active{background-position:left bottom;}
 .ActiveMenuButton:active span,.ActiveMenuButtonInput:active span{background-position:right bottom;color:#000;}
-.Columns{overflow:hidden;}
+.Columns{overflow:hidden; margin-top:35px;}
 .Column1{overflow:hidden;float:right;width:20%;}
 .Column2{overflow:hidden;float:right;width:20%;}
-.MainColumn{overflow:hidden; clear:both;}
+.MainColumn{overflow:hidden; clear:both; position:relative;}
 img{border:0;}
 h2{margin:0;}
 blockquote{width:80%;color:#000;border:solid 1px #3B3B2B;background:#FFF;margin:0 auto;padding:15px;-webkit-border-radius:5px;-moz-border-radius:5px;}

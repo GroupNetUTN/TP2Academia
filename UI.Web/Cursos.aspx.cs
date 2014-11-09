@@ -14,6 +14,18 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            if (this.GridView.SelectedIndex == -1)
+            {
+                ShowButtons(false);
+            }
+
+        }
+
+        private void ShowButtons(bool enable)
+        {
+            this.lbEliminar.Visible =
+               this.lbEditar.Visible =
+               this.lbDocente.Visible = enable;
         }
 
         CursoLogic _logic;
@@ -162,6 +174,10 @@ namespace UI.Web
         {
             this.txtAnioCalendario.Text = string.Empty;
             this.txtCupo.Text = string.Empty;
+            this.ddlPlanes.Items.Clear();
+            this.ddlComisiones.Items.Clear();
+            this.ddlMaterias.Items.Clear();
+            this.GridView.SelectedIndex = -1;
         }
 
         private void DeleteEntity(int id)
@@ -206,6 +222,7 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.GridView.SelectedValue;
+            this.ShowButtons(true);
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -214,6 +231,7 @@ namespace UI.Web
             {
                 this.LoadDdlEspecialidades();
                 this.formPanel.Visible = true;
+                this.gridActionsPanel.Visible = false;
                 this.FormMode = FormModes.Modificacion;
                 this.EnableForm(true);
                 this.LoadForm(this.SelectedID);
@@ -236,6 +254,7 @@ namespace UI.Web
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
+            this.gridActionsPanel.Visible = false;
         }
 
         protected void lbDocente_Click(object sender, EventArgs e)
@@ -268,12 +287,16 @@ namespace UI.Web
             }
 
             this.formPanel.Visible = false;
+            this.gridActionsPanel.Visible = true;
+            this.ShowButtons(false);
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             this.ClearForm();
             this.formPanel.Visible = false;
+            this.gridActionsPanel.Visible = true;
+            this.ShowButtons(false);
         }
 
         protected void ddlEspecialidades_SelectedIndexChanged(object sender, EventArgs e)

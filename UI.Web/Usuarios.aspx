@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="UI.Web.Usuarios" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageConMenu.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="UI.Web.Usuarios" %>
 <asp:Content ID="Usuarios" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 
 <asp:Panel ID="gridPanel" runat="server">
-        <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False" 
+        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="ID" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White" 
             onselectedindexchanged="gridView_SelectedIndexChanged">
@@ -22,11 +22,11 @@
     </asp:Panel>
 
 <asp:Panel ID="gridActionsPanel" runat="server">
-    <asp:LinkButton ID="editarLinkButton" runat="server" 
+    <asp:LinkButton ID="lbEditar" runat="server" 
         onclick="editarLinkButton_Click">Editar</asp:LinkButton>
-    <asp:LinkButton ID="eliminarLinkButton" runat="server" 
+    <asp:LinkButton ID="lbEliminar" runat="server" 
         onclick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
-    <asp:LinkButton ID="nuevoLinkButton" runat="server" 
+    <asp:LinkButton ID="lbNuevo" runat="server" 
         onclick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
 </asp:Panel>
 

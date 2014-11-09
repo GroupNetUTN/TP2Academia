@@ -13,8 +13,7 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.lblMensage2.Visible = true;
-            this.lblMensage.Visible = true;
+         
         }
 
         UsuarioLogic _logic;
@@ -37,6 +36,7 @@ namespace UI.Web
                 if (usuarioActual.Habilitado)
                 {
                     Session["UsuarioActual"] = usuarioActual;
+                    Page.Response.Redirect("~/Home.aspx");
                 }
                 else
                 {
