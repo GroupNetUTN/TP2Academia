@@ -17,8 +17,7 @@ namespace UI.Web
             this.LoadGrid();
             if (this.GridView.SelectedIndex == -1)
             {
-                this.lbEliminar.Visible =
-                   this.lbEditar.Visible = false;
+                ShowButtons(false);
             }
             if (Session["Habilitado"] != null)
             {
@@ -95,6 +94,12 @@ namespace UI.Web
             }
         }
 
+        private void ShowButtons(bool enable)
+        {
+            this.lbEliminar.Visible = enable;
+            this.lbEditar.Visible = enable;
+            this.lbNuevo.Visible = !enable;
+        }
 
         private void LoadForm(int id)
         {
@@ -136,6 +141,7 @@ namespace UI.Web
         {
             this.txtNombreUsuario.Text = string.Empty;
             this.chxHabilitado.Checked = false;
+            this.GridView.SelectedIndex = -1;
         }
 
         #region Eventos
@@ -144,8 +150,7 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.GridView.SelectedValue;
-            this.lbEliminar.Visible =
-                  this.lbEditar.Visible = true;
+            this.ShowButtons(true);
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -153,6 +158,8 @@ namespace UI.Web
             if (this.IsEntitySelected)
             {
                 this.formPanel.Visible = true;
+                this.formActionsPanel.Visible = true;
+                this.gridActionsPanel.Visible = false;
                 this.FormMode = FormModes.Modificacion;
                 this.EnableForm(true);
                 this.LoadForm(this.SelectedID);
@@ -184,6 +191,7 @@ namespace UI.Web
             }
 
             this.formPanel.Visible = false;
+            this.ShowButtons(false);
         }
 
         private void ClearSession()
@@ -208,6 +216,8 @@ namespace UI.Web
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             this.formPanel.Visible = true;
+            this.formActionsPanel.Visible = true;
+            this.gridActionsPanel.Visible = false;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
@@ -218,6 +228,8 @@ namespace UI.Web
             this.ClearForm();
             this.formPanel.Visible = false;
             this.formActionsPanel.Visible = false;
+            this.gridActionsPanel.Visible = true;
+            this.ShowButtons(false);
         }
 
         #endregion

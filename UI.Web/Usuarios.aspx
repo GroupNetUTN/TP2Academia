@@ -2,6 +2,7 @@
 <asp:Content ID="Usuarios" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 
 <asp:Panel ID="gridPanel" runat="server">
+    <h2>Usuarios:</h2><br />
         <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="ID" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White" 

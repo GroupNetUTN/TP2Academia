@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageConMenu.master" AutoEventWireup="true" CodeBehind="Comisiones.aspx.cs" Inherits="UI.Web.Comisiones" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
+        <h2>Comisiones:</h2><br />
         <asp:GridView ID="GridView" runat="server" 
     AutoGenerateColumns="False" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White" 

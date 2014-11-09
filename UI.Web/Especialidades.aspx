@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageConMenu.master" AutoEventWireup="true" CodeBehind="Especialidades.aspx.cs" Inherits="UI.Web.Especialidades" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
+        <h2>Especialidades:</h2><br />
         <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" 
             SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" 
             onselectedindexchanged="gridView_SelectedIndexChanged" DataKeyNames="ID">

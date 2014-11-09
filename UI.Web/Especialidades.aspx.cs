@@ -16,8 +16,7 @@ namespace UI.Web
            this.LoadGrid();
            if (this.GridView.SelectedIndex == -1)
            {
-               this.lbEliminar.Visible =
-                  this.lbEditar.Visible = false;
+               ShowButtons(false);
            }
         }
 
@@ -79,6 +78,13 @@ namespace UI.Web
             this.GridView.DataBind();
         }
 
+        private void ShowButtons(bool enable)
+        {
+            this.lbEliminar.Visible = enable;
+            this.lbEditar.Visible = enable;
+            this.lbNuevo.Visible = !enable;
+        }
+
         private void EnableForm(bool enable)
         {
             this.lblDescripcion.Visible = enable;
@@ -88,6 +94,7 @@ namespace UI.Web
         private void ClearForm()
         {
             this.txtDescEspecialidad.Text = string.Empty;
+            this.GridView.SelectedIndex = -1;
         }
 
         private void DeleteEntity(int id)
@@ -98,8 +105,7 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.GridView.SelectedValue;
-            this.lbEliminar.Visible =
-                  this.lbEditar.Visible = true;
+            this.ShowButtons(true);
         }
 
         private void LoadForm(int id)
@@ -128,6 +134,7 @@ namespace UI.Web
             if (this.IsEntitySelected)
             {
                 this.formPanel.Visible = true;
+                this.gridActionsPanel.Visible = false;
                 this.FormMode = FormModes.Modificacion;
                 this.EnableForm(true);
                 this.LoadForm(this.SelectedID);
@@ -146,6 +153,7 @@ namespace UI.Web
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             this.formPanel.Visible = true;
+            this.gridActionsPanel.Visible = false;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
@@ -175,12 +183,15 @@ namespace UI.Web
                     break;
             }
             this.formPanel.Visible = false;
+            this.ShowButtons(false);
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             this.ClearForm();
             this.formPanel.Visible = false;
+            this.gridActionsPanel.Visible = true;
+            this.ShowButtons(false);
         }
     }
 }

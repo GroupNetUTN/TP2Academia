@@ -16,8 +16,7 @@ namespace UI.Web
             this.LoadGrid();
             if (this.GridView.SelectedIndex == -1)
             {
-                this.lbEliminar.Visible =
-                   this.lbEditar.Visible = false;
+                ShowButtons(false);
             }
         }
 
@@ -79,6 +78,13 @@ namespace UI.Web
             this.GridView.DataBind();
         }
 
+        private void ShowButtons(bool enable)
+        {
+            this.lbEliminar.Visible = enable;
+            this.lbEditar.Visible = enable;
+            this.lbNuevo.Visible = !enable;
+        }
+
         private void LoadDdlEspecialidades()
         {
             EspecialidadLogic el = new EspecialidadLogic();
@@ -108,6 +114,11 @@ namespace UI.Web
             this.ddlPlanes.DataTextField = "Descripcion";
             this.ddlPlanes.DataValueField = "ID";
             this.ddlPlanes.DataBind();
+            ListItem init = new ListItem();
+            init.Text = "--Seleccionar Plan--";
+            init.Value = "-1";
+            this.ddlPlanes.Items.Add(init);
+            this.ddlPlanes.SelectedValue = "-1";
         }
 
         private void EnableForm(bool enable)
@@ -172,8 +183,7 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.GridView.SelectedValue;
-            this.lbEliminar.Visible =
-                  this.lbEditar.Visible = true;
+            this.ShowButtons(true);
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -182,6 +192,7 @@ namespace UI.Web
             {
                 this.LoadDdlEspecialidades();
                 this.formPanel.Visible = true;
+                this.gridActionsPanel.Visible = false;
                 this.FormMode = FormModes.Modificacion;
                 this.EnableForm(true);
                 this.LoadForm(this.SelectedID);
@@ -201,6 +212,7 @@ namespace UI.Web
         {
             this.LoadDdlEspecialidades();
             this.formPanel.Visible = true;
+            this.gridActionsPanel.Visible = false;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
@@ -231,12 +243,15 @@ namespace UI.Web
             }
 
             this.formPanel.Visible = false;
+            this.ShowButtons(false);
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             this.ClearForm();
             this.formPanel.Visible = false;
+            this.gridActionsPanel.Visible = true;
+            this.ShowButtons(false);
         }
 
         protected void ddlEspecialidades_SelectedIndexChanged(object sender, EventArgs e)

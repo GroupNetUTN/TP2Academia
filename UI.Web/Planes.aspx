@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
+        <h2>Planes:</h2><br />
         <asp:GridView ID="GridView" runat="server" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White"
             AutoGenerateColumns="False" 

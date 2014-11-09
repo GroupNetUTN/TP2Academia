@@ -23,9 +23,10 @@ namespace UI.Web
 
         private void ShowButtons(bool enable)
         {
-            this.lbEliminar.Visible =
-               this.lbEditar.Visible =
-               this.lbDocente.Visible = enable;
+            this.lbEliminar.Visible = enable;
+            this.lbEditar.Visible = enable;
+            this.lbNuevo.Visible = !enable;
+            this.lbDocente.Visible = enable;
         }
 
         CursoLogic _logic;
@@ -101,7 +102,11 @@ namespace UI.Web
             this.ddlEspecialidades.DataTextField = "Descripcion";
             this.ddlEspecialidades.DataValueField = "ID";
             this.ddlEspecialidades.DataBind();
-            this.ddlEspecialidades.SelectedIndex = -1;
+            ListItem init = new ListItem();
+            init.Text = "--Seleccionar Especialidad--";
+            init.Value = "-1";
+            this.ddlEspecialidades.Items.Add(init);
+            this.ddlEspecialidades.SelectedValue = "-1";
         }
 
         private void LoadDdlPlanes()
@@ -119,7 +124,11 @@ namespace UI.Web
             this.ddlPlanes.DataTextField = "Descripcion";
             this.ddlPlanes.DataValueField = "ID";
             this.ddlPlanes.DataBind();
-            this.ddlPlanes.SelectedIndex = -1;
+            ListItem init = new ListItem();
+            init.Text = "--Seleccionar Plan--";
+            init.Value = "-1";
+            this.ddlPlanes.Items.Add(init);
+            this.ddlPlanes.SelectedValue = "-1";
         }
 
         private void LoadDdlMaterias()
@@ -135,7 +144,11 @@ namespace UI.Web
             this.ddlMaterias.DataTextField = "Descripcion";
             this.ddlMaterias.DataValueField = "ID";
             this.ddlMaterias.DataBind();
-            this.ddlMaterias.SelectedIndex = -1;
+            ListItem init = new ListItem();
+            init.Text = "--Seleccionar Materia--";
+            init.Value = "-1";
+            this.ddlMaterias.Items.Add(init);
+            this.ddlMaterias.SelectedValue = "-1";
         }
 
         private void LoadDdlComisiones()
@@ -151,7 +164,11 @@ namespace UI.Web
             this.ddlComisiones.DataTextField = "Descripcion";
             this.ddlComisiones.DataValueField = "ID";
             this.ddlComisiones.DataBind();
-            this.ddlComisiones.SelectedIndex = -1;
+            ListItem init = new ListItem();
+            init.Text = "--Seleccionar Comisión--";
+            init.Value = "-1";
+            this.ddlComisiones.Items.Add(init);
+            this.ddlComisiones.SelectedValue = "-1";
         }
 
         private void EnableForm(bool enable)

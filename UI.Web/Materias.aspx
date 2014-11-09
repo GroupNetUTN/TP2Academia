@@ -2,6 +2,7 @@
 
 <asp:Content ID="Materias" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 <asp:Panel ID="gridPanel" runat="server">
+    <h2>Materias:</h2><br />    
         <asp:GridView ID="GridView" runat="server" 
             AutoGenerateColumns="False" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White" 
