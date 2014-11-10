@@ -2,9 +2,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
         <h2>Cursos:</h2><br />
-        <asp:GridView ID="GridView" AutoGenerateColumns="False" 
-            DataKeyNames="ID" SelectedRowStyle-BackColor="Black" 
-            SelectedRowStyle-ForeColor="White" 
+        <asp:GridView ID="GridView" AutoGenerateColumns="False" DataKeyNames="ID"  
             onselectedindexchanged="gridView_SelectedIndexChanged" runat="server">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" />
@@ -14,7 +12,10 @@
                 <asp:BoundField DataField="Cupo" HeaderText="Cupo" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
-            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
+                Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="White" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
         </asp:GridView>
         <asp:Panel ID="gridActionsPanel" runat="server">
             <asp:LinkButton ID="lbEditar" runat="server" CausesValidation="False" 

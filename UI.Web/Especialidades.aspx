@@ -3,23 +3,25 @@
     <asp:Panel ID="gridPanel" runat="server">
         <h2>Especialidades:</h2><br />
         <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" 
-            SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" 
             onselectedindexchanged="gridView_SelectedIndexChanged" DataKeyNames="ID">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
-            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
+                Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="White" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
         </asp:GridView>
     </asp:Panel>
     <asp:Panel ID="gridActionsPanel" runat="server" Height="20px" >
     <asp:LinkButton ID="lbEditar" runat="server" 
-        onclick="editarLinkButton_Click">Editar</asp:LinkButton>
+        onclick="editarLinkButton_Click" CausesValidation="False">Editar</asp:LinkButton>
     <asp:LinkButton ID="lbEliminar" runat="server" 
-        onclick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
+        onclick="eliminarLinkButton_Click" CausesValidation="False">Eliminar</asp:LinkButton>
     <asp:LinkButton ID="lbNuevo" runat="server" 
-        onclick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
+        onclick="nuevoLinkButton_Click" CausesValidation="False">Nuevo</asp:LinkButton>
     </asp:Panel>
     <asp:Panel ID="formPanel" Visible="false" runat="server">
     <br />
@@ -36,7 +38,7 @@
         <asp:LinkButton ID="aceptarLinkButton" runat="server" 
             onclick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
         <asp:LinkButton ID="cancelarLinkButton" runat="server" 
-            onclick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
+            onclick="cancelarLinkButton_Click" CausesValidation="False">Cancelar</asp:LinkButton>
             <br />
         <asp:ValidationSummary ID="vsValidaciones" runat="server" ForeColor="#FF3300" />
         </asp:Panel>

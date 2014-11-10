@@ -2,9 +2,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
         <h2>Comisiones:</h2><br />
-        <asp:GridView ID="GridView" runat="server" 
-    AutoGenerateColumns="False" SelectedRowStyle-BackColor="Black" 
-            SelectedRowStyle-ForeColor="White" 
+        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False"  
             onselectedindexchanged="gridView_SelectedIndexChanged" DataKeyNames="ID">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" />
@@ -14,7 +12,10 @@
                 <asp:BoundField DataField="DescEspecialidad" HeaderText="Especialidad" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
-            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
+                Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="White" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
         </asp:GridView>
         <asp:Panel ID="gridActionsPanel" runat="server">
             <asp:LinkButton ID="lbEditar" runat="server" onclick="editarLinkButton_Click" 
@@ -24,6 +25,7 @@
             <asp:LinkButton ID="lbNuevo" runat="server" onclick="nuevoLinkButton_Click" 
                 CausesValidation="False">Nuevo</asp:LinkButton>
             <br />
+            </asp:Panel>
             <asp:Panel ID="formPanel" Visible="false" runat="server">
                 <asp:Label ID="lblDescripcion" runat="server" 
                     Text="Descripción de la Comision: "></asp:Label>
@@ -62,6 +64,6 @@
                         ForeColor="#FF3300" />
                 </asp:Panel>
             </asp:Panel>
-        </asp:Panel>
+        
     </asp:Panel>
 </asp:Content>

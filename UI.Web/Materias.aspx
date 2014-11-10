@@ -4,8 +4,7 @@
 <asp:Panel ID="gridPanel" runat="server">
     <h2>Materias:</h2><br />    
         <asp:GridView ID="GridView" runat="server" 
-            AutoGenerateColumns="False" SelectedRowStyle-BackColor="Black" 
-            SelectedRowStyle-ForeColor="White" 
+            AutoGenerateColumns="False" 
             onselectedindexchanged="gridView_SelectedIndexChanged" DataKeyNames="ID">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" />
@@ -16,7 +15,10 @@
                 <asp:BoundField DataField="DescEspecialidad" HeaderText="Especialidad" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
-            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
+                Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="White" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
          </asp:GridView>
 </asp:Panel>
 <asp:Panel ID="gridActionsPanel" runat="server">

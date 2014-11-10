@@ -4,8 +4,7 @@
 <asp:Panel ID="gridPanel" runat="server">
     <h2>Usuarios:</h2><br />
         <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" 
-            DataKeyNames="ID" SelectedRowStyle-BackColor="Black" 
-            SelectedRowStyle-ForeColor="White" 
+            DataKeyNames="ID"  
             onselectedindexchanged="gridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="NombreUsuario" HeaderText="Usuario" />

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeleccionarPersona.aspx.cs" MasterPageFile="~/MasterPage.master" Inherits="UI.Web.SeleccionarPersona" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeleccionarPersona.aspx.cs" MasterPageFile="~/MasterPageConMenu.master" Inherits="UI.Web.SeleccionarPersona" %>
 
 <asp:Content ID="Usuarios" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
  <asp:Panel ID="Panel1" runat="server">
@@ -12,7 +12,10 @@
                     <asp:BoundField DataField="TipoPersona" HeaderText="Tipo Persona" />
                     <asp:CommandField ShowSelectButton="True" />
                 </Columns>
-                <SelectedRowStyle BackColor="Black" ForeColor="White" />
+                <HeaderStyle BackColor="#80A493" BorderColor="Black" 
+                Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="White" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
             </asp:GridView>
         </asp:Panel>
     <asp:Panel ID="Panel3" runat="server">

@@ -14,9 +14,11 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            this.GridView.Columns[11].Visible = true;
             if (this.GridView.SelectedIndex == -1)
             {
                 ShowButtons(false);
+                gridActionsPanel.Visible = true;
             }
         }
 
@@ -82,7 +84,6 @@ namespace UI.Web
         {
             this.lbEliminar.Visible = enable;
             this.lbEditar.Visible = enable;
-            this.lbNuevo.Visible = !enable;
         }
 
         private void LoadDdlEspecialidades()
@@ -155,9 +156,9 @@ namespace UI.Web
             this.txtDireccion.Text = string.Empty;
             this.txtTelefono.Text = string.Empty;
             this.txtEmail.Text = string.Empty;
-            this.txtDia.Text = string.Empty;
-            this.txtMes.Text = string.Empty;
-            this.txtAnio.Text = string.Empty;
+            this.txtDia.Text = "dd";
+            this.txtMes.Text = "mm";
+            this.txtAnio.Text = "aaaa";
             this.ddlPlanes.Items.Clear();
             this.GridView.SelectedIndex = -1;
         }
@@ -181,11 +182,8 @@ namespace UI.Web
             this.txtAnio.Text = this.Entity.FechaNacimiento.Year.ToString();
             this.ddlTipoPersona.SelectedValue = this.Entity.TipoPersona;
             this.ddlEspecialidades.SelectedValue = this.Entity.Plan.Especialidad.ID.ToString();
-            if (FormMode == FormModes.Modificacion)
-            {
-                this.LoadDdlPlanes();
-                this.ddlPlanes.SelectedValue = this.Entity.Plan.ID.ToString();
-            }
+            this.LoadDdlPlanes();
+            this.ddlPlanes.SelectedValue = this.Entity.Plan.ID.ToString();
         }
 
         private void LoadEntity(Persona pers)
@@ -237,12 +235,14 @@ namespace UI.Web
             {
                 this.DeleteEntity(this.SelectedID);
                 this.LoadGrid();
+                this.ShowButtons(false);
             }
         }
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             this.LoadDdlEspecialidades();
+            this.GridView.Columns[11].Visible = false;
             this.formPanel.Visible = true;
             this.gridActionsPanel.Visible = false;
             this.FormMode = FormModes.Alta;
@@ -273,8 +273,9 @@ namespace UI.Web
                     this.ClearSession();
                     break;
             }
-
+            this.ClearForm();
             this.formPanel.Visible = false;
+            this.gridActionsPanel.Visible = true;
             this.ShowButtons(false);
         }
 
@@ -290,6 +291,8 @@ namespace UI.Web
         {
             this.LoadDdlPlanes();
             this.formPanel.Visible = true;
+            this.GridView.Columns[11].Visible = false;
+            this.gridActionsPanel.Visible = false;
         }
     }
 }

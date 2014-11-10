@@ -3,8 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
         <h2>Planes:</h2><br />
-        <asp:GridView ID="GridView" runat="server" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" 
-            SelectedRowStyle-ForeColor="White"
+        <asp:GridView ID="GridView" runat="server" DataKeyNames="ID" 
             AutoGenerateColumns="False" 
             onselectedindexchanged="gridView_SelectedIndexChanged">
             <Columns>
@@ -13,15 +12,19 @@
                 <asp:BoundField DataField="DescEspecialidad" HeaderText="Especialidad" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
+            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
+                Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="White" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
         </asp:GridView>
     </asp:Panel>
     <asp:Panel ID="gridActionsPanel" runat="server" >
     <asp:LinkButton ID="lbEditar" runat="server" 
-        onclick="editarLinkButton_Click">Editar</asp:LinkButton>
+        onclick="editarLinkButton_Click" CausesValidation="False">Editar</asp:LinkButton>
     <asp:LinkButton ID="lbEliminar" runat="server" 
-        onclick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
+        onclick="eliminarLinkButton_Click" CausesValidation="False">Eliminar</asp:LinkButton>
     <asp:LinkButton ID="lbNuevo" runat="server" 
-        onclick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
+        onclick="nuevoLinkButton_Click" CausesValidation="False">Nuevo</asp:LinkButton>
     </asp:Panel>
     <asp:Panel ID="formPanel" Visible="false" runat="server">
     <br />

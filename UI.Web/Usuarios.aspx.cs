@@ -15,9 +15,11 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            this.GridView.Columns[5].Visible = true;
             if (this.GridView.SelectedIndex == -1)
             {
                 ShowButtons(false);
+                gridActionsPanel.Visible = true;
             }
             if (Session["Habilitado"] != null)
             {
@@ -98,7 +100,6 @@ namespace UI.Web
         {
             this.lbEliminar.Visible = enable;
             this.lbEditar.Visible = enable;
-            this.lbNuevo.Visible = !enable;
         }
 
         private void LoadForm(int id)
@@ -189,8 +190,9 @@ namespace UI.Web
                     this.ClearSession();
                     break;
             }
-
+            this.ClearForm();
             this.formPanel.Visible = false;
+            this.gridActionsPanel.Visible = true;
             this.ShowButtons(false);
         }
 
@@ -210,11 +212,13 @@ namespace UI.Web
             {
                 this.DeleteEntity(this.SelectedID);
                 this.LoadGrid();
+                this.ShowButtons(false);
             }
         }
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            this.GridView.Columns[5].Visible = false;
             this.formPanel.Visible = true;
             this.formActionsPanel.Visible = true;
             this.gridActionsPanel.Visible = false;

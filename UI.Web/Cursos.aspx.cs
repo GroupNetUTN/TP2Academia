@@ -14,18 +14,18 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            this.GridView.Columns[5].Visible = true;
             if (this.GridView.SelectedIndex == -1)
             {
                 ShowButtons(false);
+                gridActionsPanel.Visible = true;
             }
-
         }
 
         private void ShowButtons(bool enable)
         {
             this.lbEliminar.Visible = enable;
             this.lbEditar.Visible = enable;
-            this.lbNuevo.Visible = !enable;
             this.lbDocente.Visible = enable;
         }
 
@@ -261,17 +261,19 @@ namespace UI.Web
             {
                 this.DeleteEntity(this.SelectedID);
                 this.LoadGrid();
+                this.ShowButtons(false);
             }
         }
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             this.LoadDdlEspecialidades();
+            this.GridView.Columns[5].Visible = false;
             this.formPanel.Visible = true;
+            this.gridActionsPanel.Visible = false;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
-            this.EnableForm(true);
-            this.gridActionsPanel.Visible = false;
+            this.EnableForm(true);       
         }
 
         protected void lbDocente_Click(object sender, EventArgs e)
@@ -302,7 +304,7 @@ namespace UI.Web
                     this.ClearSession();
                     break;
             }
-
+            this.ClearForm();
             this.formPanel.Visible = false;
             this.gridActionsPanel.Visible = true;
             this.ShowButtons(false);
@@ -320,6 +322,8 @@ namespace UI.Web
         {
             this.LoadDdlPlanes();
             this.formPanel.Visible = true;
+            this.GridView.Columns[5].Visible = false;
+            this.gridActionsPanel.Visible = false;
         }
 
         protected void ddlPlanes_SelectedIndexChanged(object sender, EventArgs e)
@@ -327,6 +331,8 @@ namespace UI.Web
             this.LoadDdlMaterias();
             this.LoadDdlComisiones();
             this.formPanel.Visible = true;
+            this.GridView.Columns[5].Visible = false;
+            this.gridActionsPanel.Visible = false;
         }        
     }
 }

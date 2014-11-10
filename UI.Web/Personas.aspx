@@ -2,8 +2,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
         <h2>Personas:</h2><br />
-        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" SelectedRowStyle-BackColor="Black" 
-            SelectedRowStyle-ForeColor="White" 
+        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" 
             onselectedindexchanged="gridView_SelectedIndexChanged" DataKeyNames="ID">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" />
@@ -19,7 +18,10 @@
                 <asp:BoundField DataField="DescEspecialidad" HeaderText="Especialidad" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
-            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
+                Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="White" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
         </asp:GridView>
         <asp:Panel ID="gridActionsPanel" runat="server">
             <asp:LinkButton ID="lbEditar" runat="server" CausesValidation="False" 
@@ -28,6 +30,7 @@
                 onclick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
             <asp:LinkButton ID="lbNuevo" runat="server" CausesValidation="False" 
                 onclick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
+                </asp:Panel>
             <asp:Panel ID="formPanel" Visible="False" runat="server">
                 <asp:Label ID="lblApellido" runat="server" Text="Apellido: "></asp:Label>
                 <asp:TextBox ID="txtApellido" runat="server" Width="200px"></asp:TextBox>
@@ -111,6 +114,6 @@
                         ForeColor="#FF3300" />
                 </asp:Panel>
             </asp:Panel>
-        </asp:Panel>
+        
     </asp:Panel>
 </asp:Content>
