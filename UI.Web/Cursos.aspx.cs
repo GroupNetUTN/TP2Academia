@@ -278,7 +278,8 @@ namespace UI.Web
 
         protected void lbDocente_Click(object sender, EventArgs e)
         {
-
+            Session["ID_Curso"] = this.SelectedID;
+            Page.Response.Redirect("~/DocentesCursos.aspx");
         }
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)

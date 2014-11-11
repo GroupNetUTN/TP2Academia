@@ -67,37 +67,37 @@ namespace UI.Desktop
                 {
                     if (mu.Modulo.Descripcion == "Usuarios")
                     {
-                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                        if (mu.PermiteAlta || mu.PermiteBaja|| mu.PermiteConsulta || mu.PermiteModificacion)
                             this.mnuUsuarios.Visible = true;
                     }
                     else if (mu.Modulo.Descripcion == "Personas")
                     {
-                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                        if (mu.PermiteAlta|| mu.PermiteBaja|| mu.PermiteConsulta|| mu.PermiteModificacion)
                             this.mnuPersonas.Visible = true;
                     }
                     else if (mu.Modulo.Descripcion == "Planes")
                     {
-                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                        if (mu.PermiteAlta || mu.PermiteBaja|| mu.PermiteConsulta|| mu.PermiteModificacion)
                             this.mnuPlanes.Visible = true;
                     }
                     else if (mu.Modulo.Descripcion == "Materias")
                     {
-                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                        if (mu.PermiteAlta|| mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
                             this.mnuMaterias.Visible = true;
                     }
                     else if (mu.Modulo.Descripcion == "Especialidades")
                     {
-                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                        if (mu.PermiteAlta|| mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
                             this.mnuEspecialidades.Visible = true;
                     }
                     else if (mu.Modulo.Descripcion == "Cursos")
                     {
-                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                        if (mu.PermiteAlta || mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
                             this.mnuCursos.Visible = true;
                     }
                     else if (mu.Modulo.Descripcion == "Comisiones")
                     {
-                        if (mu.PermiteAlta == true || mu.PermiteBaja == true || mu.PermiteConsulta == true || mu.PermiteModificacion == true)
+                        if (mu.PermiteAlta|| mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
                             this.mnuComisiones.Visible = true;
                     }
                 }
@@ -110,6 +110,10 @@ namespace UI.Desktop
 
         private void mnuCerrarSesion_Click(object sender, EventArgs e)
         {
+            foreach (Form frm in this.MdiChildren)
+            {
+                frm.Dispose();
+            }
             this.Visible = false;
             Login login = new Login();
             if (login.ShowDialog() == DialogResult.OK)

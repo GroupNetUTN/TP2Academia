@@ -4,13 +4,61 @@
 						<li><a href="Home.aspx">Inicio</a></li>
 						<li><a href="#">Modulos</a>
 							<ul>
-								<li><a href="Usuarios.aspx">Usuarios</a></li>
-								<li><a href="Especialidades.aspx">Especialidades</a></li>
-								<li><a href="Planes.aspx">Planes</a></li>
-								<li><a href="Materias.aspx">Materias</a></li>
-                                <li><a href="Comisiones.aspx">Comisiones</a></li>
-                                <li><a href="Personas.aspx">Personas</a></li>
-                                <li><a href="Cursos.aspx">Cursos</a></li>
+                            <% 
+                                Business.Entities.Usuario UsuarioActual = (Business.Entities.Usuario)Session["UsuarioActual"];
+                               
+                                if (UsuarioActual.Persona.TipoPersona == "Alumno")
+                                {
+                                    Response.Write("<li><a href='Inscripciones.aspx'>Inscripcion a Cursado</a></li>");
+                                }
+                                else if (UsuarioActual.Persona.TipoPersona == "Docente")
+                                {
+                                    Response.Write("<li><a href='RegistrarNotas.aspx'>Registrar Notas</a></li>");
+                                }
+                                else if (UsuarioActual.Persona.TipoPersona == "No docente")
+                                {
+                                    Response.Write("<li><a href='ReporteCursosViewer.aspx'>Reporte Cursos</a></li>");
+                                    Response.Write("<li><a href='ReportePlanesViewer.aspx'>Reporte Planes</a></li>");
+                                }
+
+                                foreach (Business.Entities.ModuloUsuario mu in UsuarioActual.ModulosUsuarios)
+                                {
+                                    if (mu.Modulo.Descripcion == "Usuarios")
+                                    {
+                                        if (mu.PermiteAlta || mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
+                                            Response.Write("<li><a href='Usuarios.aspx'>Usuarios</a></li>");
+                                    }
+                                    else if (mu.Modulo.Descripcion == "Personas")
+                                    {
+                                        if (mu.PermiteAlta || mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
+                                            Response.Write("<li><a href='Personas.aspx'>Personas</a></li>");
+                                    }
+                                    else if (mu.Modulo.Descripcion == "Planes")
+                                    {
+                                        if (mu.PermiteAlta || mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
+                                            Response.Write("<li><a href='Planes.aspx'>Planes</a></li>");
+                                    }
+                                    else if (mu.Modulo.Descripcion == "Materias")
+                                    {
+                                        if (mu.PermiteAlta || mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
+                                            Response.Write("<li><a href='Materias.aspx'>Materias</a></li>");
+                                    }
+                                    else if (mu.Modulo.Descripcion == "Especialidades")
+                                    {
+                                        if (mu.PermiteAlta || mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
+                                            Response.Write("<li><a href='Especialidades.aspx'>Especialidades</a></li>");
+                                    }
+                                    else if (mu.Modulo.Descripcion == "Cursos")
+                                    {
+                                        if (mu.PermiteAlta || mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
+                                            Response.Write("<li><a href='Cursos.aspx'>Cursos</a></li>");
+                                    }
+                                    else if (mu.Modulo.Descripcion == "Comisiones")
+                                    {
+                                        if (mu.PermiteAlta || mu.PermiteBaja || mu.PermiteConsulta || mu.PermiteModificacion)
+                                            Response.Write("<li><a href='Comisiones.aspx'>Comisiones</a></li>");
+                                    }
+                                 } %>
 							</ul>
 						</li>
 			</ul>

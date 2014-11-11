@@ -32,14 +32,8 @@ namespace UI.Desktop
         {
             try
             {
-                List<Persona> docentes = new List<Persona>();
                 PersonaLogic pl = new PersonaLogic();
-                foreach (Persona p in pl.GetAll())
-                {
-                    if (p.TipoPersona == "Docente" && p.Plan.ID == _CursoActual.Comision.Plan.ID)
-                        docentes.Add(p);
-                }
-                dgvDocentes.DataSource = docentes;
+                dgvDocentes.DataSource = pl.GetDocentes();
                 dgvDocentes.ClearSelection();
             }
             catch (Exception ex)

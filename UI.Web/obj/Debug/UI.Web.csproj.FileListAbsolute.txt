@@ -37,3 +37,16 @@ C:\Users\Usuario\Desktop\TP2Academia\UI.Web\bin\Data.Database.pdb
 C:\Users\Usuario\Desktop\TP2Academia\UI.Web\obj\Debug\UI.Web.csprojResolveAssemblyReference.cache
 C:\Users\Usuario\Desktop\TP2Academia\UI.Web\obj\Debug\UI.Web.dll
 C:\Users\Usuario\Desktop\TP2Academia\UI.Web\obj\Debug\UI.Web.pdb
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\UI.Web.dll
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\UI.Web.pdb
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\Business.Entities.dll
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\Business.Logic.dll
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\Util.dll
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\Data.Database.dll
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\Business.Entities.pdb
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\Business.Logic.pdb
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\Util.pdb
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\bin\Data.Database.pdb
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\obj\Debug\UI.Web.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\obj\Debug\UI.Web.dll
+C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Web\obj\Debug\UI.Web.pdb
