@@ -6,7 +6,7 @@
 							<ul>
                             <% 
                                 Business.Entities.Usuario UsuarioActual = (Business.Entities.Usuario)Session["UsuarioActual"];
-                               
+                              
                                 if (UsuarioActual.Persona.TipoPersona == "Alumno")
                                 {
                                     Response.Write("<li><a href='Inscripciones.aspx'>Inscripcion a Cursado</a></li>");

@@ -28,7 +28,7 @@
             <br />
             <h4>Seleccionar Docente:</h4>
                <asp:GridView ID="GridViewDocentes" runat="server" AutoGenerateColumns="False" 
-            onselectedindexchanged="gridView_SelectedIndexChanged" DataKeyNames="ID">
+            onselectedindexchanged="gridViewDocentes_SelectedIndexChanged" DataKeyNames="ID">
             <Columns>
                
                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
@@ -47,8 +47,9 @@
             <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
         </asp:GridView>
         <br />
-                <asp:Label ID="Label1" runat="server" Text="Seleccionar cargo:"></asp:Label>
-                <asp:DropDownList ID="ddlCargo" runat="server">
+                <asp:Label ID="lblCargo" runat="server" Text="Seleccionar cargo:"></asp:Label>
+                <asp:DropDownList ID="ddlCargo" runat="server" Height="22px" Width="150px">
+                    <asp:ListItem Value="Mensaje">--Seleccione Cargo--</asp:ListItem>
                     <asp:ListItem>Titular</asp:ListItem>
                     <asp:ListItem>Auxiliar</asp:ListItem>
                     <asp:ListItem>Ayudante</asp:ListItem>

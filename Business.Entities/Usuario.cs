@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Business.Entities
 {
+    [Serializable]
     public class Usuario : BusinessEntity
     {
         private string _NombreUsuario;

@@ -35,6 +35,8 @@ namespace UI.Web
             {
                 if (usuarioActual.Habilitado)
                 {
+                    ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+                    usuarioActual.ModulosUsuarios = mul.GetPermisos(usuarioActual.ID);
                     Session["UsuarioActual"] = usuarioActual;
                     Page.Response.Redirect("~/Home.aspx");
                 }
