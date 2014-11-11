@@ -13,30 +13,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     }
 
-    protected string RenderMenu()
+    protected void lbCerrarSesion_Click(object sender, EventArgs e)
     {
-        var result = new StringBuilder();
-        RenderMenuItem("Home", "Default.aspx", result);
-        RenderMenuItem("Usuarios", "Usuarios.aspx", result);
-        RenderMenuItem("Especialidades", "Especialidades.aspx", result);
-        RenderMenuItem("Planes", "Planes.aspx", result);
-        RenderMenuItem("Comisiones", "Comisiones.aspx", result);
-        RenderMenuItem("Materias", "Materias.aspx", result);
-        RenderMenuItem("Personas", "Personas.aspx", result);
-        RenderMenuItem("Cursos", "Cursos.aspx", result);
-        return result.ToString();
-    }
-
-    void RenderMenuItem(string title, string address, StringBuilder output)
-    {
-        output.AppendFormat("<li><a href=\"{0}\" ", address);
-
-        var requestUrl = HttpContext.Current.Request.Url;        
-        if (requestUrl.Segments[requestUrl.Segments.Length - 1].Equals(address, StringComparison.OrdinalIgnoreCase)) // If the requested address is this menu item.
-            output.Append("class=\"ActiveMenuButton\"");
-        else
-            output.Append("class=\"MenuButton\"");
-
-        output.AppendFormat("><span>{0}</span></a></li> ", title);
+        Session["UsuarioActual"] = null;
+        Page.Response.Redirect("~/Default.aspx");
     }
 }

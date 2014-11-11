@@ -33,10 +33,11 @@ margin:10px auto;
     height:auto;
 }
 .Header{position:relative;background-image:url('images/Header.png');background-repeat:no-repeat;padding:0;height:150px;color:#FFF;}
-.HeaderTitle{height:150px;width:900px;display:table-cell;vertical-align:Top;color:#FFF;font-size:18px;text-decoration:none;font-style:normal;font-weight:bold;}
+.HeaderTitle{height:150px;display:block;width:100%; vertical-align:Top;color:#FFF;font-size:18px;text-decoration:none;font-style:normal;font-weight:bold;}
 .HeaderTitle h1 a,.HeaderTitle h1 a:link,.HeaderTitle h1 a:visited,.HeaderTitle h1 a:hover{text-decoration:none;color:inherit;}
 .HeaderTitle h1{margin:0;padding:0 9px;color:#FFF;font-size:26px;text-decoration:none;font-style:normal;font-weight:bold;}
 .HeaderTitle h2{margin:0;padding:0 9px;font-size:inherit;font-weight:inherit;}
+.CerrarSesion{ display:block;float:right; text-align:right; padding: 5px; font-size:12px; font-weight:normal;}
 .Menu{margin:auto; z-index:2;
 				width:100%;
 				font-family:Arial, Helvetica, sans-serif;
