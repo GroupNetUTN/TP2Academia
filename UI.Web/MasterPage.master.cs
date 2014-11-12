@@ -16,6 +16,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void lbCerrarSesion_Click(object sender, EventArgs e)
     {
         Session["UsuarioActual"] = null;
-        Page.Response.Redirect("~/Default.aspx");
+        Page.Response.Redirect("~/Login.aspx");
     }
 }

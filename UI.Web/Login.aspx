@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="UI.Web.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="UI.Web.Default" %>
 <asp:Content ID="Home" ContentPlaceHolderID="Body" runat="server">
     <asp:Panel ID="loginPanel" runat="server" HorizontalAlign="Center" 
         Width="850px">

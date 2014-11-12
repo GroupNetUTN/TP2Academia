@@ -63,6 +63,7 @@ margin:10px auto;
 			
 			.Menu li a:hover {
 				background-color:#434343;
+				color:White;
 			}
 			.Menu li ul {
 				display:none;
