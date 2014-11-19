@@ -17,7 +17,7 @@
             <HeaderStyle BackColor="#80A493" BorderColor="Black" 
                 Font-Bold="True" ForeColor="White" />
             <RowStyle BackColor="White" BorderColor="Black" />
-            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
+            <SelectedRowStyle BackColor="Black" ForeColor="White" />
         </asp:GridView>
     </asp:Panel>
     <asp:Panel ID="gridActionsPanel" runat="server">
@@ -25,8 +25,9 @@
         <asp:LinkButton ID="lbEliminar" runat="server" onclick="lbEliminar_Click">Eliminar</asp:LinkButton>
     </asp:Panel>
     <br />
-    <asp:Panel ID="formPanel" runat="server">
-        <h4>Materias:</h4>
+    <asp:Panel ID="formPanel" runat="server" Visible="False">
+        <asp:Label ID="lblMaterias" Font-Size="Medium" Font-Bold="true" runat="server">Materias:</asp:Label>
+        <br runat="server" />
         <asp:GridView ID="GridViewMaterias" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="ID" 
             onselectedindexchanged="GridViewMaterias_SelectedIndexChanged">
@@ -39,10 +40,11 @@
             <HeaderStyle BackColor="#80A493" BorderColor="Black" 
                 Font-Bold="True" ForeColor="White" />
             <RowStyle BackColor="White" BorderColor="Black" />
-            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
+            <SelectedRowStyle BackColor="Black" ForeColor="White" />
         </asp:GridView>
         <br />
-        <h4>Comisiones:</h4>
+        <asp:Label ID="lblComisiones" Font-Size="Medium" Font-Bold="true" runat="server" Visible="false">Comisiones:</asp:Label>
+        <br runat="server" />
         <asp:GridView ID="GridViewComisiones" runat="server" 
             AutoGenerateColumns="False" DataKeyNames="ID" 
             onselectedindexchanged="GridViewComisiones_SelectedIndexChanged">
@@ -54,7 +56,7 @@
             <HeaderStyle BackColor="#80A493" BorderColor="Black" 
                 Font-Bold="True" ForeColor="White" />
             <RowStyle BackColor="White" BorderColor="Black" />
-            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
+            <SelectedRowStyle BackColor="Black" ForeColor="White" />
         </asp:GridView>
         <br />
         <asp:Panel ID="formActionsPanel" runat="server">

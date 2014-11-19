@@ -97,7 +97,7 @@ namespace UI.Web
             }
             set
             {
-                this.ViewState["SelectedIDInscripciones"] = value;
+                this.ViewState["SelectedIDComisiones"] = value;
             }
         }
 
@@ -139,7 +139,9 @@ namespace UI.Web
         {
             this.GridViewInscripciones.SelectedIndex = -1;
             this.GridViewMaterias.SelectedIndex = -1;
-            this.GridViewComisiones.SelectedIndex = -1;
+            this.GridViewComisiones.DataSource = null;
+            this.GridViewComisiones.DataBind();
+            this.lblComisiones.Visible = false;
         }
 
         private void DeleteEntity(int id)
@@ -183,6 +185,7 @@ namespace UI.Web
         {
             this.SelectedIDMaterias = (int)this.GridViewMaterias.SelectedValue;
             this.LoadGridComisiones();
+            this.lblComisiones.Visible = true;
         }
 
         protected void GridViewComisiones_SelectedIndexChanged(object sender, EventArgs e)
@@ -211,12 +214,22 @@ namespace UI.Web
             this.EnableForm(true);
         }
 
+        private bool Validar()
+        {
+            if (this.SelectedIDComisiones == 0 || this.SelectedIDMaterias == 0)
+                return false;
+            else return true;
+        }
+
+
         protected void lbAceptar_Click(object sender, EventArgs e)
-        {            
-            this.Entity = new AlumnoInscripcion();
-            this.LoadEntity(this.Entity);
-            this.SaveEntity(this.Entity);
-            this.LoadGridInscripciones();
+        {
+            if (this.Validar())
+            {
+                this.Entity = new AlumnoInscripcion();
+                this.LoadEntity(this.Entity);
+                this.SaveEntity(this.Entity);
+            }
             this.ClearSession();
             this.ClearForm();
             this.formPanel.Visible = false;
