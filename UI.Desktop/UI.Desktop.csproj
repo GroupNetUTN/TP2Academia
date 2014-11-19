@@ -104,12 +104,6 @@
     <Compile Include="RegistroNotas.Designer.cs">
       <DependentUpon>RegistroNotas.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReporteCursos.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteCursos.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ReporteCursosViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,10 +237,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroNotas.resx">
       <DependentUpon>RegistroNotas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReporteCursos.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteCursos.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteCursosViewer.resx">
       <DependentUpon>ReporteCursosViewer.cs</DependentUpon>

@@ -1,4 +1,5 @@
-﻿namespace UI.Desktop
+﻿using Util;
+namespace UI.Desktop
 {
     partial class ReporteCursosViewer
     {
@@ -29,7 +30,7 @@
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.ReporteCursos1 = new UI.Desktop.ReporteCursos();
+            this.ReporteCursos1 = new Util.ReporteCursos();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -41,8 +42,9 @@
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.ReporteCursos1;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(677, 337);
+            this.crystalReportViewer1.ReportSource = "C:\\Users\\Usuario\\Desktop\\JuanPablo\\UTN\\IDE\\TP 2\\TP2Academia\\Util\\ReportePlanes.rp" +
+    "t";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(826, 476);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -50,7 +52,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 337);
+            this.ClientSize = new System.Drawing.Size(826, 476);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "ReporteCursosViewer";
             this.Text = "Reporte de Cursos";

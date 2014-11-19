@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -61,6 +64,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Comisiones.aspx" />
     <Content Include="Cursos.aspx" />
+    <Content Include="Inscripciones.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="DocentesCursos.aspx" />
     <Content Include="Especialidades.aspx" />
@@ -97,6 +101,7 @@
     <Content Include="Personas.aspx" />
     <Content Include="Planes.aspx" />
     <Content Include="RegistroNotas.aspx" />
+    <Content Include="ReporteCursosViewer.aspx" />
     <Content Include="SeleccionarPersona.aspx" />
     <Content Include="style.css" />
     <Content Include="Global.asax" />
@@ -164,6 +169,13 @@
     </Compile>
     <Compile Include="Cursos.aspx.designer.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripciones.aspx.cs">
+      <DependentUpon>Inscripciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inscripciones.aspx.designer.cs">
+      <DependentUpon>Inscripciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -235,6 +247,13 @@
     </Compile>
     <Compile Include="RegistroNotas.aspx.designer.cs">
       <DependentUpon>RegistroNotas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteCursosViewer.aspx.cs">
+      <DependentUpon>ReporteCursosViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteCursosViewer.aspx.designer.cs">
+      <DependentUpon>ReporteCursosViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="SeleccionarPersona.aspx.cs">
       <DependentUpon>SeleccionarPersona.aspx</DependentUpon>
