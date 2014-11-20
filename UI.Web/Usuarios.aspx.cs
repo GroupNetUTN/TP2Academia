@@ -16,7 +16,7 @@ namespace UI.Web
         {
             this.LoadGrid();
             this.GridView.Columns[5].Visible = true;
-            this.gridPermisosPanel.Visible = false;
+           /* this.gridPermisosPanel.Visible = false;*/
             if (this.GridView.SelectedIndex == -1)
             {
                 ShowButtons(false);
@@ -124,6 +124,11 @@ namespace UI.Web
             this.chxHabilitado.Checked = this.Entity.Habilitado;
             this.txtNombreUsuario.Text = this.Entity.NombreUsuario;
             this.txtPersona.Text = this.Entity.Persona.Apellido + " " + this.Entity.Persona.Nombre;
+            if (this.Entity.TipoPersona == "No docente")
+            {
+                this.LoadGridPermisos(this.Entity.ID);
+                this.gridPermisosPanel.Visible = true;
+            }
         }
 
         private void LoadEntity(Usuario usuario)
@@ -133,6 +138,10 @@ namespace UI.Web
             usuario.Habilitado = this.chxHabilitado.Checked;
             if (Session["ID_Persona"] != null)
                 usuario.Persona.ID = Convert.ToInt32(Session["ID_Persona"]);
+            foreach (GridViewRow row in this.GridViewPermisos.Rows)
+            {
+                usuario.ModulosUsuarios.Add((ModuloUsuario)row.DataItem);
+            }
         }
 
         private void SaveEntity(Usuario usuario)
@@ -160,9 +169,6 @@ namespace UI.Web
             this.chxHabilitado.Checked = false;
             this.GridView.SelectedIndex = -1;
         }
-
-        #region Eventos
-
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -195,7 +201,6 @@ namespace UI.Web
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
-                        this.ClearSession();
                     }
                     break;
                 case FormModes.Alta:
@@ -203,10 +208,10 @@ namespace UI.Web
                     this.LoadEntity(this.Entity);
                     this.SaveEntity(this.Entity);
                     this.LoadGrid();
-                    this.ClearSession();
                     break;
             }
             this.ClearForm();
+            this.ClearSession();
             this.formPanel.Visible = false;
             this.gridActionsPanel.Visible = true;
             this.ShowButtons(false);
@@ -218,7 +223,8 @@ namespace UI.Web
                  Session["Habilitado"] =
                  Session["ApeNom_Persona"] =
                  Session["SelectedID"] =
-                 Session["ID_Persona"] =  null;
+                 Session["ID_Persona"] = 
+                 Session["Tipo_Persona"] = null;
         }
             
 
@@ -246,13 +252,11 @@ namespace UI.Web
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             this.ClearForm();
+            this.ClearSession();
             this.formPanel.Visible = false;
-            this.formActionsPanel.Visible = false;
             this.gridActionsPanel.Visible = true;
             this.ShowButtons(false);
         }
-
-        #endregion
 
         protected void lbSeleccionarPersona_Click(object sender, EventArgs e)
         {
@@ -264,6 +268,11 @@ namespace UI.Web
                 Session["SelectedID"] = this.SelectedID;
             }
             Page.Response.Redirect("~/SeleccionarPersona.aspx");
+        }
+
+        protected void GridViewPermisos_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
         }
 
     }

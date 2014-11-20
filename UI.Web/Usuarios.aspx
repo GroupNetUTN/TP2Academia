@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageConMenu.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="UI.Web.Usuarios" %>
 <asp:Content ID="Usuarios" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-
 <asp:Panel ID="gridPanel" runat="server">
     <h2>Usuarios:</h2><br />
         <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" 
@@ -20,7 +19,6 @@
             <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
         </asp:GridView>
     </asp:Panel>
-
 <asp:Panel ID="gridActionsPanel" runat="server">
     <asp:LinkButton ID="lbEditar" runat="server" 
         onclick="editarLinkButton_Click" CausesValidation="False">Editar</asp:LinkButton>
@@ -29,9 +27,7 @@
     <asp:LinkButton ID="lbNuevo" runat="server" 
         onclick="nuevoLinkButton_Click" CausesValidation="False">Nuevo</asp:LinkButton>
 </asp:Panel>
-
-<asp:Panel ID="formPanel" Visible="false" runat="server" Height="158px">
-    <br />
+<asp:Panel ID="formPanel" Visible="false" runat="server">
     <asp:Label ID="lblHabilitado" runat="server" Text="Habilitado: "></asp:Label>
     <asp:CheckBox ID="chxHabilitado" runat="server"></asp:CheckBox>
     <br />
@@ -61,7 +57,7 @@
         ControlToValidate="txtRepetirClave" Display="Dynamic" 
         ErrorMessage="El campo Repetir Clave es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator> 
     <br />
-    <asp:Panel ID="gridPermisosPanel" runat="server">
+<asp:Panel ID="gridPermisosPanel" runat="server" Visible="false">
         <asp:GridView ID="GridViewPermisos" runat="server" AutoGenerateColumns="False" 
             Width="350px">
             <Columns>
@@ -74,6 +70,7 @@
             <RowStyle HorizontalAlign="Center" />
         </asp:GridView>
     </asp:Panel>
+    <br />
 <asp:Panel ID="formActionsPanel" runat="server">
     <asp:LinkButton ID="aceptarLinkButton" runat="server" 
         onclick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
@@ -82,6 +79,5 @@
     <asp:ValidationSummary ID="vsValidaciones" runat="server" ForeColor="#FF3300" />
 </asp:Panel>
 </asp:Panel>
-
 </asp:Content>
 
