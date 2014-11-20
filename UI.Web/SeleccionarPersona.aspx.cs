@@ -59,6 +59,7 @@ namespace UI.Web
             Session["ID_Persona"] = this.SelectedID;
             Persona SelectedPersona = this.Logic.GetOne(SelectedID);
             Session["ApeNom_Persona"] = SelectedPersona.Apellido + SelectedPersona.Nombre;
+            Session["Tipo_Persona"] = SelectedPersona.TipoPersona;
             Page.Response.Redirect("~/Usuarios.aspx");
         }
 

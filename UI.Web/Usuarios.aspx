@@ -5,7 +5,7 @@
     <h2>Usuarios:</h2><br />
         <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="ID"  
-            onselectedindexchanged="gridView_SelectedIndexChanged">
+            onselectedindexchanged="gridView_SelectedIndexChanged" Width="500px">
             <Columns>
                 <asp:BoundField DataField="NombreUsuario" HeaderText="Usuario" />
                 <asp:BoundField DataField="Email" HeaderText="Email" />
@@ -23,11 +23,11 @@
 
 <asp:Panel ID="gridActionsPanel" runat="server">
     <asp:LinkButton ID="lbEditar" runat="server" 
-        onclick="editarLinkButton_Click">Editar</asp:LinkButton>
+        onclick="editarLinkButton_Click" CausesValidation="False">Editar</asp:LinkButton>
     <asp:LinkButton ID="lbEliminar" runat="server" 
-        onclick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
+        onclick="eliminarLinkButton_Click" CausesValidation="False">Eliminar</asp:LinkButton>
     <asp:LinkButton ID="lbNuevo" runat="server" 
-        onclick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
+        onclick="nuevoLinkButton_Click" CausesValidation="False">Nuevo</asp:LinkButton>
 </asp:Panel>
 
 <asp:Panel ID="formPanel" Visible="false" runat="server" Height="158px">
@@ -60,6 +60,20 @@
     <asp:RequiredFieldValidator ID="rfvRepetirClave" runat="server" 
         ControlToValidate="txtRepetirClave" Display="Dynamic" 
         ErrorMessage="El campo Repetir Clave es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator> 
+    <br />
+    <asp:Panel ID="gridPermisosPanel" runat="server">
+        <asp:GridView ID="GridViewPermisos" runat="server" AutoGenerateColumns="False" 
+            Width="350px">
+            <Columns>
+                <asp:BoundField DataField="DescModulo" HeaderText="Modulo" />
+                <asp:CheckBoxField DataField="PermiteAlta" HeaderText="Alta" />
+                <asp:CheckBoxField DataField="PermiteBaja" HeaderText="Baja" />
+                <asp:CheckBoxField DataField="PermiteModificacion" HeaderText="Modificación" />
+                <asp:CheckBoxField DataField="PermiteConsulta" HeaderText="Consulta" />
+            </Columns>
+            <RowStyle HorizontalAlign="Center" />
+        </asp:GridView>
+    </asp:Panel>
 <asp:Panel ID="formActionsPanel" runat="server">
     <asp:LinkButton ID="aceptarLinkButton" runat="server" 
         onclick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>

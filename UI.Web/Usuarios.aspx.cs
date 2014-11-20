@@ -16,6 +16,7 @@ namespace UI.Web
         {
             this.LoadGrid();
             this.GridView.Columns[5].Visible = true;
+            this.gridPermisosPanel.Visible = false;
             if (this.GridView.SelectedIndex == -1)
             {
                 ShowButtons(false);
@@ -23,6 +24,8 @@ namespace UI.Web
             }
             if (Session["Habilitado"] != null)
             {
+                if (Session["Tipo_Persona"].ToString() == "No docente")
+                    this.gridPermisosPanel.Visible = true;
                 this.formPanel.Visible = true;
                 this.txtNombreUsuario.Text = Session["Nombre_Usuario"].ToString();
                 this.chxHabilitado.Checked = Convert.ToBoolean(Session["Habilitado"]);
@@ -35,6 +38,12 @@ namespace UI.Web
                 }
                 else
                     this.FormMode = FormModes.Alta;
+                if (this.FormMode == FormModes.Modificacion)
+                {
+                    this.LoadGridPermisos(SelectedID);
+                }
+                else
+                    this.LoadGridPermisos(0);
             }
         }
 
@@ -54,6 +63,13 @@ namespace UI.Web
         {
             this.GridView.DataSource = this.Logic.GetAll();
             this.GridView.DataBind();
+        }
+
+        private void LoadGridPermisos(int id)
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            this.GridViewPermisos.DataSource = mul.GetAll(id);
+            this.GridViewPermisos.DataBind();
         }
 
         Usuario _Entity;    
