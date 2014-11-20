@@ -235,6 +235,7 @@ namespace UI.Web
             this.formPanel.Visible = false;
             this.gridActionsPanel.Visible = true;
             this.lbEliminar.Visible = false;
+            this.LoadGridInscripciones();
         }
 
         protected void lbCancelar_Click(object sender, EventArgs e)

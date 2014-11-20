@@ -13,7 +13,7 @@
                                 }
                                 else if (UsuarioActual.Persona.TipoPersona == "Docente")
                                 {
-                                    Response.Write("<li><a href='RegistrarNotas.aspx'>Registrar Notas</a></li>");
+                                    Response.Write("<li><a href='RegistroNotas.aspx'>Registrar Notas</a></li>");
                                 }
                                 else if (UsuarioActual.Persona.TipoPersona == "No docente")
                                 {

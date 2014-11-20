@@ -157,9 +157,6 @@ namespace Data.Database
                     }
                     ins.Alumno.Plan.ID = (int)drInscripciones["id_plan"];
                     ins.Curso.ID = (int)drInscripciones["id_curso"];
-                    ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
-                    ins.Curso.Comision.Descripcion = (string)drInscripciones["desc_comision"];
-                    ins.Curso.Materia.Descripcion = (string)drInscripciones["desc_materia"];
                 }
 
                 drInscripciones.Close();
