@@ -34,6 +34,11 @@ namespace Business.Logic
             return PlanData.GetAll();
         }
 
+        public bool Existe(string desc)
+        {
+            return PlanData.Existe(desc);
+        }
+
         public void Save(Plan plan)
         {
             PlanData.Save(plan);

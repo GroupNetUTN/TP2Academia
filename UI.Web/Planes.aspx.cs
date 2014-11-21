@@ -134,7 +134,12 @@ namespace UI.Web
 
         private void SaveEntity(Plan plan)
         {
-            this.Logic.Save(plan);
+            if (!Logic.Existe(plan.Descripcion))
+            {
+                this.Logic.Save(plan);
+            }
+            else
+                Response.Write("<script>window.alert('El Plan ya existe.');</script>");
         }
 
         private void ClearSession()

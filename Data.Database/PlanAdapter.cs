@@ -76,6 +76,29 @@ namespace Data.Database
             return p;
         }
 
+        public bool Existe(string desc)
+        {
+            bool existe;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetOne = new SqlCommand("select id_plan from " +
+                    "dbo.planes where desc_plan=@desc", SqlConn);
+                cmdGetOne.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
+                existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al validar que no exista este plan", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return existe;
+        }
+
         public void Delete(int ID)
         {
             try

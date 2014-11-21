@@ -121,7 +121,11 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 PlanLogic planLogic = new PlanLogic();
-                planLogic.Save(_PlanActual);
+                if (!planLogic.Existe(_PlanActual.Descripcion))
+                {
+                    planLogic.Save(_PlanActual);
+                }
+                else this.Notificar("Ya existe este Plan", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

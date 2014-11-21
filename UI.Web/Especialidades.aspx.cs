@@ -122,7 +122,12 @@ namespace UI.Web
 
         private void SaveEntity(Especialidad espec)
         {
-            this.Logic.Save(espec);
+            if (!Logic.Existe(espec.Descripcion))
+            {
+                this.Logic.Save(espec);
+            }
+            else 
+                Response.Write("<script>window.alert('La especialidad ya existe.');</script>");
         }
 
         private void ClearSession()
