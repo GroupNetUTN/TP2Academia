@@ -103,7 +103,11 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 EspecialidadLogic esplogic = new EspecialidadLogic();
-                esplogic.Save(_EspecialidadActual);
+                if (!esplogic.Existe(_EspecialidadActual.Descripcion))
+                {
+                    esplogic.Save(_EspecialidadActual);
+                }
+                else this.Notificar("Ya existe esta Especialidad",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

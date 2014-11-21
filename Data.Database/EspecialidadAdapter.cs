@@ -71,6 +71,29 @@ namespace Data.Database
             return esp;
         }
 
+        public bool Existe(string desc)
+        {
+            bool existe;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetOne = new SqlCommand("select id_especialidad from " +
+                    "dbo.especialidades where desc_especialidad=@desc", SqlConn);
+                cmdGetOne.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
+                existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al validar que no exista esta especialidad", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return existe;
+        }
+
         public void Delete(int ID)
         {
             try

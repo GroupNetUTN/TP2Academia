@@ -29,6 +29,11 @@ namespace Business.Logic
             return EspecialidadData.GetOne(ID);
         }
 
+        public bool Existe(string desc)
+        {
+            return EspecialidadData.Existe(desc);
+        }
+
         public List<Especialidad> GetAll()
         {
             return EspecialidadData.GetAll();
