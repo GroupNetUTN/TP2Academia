@@ -76,15 +76,16 @@ namespace Data.Database
             return p;
         }
 
-        public bool Existe(string desc)
+        public bool Existe(string desc, int esp)
         {
             bool existe;
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select id_plan from " +
-                    "dbo.planes where desc_plan=@desc", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("Existe_Planes", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
+                cmdGetOne.Parameters.Add("@id_esp", SqlDbType.Int).Value = esp;
                 existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
             }
             catch (Exception e)

@@ -121,7 +121,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 PlanLogic planLogic = new PlanLogic();
-                if (!planLogic.Existe(_PlanActual.Descripcion))
+                if (!planLogic.Existe(_PlanActual.Descripcion,_PlanActual.Especialidad.ID))
                 {
                     planLogic.Save(_PlanActual);
                 }

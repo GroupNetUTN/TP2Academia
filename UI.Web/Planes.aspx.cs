@@ -134,7 +134,7 @@ namespace UI.Web
 
         private void SaveEntity(Plan plan)
         {
-            if (!Logic.Existe(plan.Descripcion))
+            if (!Logic.Existe(plan.Descripcion,plan.Especialidad.ID))
             {
                 this.Logic.Save(plan);
             }

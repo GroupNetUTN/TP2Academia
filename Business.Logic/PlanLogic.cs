@@ -34,9 +34,9 @@ namespace Business.Logic
             return PlanData.GetAll();
         }
 
-        public bool Existe(string desc)
+        public bool Existe(string desc, int esp)
         {
-            return PlanData.Existe(desc);
+            return PlanData.Existe(desc, esp);
         }
 
         public void Save(Plan plan)

@@ -77,8 +77,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("select id_especialidad from " +
-                    "dbo.especialidades where desc_especialidad=@desc", SqlConn);
+                SqlCommand cmdGetOne = new SqlCommand("Existe_Especialidades", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
                 cmdGetOne.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
                 existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
             }
