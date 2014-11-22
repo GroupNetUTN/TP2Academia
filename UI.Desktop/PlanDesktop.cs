@@ -61,6 +61,7 @@ namespace UI.Desktop
                 cbxEspecialidad.DataSource = EspecialidadNegocio.GetAll();
                 cbxEspecialidad.DisplayMember = "Descripcion";
                 cbxEspecialidad.ValueMember = "ID";
+                cbxEspecialidad.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -136,16 +137,11 @@ namespace UI.Desktop
         public override bool Validar()
         {
             Boolean EsValido = true;
-            foreach (Control oControls in this.Controls)
+            if (this.txtDescripcion.Text == String.Empty || this.cbxEspecialidad.SelectedItem == null)
             {
-                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
-                {
-                    EsValido = false;
-                    break;
-                }
-            }
-            if (EsValido == false)
+                EsValido = false;
                 this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             return EsValido;
         }

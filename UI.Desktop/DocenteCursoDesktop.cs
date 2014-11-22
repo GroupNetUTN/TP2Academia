@@ -93,7 +93,9 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 DocenteCursoLogic DCLogic = new DocenteCursoLogic();
-                DCLogic.Save(_DocenteCursoActual);
+                if (!DCLogic.Existe(_DocenteCursoActual.Curso.ID, _DocenteCursoActual.Docente.ID, _DocenteCursoActual.Cargo))
+                    DCLogic.Save(_DocenteCursoActual);
+                else this.Notificar("Este Docente ya se encuentra asignado a este Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -104,23 +106,16 @@ namespace UI.Desktop
         public override bool Validar()
         {
             Boolean EsValido = true;
-            foreach (Control oControls in this.Controls)
+            if (this.cbxCargo.SelectedItem == null)
             {
-                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
-                {
-                    EsValido = false;
-                    break;
-                }
+                EsValido = false;
+                this.Notificar("No se seleccionó un Cargo para el Docente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (EsValido == false)
-                this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
             if(this._DocenteCursoActual.Docente.ID == 0)
             {
                 this.Notificar("No se seleccionó un Docente para el Curso",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 EsValido = false;
             }
-                
-
             return EsValido;
         }
 

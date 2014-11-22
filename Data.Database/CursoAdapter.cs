@@ -92,6 +92,31 @@ namespace Data.Database
             return cur;
         }
 
+        public bool Existe(int id_mat, int id_com, int anio)
+        {
+            bool existe;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetOne = new SqlCommand("Existe_Cursos", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
+                cmdGetOne.Parameters.Add("@id_mat", SqlDbType.Int).Value = id_mat;
+                cmdGetOne.Parameters.Add("@id_com", SqlDbType.Int).Value = id_com;
+                cmdGetOne.Parameters.Add("@anio", SqlDbType.Int).Value = anio;
+                existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al validar que no exista este Curso", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return existe;
+        }
+
         public void Delete(int ID)
         {
             try

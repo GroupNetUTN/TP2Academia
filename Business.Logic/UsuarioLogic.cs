@@ -29,6 +29,11 @@ namespace Business.Logic
             return UsuarioData.GetOne(ID);
         }
 
+        public bool Existe(string nom_usu)
+        {
+            return _UsuarioData.Existe(nom_usu);
+        }
+
         public List<Usuario> GetAll()
         {
             return UsuarioData.GetAll();

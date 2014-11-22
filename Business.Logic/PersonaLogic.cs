@@ -29,6 +29,11 @@ namespace Business.Logic
             return PersonaData.GetOne(ID);
         }
 
+        public bool Existe(int leg)
+        {
+            return _PersonaData.Existe(leg);
+        }
+
         public List<Persona> GetAll()
         {
             return PersonaData.GetAll(0);

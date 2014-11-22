@@ -138,6 +138,42 @@ namespace Data.Database
             return dc;
         }
 
+        public bool Existe(int id_cur, int id_doc, string cargo)
+        {
+            bool existe;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetOne = new SqlCommand("Existe_Docentes_Cursos", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
+                cmdGetOne.Parameters.Add("@id_cur", SqlDbType.Int).Value = id_cur;
+                cmdGetOne.Parameters.Add("@id_doc", SqlDbType.Int).Value = id_doc; 
+                switch (cargo)
+                {
+                    case "Titular":
+                        cmdGetOne.Parameters.Add("@cargo", SqlDbType.Int).Value = 1;
+                        break;
+                    case "Auxiliar":
+                        cmdGetOne.Parameters.Add("@cargo", SqlDbType.Int).Value = 2;
+                        break;
+                    case "Ayudante":
+                        cmdGetOne.Parameters.Add("@cargo", SqlDbType.Int).Value = 3;
+                        break;
+                }
+                existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al validar que no exista este Docente asignado", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return existe;
+        }
+
         public void Delete(int ID)
         {
             try

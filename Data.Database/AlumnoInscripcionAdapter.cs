@@ -173,6 +173,30 @@ namespace Data.Database
             return ins;
         }
 
+        public bool Existe(int id_alu, int id_cur)
+        {
+            bool existe;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetOne = new SqlCommand("Existe_Alumnos_Inscripciones", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
+                cmdGetOne.Parameters.Add("@id_alu", SqlDbType.Int).Value = id_alu;
+                cmdGetOne.Parameters.Add("@id_cur", SqlDbType.Int).Value = id_cur;
+                existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al validar que no exista esta Inscripcion", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return existe;
+        }
+
         public void Delete(int ID)
         {
             try

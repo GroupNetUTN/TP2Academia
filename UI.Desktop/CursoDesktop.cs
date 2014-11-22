@@ -191,7 +191,9 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 CursoLogic CursoLogic = new CursoLogic();
-                CursoLogic.Save(CursoActual);
+                if(!CursoLogic.Existe(_CursoActual.Materia.ID,_CursoActual.Comision.ID,_CursoActual.AnioCalendario))
+                    CursoLogic.Save(CursoActual);
+                else this.Notificar("Ya existe este Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -202,16 +204,13 @@ namespace UI.Desktop
         public override bool Validar()
         {
             Boolean EsValido = true;
-            foreach (Control oControls in this.Controls)
+            if (this.cbxComisiones.SelectedItem == null || this.cbxEspecialidades.SelectedItem == null ||
+                this.cbxPlanes.SelectedItem == null || this.cbxMaterias.SelectedItem == null ||
+                this.txtAnioCalendario.Text == String.Empty || this.txtCupo.Text == String.Empty)
             {
-                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
-                {
-                    EsValido = false;
-                    break;
-                }
-            }
-            if (EsValido == false)
+                EsValido = false;
                 this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             return EsValido;
         }

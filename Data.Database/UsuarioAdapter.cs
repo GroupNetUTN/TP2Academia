@@ -118,6 +118,29 @@ namespace Data.Database
             return usr;
         }
 
+        public bool Existe(string nom_usu)
+        {
+            bool existe;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetOne = new SqlCommand("Existe_Usuarios", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
+                cmdGetOne.Parameters.Add("@usuario", SqlDbType.VarChar).Value = nom_usu;
+                existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al validar que no exista este Usuario", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return existe;
+        }
+
         public void Delete(int ID)
         {
             try

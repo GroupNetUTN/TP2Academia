@@ -29,6 +29,11 @@ namespace Business.Logic
             return _DocenteCursoData.GetOne(ID);
         }
 
+        public bool Existe(int id_cur,int id_doc, string cargo)
+        {
+            return _DocenteCursoData.Existe(id_cur, id_doc, cargo);
+        }
+
         public List<DocenteCurso> GetAll()
         {
             return _DocenteCursoData.GetAll();

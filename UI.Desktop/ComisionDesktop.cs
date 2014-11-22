@@ -61,6 +61,7 @@ namespace UI.Desktop
                 cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
                 cbxEspecialidades.DisplayMember = "Descripcion";
                 cbxEspecialidades.ValueMember = "ID";
+                cbxEspecialidades.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -148,7 +149,9 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 ComisionLogic comisionLogic = new ComisionLogic();
-                comisionLogic.Save(ComisionActual);
+                if(!comisionLogic.Existe(_ComisionActual.Plan.ID, _ComisionActual.Descripcion))
+                    comisionLogic.Save(ComisionActual);
+                else this.Notificar("Ya existe esta Comisión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -159,17 +162,12 @@ namespace UI.Desktop
         public override bool Validar()
         {
             Boolean EsValido = true;
-            foreach (Control oControls in this.Controls)
-            {
-                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
-                {
-                    EsValido = false;
-                    break;
-                }
-            }
+            if (this.cbxEspecialidades.SelectedItem == null || this.cbxPlan.SelectedItem == null)
+                EsValido = false;
+            if (this.txtDescripcion.Text == String.Empty || this.txtAniosEspecialidad.Text == String.Empty)
+                EsValido = false;
             if (EsValido == false)
                 this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             return EsValido;
         }
 

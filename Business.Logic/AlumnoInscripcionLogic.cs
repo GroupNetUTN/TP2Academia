@@ -29,6 +29,11 @@ namespace Business.Logic
             return _InscripcionData.GetOne(ID);
         }
 
+        public bool Existe(int id_alu, int id_cur)
+        {
+            return _InscripcionData.Existe(id_alu, id_cur);
+        }
+
         public List<AlumnoInscripcion> GetAll(int IDAlumno)
         {
             return _InscripcionData.GetAll(IDAlumno);

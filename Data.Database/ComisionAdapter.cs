@@ -81,6 +81,30 @@ namespace Data.Database
             return comi;
         }
 
+        public bool Existe(int id_plan, string desc)
+        {
+            bool existe;
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetOne = new SqlCommand("Existe_Comisiones", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
+                cmdGetOne.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
+                cmdGetOne.Parameters.Add("@id_plan", SqlDbType.Int).Value = id_plan;
+                existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al validar que no exista esta Comision", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return existe;
+        }
+
         public void Delete(int ID)
         {
             try

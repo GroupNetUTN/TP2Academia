@@ -91,9 +91,13 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 AlumnoInscripcionLogic inslogic = new AlumnoInscripcionLogic();
-                inslogic.Save(_InscripcionActual);
-                CursoLogic curlog = new CursoLogic();
-                curlog.Save(_InscripcionActual.Curso);
+                if (!inslogic.Existe(_InscripcionActual.Alumno.ID, _InscripcionActual.Curso.ID))
+                {
+                    inslogic.Save(_InscripcionActual);
+                    CursoLogic curlog = new CursoLogic();
+                    curlog.Save(_InscripcionActual.Curso);
+                }
+                else this.Notificar("Ya estas inscripto a este Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

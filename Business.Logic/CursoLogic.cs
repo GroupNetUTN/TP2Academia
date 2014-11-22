@@ -31,6 +31,11 @@ namespace Business.Logic
             return CursoData.GetOne(ID);
         }
 
+        public bool Existe(int id_mat, int id_com, int anio)
+        {
+            return _CursoData.Existe(id_mat, id_com, anio);
+        }
+
         public void Delete(int ID)
         {
             CursoData.Delete(ID);

@@ -63,6 +63,7 @@ namespace UI.Desktop
                 cbxEspecialidades.DataSource = EspecialidadNegocio.GetAll();
                 cbxEspecialidades.DisplayMember = "Descripcion";
                 cbxEspecialidades.ValueMember = "ID";
+                this.cbxEspecialidades.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -152,7 +153,11 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 MateriaLogic materialogic = new MateriaLogic();
-                materialogic.Save(_MateriaActual);
+                if (!materialogic.Existe(_MateriaActual.Plan.ID, _MateriaActual.Descripcion))
+                {
+                    materialogic.Save(_MateriaActual);
+                }
+                else this.Notificar("Ya existe esta Materia", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -163,17 +168,12 @@ namespace UI.Desktop
         public override bool Validar()
         {
             Boolean EsValido = true;
-            foreach (Control oControls in this.Controls)
-            {
-                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
-                {
-                    EsValido = false;
-                    break;
-                }
-            }
+            if (this.cbxEspecialidades.SelectedItem == null || this.cbxPlanes.SelectedItem == null)
+                EsValido = false;
+            if (this.txtDescripcion.Text == String.Empty || this.txtHsSemanales.Text == String.Empty || this.txtHsTotales.Text == String.Empty)
+                EsValido = false;
             if (EsValido == false)
                  this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             return EsValido;
         }
 
