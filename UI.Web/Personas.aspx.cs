@@ -202,7 +202,12 @@ namespace UI.Web
 
         private void SaveEntity(Persona pers)
         {
-            this.Logic.Save(pers);
+            if (!Logic.Existe(pers.Legajo))
+            {
+                this.Logic.Save(pers);
+            }
+            else
+                Response.Write("<script>window.alert('El Legajo ingresado pertenece a una persona ya existente.');</script>");
         }
 
         private void ClearSession()

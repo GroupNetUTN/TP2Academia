@@ -167,7 +167,12 @@ namespace UI.Web
 
         private void SaveEntity(AlumnoInscripcion ins)
         {
-            this.Logic.Save(ins);
+            if (!Logic.Existe(ins.Alumno.ID, ins.Curso.ID))
+            {
+                this.Logic.Save(ins);
+            }
+            else
+                Response.Write("<script>window.alert('Ya se encuentra inscripto a ese cursado.');</script>");
         }
 
         private void ClearSession()

@@ -102,6 +102,7 @@
     <Content Include="Planes.aspx" />
     <Content Include="RegistroNotas.aspx" />
     <Content Include="ReporteCursosViewer.aspx" />
+    <Content Include="ReportePlanesViewer.aspx" />
     <Content Include="SeleccionarPersona.aspx" />
     <Content Include="style.css" />
     <Content Include="Global.asax" />
@@ -254,6 +255,13 @@
     </Compile>
     <Compile Include="ReporteCursosViewer.aspx.designer.cs">
       <DependentUpon>ReporteCursosViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePlanesViewer.aspx.cs">
+      <DependentUpon>ReportePlanesViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportePlanesViewer.aspx.designer.cs">
+      <DependentUpon>ReportePlanesViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="SeleccionarPersona.aspx.cs">
       <DependentUpon>SeleccionarPersona.aspx</DependentUpon>

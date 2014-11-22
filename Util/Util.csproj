@@ -54,6 +54,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportePlanes.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Validaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

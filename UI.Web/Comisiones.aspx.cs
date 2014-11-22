@@ -167,7 +167,12 @@ namespace UI.Web
 
         private void SaveEntity(Comision comi)
         {
-            this.Logic.Save(comi);
+            if (!Logic.Existe(comi.Plan.ID, comi.Descripcion))
+            {
+                this.Logic.Save(comi);
+            }
+            else
+                Response.Write("<script>window.alert('La Comisión ya existe.');</script>");
         }
 
         private void ClearSession()

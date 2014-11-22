@@ -228,7 +228,12 @@ namespace UI.Web
 
         private void SaveEntity(Curso curso)
         {
-            this.Logic.Save(curso);
+            if (!Logic.Existe(curso.Materia.ID, curso.Comision.ID, curso.AnioCalendario))
+            {
+                this.Logic.Save(curso);
+            }
+            else
+                Response.Write("<script>window.alert('El Curso ya existe.');</script>");
         }
 
         private void ClearSession()

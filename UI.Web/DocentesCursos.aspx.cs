@@ -166,7 +166,12 @@ namespace UI.Web
 
         private void SaveEntity(DocenteCurso docCurso)
         {
-            this.Logic.Save(docCurso);
+            if (!Logic.Existe(docCurso.Curso.ID, docCurso.Docente.ID, docCurso.Cargo))
+            {
+                this.Logic.Save(docCurso);
+            }
+            else
+                Response.Write("<script>window.alert('Ya se asignó a ese docente, en este curso, para ese cargo.');</script>");
         }
 
         private void ClearSession()

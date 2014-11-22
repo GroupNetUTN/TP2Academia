@@ -172,7 +172,12 @@ namespace UI.Web
 
         private void SaveEntity(Materia mat)
         {
-            this.Logic.Save(mat);
+            if (!Logic.Existe(mat.Plan.ID, mat.Descripcion))
+            {
+                this.Logic.Save(mat);
+            }
+            else
+                Response.Write("<script>window.alert('La Materia ya existe.');</script>");
         }
 
         private void ClearSession()

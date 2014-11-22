@@ -146,7 +146,12 @@ namespace UI.Web
 
         private void SaveEntity(Usuario usuario)
         {
-            this.Logic.Save(usuario);
+            if (!Logic.Existe(usuario.NombreUsuario))
+            {
+                this.Logic.Save(usuario);
+            }
+            else
+                Response.Write("<script>window.alert('El Usuario ya existe.');</script>");
         }
 
         private void EnableForm(bool enable)
