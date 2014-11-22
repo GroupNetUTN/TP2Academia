@@ -222,3 +222,4 @@ C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Desktop\obj\x86\Debug\UI.Desktop.Proper
 C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Desktop\obj\x86\Debug\UI.Desktop.csproj.GenerateResource.Cache
 C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Desktop\obj\x86\Debug\UI.Desktop.exe
 C:\Users\Matias\Desktop\TP2AcademiaOK\UI.Desktop\obj\x86\Debug\UI.Desktop.pdb
+C:\Users\Matias\Desktop\TP2Academia\UI.Desktop\obj\x86\Debug\UI.Desktop.ReportePlanesViewer.resources

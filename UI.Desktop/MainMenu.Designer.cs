@@ -212,6 +212,7 @@
             this.planesToolStripMenuItem1.Name = "planesToolStripMenuItem1";
             this.planesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.planesToolStripMenuItem1.Text = "Planes";
+            this.planesToolStripMenuItem1.Click += new System.EventHandler(this.planesToolStripMenuItem1_Click);
             // 
             // helpMenu
             // 

@@ -205,9 +205,16 @@ namespace UI.Desktop
 
         private void mnuReportesCursos_Click(object sender, EventArgs e)
         {
-            ReporteCursosViewer rpc = new ReporteCursosViewer();
-            rpc.MdiParent = this;
-            rpc.Show();
+            ReporteCursosViewer repCursos = new ReporteCursosViewer();
+            repCursos.MdiParent = this;
+            repCursos.Show();
+        }
+
+        private void planesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ReportePlanesViewer repPlanes = new ReportePlanesViewer();
+            repPlanes.MdiParent = this;
+            repPlanes.Show();
         }
 
         
