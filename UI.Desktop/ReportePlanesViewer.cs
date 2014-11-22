@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Util;
 
 namespace UI.Desktop
 {
@@ -15,7 +14,13 @@ namespace UI.Desktop
         public ReportePlanesViewer()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void ReportePlanesViewer_Load(object sender, EventArgs e)
+        {
+            CrystalDecisions.CrystalReports.Engine.ReportDocument rd = new Util.ReportePlanes();
+            this.CRViewerPlanes.ReportSource = rd;
+            this.CRViewerPlanes.Show();
         }
     }
 }

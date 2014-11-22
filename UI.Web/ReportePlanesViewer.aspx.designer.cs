@@ -10,33 +10,24 @@
 namespace UI.Web {
     
     
-    public partial class ReportePlanes {
+    public partial class ReportePlanesViewer {
         
         /// <summary>
-        /// Control ReportViewer.
+        /// Control ReportViewerPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ReportViewer;
+        protected global::System.Web.UI.WebControls.Panel ReportViewerPanel;
         
         /// <summary>
-        /// Control CrystalReportViewer1.
+        /// Control CRViewerPlanes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportViewer CrystalReportViewer1;
-        
-        /// <summary>
-        /// Control CRPlanes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportSource CRPlanes;
+        protected global::CrystalDecisions.Web.CrystalReportViewer CRViewerPlanes;
     }
 }

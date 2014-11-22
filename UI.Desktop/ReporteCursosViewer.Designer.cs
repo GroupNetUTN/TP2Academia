@@ -1,5 +1,4 @@
-﻿using Util;
-namespace UI.Desktop
+﻿namespace UI.Desktop
 {
     partial class ReporteCursosViewer
     {
@@ -29,40 +28,36 @@ namespace UI.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.ReporteCursos1 = new Util.ReporteCursos();
+            this.CRViewerCursos = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
-            // crystalReportViewer1
+            // CRViewerCursos
             // 
-            this.crystalReportViewer1.ActiveViewIndex = 0;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.DisplayToolbar = false;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = "C:\\Users\\Usuario\\Desktop\\JuanPablo\\UTN\\IDE\\TP 2\\TP2Academia\\Util\\ReportePlanes.rp" +
-    "t";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(826, 476);
-            this.crystalReportViewer1.TabIndex = 0;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.CRViewerCursos.ActiveViewIndex = -1;
+            this.CRViewerCursos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CRViewerCursos.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CRViewerCursos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CRViewerCursos.Location = new System.Drawing.Point(0, 0);
+            this.CRViewerCursos.Name = "CRViewerCursos";
+            this.CRViewerCursos.Size = new System.Drawing.Size(780, 487);
+            this.CRViewerCursos.TabIndex = 0;
+            this.CRViewerCursos.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // ReporteCursosViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 476);
-            this.Controls.Add(this.crystalReportViewer1);
+            this.ClientSize = new System.Drawing.Size(780, 487);
+            this.Controls.Add(this.CRViewerCursos);
             this.Name = "ReporteCursosViewer";
-            this.Text = "Reporte de Cursos";
+            this.Text = "ReporteCursosViewer";
+            this.Load += new System.EventHandler(this.ReporteCursosViewer_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private ReporteCursos ReporteCursos1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer CRViewerCursos;
     }
 }
