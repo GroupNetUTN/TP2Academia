@@ -76,8 +76,15 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            this.GridView.DataSource = this.Logic.GetAll();
-            this.GridView.DataBind();
+            try
+            {
+                this.GridView.DataSource = this.Logic.GetAll();
+                this.GridView.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ShowButtons(bool enable)
@@ -116,14 +123,28 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            this.Logic.Delete(id);
+            try
+            {
+                this.Logic.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadForm(int id)
         {
-            this.Entity = this.Logic.GetOne(id);
-            this.txtDescripcionPlan.Text = this.Entity.Descripcion;
-            this.ddlEspecialidades.SelectedValue = this.Entity.Especialidad.ID.ToString();
+            try
+            {
+                this.Entity = this.Logic.GetOne(id);
+                this.txtDescripcionPlan.Text = this.Entity.Descripcion;
+                this.ddlEspecialidades.SelectedValue = this.Entity.Especialidad.ID.ToString();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadEntity(Plan plan)

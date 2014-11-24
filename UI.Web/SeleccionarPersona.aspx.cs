@@ -45,8 +45,15 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            this.dgvPersonas.DataSource = this.Logic.GetAll();
-            this.dgvPersonas.DataBind();
+            try
+            {
+                this.dgvPersonas.DataSource = this.Logic.GetAll();
+                this.dgvPersonas.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         protected void dgvPersonas_SelectedIndexChanged(object sender, EventArgs e)

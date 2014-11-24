@@ -95,21 +95,35 @@ namespace UI.Web
 
         private void LoadGridCursos()
         {
-            CursoLogic curlog = new CursoLogic();
-            this.GridViewCursos.DataSource = curlog.GetCursosDocente(UsuarioActual.Persona.ID);
-            this.GridViewCursos.DataBind();
+            try
+            {
+                CursoLogic curlog = new CursoLogic();
+                this.GridViewCursos.DataSource = curlog.GetCursosDocente(UsuarioActual.Persona.ID);
+                this.GridViewCursos.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadGridAlumnos()
         {
-            List<AlumnoInscripcion> alumnosInscriptos = new List<AlumnoInscripcion>();
-            foreach (AlumnoInscripcion ai in Logic.GetAll())
+            try
             {
-                if (ai.Curso.ID == this.SelectedIDCursos)
-                    alumnosInscriptos.Add(ai);
+                List<AlumnoInscripcion> alumnosInscriptos = new List<AlumnoInscripcion>();
+                foreach (AlumnoInscripcion ai in Logic.GetAll())
+                {
+                    if (ai.Curso.ID == this.SelectedIDCursos)
+                        alumnosInscriptos.Add(ai);
+                }
+                this.GridViewAlumnos.DataSource = alumnosInscriptos;
+                this.GridViewAlumnos.DataBind();
             }
-            this.GridViewAlumnos.DataSource = alumnosInscriptos;
-            this.GridViewAlumnos.DataBind();
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
 
@@ -128,7 +142,14 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            this.Logic.Delete(id);
+            try
+            {
+                this.Logic.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadEntity(AlumnoInscripcion ins)

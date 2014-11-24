@@ -111,22 +111,43 @@ namespace UI.Web
 
         private void LoadGridInscripciones()
         {
-            this.GridViewInscripciones.DataSource = Logic.GetAll(UsuarioActual.Persona.ID);
-            this.GridViewInscripciones.DataBind();
+            try
+            {
+                this.GridViewInscripciones.DataSource = Logic.GetAll(UsuarioActual.Persona.ID);
+                this.GridViewInscripciones.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadGridMaterias()
         {
-            MateriaLogic matlog = new MateriaLogic();
-            this.GridViewMaterias.DataSource = matlog.GetMateriasParaInscripcion(UsuarioActual.Persona.Plan.ID, UsuarioActual.Persona.ID);
-            this.GridViewMaterias.DataBind();
+            try
+            {
+                MateriaLogic matlog = new MateriaLogic();
+                this.GridViewMaterias.DataSource = matlog.GetMateriasParaInscripcion(UsuarioActual.Persona.Plan.ID, UsuarioActual.Persona.ID);
+                this.GridViewMaterias.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadGridComisiones()
         {
-            ComisionLogic comlog = new ComisionLogic();
-            this.GridViewComisiones.DataSource = comlog.GetComisionesDisponibles(SelectedIDMaterias);
-            this.GridViewComisiones.DataBind();
+            try
+            {
+                ComisionLogic comlog = new ComisionLogic();
+                this.GridViewComisiones.DataSource = comlog.GetComisionesDisponibles(SelectedIDMaterias);
+                this.GridViewComisiones.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void EnableForm(bool enable)
@@ -146,22 +167,36 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            this.Logic.Delete(id);
+            try
+            {
+                this.Logic.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadEntity(AlumnoInscripcion ins)
         {
-            ins.Alumno = UsuarioActual.Persona;
-            ins.Condicion = "Inscripto";
-            CursoLogic curlog = new CursoLogic();
-            foreach (Curso c in curlog.GetAll())
+            try
             {
-                if (c.Comision.ID == SelectedIDComisiones && c.Materia.ID == SelectedIDMaterias)
+                ins.Alumno = UsuarioActual.Persona;
+                ins.Condicion = "Inscripto";
+                CursoLogic curlog = new CursoLogic();
+                foreach (Curso c in curlog.GetAll())
                 {
-                    c.Cupo--;
-                    ins.Curso = c;
-                    ins.Curso.State = BusinessEntity.States.Modified;
+                    if (c.Comision.ID == SelectedIDComisiones && c.Materia.ID == SelectedIDMaterias)
+                    {
+                        c.Cupo--;
+                        ins.Curso = c;
+                        ins.Curso.State = BusinessEntity.States.Modified;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
             }
         }
 

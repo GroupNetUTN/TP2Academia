@@ -91,8 +91,15 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            this.GridView.DataSource = Logic.GetAll();
-            this.GridView.DataBind();
+            try
+            {
+                this.GridView.DataSource = Logic.GetAll();
+                this.GridView.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadDdlEspecialidades()
@@ -199,21 +206,35 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            this.Logic.Delete(id);
+            try
+            {
+                this.Logic.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadForm(int id)
         {
-            this.Entity = this.Logic.GetOne(id);
-            this.ddlEspecialidades.SelectedValue = this.Entity.Comision.Plan.Especialidad.ID.ToString();
-            this.LoadDdlPlanes();
-            this.ddlPlanes.SelectedValue = this.Entity.Comision.Plan.ID.ToString();
-            this.LoadDdlMaterias();
-            this.ddlMaterias.SelectedValue = this.Entity.Materia.ID.ToString();
-            this.LoadDdlComisiones();
-            this.ddlComisiones.SelectedValue = this.Entity.Comision.ID.ToString();
-            this.txtAnioCalendario.Text = this.Entity.AnioCalendario.ToString();
-            this.txtCupo.Text = this.Entity.Cupo.ToString();
+            try
+            {
+                this.Entity = this.Logic.GetOne(id);
+                this.ddlEspecialidades.SelectedValue = this.Entity.Comision.Plan.Especialidad.ID.ToString();
+                this.LoadDdlPlanes();
+                this.ddlPlanes.SelectedValue = this.Entity.Comision.Plan.ID.ToString();
+                this.LoadDdlMaterias();
+                this.ddlMaterias.SelectedValue = this.Entity.Materia.ID.ToString();
+                this.LoadDdlComisiones();
+                this.ddlComisiones.SelectedValue = this.Entity.Comision.ID.ToString();
+                this.txtAnioCalendario.Text = this.Entity.AnioCalendario.ToString();
+                this.txtCupo.Text = this.Entity.Cupo.ToString();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadEntity(Curso curso)

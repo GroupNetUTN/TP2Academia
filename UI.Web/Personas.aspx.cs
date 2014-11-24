@@ -76,8 +76,15 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            this.GridView.DataSource = this.Logic.GetAll();
-            this.GridView.DataBind();
+            try
+            {
+                this.GridView.DataSource = this.Logic.GetAll();
+                this.GridView.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ShowButtons(bool enable)
@@ -165,25 +172,39 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            this.Logic.Delete(id);
+            try
+            {
+                this.Logic.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadForm(int id)
         {
-            this.Entity = this.Logic.GetOne(id);
-            this.txtApellido.Text = this.Entity.Apellido;
-            this.txtNombre.Text = this.Entity.Nombre;
-            this.txtLegajo.Text = this.Entity.Legajo.ToString();
-            this.txtDireccion.Text = this.Entity.Direccion;
-            this.txtTelefono.Text = this.Entity.Telefono;
-            this.txtEmail.Text = this.Entity.Email;
-            this.txtDia.Text = this.Entity.FechaNacimiento.Day.ToString();
-            this.txtMes.Text = this.Entity.FechaNacimiento.Month.ToString();
-            this.txtAnio.Text = this.Entity.FechaNacimiento.Year.ToString();
-            this.ddlTipoPersona.SelectedValue = this.Entity.TipoPersona;
-            this.ddlEspecialidades.SelectedValue = this.Entity.Plan.Especialidad.ID.ToString();
-            this.LoadDdlPlanes();
-            this.ddlPlanes.SelectedValue = this.Entity.Plan.ID.ToString();
+            try
+            {
+                this.Entity = this.Logic.GetOne(id);
+                this.txtApellido.Text = this.Entity.Apellido;
+                this.txtNombre.Text = this.Entity.Nombre;
+                this.txtLegajo.Text = this.Entity.Legajo.ToString();
+                this.txtDireccion.Text = this.Entity.Direccion;
+                this.txtTelefono.Text = this.Entity.Telefono;
+                this.txtEmail.Text = this.Entity.Email;
+                this.txtDia.Text = this.Entity.FechaNacimiento.Day.ToString();
+                this.txtMes.Text = this.Entity.FechaNacimiento.Month.ToString();
+                this.txtAnio.Text = this.Entity.FechaNacimiento.Year.ToString();
+                this.ddlTipoPersona.SelectedValue = this.Entity.TipoPersona;
+                this.ddlEspecialidades.SelectedValue = this.Entity.Plan.Especialidad.ID.ToString();
+                this.LoadDdlPlanes();
+                this.ddlPlanes.SelectedValue = this.Entity.Plan.ID.ToString();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadEntity(Persona pers)

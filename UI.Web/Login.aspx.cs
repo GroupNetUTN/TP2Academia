@@ -30,24 +30,31 @@ namespace UI.Web
 
         protected void lbIngresar_Click(object sender, EventArgs e)
         {
-            Usuario usuarioActual = Logic.GetUsuarioForLogin(this.txtUsuario.Text, this.txtContraseña.Text);
-            if (usuarioActual.ID != 0)
+            try
             {
-                if (usuarioActual.Habilitado)
+                Usuario usuarioActual = Logic.GetUsuarioForLogin(this.txtUsuario.Text, this.txtContraseña.Text);
+                if (usuarioActual.ID != 0)
                 {
-                    ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
-                    usuarioActual.ModulosUsuarios = mul.GetPermisos(usuarioActual.ID);
-                    Session["UsuarioActual"] = usuarioActual;
-                    Page.Response.Redirect("~/Home.aspx");
+                    if (usuarioActual.Habilitado)
+                    {
+                        ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+                        usuarioActual.ModulosUsuarios = mul.GetPermisos(usuarioActual.ID);
+                        Session["UsuarioActual"] = usuarioActual;
+                        Page.Response.Redirect("~/Home.aspx");
+                    }
+                    else
+                    {
+                        this.lblMensage2.Visible = true;
+                    }
                 }
                 else
                 {
-                    this.lblMensage2.Visible = true;
+                    this.lblMensage.Visible = true;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                this.lblMensage.Visible = true;
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
             }
         }
     }

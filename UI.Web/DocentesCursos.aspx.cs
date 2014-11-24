@@ -112,22 +112,36 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            DocenteCursoLogic dcl = new DocenteCursoLogic();
-            List<DocenteCurso> docentes = new List<DocenteCurso>();
-            foreach (DocenteCurso dc in dcl.GetAll())
+            try
             {
-                if (dc.Curso.ID == this.SelectedIDCurso)
-                    docentes.Add(dc);
+                DocenteCursoLogic dcl = new DocenteCursoLogic();
+                List<DocenteCurso> docentes = new List<DocenteCurso>();
+                foreach (DocenteCurso dc in dcl.GetAll())
+                {
+                    if (dc.Curso.ID == this.SelectedIDCurso)
+                        docentes.Add(dc);
+                }
+                GridView.DataSource = docentes;
+                GridView.DataBind();
             }
-            GridView.DataSource = docentes;
-            GridView.DataBind();
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadGridDocentes()
         {
-            PersonaLogic pl = new PersonaLogic();
-            this.GridViewDocentes.DataSource = pl.GetDocentes();
-            this.GridViewDocentes.DataBind();
+            try
+            {
+                PersonaLogic pl = new PersonaLogic();
+                this.GridViewDocentes.DataSource = pl.GetDocentes();
+                this.GridViewDocentes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void EnableForm(bool enable)
@@ -145,13 +159,27 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            this.Logic.Delete(id);
+            try
+            {
+                this.Logic.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadForm(int id)
         {
-            this.Entity = this.Logic.GetOne(id);
-            this.ddlCargo.SelectedValue = this.Entity.Cargo;    
+            try
+            {
+                this.Entity = this.Logic.GetOne(id);
+                this.ddlCargo.SelectedValue = this.Entity.Cargo;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadEntity(DocenteCurso docCurso)

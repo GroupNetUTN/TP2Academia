@@ -76,8 +76,15 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            this.GridView.DataSource = this.Logic.GetAll();
-            this.GridView.DataBind();
+            try
+            {
+                this.GridView.DataSource = this.Logic.GetAll();
+                this.GridView.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ShowButtons(bool enable)
@@ -144,17 +151,31 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            this.Logic.Delete(id);
+            try
+            {
+                this.Logic.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadForm(int id)
         {
-            this.Entity = this.Logic.GetOne(id);
-            this.txtDescripcion.Text = this.Entity.Descripcion;
-            this.txtAnio.Text = this.Entity.AnioEspecialidad.ToString();
-            this.ddlEspecialidades.SelectedValue = this.Entity.Plan.Especialidad.ID.ToString();
-            this.LoadDdlPlanes();
-            this.ddlPlanes.SelectedValue = this.Entity.Plan.ID.ToString();
+            try
+            {
+                this.Entity = this.Logic.GetOne(id);
+                this.txtDescripcion.Text = this.Entity.Descripcion;
+                this.txtAnio.Text = this.Entity.AnioEspecialidad.ToString();
+                this.ddlEspecialidades.SelectedValue = this.Entity.Plan.Especialidad.ID.ToString();
+                this.LoadDdlPlanes();
+                this.ddlPlanes.SelectedValue = this.Entity.Plan.ID.ToString();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadEntity(Comision comi)
