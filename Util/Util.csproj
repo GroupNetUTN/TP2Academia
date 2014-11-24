@@ -48,7 +48,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteCursos.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportePlanes.cs">
       <AutoGen>True</AutoGen>

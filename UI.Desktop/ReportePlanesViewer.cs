@@ -14,6 +14,7 @@ namespace UI.Desktop
         public ReportePlanesViewer()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void ReportePlanesViewer_Load(object sender, EventArgs e)
