@@ -86,6 +86,41 @@ namespace Data.Database
             return modulosusuarios;
         }
 
+        public ModuloUsuario GetOne(int ID)
+        {
+            ModuloUsuario modusu = new ModuloUsuario();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetOne = new SqlCommand("GetOne_Modulos_Usuarios", SqlConn);
+                cmdGetOne.CommandType = CommandType.StoredProcedure;
+                cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                SqlDataReader drModulosUsuarios = cmdGetOne.ExecuteReader();
+
+                while (drModulosUsuarios.Read())
+                {
+                    modusu.ID = (int)drModulosUsuarios["id_modulo_usuario"];
+                    modusu.IdUsuario = (int)drModulosUsuarios["id_usuario"];
+                    modusu.PermiteAlta = (bool)drModulosUsuarios["alta"];
+                    modusu.PermiteBaja = (bool)drModulosUsuarios["baja"];
+                    modusu.PermiteModificacion = (bool)drModulosUsuarios["modificacion"];
+                    modusu.PermiteConsulta = (bool)drModulosUsuarios["consulta"];
+                    modusu.Modulo.ID = (int)drModulosUsuarios["id_modulo"];
+                }
+                drModulosUsuarios.Close();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos del Modulo Usuario", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return modusu;
+        }
+
         protected void Update(ModuloUsuario modusu)
         {
             try

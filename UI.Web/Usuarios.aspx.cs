@@ -14,9 +14,9 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.LoadGrid();
-            this.GridView.Columns[5].Visible = true;
-           /* this.gridPermisosPanel.Visible = false;*/
+            if(!IsPostBack) this.LoadGrid();
+            this.GridView.Columns[6].Visible = true;
+            this.gridPermisosPanel.Visible = false;
             if (this.GridView.SelectedIndex == -1)
             {
                 ShowButtons(false);
@@ -31,7 +31,7 @@ namespace UI.Web
                 this.chxHabilitado.Checked = Convert.ToBoolean(Session["Habilitado"]);
                 if (Session["ApeNom_Persona"] != null)
                     this.txtPersona.Text = Session["ApeNom_Persona"].ToString();
-                if (Session["SelectedID"]!=null)
+                if (Session["SelectedID"] != null)
                 {
                     this.SelectedID = (int)Session["SelectedID"];
                     this.FormMode = FormModes.Modificacion;
@@ -61,33 +61,19 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            try
-            {
-                this.GridView.DataSource = this.Logic.GetAll();
-                this.GridView.DataBind();
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
-            }
+            this.GridView.DataSource = this.Logic.GetAll();
+            this.GridView.DataBind();
         }
 
         private void LoadGridPermisos(int id)
         {
-            try
-            {
-                ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
-                this.GridViewPermisos.DataSource = mul.GetAll(id);
-                this.GridViewPermisos.DataBind();
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
-            }
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            this.GridViewPermisos.DataSource = mul.GetAll(id);
+            this.GridViewPermisos.DataBind();
         }
 
-        Usuario _Entity;    
-        
+        Usuario _Entity;
+
         private Usuario Entity
         {
             get
@@ -134,22 +120,10 @@ namespace UI.Web
 
         private void LoadForm(int id)
         {
-            try
-            {
-                this.Entity = this.Logic.GetOne(id);
-                this.chxHabilitado.Checked = this.Entity.Habilitado;
-                this.txtNombreUsuario.Text = this.Entity.NombreUsuario;
-                this.txtPersona.Text = this.Entity.Persona.Apellido + " " + this.Entity.Persona.Nombre;
-                if (this.Entity.TipoPersona == "No docente")
-                {
-                    this.LoadGridPermisos(this.Entity.ID);
-                    this.gridPermisosPanel.Visible = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
-            }
+            this.Entity = this.Logic.GetOne(id);
+            this.chxHabilitado.Checked = this.Entity.Habilitado;
+            this.txtNombreUsuario.Text = this.Entity.NombreUsuario;
+            this.txtPersona.Text = this.Entity.Persona.Apellido + " " + this.Entity.Persona.Nombre;
         }
 
         private void LoadEntity(Usuario usuario)
@@ -159,9 +133,10 @@ namespace UI.Web
             usuario.Habilitado = this.chxHabilitado.Checked;
             if (Session["ID_Persona"] != null)
                 usuario.Persona.ID = Convert.ToInt32(Session["ID_Persona"]);
-            foreach (GridViewRow row in this.GridViewPermisos.Rows)
+            if (Session["Tipo_Persona"].ToString() == "No docente")
             {
-                usuario.ModulosUsuarios.Add((ModuloUsuario)row.DataItem);
+                ModuloUsuarioLogic log = new ModuloUsuarioLogic();
+                usuario.ModulosUsuarios = log.GetAll(0);
             }
         }
 
@@ -186,14 +161,7 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            try
-            {
-                this.Logic.Delete(id);
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
-            }
+            this.Logic.Delete(id);
         }
 
         private void ClearForm()
@@ -206,7 +174,14 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.GridView.SelectedValue;
+            this.gridActionsPanel.Visible = true;
+            this.lbAsignarPermisos.Visible = false;
             this.ShowButtons(true);
+            Label tipo = (Label)(GridView.Rows[GridView.SelectedIndex].FindControl("lblTipoPersona"));
+            if (tipo.Text == "No docente")
+            {
+                this.lbAsignarPermisos.Visible = true;
+            }
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -224,7 +199,7 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            switch(this.FormMode)
+            switch (this.FormMode)
             {
                 case FormModes.Modificacion:
                     if (Page.IsValid)
@@ -246,6 +221,7 @@ namespace UI.Web
             this.ClearForm();
             this.ClearSession();
             this.formPanel.Visible = false;
+            this.formActionsPanel.Visible = false;
             this.gridActionsPanel.Visible = true;
             this.ShowButtons(false);
         }
@@ -256,10 +232,10 @@ namespace UI.Web
                  Session["Habilitado"] =
                  Session["ApeNom_Persona"] =
                  Session["SelectedID"] =
-                 Session["ID_Persona"] = 
+                 Session["ID_Persona"] =
                  Session["Tipo_Persona"] = null;
         }
-            
+
 
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
         {
@@ -273,10 +249,11 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            this.GridView.Columns[5].Visible = false;
+            this.GridView.Columns[6].Visible = false;
             this.formPanel.Visible = true;
             this.formActionsPanel.Visible = true;
             this.gridActionsPanel.Visible = false;
+            this.gridPermisosPanel.Visible = false;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
@@ -287,6 +264,8 @@ namespace UI.Web
             this.ClearForm();
             this.ClearSession();
             this.formPanel.Visible = false;
+            this.gridPermisosPanel.Visible = false;
+            formActionsPanel.Visible = false;
             this.gridActionsPanel.Visible = true;
             this.ShowButtons(false);
         }
@@ -295,17 +274,45 @@ namespace UI.Web
         {
             Session["Nombre_Usuario"] = this.txtNombreUsuario.Text;
             Session["Habilitado"] = this.chxHabilitado.Checked;
-            
-            if(FormMode == FormModes.Modificacion)
+
+            if (FormMode == FormModes.Modificacion)
             {
                 Session["SelectedID"] = this.SelectedID;
             }
             Page.Response.Redirect("~/SeleccionarPersona.aspx");
         }
 
+        protected void GridViewPermisos_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            this.gridPermisosPanel.Visible = true;
+            int ID = int.Parse(GridViewPermisos.DataKeys[e.RowIndex].Value.ToString());
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            ModuloUsuario _ModuloUsuarioActual = mul.GetOne(ID);
+            _ModuloUsuarioActual.PermiteAlta = ((CheckBox)(GridViewPermisos.Rows[e.RowIndex].FindControl("chxAlta"))).Checked;
+            _ModuloUsuarioActual.PermiteBaja = ((CheckBox)(GridViewPermisos.Rows[e.RowIndex].FindControl("chxBaja"))).Checked;
+            _ModuloUsuarioActual.PermiteModificacion = ((CheckBox)(GridViewPermisos.Rows[e.RowIndex].FindControl("chxModificacion"))).Checked;
+            _ModuloUsuarioActual.PermiteConsulta = ((CheckBox)(GridViewPermisos.Rows[e.RowIndex].FindControl("chxConsulta"))).Checked;
+            _ModuloUsuarioActual.State = BusinessEntity.States.Modified;
+            mul.Save(_ModuloUsuarioActual);
+            GridViewPermisos.EditIndex = -1;
+            this.LoadGridPermisos(this.SelectedID);
+        }
+
         protected void GridViewPermisos_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            this.gridPermisosPanel.Visible = true;
+            GridViewPermisos.EditIndex = e.NewEditIndex;
+            this.LoadGridPermisos(this.SelectedID);
+        }
 
+        protected void lbAsignarPermisos_Click(object sender, EventArgs e)
+        {
+            if (this.IsEntitySelected)
+            {
+                this.gridActionsPanel.Visible = false;
+                this.gridPermisosPanel.Visible = true;
+                this.LoadGridPermisos(this.SelectedID);
+            }
         }
 
     }

@@ -31,6 +31,11 @@ namespace Business.Logic
             return ModuloUsuarioData.GetPermisos(id);
         }
 
+        public ModuloUsuario GetOne(int ID)
+        {
+            return _ModuloUsuarioData.GetOne(ID);
+        }
+
         public void Save(ModuloUsuario mu)
         {
             ModuloUsuarioData.Save(mu);

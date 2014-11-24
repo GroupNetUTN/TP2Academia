@@ -10,6 +10,14 @@
                 <asp:BoundField DataField="Email" HeaderText="Email" />
                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                <asp:TemplateField HeaderText="Tipo">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtTipoPersona" runat="server" Text='<%# Bind("TipoPersona") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblTipoPersona" runat="server" Text='<%# Bind("TipoPersona") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="Habilitado" HeaderText="Habilitado" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
@@ -26,6 +34,8 @@
         onclick="eliminarLinkButton_Click" CausesValidation="False">Eliminar</asp:LinkButton>
     <asp:LinkButton ID="lbNuevo" runat="server" 
         onclick="nuevoLinkButton_Click" CausesValidation="False">Nuevo</asp:LinkButton>
+    <asp:LinkButton ID="lbAsignarPermisos" runat="server" Visible="False" 
+        onclick="lbAsignarPermisos_Click">Asignar Permisos</asp:LinkButton>
 </asp:Panel>
 <asp:Panel ID="formPanel" Visible="false" runat="server">
     <asp:Label ID="lblHabilitado" runat="server" Text="Habilitado: "></asp:Label>
@@ -56,28 +66,69 @@
     <asp:RequiredFieldValidator ID="rfvRepetirClave" runat="server" 
         ControlToValidate="txtRepetirClave" Display="Dynamic" 
         ErrorMessage="El campo Repetir Clave es obligatorio" ForeColor="#FF3300">*</asp:RequiredFieldValidator> 
+    </asp:Panel>    
     <br />
 <asp:Panel ID="gridPermisosPanel" runat="server" Visible="false">
         <asp:GridView ID="GridViewPermisos" runat="server" AutoGenerateColumns="False" 
-            Width="350px">
+            Width="350px" AutoGenerateEditButton="True" 
+            onrowupdating="GridViewPermisos_RowUpdating" 
+            onrowediting="GridViewPermisos_RowEditing" DataKeyNames="ID">
             <Columns>
-                <asp:BoundField DataField="DescModulo" HeaderText="Modulo" />
-                <asp:CheckBoxField DataField="PermiteAlta" HeaderText="Alta" />
-                <asp:CheckBoxField DataField="PermiteBaja" HeaderText="Baja" />
-                <asp:CheckBoxField DataField="PermiteModificacion" HeaderText="Modificación" />
-                <asp:CheckBoxField DataField="PermiteConsulta" HeaderText="Consulta" />
+                <asp:TemplateField HeaderText="Modulo">
+                    <ItemTemplate>
+                        <asp:Label ID="lblModulo" runat="server" Text='<%# Bind("DescModulo") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Alta">
+                    <EditItemTemplate>
+                        <asp:CheckBox ID="chxAlta" runat="server" 
+                            Checked='<%# Bind("PermiteAlta") %>' />
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="CheckBox1" runat="server" 
+                            Checked='<%# Bind("PermiteAlta") %>' Enabled="false" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Baja">
+                    <EditItemTemplate>
+                        <asp:CheckBox ID="chxBaja" runat="server" 
+                            Checked='<%# Bind("PermiteBaja") %>' />
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="CheckBox2" runat="server" 
+                            Checked='<%# Bind("PermiteBaja") %>' Enabled="false" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Modificación">
+                    <EditItemTemplate>
+                        <asp:CheckBox ID="chxModificacion" runat="server" 
+                            Checked='<%# Bind("PermiteModificacion") %>' />
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="CheckBox3" runat="server" 
+                            Checked='<%# Bind("PermiteModificacion") %>' Enabled="false" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Consulta">
+                    <EditItemTemplate>
+                        <asp:CheckBox ID="chxConsulta" runat="server" 
+                            Checked='<%# Bind("PermiteConsulta") %>' />
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="CheckBox4" runat="server" 
+                            Checked='<%# Bind("PermiteConsulta") %>' Enabled="false" />
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <RowStyle HorizontalAlign="Center" />
         </asp:GridView>
     </asp:Panel>
     <br />
-<asp:Panel ID="formActionsPanel" runat="server">
+<asp:Panel ID="formActionsPanel" runat="server" Visible="false">
     <asp:LinkButton ID="aceptarLinkButton" runat="server" 
         onclick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
     <asp:LinkButton ID="cancelarLinkButton" runat="server" 
         onclick="cancelarLinkButton_Click" CausesValidation="False">Cancelar</asp:LinkButton>
     <asp:ValidationSummary ID="vsValidaciones" runat="server" ForeColor="#FF3300" />
 </asp:Panel>
-</asp:Panel>
 </asp:Content>
-
