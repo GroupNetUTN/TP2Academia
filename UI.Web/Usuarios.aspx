@@ -72,7 +72,8 @@
         <asp:GridView ID="GridViewPermisos" runat="server" AutoGenerateColumns="False" 
             Width="350px" AutoGenerateEditButton="True" 
             onrowupdating="GridViewPermisos_RowUpdating" 
-            onrowediting="GridViewPermisos_RowEditing" DataKeyNames="ID">
+            onrowediting="GridViewPermisos_RowEditing" DataKeyNames="ID" 
+            onrowcancelingedit="GridViewPermisos_RowCancelingEdit">
             <Columns>
                 <asp:TemplateField HeaderText="Modulo">
                     <ItemTemplate>

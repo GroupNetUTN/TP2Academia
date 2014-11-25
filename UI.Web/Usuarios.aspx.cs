@@ -343,5 +343,11 @@ namespace UI.Web
             }
         }
 
+        protected void GridViewPermisos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            this.gridPermisosPanel.Visible = true;
+            GridViewPermisos.EditIndex = -1;
+            this.LoadGridPermisos(this.SelectedID);
+        }
     }
 }
