@@ -93,7 +93,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 DocenteCursoLogic DCLogic = new DocenteCursoLogic();
-                if (!DCLogic.Existe(_DocenteCursoActual.Curso.ID, _DocenteCursoActual.Docente.ID, _DocenteCursoActual.Cargo))
+                if (_Modo != ModoForm.Alta || !DCLogic.Existe(_DocenteCursoActual.Curso.ID, _DocenteCursoActual.Docente.ID, _DocenteCursoActual.Cargo))
                     DCLogic.Save(_DocenteCursoActual);
                 else this.Notificar("Este Docente ya se encuentra asignado a este Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -124,6 +124,7 @@ namespace UI.Desktop
             SeleccionarDocentes doc = new SeleccionarDocentes(_CursoActual);
             doc.ShowDialog();
             _DocenteCursoActual.Docente = doc.Docente;
+            this.txtDocente.Text = _DocenteCursoActual.Docente.Apellido + " " + _DocenteCursoActual.Docente.Nombre;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

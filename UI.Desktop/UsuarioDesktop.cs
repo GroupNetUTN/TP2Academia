@@ -124,7 +124,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 UsuarioLogic userlogic = new UsuarioLogic();
-                if(!userlogic.Existe(_UsuarioActual.NombreUsuario))
+                if (_Modo != ModoForm.Alta || !userlogic.Existe(_UsuarioActual.NombreUsuario))
                     userlogic.Save(_UsuarioActual);
                 else this.Notificar("Ya existe un Usuario con ese Nombre de Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

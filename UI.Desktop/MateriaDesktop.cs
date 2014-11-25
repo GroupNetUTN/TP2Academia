@@ -153,7 +153,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 MateriaLogic materialogic = new MateriaLogic();
-                if (!materialogic.Existe(_MateriaActual.Plan.ID, _MateriaActual.Descripcion))
+                if (_Modo!= ModoForm.Alta || !materialogic.Existe(_MateriaActual.Plan.ID, _MateriaActual.Descripcion))
                 {
                     materialogic.Save(_MateriaActual);
                 }

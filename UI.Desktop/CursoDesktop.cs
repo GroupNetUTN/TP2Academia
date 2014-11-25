@@ -191,7 +191,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 CursoLogic CursoLogic = new CursoLogic();
-                if(!CursoLogic.Existe(_CursoActual.Materia.ID,_CursoActual.Comision.ID,_CursoActual.AnioCalendario))
+                if (_Modo != ModoForm.Alta || !CursoLogic.Existe(_CursoActual.Materia.ID, _CursoActual.Comision.ID, _CursoActual.AnioCalendario))
                     CursoLogic.Save(CursoActual);
                 else this.Notificar("Ya existe este Curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

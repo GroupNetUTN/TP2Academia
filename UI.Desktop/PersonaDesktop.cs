@@ -163,7 +163,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 PersonaLogic PersonaLogic = new PersonaLogic();
-                if(!PersonaLogic.Existe(_PersonaActual.Legajo))
+                if (_Modo != ModoForm.Alta || !PersonaLogic.Existe(_PersonaActual.Legajo))
                     PersonaLogic.Save(PersonaActual);
                 else this.Notificar("Ya existe una Persona con este Legajo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

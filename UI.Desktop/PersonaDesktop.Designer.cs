@@ -72,7 +72,7 @@
             this.cbxEspecialidades.Location = new System.Drawing.Point(432, 100);
             this.cbxEspecialidades.Name = "cbxEspecialidades";
             this.cbxEspecialidades.Size = new System.Drawing.Size(121, 21);
-            this.cbxEspecialidades.TabIndex = 11;
+            this.cbxEspecialidades.TabIndex = 10;
             this.cbxEspecialidades.SelectionChangeCommitted += new System.EventHandler(this.cbxEspecialidades_SelectionChangeCommitted);
             // 
             // txtID
@@ -111,7 +111,7 @@
             this.cbxPlanes.Location = new System.Drawing.Point(432, 134);
             this.cbxPlanes.Name = "cbxPlanes";
             this.cbxPlanes.Size = new System.Drawing.Size(121, 21);
-            this.cbxPlanes.TabIndex = 12;
+            this.cbxPlanes.TabIndex = 11;
             // 
             // cbxTipoPersona
             // 
@@ -123,21 +123,21 @@
             this.cbxTipoPersona.Location = new System.Drawing.Point(432, 172);
             this.cbxTipoPersona.Name = "cbxTipoPersona";
             this.cbxTipoPersona.Size = new System.Drawing.Size(121, 21);
-            this.cbxTipoPersona.TabIndex = 10;
+            this.cbxTipoPersona.TabIndex = 12;
             // 
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(100, 168);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(120, 20);
-            this.txtTelefono.TabIndex = 6;
+            this.txtTelefono.TabIndex = 5;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(100, 206);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(200, 20);
-            this.txtEmail.TabIndex = 5;
+            this.txtEmail.TabIndex = 6;
             // 
             // txtDireccion
             // 

@@ -91,7 +91,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 AlumnoInscripcionLogic inslogic = new AlumnoInscripcionLogic();
-                if (!inslogic.Existe(_InscripcionActual.Alumno.ID, _InscripcionActual.Curso.ID))
+                if (_Modo != ModoForm.Alta || !inslogic.Existe(_InscripcionActual.Alumno.ID, _InscripcionActual.Curso.ID))
                 {
                     inslogic.Save(_InscripcionActual);
                     CursoLogic curlog = new CursoLogic();

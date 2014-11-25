@@ -33,7 +33,7 @@ namespace UI.Desktop
             try
             {
                 PersonaLogic pl = new PersonaLogic();
-                dgvDocentes.DataSource = pl.GetDocentes();
+                dgvDocentes.DataSource = pl.GetDocentesPorPlan(_CursoActual.Materia.Plan.ID);
                 dgvDocentes.ClearSelection();
             }
             catch (Exception ex)
@@ -49,8 +49,7 @@ namespace UI.Desktop
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            _Docente = new Persona();
-            _Docente.ID = ((Business.Entities.Persona)this.dgvDocentes.SelectedRows[0].DataBoundItem).ID;
+            _Docente = (Business.Entities.Persona)this.dgvDocentes.SelectedRows[0].DataBoundItem;
             this.Close();
         }
 

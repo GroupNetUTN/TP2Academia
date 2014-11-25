@@ -149,7 +149,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 ComisionLogic comisionLogic = new ComisionLogic();
-                if(!comisionLogic.Existe(_ComisionActual.Plan.ID, _ComisionActual.Descripcion))
+                if(_Modo!= ModoForm.Alta ||!comisionLogic.Existe(_ComisionActual.Plan.ID, _ComisionActual.Descripcion))
                     comisionLogic.Save(ComisionActual);
                 else this.Notificar("Ya existe esta Comisión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

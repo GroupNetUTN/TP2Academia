@@ -54,6 +54,11 @@ namespace Business.Logic
             return PersonaData.GetAll(3);
         }
 
+        public List<Persona> GetDocentesPorPlan(int id_plan)
+        {
+            return PersonaData.GetDocentesPorPlan(id_plan);
+        }
+
         public void Save(Persona per)
         {
             PersonaData.Save(per);

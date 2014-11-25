@@ -73,6 +73,49 @@ namespace Data.Database
             return personas;
         }
 
+        public List<Persona> GetDocentesPorPlan(int id_plan)
+        {
+            List<Persona> personas = new List<Persona>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdGetAll = new SqlCommand("GetDocentesPorPlan", SqlConn);
+                cmdGetAll.CommandType = CommandType.StoredProcedure;
+                cmdGetAll.Parameters.Add("@id", SqlDbType.Int).Value = id_plan;
+                SqlDataReader drPersonas = cmdGetAll.ExecuteReader();
+
+                while (drPersonas.Read())
+                {
+                    Persona pers = new Persona();
+                    pers.ID = (int)drPersonas["id_persona"];
+                    pers.Nombre = (string)drPersonas["nombre"];
+                    pers.Apellido = (string)drPersonas["apellido"];
+                    pers.Email = (string)drPersonas["email"];
+                    pers.Direccion = (string)drPersonas["direccion"];
+                    pers.Telefono = (string)drPersonas["telefono"];
+                    pers.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
+                    pers.Legajo = (int)drPersonas["legajo"];
+                    pers.TipoPersona = "Docente";
+                    pers.Plan.ID = (int)drPersonas["id_plan"];
+                    pers.Plan.Descripcion = (string)drPersonas["desc_plan"];
+                    pers.Plan.Especialidad.ID = (int)drPersonas["id_especialidad"];
+                    pers.Plan.Especialidad.Descripcion = (string)drPersonas["desc_especialidad"];
+                    personas.Add(pers);
+                }
+                drPersonas.Close();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de Docentes del Plan.", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return personas;
+        }
+
         public Persona GetOne(int ID)
         {
             Persona pers = new Persona();

@@ -103,7 +103,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 EspecialidadLogic esplogic = new EspecialidadLogic();
-                if (!esplogic.Existe(_EspecialidadActual.Descripcion))
+                if (_Modo != ModoForm.Alta || !esplogic.Existe(_EspecialidadActual.Descripcion))
                 {
                     esplogic.Save(_EspecialidadActual);
                 }
