@@ -202,12 +202,14 @@ namespace UI.Web
 
         private void SaveEntity(AlumnoInscripcion ins)
         {
-            if (!Logic.Existe(ins.Alumno.ID, ins.Curso.ID))
+            try
             {
                 this.Logic.Save(ins);
             }
-            else
-                Response.Write("<script>window.alert('Ya se encuentra inscripto a ese cursado.');</script>");
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ClearSession()
@@ -268,7 +270,12 @@ namespace UI.Web
             {
                 this.Entity = new AlumnoInscripcion();
                 this.LoadEntity(this.Entity);
-                this.SaveEntity(this.Entity);
+                if (!Logic.Existe(Entity.Alumno.ID, Entity.Curso.ID))
+                {
+                    this.SaveEntity(Entity);
+                }
+                else
+                    Response.Write("<script>window.alert('Ya se encuentra inscripto a ese cursado.');</script>");
             }
             this.ClearSession();
             this.ClearForm();

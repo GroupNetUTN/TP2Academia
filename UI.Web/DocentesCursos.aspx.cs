@@ -194,12 +194,14 @@ namespace UI.Web
 
         private void SaveEntity(DocenteCurso docCurso)
         {
-            if (!Logic.Existe(docCurso.Curso.ID, docCurso.Docente.ID, docCurso.Cargo))
+            try
             {
                 this.Logic.Save(docCurso);
             }
-            else
-                Response.Write("<script>window.alert('Ya se asignó a ese docente, en este curso, para ese cargo.');</script>");
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ClearSession()
@@ -272,7 +274,12 @@ namespace UI.Web
                 case FormModes.Alta:
                     this.Entity = new DocenteCurso();
                     this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
+                    if (!Logic.Existe(Entity.Curso.ID, Entity.Docente.ID, Entity.Cargo))
+                    {
+                        this.SaveEntity(Entity);
+                    }
+                    else
+                        Response.Write("<script>window.alert('Ya se asignó a ese docente, en este curso, para ese cargo.');</script>");
                     this.LoadGrid();
                     this.ClearSession();
                     break;

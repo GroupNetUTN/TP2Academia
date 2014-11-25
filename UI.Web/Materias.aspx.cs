@@ -193,12 +193,14 @@ namespace UI.Web
 
         private void SaveEntity(Materia mat)
         {
-            if (!Logic.Existe(mat.Plan.ID, mat.Descripcion))
+            try
             {
                 this.Logic.Save(mat);
             }
-            else
-                Response.Write("<script>window.alert('La Materia ya existe.');</script>");
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ClearSession()
@@ -264,7 +266,12 @@ namespace UI.Web
                 case FormModes.Alta:
                     this.Entity = new Materia();
                     this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
+                    if (!Logic.Existe(Entity.Plan.ID, Entity.Descripcion))
+                    {
+                        this.SaveEntity(Entity);
+                    }
+                    else
+                        Response.Write("<script>window.alert('La Materia ya existe.');</script>");
                     this.LoadGrid();
                     this.ClearSession();
                     break;

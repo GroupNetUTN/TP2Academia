@@ -249,12 +249,14 @@ namespace UI.Web
 
         private void SaveEntity(Curso curso)
         {
-            if (!Logic.Existe(curso.Materia.ID, curso.Comision.ID, curso.AnioCalendario))
+            try
             {
                 this.Logic.Save(curso);
             }
-            else
-                Response.Write("<script>window.alert('El Curso ya existe.');</script>");
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ClearSession()
@@ -326,7 +328,12 @@ namespace UI.Web
                 case FormModes.Alta:
                     this.Entity = new Curso();
                     this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
+                    if (!Logic.Existe(Entity.Materia.ID, Entity.Comision.ID, Entity.AnioCalendario))
+                    {
+                        this.SaveEntity(Entity);
+                    }
+                    else
+                        Response.Write("<script>window.alert('El Curso ya existe.');</script>");
                     this.LoadGrid();
                     this.ClearSession();
                     break;

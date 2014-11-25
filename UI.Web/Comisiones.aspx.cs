@@ -188,12 +188,14 @@ namespace UI.Web
 
         private void SaveEntity(Comision comi)
         {
-            if (!Logic.Existe(comi.Plan.ID, comi.Descripcion))
+            try
             {
                 this.Logic.Save(comi);
             }
-            else
-                Response.Write("<script>window.alert('La Comisión ya existe.');</script>");
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ClearSession()
@@ -259,7 +261,12 @@ namespace UI.Web
                 case FormModes.Alta:
                     this.Entity = new Comision();
                     this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
+                    if (!Logic.Existe(Entity.Plan.ID, Entity.Descripcion))
+                    {
+                        this.SaveEntity(Entity);
+                    }
+                    else
+                        Response.Write("<script>window.alert('La Comision ya existe.');</script>");
                     this.LoadGrid();
                     this.ClearSession();
                     break;

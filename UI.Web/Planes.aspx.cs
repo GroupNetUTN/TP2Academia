@@ -155,12 +155,14 @@ namespace UI.Web
 
         private void SaveEntity(Plan plan)
         {
-            if (!Logic.Existe(plan.Descripcion,plan.Especialidad.ID))
+            try
             {
                 this.Logic.Save(plan);
             }
-            else
-                Response.Write("<script>window.alert('El Plan ya existe.');</script>");
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -220,7 +222,12 @@ namespace UI.Web
                 case FormModes.Alta:
                     this.Entity = new Plan();
                     this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
+                    if (!Logic.Existe(Entity.Descripcion, Entity.Especialidad.ID))
+                    {
+                        this.SaveEntity(Entity);
+                    }
+                    else
+                        Response.Write("<script>window.alert('El Plan ya existe.');</script>");
                     this.LoadGrid();
                     break;
             }

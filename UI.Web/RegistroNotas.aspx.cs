@@ -160,7 +160,14 @@ namespace UI.Web
 
         private void SaveEntity(AlumnoInscripcion ins)
         {
-            this.Logic.Save(ins);
+            try
+            {
+                this.Logic.Save(ins);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         protected void GridViewCursos_SelectedIndexChanged(object sender, EventArgs e)

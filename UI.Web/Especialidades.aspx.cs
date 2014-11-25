@@ -143,12 +143,14 @@ namespace UI.Web
 
         private void SaveEntity(Especialidad espec)
         {
-            if (!Logic.Existe(espec.Descripcion))
+            try
             {
                 this.Logic.Save(espec);
             }
-            else 
-                Response.Write("<script>window.alert('La especialidad ya existe.');</script>");
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ClearSession()
@@ -206,7 +208,12 @@ namespace UI.Web
                 case FormModes.Alta:
                     this.Entity = new Especialidad();
                     this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
+                    if (!Logic.Existe(Entity.Descripcion))
+                    {
+                        this.SaveEntity(Entity);
+                    }
+                    else
+                        Response.Write("<script>window.alert('La especialidad ya existe.');</script>");
                     this.LoadGrid();
                     this.ClearSession();
                     break;
