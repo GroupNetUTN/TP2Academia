@@ -145,6 +145,9 @@ namespace Data.Database
         {
             try
             {
+                ModuloUsuarioAdapter muadapter = new ModuloUsuarioAdapter();
+                foreach (ModuloUsuario mu in muadapter.GetPermisos(ID))
+                    muadapter.Delete(mu.ID);
                 this.OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("Delete_Usuarios", SqlConn);
                 cmdDelete.CommandType = CommandType.StoredProcedure;

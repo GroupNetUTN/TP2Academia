@@ -176,6 +176,27 @@ namespace Data.Database
             }
         }
 
+        public void Delete(int ID)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdDelete = new SqlCommand("Delete_Modulos_Usuarios", SqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                cmdDelete.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar el permiso", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+        }
+
         public void Save(ModuloUsuario modusu)
         {
             if (modusu.State == BusinessEntity.States.New)

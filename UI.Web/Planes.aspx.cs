@@ -163,11 +163,6 @@ namespace UI.Web
                 Response.Write("<script>window.alert('El Plan ya existe.');</script>");
         }
 
-        private void ClearSession()
-        {
-            Session["SelectedID"] = null;
-        }
-
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.GridView.SelectedValue;
@@ -220,7 +215,6 @@ namespace UI.Web
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
-                        this.ClearSession();
                     }
                     break;
                 case FormModes.Alta:
@@ -228,7 +222,6 @@ namespace UI.Web
                     this.LoadEntity(this.Entity);
                     this.SaveEntity(this.Entity);
                     this.LoadGrid();
-                    this.ClearSession();
                     break;
             }
             this.ClearForm();

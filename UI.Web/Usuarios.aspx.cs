@@ -24,9 +24,8 @@ namespace UI.Web
             }
             if (Session["Habilitado"] != null)
             {
-                if (Session["Tipo_Persona"].ToString() == "No docente")
-                    this.gridPermisosPanel.Visible = true;
                 this.formPanel.Visible = true;
+                this.formActionsPanel.Visible = true;
                 this.txtNombreUsuario.Text = Session["Nombre_Usuario"].ToString();
                 this.chxHabilitado.Checked = Convert.ToBoolean(Session["Habilitado"]);
                 if (Session["ApeNom_Persona"] != null)
@@ -38,12 +37,6 @@ namespace UI.Web
                 }
                 else
                     this.FormMode = FormModes.Alta;
-                if (this.FormMode == FormModes.Modificacion)
-                {
-                    this.LoadGridPermisos(SelectedID);
-                }
-                else
-                    this.LoadGridPermisos(0);
             }
         }
 
@@ -61,15 +54,29 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            this.GridView.DataSource = this.Logic.GetAll();
-            this.GridView.DataBind();
+            try
+            {
+                this.GridView.DataSource = this.Logic.GetAll();
+                this.GridView.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadGridPermisos(int id)
         {
-            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
-            this.GridViewPermisos.DataSource = mul.GetAll(id);
-            this.GridViewPermisos.DataBind();
+            try
+            {
+                ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+                this.GridViewPermisos.DataSource = mul.GetAll(id);
+                this.GridViewPermisos.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         Usuario _Entity;
@@ -120,10 +127,17 @@ namespace UI.Web
 
         private void LoadForm(int id)
         {
-            this.Entity = this.Logic.GetOne(id);
-            this.chxHabilitado.Checked = this.Entity.Habilitado;
-            this.txtNombreUsuario.Text = this.Entity.NombreUsuario;
-            this.txtPersona.Text = this.Entity.Persona.Apellido + " " + this.Entity.Persona.Nombre;
+            try
+            {
+                this.Entity = this.Logic.GetOne(id);
+                this.chxHabilitado.Checked = this.Entity.Habilitado;
+                this.txtNombreUsuario.Text = this.Entity.NombreUsuario;
+                this.txtPersona.Text = this.Entity.Persona.Apellido + " " + this.Entity.Persona.Nombre;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void LoadEntity(Usuario usuario)
@@ -161,7 +175,14 @@ namespace UI.Web
 
         private void DeleteEntity(int id)
         {
-            this.Logic.Delete(id);
+            try
+            {
+                this.Logic.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>window.alert('" + ex.Message + "');</script>");
+            }
         }
 
         private void ClearForm()
