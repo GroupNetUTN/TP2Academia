@@ -202,7 +202,7 @@
             this.ClientSize = new System.Drawing.Size(780, 487);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ReporteCursosViewer";
-            this.Text = "ReporteCursosViewer";
+            this.Text = "Reporte de Cursos";
             this.Load += new System.EventHandler(this.ReporteCursosViewer_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

@@ -50,7 +50,7 @@
             this.ClientSize = new System.Drawing.Size(949, 530);
             this.Controls.Add(this.CRViewerPlanes);
             this.Name = "ReportePlanesViewer";
-            this.Text = "ReportePlanesViewer";
+            this.Text = "Reporte de Planes";
             this.Load += new System.EventHandler(this.ReportePlanesViewer_Load);
             this.ResumeLayout(false);
 
